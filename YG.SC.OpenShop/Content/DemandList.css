@@ -1,0 +1,271 @@
+﻿/*全局样式*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div, dl, dt, dd, form, h1, h2, h3, h4, h5, h6, img, ol, ul, li, table, th, td, p, span, a {
+    border: 0;
+}
+
+    a:link {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:visited {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a :active {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+li {
+    list-style: none;
+}
+
+img, input {
+    border: none;
+    vertical-align: middle;
+}
+
+body {
+    font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+    font-size: 12px;
+    background: #FFF;
+    color: #fff;
+    color: #000;
+}
+
+
+.bg1 {
+    width: 100%;
+    height: 240px;
+    background-color: #f0f0f0;
+}
+
+.filter {
+    margin: auto;
+    width: 1200px;
+    min-height: 200px;
+    padding-top: 10px;
+}
+
+    .filter ul {
+    }
+
+        .filter ul li {
+            margin-top: 35px;
+            height: 30px;
+            list-style: none;
+        }
+
+            .filter ul li img {
+                margin-right: 15px;
+                margin-left: 5px;
+            }
+
+            .filter ul li span {
+                font-size: 20px;
+                color: #ec341d;
+                margin-right: 30px;
+                float:left;
+            }
+
+            .filter ul li a {
+                font-size: 16px;
+                margin-right: 15px;
+                font-weight: 500;
+                color: #000;
+            }
+
+                .filter ul li a.red {
+                    color: #ec341d;
+                }
+
+.content {
+    width: 1200px;
+    margin: auto;
+}
+
+    .content p {
+        margin: 0 0 0px;
+    }
+
+    .content div.left {
+        float: left;
+        width: 820px;
+    }
+
+        .content div.left ul li {
+            padding-top: 25px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ec341d;
+        }
+
+            .content div.left ul li.second {
+                height: 200px;
+            }
+
+            .content div.left ul li.first p {
+                font-size: 20px;
+                color: #808080;
+                margin-left: 5px;
+            }
+
+                .content div.left ul li.first p a {
+                    color: #ec341d;
+                }
+
+            .content div.left ul li p a {
+                color: inherit;
+            }
+
+            .content div.left ul li img {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+
+
+            .content div.left ul li div.category span {
+                height: 20px;
+                font-size: 20px;
+                color: #ec341d;
+            }
+
+.category {
+    float: left;
+}
+
+.info {
+    width: 700px;
+}
+
+    .info ul li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+
+div.info p.title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+div.info p.time {
+    height: 12px;
+    font-size: 12px;
+    color: #808080;
+    margin-bottom: 25px;
+}
+
+div.info p.filter1 {
+    line-height: 28px;
+    font-size: 14px;
+    color: #2e2d2d;
+    margin-left:20px;
+}
+
+.paging {
+    height: 40px;
+    margin-top: 90px;
+    margin-bottom: 40px;
+}
+
+div.paging span {
+    min-width: 40px;
+    margin-left: 30px;
+    line-height: 40px;
+    float: left;
+    height: 40px;
+    font-size: 14px;
+    text-align: center;
+}
+
+    div.paging span.nowNo {
+        background-color: #ec341d;
+        color: #FFF;
+    }
+
+    div.paging span a {
+        color: inherit;
+    }
+
+    div.paging span.ortherNo {
+        background-color: #FFF;
+        color: #ec341d;
+        border: 1px #ec341d solid;
+    }
+
+    div.paging span.pbtn {
+        width: 160px;
+        color: #FFF;
+        background-color: #f7a6a6;
+    }
+
+    div.paging span.rpbtn {
+        width: 160px;
+        color: #FFF;
+        background-color: #ec341d;
+    }
+
+.content div.right {
+    width: 362px;
+    float: right;
+}
+    .content div.right div.relate {
+        margin-top: 40px;
+        width: 360px;
+        height: 390px;
+        border: 1px solid #808080;
+    }
+
+        .content div.right div.relate div.imgs {
+            width: 360px;
+            height: 295px;
+        }
+
+        .content div.right div.relate img.fa {
+            float: left;
+            margin: 12px;
+        }
+
+        .content div.right div.relate img.shang {
+            float: right;
+            margin: -50px 40px 0 0;
+        }
+
+        .content div.right div.relate p.title2 {
+            margin-left: 12px;
+            font-size: 18px;
+            color: #ec341d;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content div.right div.relate p.nr {
+            margin-left: 12px;
+            color: #808080;
+            font-size: 16px;
+        }
+
+.fabu {
+  width: 362px;
+  height: 67px;
+  background-color: #ec341d;
+  margin-top: 30px;
+  padding: 12px 0 0 80px;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 8px;
+}

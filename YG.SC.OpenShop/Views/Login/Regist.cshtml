@@ -1,0 +1,277 @@
+﻿@{
+    ViewBag.Title = "会员注册--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/pptm.css" rel="stylesheet" />
+<link href="~/Content/h_login.css" rel="stylesheet" />
+<style>
+    .popover {
+        color: red;
+    }
+</style>
+
+<meta name="keywords" content="线下创业,一站式整合服务平台,线下开店，线上推广运营，店铺装修，原料采购，产业链平台,个人注册，企业注册" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台，个人注册，发布需求，发布任务，找商铺，找写字楼，商铺装修，商铺家具，餐饮装修；企业注册，出租售商铺、写字楼,找项目，接任务，提供资源，融投资" />
+
+
+<div class="brand-warp">
+    <div class="panel panel-register">
+        <div class="register_left">
+            <img src="/Images/reg_s1.jpg" />
+        </div>
+        <div class="register_right">
+            <div class="register_title"></div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="formrgist" role="form" method="post">
+
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" id="username_div">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control reg_info" id="username" name="username" placeholder="用户名" data-content="请输入用户名" />
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" id="moblie_div">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-phone"></i>
+                            </span>
+                            <input type="text" class="form-control reg_info" id="moblie" name="moblie" placeholder="手机号码" data-content="请输入手机号码" />
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" id="yzm_div">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-code"></i>
+                            </span>
+                            <input type="text" class="form-control regist_inputCode reg_info" id="v_code" name="v_code" placeholder="验证码" data-content="请输入验证码" />
+                            <button type="button" class="btn register_sendcode" data-toggle="tooltip" id="hqyzm" data-loading-text="发送中..." style="">发送验证码到手机</button>
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" id="pwd_div">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input type="password" class="form-control reg_info" id="password" name="password" placeholder="密码" data-content="请输入密码" />
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" id="con_div">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input type="password" class="form-control reg_info" id="con_password" name="con_password" placeholder="确认密码" data-content="请再次输入密码" />
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="form-group login_rmbm">
+                        <div class="ml">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" id="IsPersion" checked="checked" name="Property" value="个人" />
+                                    个人
+                                </label>
+                                <label>
+                                    <input type="radio" id="IsCompany" name="Property" value="企业" />
+                                    企业
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group login_rmbm">
+                        <div class="ml">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="IsRead" name="IsRead" />
+                                    我已阅读并接受
+                                </label>
+                                <a class="login_reg" href="?reg">开店网用户协议</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group login_btns">
+                        <input type="submit" class="btn btn-register" id="btnregist" data-toggle="tooltip" data-loading-text="登录中..." style="" value="立即注册" />
+                    </div>
+                </form>
+                @*<div class="login_s3">
+                    <a class="login_s3_wx" href="">微信登录</a>
+                    <a class="login_s3_qq" href="">QQ登录</a>
+                    <a class="login_s3_wb" href="/Login/SinaLogin">微博登录</a>
+                </div>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var times = 120;
+    $(function () {
+        $(".reg_info").blur(function () {
+            $(this).parent('div').children('span').remove();
+            $(this).parent('div').next("h3").text('');
+        });
+    })
+
+
+    $("#btnregist").click(function () {
+        $("#btnregist").attr("disabled", "disabled");
+            var flag = 1;
+            if (!$.trim($("#username").val())) {
+                $("#username_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入用户名");
+                $("#btnregist").removeAttr("disabled");
+                return false;
+                flag = 0;
+            }
+            var mobile = /^((1[3-9][0-9]{1})+\d{8})$/
+            if (length != 11 && !mobile.test($("#moblie").val())) {
+                $("#moblie_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入正确的电话号码");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            }
+            if (!$.trim($("#password").val())) {
+                $("#pwd_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入密码");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            } else if ($.trim($("#password").val()).length < 6) {
+                $("#pwd_div").append('<span class="pptm-icon"></span>').next('h3').text("密码必须大于6个字符");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            }
+            if (!$.trim($("#con_password").val())) {
+                $("#con_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入确认密码");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            } else if ($("#con_password").val() != $("#password").val()) {
+                $("#con_div").append('<span class="pptm-icon"></span>').next('h3').text("两次密码不一致");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            }
+            if (!$.trim($("#v_code").val())) {
+                $("#yzm_div").next('h3').text("请输入验证码");
+                $("#btnregist").removeAttr("disabled");
+                flag = 0;
+                return false;
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                async: false,
+                url: "/Login/ValidateMobile",
+                data: { Phone: $("#moblie").val(), Code: $("#v_code").val() },
+                success: function (data) {
+                    if (data == 'ok') {
+                        $("#timer").val(times);
+                    } else {
+                        $("#yzm_div").next('h3').text("验证码不正确！");
+                        flag = 0;
+                    }
+                }
+            });
+
+            if ($("input[name='IsRead']:checked").length < 1) {
+                alert("请阅读《开店ing商家注册协议》");
+                $("#btnregist").removeAttr("disabled");
+                return false;
+            }
+            if (!flag) {
+                $("#btnregist").removeAttr("disabled");
+                return false;
+            }
+            $("#btnregist").removeAttr("disabled");
+        });
+
+        $("#hqyzm").click(function () {
+            var phone = $("#moblie").val();
+            if (phone == "") { alert("请输入手机号"); return; }
+            if ($(this).attr('disabled') != 'disabled') {
+                $('#hqyzm').attr('disabled', 'disabled');
+                $.ajax({
+                    type: "GET",
+                    url: "/Login/ajaxSend",
+                    data: { phone: $("#moblie").val() },
+                    success: function (data) {
+                        if (data == '-1') {
+                            alert('验证码申请太频繁，请稍后再试！');
+                        } else {
+                            times = 60;
+                            send_agin();
+                        }
+                    }
+                });
+            }
+        });
+            function validatePhone() {
+                _flag = 0;
+
+                $.ajax({
+                    type: "GET",
+                    url: "/Login/ValidateMobile",
+                    data: { Phone: $("#moblie").val(), Code: $("#v_code").val() },
+                    success: function (data) {
+                        if (data == 'ok') {
+                            _flag = 1;
+                        } else {
+                            _flag = 0;
+                        }
+                    }
+                });
+                alert("validatePhone-" + _flag);
+                return _flag;
+            }
+
+            $('.service_show').on('click', function (e) {
+                $('.service_content').show().addClass('showprovince');
+            });
+
+            $('#hideSel').on('touchstart', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $('.service_content').hide().addClass('hideprovince');
+            });
+        
+
+        function send_agin() {
+            times = times - 1;
+            var showtime = '';
+            if (times > 0) {
+                setyzm = setTimeout('send_agin()', 1000);
+                showtime = times + '秒后获取';
+                $('#hqyzm').text(showtime);
+            } else {
+                $('#hqyzm').removeAttr('disabled');
+                $('#hqyzm').text('重新获取验证码');
+            }
+        }
+   
+</script>
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+
+    }
+</script>
+
+
+
+
+

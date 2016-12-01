@@ -1,0 +1,41 @@
+﻿@model YG.SC.DataAccess.ShopBrand
+@{
+    ViewBag.Title = "EditRemark";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="~/Content/KindEditor/kindeditor.js"></script>
+<script src="~/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="~/Content/KindEditor/plugins/code/prettify.js"></script>
+
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#content1', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/ShopBrand/ProcessFile',
+            fileManagerJson: '/ShopBrand/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<form id="example" method="POST" action="/ShopBrand/Process">
+    <input type="hidden" id="shopBrandId" name="id" value="@Model.Id" />
+    <textarea id="content1" cols="100" rows="8" style="width: 700px; height: 200px; visibility: hidden;" name="data">
+    @Model.Rmark
+    </textarea>
+    <br />
+    <input type="submit" value="提交" />
+</form>

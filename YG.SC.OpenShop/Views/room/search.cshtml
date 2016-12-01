@@ -1,0 +1,196 @@
+﻿@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopRoom
+@{
+    ViewBag.Title = "商铺列表页";
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
+}
+<meta name="keywords" content="开店ing,需求发布，开店网，润嘉众合，开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,在这里你可以搜索开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall，商场招租，写字楼出租，写字楼出售，商铺装修，商铺家具，餐饮装修各种相关需求" />
+
+@section Scripts
+{
+    <link href="~/Content/roomsearch.css" rel="stylesheet" />
+    <link href="/Content/project.css" rel="stylesheet" />
+    <link href="/content/projectsearch.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+}
+
+<div class="kd-index">
+    <div class="search-warp">
+        <div class="searchbox">
+            <div class="rightmod"></div>
+            <div class="site-search">
+                <input type="text" class="site-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." id="txtKeys" name="txtKeys" value="@ViewBag.Keys" />
+                <input type="button" class="site-search-btn btn" value="搜索" id="btn_room_search" />
+            </div>
+            <div class="searchfeater">
+                <div class="project_st">
+                    @Html.Raw(ViewBag.Filter)
+                </div>
+            </div>
+            <div class="rightmod modlast"></div>
+        </div>
+        @{
+            var updata = (Tuple<YG.SC.DataAccess.ShopRoom[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+        }
+        <div class="kd-result">
+            <div class="kd-s-head">已为您搜索到 <span>@updata.Item2.Total</span>个 房源</div>
+            <div class="kd-prolistroom">
+                <div id="divList">
+                    <ul class="company-list">
+
+                        @if (updata != null && updata.Item1.Count() > 0)
+                        {
+                            for (int i = 0; i < updata.Item1.Count(); i++)
+                            {
+                                var proj = updata.Item1[i];
+                                <li>
+                                    <a href="/room/room?id=@proj.Id">
+                                        <div class="img-wrap">
+                                            @{
+                                Random ran = new Random();
+                                int a = ran.Next(1, 3);
+                                var error = "javascript:this.src='/Images/icon/shangpu-0" + a + ".gif'";
+                                <img style="display: inline; float:left;" width="58" height="58" src="@string.Format("http://www.kaidianing.com{0}", proj.Rimg)"
+                                     class="lazy" data-original="@string.Format("http://www.kaidianing.com{0}", proj.Rimg)" alt="@proj.RName"
+                                     onerror="@error">
+                                            }
+                                        </div>
+                                        <div class="company-info">
+                                            <h2 class="text-overflow">@proj.RName</h2>
+                                            <div class="company-score">
+                                                <div class="credit text-overflow">
+                                                    <img src="~/Images/icon/place.png" /><span>
+                                                        @{
+                                string str_add = proj.city;
+                                if (!string.IsNullOrEmpty(proj.district))
+                                {
+                                    str_add += "-" + proj.district;
+                                }
+                                if (!string.IsNullOrEmpty(proj.hotarea))
+                                {
+                                    str_add += "-" + proj.hotarea;
+                                }
+                                if (!string.IsNullOrEmpty(proj.address))
+                                {
+                                    str_add += "-" + proj.address;
+                                }
+                                                        }
+                                                        @str_add
+                                                    </span>
+                                                </div>
+                                                <div class="wom text-overflow">
+                                                    <img src="~/Images/icon/time.png" /> <span>
+                                                        @{
+                                string strfetch = proj.fetchDate.ToString();
+                                long featdate = Convert.ToInt64(strfetch.Substring(0, strfetch.Length - 3));
+
+                                DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+                                long lTime = long.Parse(featdate.ToString() + "0000000");
+                                TimeSpan toNow = new TimeSpan(lTime);
+                                DateTime timeFeat = dtStart.Add(toNow);
+
+                                                        }
+                                                        @timeFeat.ToString("yyyy-MM-dd HH:mm")
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="text-overflow">
+                                                <span class="production-count">
+                                                    <em>
+                                                        @{
+                                string strRent = "出租 : " + proj.price + "元/月";
+                                if (proj.sale == "True") { strRent = "出售 : " + proj.price + "元/平米"; }
+                                                        }
+                                                        @strRent
+                                                    </em>
+                                                </span>
+                                                <!--<span class="distance">1km</span>-->
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!--container end-->
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<script language="javascript">
+    $(document).ready(
+    function () {
+        $(document).on("click", "#btn_room_search", function () {
+            var _projectkey = $("input[name='txtKeys']").val();
+            window.location.href = "/room/search?keys=" + _projectkey;
+
+        });
+    });
+    function GetRequest(){
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+</script>
+<script type="text/javascript">
+    var ct = 0;
+    var pg = 1;
+    $(function () {
+        //url data function dataType
+        function loadMeinv() {
+            pg = pg + 1;
+            var Request = GetRequest();
+            var sqUrl = "/room/SearchView?keys=" + Request["keys"];
+            sqUrl = sqUrl + "&quyu=" + Request["quyu"];
+            sqUrl = sqUrl + "&status=" + Request["status"];
+            sqUrl = sqUrl + "&pricerent=" + Request["pricerent"];
+            sqUrl = sqUrl + "&pricesale=" + Request["pricesale"];
+            sqUrl = sqUrl + "&opentime=" + Request["opentime"];
+            sqUrl = sqUrl + "&PageIndex=" + pg;
+            if(pg<=@updata.Item2.Step)
+            {
+            $.get(sqUrl, function (data){
+                    $minUl = getMinUl();
+                    $minUl.append(data);
+            });
+        }
+    }
+    //无限加载
+    $(".kd-prolistroom").on("scroll",function() {
+        $minUl = getMinUl();    
+        if ($minUl.height() <= $(".kd-prolistroom").scrollTop() + $(".kd-prolistroom").height()) {
+            //当最短的ul的高度比窗口滚出去的高度+浏览器高度大时加载新图片
+            loadMeinv();//加载新图片
+        }
+    });
+    function getMinUl() {//每次获取最短的ul,将图片放到其后
+        var $arrUl = $("#divList .company-list");
+        var $minUl = $arrUl.eq(0);
+        $arrUl.each(function (index, elem) {
+            if ($(elem).height() < $minUl.height()) {
+                $minUl = $(elem);
+            }
+        });
+        return $minUl;
+    }
+    //点击更多加载
+    $("#loadMeinvMOre").click(function () {
+        $minUl = getMinUl();
+        loadMeinv();
+    });
+
+    })
+</script>

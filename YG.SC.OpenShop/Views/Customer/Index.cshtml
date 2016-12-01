@@ -1,0 +1,70 @@
+﻿@model YG.SC.DataAccess.Customer
+@{
+    ViewBag.Title = "个人中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="/content/projectsearch.css" rel="stylesheet" />
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+        <div class="utc_right">
+            <div class="utc_right_title"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_uc_mono">
+                    <img src="/images/cus_mono.jpg" width="120" height="120" style="border-radius:5px;" />
+
+                </div>
+                <div class="utc_right_uc_info">
+                    <table border="0" class="uct_table">
+                        <tr><td>用户名：</td><td>@Model.LoginName</td></tr>
+                        <tr><td>真实姓名：</td><td>@Model.Name</td></tr>
+                        <tr><td>手机号：</td><td>@Model.Mobile</td></tr>
+                        <tr><td>邮箱：</td><td><span>@Model.Email</span></td></tr>
+                        @*<tr><td>资料完善度：</td><td><img src="/images/cts_jd.jpg" border="0" /></td></tr>*@
+                    </table>
+
+                </div>
+                @*<div class="utc_right_uc_ffy">
+                        <a href="#" class="btn register_sendcode utc_btn_fy">发送验证码到手机</a>
+                    </div>*@
+                <div class="clear"></div>
+            </div>
+
+            <div class="utc_right_uc">
+                <div class="utc_title_tjfy"><i></i><h3>您可能感兴趣的项目</h3></div>
+                <div class="utc_tjfy_content">
+                    @{
+                        var array = (List<YG.SC.Model.Project.ProjectDetailsViewModel>)ViewBag.array;
+                    }
+                    <div class="kd-prolist">
+                        @if (array != null && array.Count() > 0)
+                        {
+
+                            foreach (var proj in array)
+                            {
+                                <a href="/Project/index?id=@proj.Id">
+                                    <div class="kd-li">
+                                        <div class="kd-imgbox">
+                                            <div class=""><img width="318" height="206" src="@proj.PhotoUrlSmall" /></div>
+                                            <div class="kd-pricebox">
+                                                ￥
+                                                <br />
+                                                @YG.SC.OpenShop.Controllers.CustomerController.GetSalePrice(proj.SalePrice)
+                                            </div>
+                                        </div>
+                                        <div class="kd-info">
+                                            <h4>@proj.Name</h4>
+                                            <p>@proj.ProjectFeature</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </div>
+                    <!-- 数据 end -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

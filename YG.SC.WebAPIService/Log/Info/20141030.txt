@@ -1,0 +1,38 @@
+2014-10-30 20:06:58,808 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/30 20:06:58
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/IPHONE/User/Login
+
+RequestBody£º[{"Phone":"15510116605","Code":"15510116605"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/30 20:06:58***Successful***
+
+
+
+2014-10-30 20:07:39,816 [10] INFO  Info 
+========================================================================
+Start at: 2014/10/30 20:07:39
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/IPHONE/User/Login
+
+RequestBody£º[{"Phone":"15510116605","Code":"1551116605"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/30 20:07:39***Successful***
+
+
+

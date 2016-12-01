@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "list";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="location" content="province=北京;city=北京;coord=116.39564503788,39.92998577808">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/companyIndex.css">
+    <link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+    <title>找商铺-开店ing</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+
+<body onselectstart="return false">
+
+    <div class="widget-search-wrap">
+        <form action="javascript:void();">
+            <div class="input-append">
+                <input id="askSearchKey" placeholder="区域/业态" type="search">
+                <i class="icon-clear"></i>
+                <span id="askSearchBtn" class="add-on" data-url="">搜索面积</span>
+            </div>
+        </form>
+    </div>
+
+    <ul id="menu">
+        @Html.Raw(ViewBag.Filter)
+    </ul>
+    <!--项目列表-->
+    <ul class="company-list">
+        @{   var RoomList = (Tuple<YG.SC.DataAccess.ShopRoom[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+        }
+@foreach (var item in RoomList.Item1)
+{
+        <li>
+            <a href="/room/room?id=@item.Id">
+                <div class="img-wrap">
+                    @{
+                    Random ran=new Random();
+                        int a=ran.Next(1,3);
+                        var error = "javascript:this.src='/img/icon/shangpu-0" + a + ".gif'";
+                    <img style="display: inline;" src="@string.Format("http://www.kaidianing.com{0}", item.Rimg)"
+                         class="lazy" data-original="@string.Format("http://www.kaidianing.com{0}", item.Rimg)" alt="@item.RName" 
+                        onerror="@error"
+                        >
+                    }
+                </div>
+                <div class="company-info">
+                    <h2 class="text-overflow">@item.RName</h2>
+                    <div class="company-score">
+                        <div class="credit text-overflow">
+                            <span>
+                            @{
+                                string str_add =item.city;
+                                if(!string.IsNullOrEmpty(item.district))
+                                {
+                                 str_add += "-"+ item.district ;
+                                }
+                                if(!string.IsNullOrEmpty(item.hotarea))
+                                {
+                                 str_add += "-"+ item.hotarea ;
+                                }
+                                if(!string.IsNullOrEmpty(item.address))
+                                {
+                                 str_add += "-"+ item.address ;
+                                }
+                            }
+                            @str_add
+                            </span>
+                        </div>
+                        <div class="wom text-overflow">
+                            <span>
+                            @{
+                                string strfetch = item.fetchDate.ToString();
+                                 long featdate = Convert.ToInt64(strfetch.Substring(0,strfetch.Length-3));
+
+                                 DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+                                 long lTime = long.Parse(featdate.ToString() + "0000000");
+                                 TimeSpan toNow = new TimeSpan(lTime);
+                                 DateTime timeFeat =  dtStart.Add(toNow);
+                                 
+                                }
+                                @timeFeat.ToString("yyyy-MM-dd HH:mm")
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-overflow">
+                        <span class="production-count"><em>
+                            @{
+    string strRent = "出租 : " + item.price + "元/月";
+    if (item.sale == "True") { strRent = "出售 : " + item.price + "元/平米"; }
+                                }
+                         @strRent
+                            </em></span>
+                        <!--<span class="distance">1km</span>-->
+                    </div>
+                </div>
+            </a>
+        </li>
+      
+}
+    </ul>
+    
+    @Html.Raw(ViewBag.pager);
+
+    <!--区域类型切换效果开始-->
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/companyNew.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!--区域类型切换效果结束-->
+
+    <script type="text/javascript">
+    $("#askSearchBtn").click(function () {
+        var key = $("#askSearchKey").val();
+        window.location.href = "/Room/List?Keys=" + key;
+    });
+
+    </script>
+</body>
+
+</html>

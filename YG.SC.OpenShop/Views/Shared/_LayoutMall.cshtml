@@ -1,0 +1,98 @@
+﻿@using System.Web.Providers.Entities
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城首页</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/mall.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/mall.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- 顶部开始 -->
+    <div class="m_htop">
+        <div class="body-warp">
+            <strong><a href="/">返回首页</a></strong>
+            <div class="m_htop_r">
+                @if (YG.SC.OpenShop.UserContext.Current.Id > 0 && !string.IsNullOrEmpty(YG.SC.OpenShop.UserContext.Current.Name))
+                {
+                    if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.Member)
+                    {
+                        <a href="/Customer/Memberindex/@YG.SC.OpenShop.UserContext.Current.Id">@YG.SC.OpenShop.UserContext.Current.Name</a>
+                    }
+                    <a href="/Login/Logout">退出</a>
+                }
+                else
+                {
+                    <a class="red" href="/login/index">登录</a>
+                    <a href="/Login/Regist">注册</a>
+                }
+                <span>公司合作咨询热线400-6226036</span>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <!-- 底部开始 -->
+    <div class="footer-1 zhuan_7">
+        <div class="service">
+            <div class="inner">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <h3>开店服务</h3>
+                        </li>
+                        <li><a href="#/instruction">购买指南</a></li>
+                        <li><a href="#/payment">支付方式</a></li>
+                        <li><a href="#/delivery">送货政策</a></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3>服务与支持</h3>
+                        </li>
+                        <li><a href="#/service">购买指南</a></li>
+                        <li><a href="#/storelist">支付方式</a></li>
+                        <li><a target="_blank" href="http://preorder.smartisan.com/#/mobile/code">优先购买通道</a></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3>关于公司</h3>
+                        </li>
+                        <li><a href="#/about">公司简介</a></li>
+                        <li><a href="#/join">加入我们</a></li>
+                        <li><a href="#/contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="doublebox">
+                    <div class="doublebox_in">
+                        <img src="~/Images/s-android.jpg">
+                        <p>Android二维码</p>
+                    </div>
+                </div>
+                <div class="online">
+                    <p class="phone-title">客服电话</p>
+                    <p class="tel"><a href="tel:4006190909">400-166-5218</a></p>
+                    <p>周一至周日 9:00-18:0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright zhuan_8">
+            <div class="warp-line fn-clear">
+                <div class="copy-label">
+                    <div class="copy-text">
+                        Copyright © 2015, KaiDian Co.., Ltd. All Rights Reserved. 北京开店帮科技有限公司
+                        <br>
+                        京ICP备1404****号-1 京ICP证14****号
+                    </div>
+                </div>
+                <!--底部箭头-->
+                <a href="javascript:scroll(0,0)">
+                    <img class="zhuan_foot_bg" src="~/Images/zhuan_foot_bg.png">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 底部结束 -->
+</body>
+</html>

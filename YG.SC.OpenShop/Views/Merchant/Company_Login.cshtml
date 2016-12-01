@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "商家登录";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/openshop.css" rel="stylesheet" />
+<link href="~/Content/brand.css" rel="stylesheet" />
+
+<div class="brand-warp">
+    <div class="panel panel-default">
+        <div class="login_left">
+            <img src="~/Images/sj_01.png" style="margin:20px 100px 0px 100px;" />
+        </div>
+        <div class="login_right">
+            <div class="login_title" style="background: url(../Images/login_sj.jpg) no-repeat; width: 175px;"></div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="post" action="">
+
+                    <div class="form-group">
+                        <div class="input-group input-group-lg" >
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user" style="background: url(../Images/login_bg01.jpg) no-repeat;"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" name="UserName" placeholder="商家联系人姓名/电话" data-content="请输入姓名/电话" style="padding-left:5px">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock" style="background: url(../Images/login_bg02.jpg) no-repeat;"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="Password" placeholder="密码" data-content="请输入密码" style="padding-left:5px">
+                        </div>
+                    </div>
+                    <div class="form-group login_rmbm">
+                        <div class="ml">
+                            <div class="checkbox">
+                                <a class="login_reg" href="/Merchant/OpenShop_add1" style="margin-left:50px;">商家注册</a>
+                                <a class="login_fgpwd" href="#" style="margin-right:50px;">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group login_btns">
+                        <button type="submit" class="btn btn-login"  data-toggle="tooltip" data-loading-text="登录中..." style="background: url(../Images/btn_login.jpg) no-repeat;"></button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+
+    }
+</script>

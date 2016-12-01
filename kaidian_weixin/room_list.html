@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="location" content="province=北京;city=北京;coord=116.39564503788,39.92998577808">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		
+		<link rel="stylesheet" type="text/css" href="css/companyIndex.css">
+		<link rel="stylesheet" type="text/css" href="css/zxgl-index.css">
+		<title>找商铺-开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		</head>
+
+	<body onselectstart="return false">
+		
+		<div class="widget-search-wrap">
+			<form action="javascript:void();">
+				<div class="input-append">
+						<input id="askSearchKey" placeholder="区域/业态" type="search">
+						<i class="icon-clear"></i>
+						<span id="askSearchBtn" class="add-on" data-url="http://m.to8to.com/yezhu/xzx_search.php?keyword_zh=">搜索面积</span>
+					</div>
+			</form>
+		</div>
+
+		<ul id="menu">
+			<li>
+				<span class="current-condition">
+
+         类型          </span>
+				<i class="icon-arrow"></i>
+				<ul id="subMenuOrder" class="submenu">
+					<li class="active"><a class="needsclick" href="http://m.to8to.com/bj/company/">出租</a>
+					</li>
+					<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/?order=credit">出售</a>
+					</li>
+
+				</ul>
+			</li>
+			<li>
+				<span class="current-condition">
+
+         全部区域          </span>
+				<i class="icon-arrow"></i>
+				<div id="subMenuArea" class="submenu">
+					<ul class="clearfix submenu-type-ul">
+						<li class="active"><a class="needsclick" href="http://m.to8to.com/bj/company/">全部区域</a>
+						</li>
+						<!--<li><a href="#">附近</a></li>-->
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/chaoyangqu1/">朝阳</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/chongwenqu/">崇文</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/daxingqu/">大兴</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/dongchengqu1/">东城</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/fangshanqu/">房山</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/fengtaiqu/">丰台</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/hatownidianqu/">海淀</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/mentougouqu/">门头沟</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/pingguqu/">平谷</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/shijingshanqu/">石景山</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/shunyiqu/">顺义</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/tongzhouqu/">通州</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/xichengqu/">西城</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/xuanwuqu/">宣武</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/changpingqu/">昌平</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/huairouqu/">怀柔</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/miyunxian/">密云县</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/yanqingxian/">延庆县</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<span class="current-condition">
+
+         价格不限       </span>
+				<i class="icon-arrow"></i>
+				<div id="subMenuType" class="submenu">
+					<ul class="clearfix submenu-type-ul">
+						<li class="active"><a class="needsclick" href="http://m.to8to.com/bj/company/">价格不限</a>
+						</li>
+						<li><a class="needsclick" href="http://m.to8to.com/bj/company/">3元/平米/天以下</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/ptzz/">3-5元/平米/天</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/xiaohuxing/">5-8元/平米/天</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/bieshu/">8-10元/平米/天</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/jubu/">10-15元/平米/天</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/ktv/">15-20元/平米/天</a>
+						</li>
+						<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/shangpu/">20元/平米/天以下</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			
+		</ul>
+		<!--项目列表-->
+		<ul class="company-list">
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://m.to8to.com/bj/zs/1325919/">
+					<div class="img-wrap">
+						<img style="display: inline;" src="img/headphoto_1325919.jpg"
+						class="lazy" data-original="http://pic.to8to.com/user/19/headphoto_1325919.jpg?1429773702" alt="友仁缘装饰工程（北京）有限公司">
+					</div>
+					<div class="company-info">
+						<h2 class="text-overflow">特色餐饮商铺招租中，中关村黄金地段</h2>
+						<div class="company-score">
+							<div class="credit text-overflow">
+								<span>海淀-中关村-写字楼配套</span>
+								
+							</div>
+							<div class="wom text-overflow">
+								<span>15分钟前</span>
+								
+							</div>
+						</div>
+						<div class="text-overflow">
+							<span class="production-count"><em>出租：18元/平米/天</em></span>
+							<!--<span class="distance">1km</span>-->
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<div data-role="widget-pagination">
+			<a class="widget-pagination-disable">上一页</a>
+			<div>
+				<a class="widget-pagination-current-page" href="http://m.to8to.com/bj/company/">1/67</a>
+
+				<select class="widget-pagination-pages needsclick" id="pageCounts">
+					<option selected="selected" value="/bj/company/">
+						1/67 </option>
+					<option value="/bj/company/list_2.html">
+						2/67 </option>
+					<option value="/bj/company/list_3.html">
+						3/67 </option>
+					<option value="/bj/company/list_4.html">
+						4/67 </option>
+					<option value="/bj/company/list_5.html">
+						5/67 </option>
+					<option value="/bj/company/list_6.html">
+						6/67 </option>
+					<option value="/bj/company/list_7.html">
+						7/67 </option>
+					<option value="/bj/company/list_8.html">
+						8/67 </option>
+					<option value="/bj/company/list_9.html">
+						9/67 </option>
+					<option value="/bj/company/list_10.html">
+						10/67 </option>
+					<option value="/bj/company/list_11.html">
+						11/67 </option>
+					<option value="/bj/company/list_12.html">
+						12/67 </option>
+					<option value="/bj/company/list_13.html">
+						13/67 </option>
+					<option value="/bj/company/list_14.html">
+						14/67 </option>
+					<option value="/bj/company/list_15.html">
+						15/67 </option>
+					<option value="/bj/company/list_16.html">
+						16/67 </option>
+					<option value="/bj/company/list_17.html">
+						17/67 </option>
+					<option value="/bj/company/list_18.html">
+						18/67 </option>
+					<option value="/bj/company/list_19.html">
+						19/67 </option>
+					<option value="/bj/company/list_20.html">
+						20/67 </option>
+					<option value="/bj/company/list_21.html">
+						21/67 </option>
+					<option value="/bj/company/list_22.html">
+						22/67 </option>
+					<option value="/bj/company/list_23.html">
+						23/67 </option>
+					<option value="/bj/company/list_24.html">
+						24/67 </option>
+					<option value="/bj/company/list_25.html">
+						25/67 </option>
+					<option value="/bj/company/list_26.html">
+						26/67 </option>
+					<option value="/bj/company/list_27.html">
+						27/67 </option>
+					<option value="/bj/company/list_28.html">
+						28/67 </option>
+					<option value="/bj/company/list_29.html">
+						29/67 </option>
+					<option value="/bj/company/list_30.html">
+						30/67 </option>
+					<option value="/bj/company/list_31.html">
+						31/67 </option>
+					<option value="/bj/company/list_32.html">
+						32/67 </option>
+					<option value="/bj/company/list_33.html">
+						33/67 </option>
+					<option value="/bj/company/list_34.html">
+						34/67 </option>
+					<option value="/bj/company/list_35.html">
+						35/67 </option>
+					<option value="/bj/company/list_36.html">
+						36/67 </option>
+					<option value="/bj/company/list_37.html">
+						37/67 </option>
+					<option value="/bj/company/list_38.html">
+						38/67 </option>
+					<option value="/bj/company/list_39.html">
+						39/67 </option>
+					<option value="/bj/company/list_40.html">
+						40/67 </option>
+					<option value="/bj/company/list_41.html">
+						41/67 </option>
+					<option value="/bj/company/list_42.html">
+						42/67 </option>
+					<option value="/bj/company/list_43.html">
+						43/67 </option>
+					<option value="/bj/company/list_44.html">
+						44/67 </option>
+					<option value="/bj/company/list_45.html">
+						45/67 </option>
+					<option value="/bj/company/list_46.html">
+						46/67 </option>
+					<option value="/bj/company/list_47.html">
+						47/67 </option>
+					<option value="/bj/company/list_48.html">
+						48/67 </option>
+					<option value="/bj/company/list_49.html">
+						49/67 </option>
+					<option value="/bj/company/list_50.html">
+						50/67 </option>
+					<option value="/bj/company/list_51.html">
+						51/67 </option>
+					<option value="/bj/company/list_52.html">
+						52/67 </option>
+					<option value="/bj/company/list_53.html">
+						53/67 </option>
+					<option value="/bj/company/list_54.html">
+						54/67 </option>
+					<option value="/bj/company/list_55.html">
+						55/67 </option>
+					<option value="/bj/company/list_56.html">
+						56/67 </option>
+					<option value="/bj/company/list_57.html">
+						57/67 </option>
+					<option value="/bj/company/list_58.html">
+						58/67 </option>
+					<option value="/bj/company/list_59.html">
+						59/67 </option>
+					<option value="/bj/company/list_60.html">
+						60/67 </option>
+					<option value="/bj/company/list_61.html">
+						61/67 </option>
+					<option value="/bj/company/list_62.html">
+						62/67 </option>
+					<option value="/bj/company/list_63.html">
+						63/67 </option>
+					<option value="/bj/company/list_64.html">
+						64/67 </option>
+					<option value="/bj/company/list_65.html">
+						65/67 </option>
+					<option value="/bj/company/list_66.html">
+						66/67 </option>
+					<option value="/bj/company/list_67.html">
+						67/67 </option>
+				</select>
+			</div>
+			<a href="http://m.to8to.com/bj/company/list_2.html">下一页</a>
+		</div>
+
+		
+		<!--区域类型切换效果开始-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/companyNew.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<!--区域类型切换效果结束-->
+		
+	</body>
+
+</html>

@@ -1,0 +1,137 @@
+﻿@using YG.SC.Model
+@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopBrandPhoto
+@{
+    ViewBag.Title = "OpenShop_add2";
+}
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/back.css" rel="stylesheet" />
+<div class="body-warp">
+    <div class="add_jindubox">
+        <ul class="ul_jindutxt Gray16">
+            <li class="Pink16">提交公司信息</li>
+            <li class="red">上传案例图片</li>
+            <li>上传资质图片</li>
+            <li>平台审核</li>
+            <li>注册成功</li>
+        </ul>
+        <ul class="ul_jinduimg">
+            <li>
+                <div style="background-color:#d8b2b1;"></div>
+                <img src="~/Images/icon/2_01.png">
+            </li>
+            <li>
+                <div style="background-color:#d72315;"></div>
+                <img src="~/Images/icon/3_02.jpg">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_03.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_04.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_05.png">
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="body-warp">
+    <span class="Gray18">上传案例图片</span>
+    <span class="addimgts red">图片文件后缀支持jpg、png、gif，上传图片大小建议在4M以下</span>
+</div>
+<form action="/Merchant/OpenShop_add2/@Model.BrandId" role="form" method="POST" enctype="multipart/form-data">
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_imgbox">
+                <div id="photolist"></div>
+                <div class="addimginfobox" style="margin-left:6%;">
+                    <div class="addimgcontentbox"><img src="/Images/9_03.jpg" width="300" height="210" alt=""></div>
+                    <div class="addimgmiaoshubox">
+                        标题：<input type="text" name="" id="" value="" /><br>
+                        描述：<textarea></textarea>
+                    </div>
+                    <div class="clear"></div>
+                    <input class="addimgimg_button uploadimg" type="button" value="添加" style="margin-top: 5px;" />
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="body-warp">
+        <div class="add_jindubox" style="text-align: center;margin-top:0px;">
+            <a href="~/Merchant/ShopBrand_add3/@Model.BrandId">
+                <button type="button" class="add_sjbutton">下一步</button>
+            </a>
+            <a href="~/Merchant/ShopBrand_add3/@Model.BrandId">  <button class="addimgimg_button" type="button" style="margin-left:50px">跳过此环节</button></a>
+        </div>
+    </div>
+    <!--上传案例图片-->
+    <div class="utc_tagbox tanchuang" id="alertc" style="width:600px;">
+        <div class="utc_tagbox_header Write14">上传案例信息</div>
+        <div class="utc_tagbox_tbody Black14">
+            <div class="add_sjmenubox Gray14" style="margin-top:10px;width:20%;">案例图片：</div>
+            <div class="add_sjcontentbox" style="margin-top:10px;width:80%;">
+                <input id="id" name="id" type="hidden" value="@Model.Id" />
+                <input id="OpenShopId" name="OpenShopId" type="hidden" value="@Model.BrandId" />
+                <button class="addimgimg_button" type="button" style="margin-left:20px;" onclick="OpenShopPhoto.click()">上传</button>
+                <input type="file" id="OpenShopPhoto" name="OpenShopPhoto" style="display:none" onchange="upfile.value=this.value" />
+            </div>
+            <div class="add_sjmenubox Gray14" style="width:20%;">标题：</div>
+            <div class="add_sjcontentbox" style="width:80%;">
+                <input type="text" name="title" id="title" value="@Model.title" style="width:70%;background-color: #fff;" />标题不能为空
+            </div>
+            <div class="add_sjmenubox Gray14" style="width:20%;">描述：</div>
+            <div class="add_sjcontentbox" style="width:80%;">
+                <textarea name="Rmark" id="Rmark">@Model.Rmark</textarea>
+            </div>
+
+        </div>
+        <div class="utc_tagbox_footer">
+            <button class="add_sjbutton" type="submit" style="margin:0px;">确认</button>
+            <button class="add_sjbutton hide1" type="button" style="margin:0px 0px 0px 40px;">取消</button>
+        </div>
+
+    </div>
+    <!--上传案例图片-->
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#alertc").hide();
+        phlist();
+    })
+    $("form").on("click", ".uploadimg", function () {
+        if ($("#alertc").hide()) {
+            $("#id").val($(this).parents(".addimginfobox").find(".OpenShopphoto").val());
+            $("#alertc").show();
+        }
+        else {
+            $("#alertc").hide();
+        }
+    })
+    $("form").on("click", ".hide1", function () {
+        $("#alertc").hide();
+    })
+    function phlist() {
+        $.ajax({
+            url: "/Merchant/CasePartial",
+            type: 'post',
+            anync: false,
+            data: { OpenShopId: $("#OpenShopId").val() },
+            success: function (data) {
+                $("#photolist").html(data);
+            }, error: function () {
+                $("#photolist").html("加载数据失败");
+            }
+        })
+    }
+</script>

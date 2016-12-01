@@ -1,0 +1,152 @@
+2014-10-21 10:36:23,794 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:36:23
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:36:23***Successful***
+
+
+
+2014-10-21 10:36:33,762 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:36:33
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:36:33***Successful***
+
+
+
+2014-10-21 10:36:59,120 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:36:59
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:36:59***Successful***
+
+
+
+2014-10-21 10:37:18,375 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:37:18
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:37:18***Successful***
+
+
+
+2014-10-21 10:38:52,507 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:38:52
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:38:52***Successful***
+
+
+
+2014-10-21 10:38:54,189 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:38:54
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:38:54***Successful***
+
+
+
+2014-10-21 10:38:55,227 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:38:55
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632199","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:38:55***Successful***
+
+
+
+2014-10-21 10:39:12,171 [10] INFO  Info 
+========================================================================
+Start at: 2014/10/21 10:39:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632199","Code":"514883"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/21 10:39:12***Successful***
+
+
+

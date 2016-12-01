@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+    List<YG.SC.OpenShop.Models.project.ApplyModelItem> applyList = (List<YG.SC.OpenShop.Models.project.ApplyModelItem>)ViewBag.ApplyList;
+    
+}
+
+@if (applyList.Count > 0)
+{ 
+<ul>
+    @foreach (var item in applyList) { 
+    <li>
+        <div class="apply-name">@item.ProjectName</div>
+        <div class="apply-phone">@string.Format("{0}****{1}",item.Phone.Substring(0,3),item.Phone.Substring(8))</div>
+        <div class="apply-status">申请成功</div>
+    </li>
+    }
+</ul>
+}
+else
+{
+    
+}

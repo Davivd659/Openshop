@@ -1,0 +1,164 @@
+﻿@using System.Web.Optimization
+@using YG.SC.Model
+@using YG.SC.WebUI.Controllers
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我要开店管理后台</title>
+    <link href="~/Content/fromwangying/admin.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/css")
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+    @RenderSection("styles", false)
+    <script src="/Scripts/jquery-1.8.2.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="hd clearfix">
+            <div class="logo">
+            <div class="toptitle">
+                我要开店管理后台
+            </div>
+                </div>
+            <div class="loginInfo" style="width: 460px;">
+                您好： <strong>@TempData["LayoutUserName"]</strong>，欢迎使用<span class="line">|</span><a href="/Login/Logout" class="importMsg">退出</a>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="sidebar">
+                <ul class="nav nav-list">
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">品牌管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/ShopBrand/Index">品牌管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">任务管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/Mission/List">任务管理</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">开店帮管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                         <ul class="submenu">
+                             <li><a href="/OpenShop/Index">开店帮管理</a></li>
+                              <li><a href="/OpenShop/OpenShopProject">开店帮成功项目</a></li>
+                         </ul>
+                        
+                         
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">合作单位</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/Link/Index">链接管理</a></li>
+                        </ul>
+                    </li>
+              
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">项目管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/ProjectManager/Index">项目管理</a></li>
+                            <li><a href="/ProjectServiceTeam/Index">项目团队管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">商城管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/Mall/CategoryList">品类管理</a></li>
+                            <li><a href="/Product/ProductList">品名管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">功能业态</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/ShopAttributes/Index">功能业态</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">广告管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            @*<li><a href="/AdPositionManager/Index">广告排期管理</a></li>*@
+                            <li><a href="/AdPositionManager/PositionIndex">广告排期管理</a></li>
+                        </ul>
+                    </li>
+                    @*<li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">团购管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/applyActivity/Index">看房团</a></li>
+                        </ul>
+                    </li>*@
+                    <li>
+                        <a class="dropdown-toggle" href="javascript:void(0);">
+                            <i class="skuicon"></i>
+                            <span class="menu-text">用户管理</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/Account/Index">账号管理</a></li>
+                        </ul>
+                        <ul class="submenu">
+                            <li><a href="/Account/GrouponIndex">团购报名管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="sidebar-collapse" class="sidebar-collapse">
+                    <i data-icon2="icon-double-angle-right" data-icon1="icon-double-angle-left" class="icon-double-angle-left"></i>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="page-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/js")
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Layout/Layout.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

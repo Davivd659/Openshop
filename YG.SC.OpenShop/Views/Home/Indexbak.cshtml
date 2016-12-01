@@ -1,0 +1,493 @@
+﻿@using System.Collections
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@model YG.SC.OpenShop.Models.HomeIndexModel
+
+@{
+    ViewBag.Title = "首页--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var LinkTypes = ViewBag.LinkTypes as List<Link>;
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="寻址团购,找商铺,发需求,shopping mall、优质底商团购,海量商铺、需求信息,装修、家具、融资、推广" />
+<meta name="description" content="开店ing定位为服务于线下创业者（或有线下具体营业地址，侧重体验式消费类）的一站式服务整合平台,匹配您最个性的需求,开店帮让您开店更简单,商家缴纳保证金，质量瑕疵先赔付" />
+<link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="/Content/openshop.css" rel="stylesheet" />
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/lrtk.js"></script>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<style>
+    /**
+        *照片墙
+        */
+    .sec-2 {
+        min-width: 1020px;
+        max-width: 1200px;
+    }
+
+    div, ul, li, img, dl, dt, dd {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wall-pace {
+        width: 33.333%;
+        list-style: none;
+        overflow: hidden;
+        float: left;
+        position: relative;
+    }
+
+        .wall-pace li {
+            position: relative;
+            float: left;
+            margin: 0 5px 5px 0;
+        }
+
+            .wall-pace li {
+                position: relative;
+                float: left;
+                margin: 0 5px 5px 0;
+                overflow: hidden;
+                background: #efefef;
+            }
+
+            .wall-pace img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .wall-pace .sq-lg {
+                width: 312px;
+                height: 312px;
+                border-radius: 50%;
+            }
+
+        .sec-3 .sq-lg {
+            border-radius: 0%;
+        }
+
+        .wall-pace .sq-sm {
+            width: 580px;
+            height: 385px;
+        }
+
+        .wall-pace .rect-k {
+            width: 333px;
+            height: 200px;
+        }
+
+        .wall-pace .rect-x, .intr-x {
+            width: 200px;
+            height: 192px;
+        }
+
+        .intr-x, .intr-s {
+            padding: 8px;
+            color: #fff;
+            top: 100%;
+            width: 100%;
+        }
+
+        .wall-pace a {
+            font-family: "Microsoft YaHei" !important;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .wall-pace dl {
+            text-align: center;
+        }
+
+        .wall-pace dt {
+            font-size: 22px;
+            line-height: 50px;
+            line-height: 50px;
+            height: 200px;
+            font-size: 36px;
+            font-weight: normal;
+            font-family: "宋体";
+            margin-bottom: 0px;
+            margin-top: 40px;
+        }
+
+        .wall-pace dl.intr-x dt {
+            font-size: 14px;
+            line-height: 25px;
+            margin-top: 0px;
+        }
+
+        .wall-pace dd {
+            font-size: 14px;
+            line-height: 24px;
+            overflow: hidden;
+            background: #efefef;
+        }
+
+        .wall-pace img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .wall-pace .sq-lg {
+            width: 312px;
+            height: 312px;
+            border-radius: 50%;
+        }
+
+    .sec-3 .sq-lg {
+        border-radius: 0%;
+    }
+
+    .wall-pace .sq-sm {
+        width: 580px;
+        height: 385px;
+    }
+
+    .wall-pace .rect-k {
+        width: 333px;
+        height: 200px;
+    }
+
+    .wall-pace .rect-x, .intr-x {
+        width: 200px;
+        height: 192px;
+    }
+
+    .intr-x, .intr-s {
+        padding: 8px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 100%;
+        width: 100%;
+    }
+
+
+    .wall-pace dl {
+        text-align: center;
+    }
+
+    .wall-pace dt {
+        font-size: 22px;
+        line-height: 50px;
+        line-height: 50px;
+        height: 200px;
+        font-size: 36px;
+        font-weight: normal;
+        font-family: "宋体";
+        margin-bottom: 0px;
+        margin-top: 40px;
+    }
+
+    .wall-pace dl.intr-x dt {
+        font-size: 14px;
+        line-height: 25px;
+        margin-top: 0px;
+    }
+
+    .wall-pace dd {
+        font-size: 14px;
+        line-height: 24px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .wall-pace-kd {
+        margin-right: 5px;
+        width: 580px;
+    }
+
+    .wall-pace-kdrl {
+        width: 410px;
+    }
+
+    .wall-pace-kdleft {
+        width: 330px;
+    }
+
+    .wall-pace-kdright {
+        width: 330px;
+    }
+
+    .wall-pace-kdcenter {
+        margin-right: 5px;
+        width: 330px;
+        margin-left: 5px;
+    }
+
+        .wall-pace-kdcenter .sq-sm {
+            width: 335px;
+            height: 400px;
+        }
+
+    .sec-3 {
+        margin: 30px 0;
+    }
+
+    .sec-4 {
+        width: 1000px;
+    }
+</style>
+
+
+<div class="warp">
+    <div class="flash-box">
+        @*<img class="flash-img" src="/Images/index_03.jpg" style="width:100%" />*@
+        <!--	幻灯片开始-->
+        <div id="playBox" style="height:500px">
+            <div class="pre"></div>
+            <div class="next"></div>
+            <div class="smalltitle">
+                <ul>
+                    <li class="thistitle"></li>
+                    <li></li>
+                </ul>
+            </div>
+            <ul class="oUlplay" style="width:200%;">
+                <li style="width:50%;"><a href="/project/search?keys="><img src="~/Images/index_03.jpg" style="width:100%;height:500px;"></a></li>
+                <li style ="width:50%;"><a href="/Mission/Index"><img src="~/Images/index-12_02.jpg" style="width:100%;height:500px;"></a></listyle>
+            </ul>
+    </div>
+        <!--	幻灯片结束-->
+        <div class="flash-seach">
+        </div>
+        @*<div class="font_img">
+            <img src="/Images/index_04.png" />
+        </div>*@
+        <div class="flash-search-control">
+            <div class="flash-search-box">
+                <input type="text" class="flash-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." name="txtKeys" />
+                <input type="button" class="flash-search-btn btn" value="搜索" />
+            </div>
+        </div>
+    </div>
+    <!--中间banner--->
+    <div style="width: 100%; height: 150px; background-color:rgb(241, 241, 241);">
+        <div class="center_banner">
+            <div class="img_banner">
+                <img src="/Images/1_03.png" width="65px" height="65px" />
+                <div>
+                    <span>寻址团购</span>
+                    <p>shopping mall、优质底商团购大抄底</p>
+                </div>
+            </div>
+            <div class="img_banner">
+                <img src="/Images/2_03.png" width="65px" height="65px" />
+                <div>
+                    <span>找商铺 发需求</span>
+                    <p>海量商铺、需求信息,匹配您最个性的需求</p>
+                </div>
+            </div>
+            <div class="img_banner">
+                <img src="/Images/3_03.png" width="65px" height="65px" />
+                <div>
+                    <span>开店更简单</span>
+                    <p>装修、家具、融资、推广，开店帮让您开店更简单</p>
+                </div>
+            </div>
+            <div class="img_banner">
+                <img src="/Images/4_03.png" width="65px" height="65px" />
+                <div>
+                    <span>先赔付 可评价</span>
+                    <p>商家缴纳保证金，质量瑕疵先赔付</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--中间banner结束--->
+    <!-- 与好点相知相遇 -->
+    <div class="warp-line">
+        <div class="warp-head-tuan">
+            与好店相知相遇
+        </div>
+        <div class="tuan-project" style="margin-top:30px;margin-bottom:40px;">
+            <section class="sec-2">
+
+                @foreach (var ad in Model.AdHaoDian)
+                {
+                    <ul class="wall-pace">
+                        <li class="sq-lg">
+                            <img style="top:0px;width:312px;height:312px;" src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" id="img_@ad.Id" />
+                            <dl style="top: 100%;" class="intr-s"><dt><a href="/Project/index?id=@ad.KeyId">@ad.AdWords</a></dt></dl>
+                        </li>
+                    </ul>
+                }
+            </section>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!-- 开始您的创业梦想 end  -->
+    <div class="warp-line">
+        <div class="warp-head-cym">创业梦想</div>
+        <div class="index_line"></div>
+        <div class="clear"></div>
+        <section class="sec-3">
+            <ul class="wall-pace wall-pace-kd">
+                <li class="sq-sm">
+                    <a href="/project/search">
+                        <img src="~/Images/index2_03.jpg">
+                    </a>
+                </li>
+            </ul>
+            <ul class="wall-pace wall-pace-kdrl">
+                @foreach (var ad in Model.AdXuanZhi)
+                {
+                    <li class="rect-x">
+                        <img src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" width="200" height="192" id="img_@ad.Id" />
+                        <dl class="intr-x">
+                            <dt><a href="/Project/index?id=@ad.KeyId">@ad.AdWords</a></dt>
+                        </dl>
+                    </li>
+                }
+
+            </ul>
+            <div class="clear"></div>
+        </section>
+        <!-- 开店帮 Start -->
+        <div class="index_line"></div>
+        <div class="index_kdb">
+            @*<a class="index_kdb_1 index_a">
+                    <img src="/images/kdb.jpg" />
+                </a>*@
+            <section class="sec-4">
+                <ul class="wall-pace wall-pace-kdleft">
+                    @foreach (var ad in Model.AdKaiDianLeft)
+                    {
+                        <li class="rect-k">
+                            <img src="@ad.AdPic" width="330" height="200" />
+                            <dl class="intr-x">
+                                <dt><a href="/OpenShop/index?id=@ad.KeyId">@ad.AdWords</a></dt>
+                            </dl>
+                        </li>
+                    }
+                </ul>
+                <ul class="wall-pace wall-pace-kdcenter">
+                    <li class="sq-sm">
+                        <a href="/OpenShop/index"><img src="~/Images/index1_03.jpg" style="height:400px"></a>
+                    </li>
+                </ul>
+                <ul class="wall-pace wall-pace-kdright">
+                    @foreach (var ad in Model.AdKaiDianLeft)
+                    {
+                        <li class="rect-k">
+                            <img src="@ad.AdPic" width="330" height="200" />
+                            <dl class="intr-x">
+                                <dt><a href="/OpenShop/index?id=@ad.KeyId">@ad.AdWords</a></dt>
+                            </dl>
+                        </li>
+                    }
+                </ul>
+                <div class="clear"></div>
+            </section>
+        </div>
+
+        <div class="index_line"></div>
+        <div class="index_ppj">
+            <a class="index_ppj_1 index_a" href="/ShopBrand/index">
+                <img src="/images/index3_03.jpg" />
+            </a>
+
+        </div>
+    </div>
+    <!-- 创业梦想  end  -->
+
+</div>
+
+<!-- 合作 -->
+<div class="warp index_hezuo">
+    <div class="warp-line">
+        <div class="hezuo_title">合作单位</div>
+        <div class="hezuobox">
+            <div class="hezuo_head">
+
+                <span class="on spnlinktype" linktypekey="@((int)LinkType.政府合作)"> @LinkType.政府合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.媒体合作)"> @LinkType.媒体合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.开发商合作)"><span> @LinkType.开发商合作</span></span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.代理商合作)"> @LinkType.代理商合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.网站合作)"> @LinkType.网站合作</span>
+            </div>
+            <div class="hezuo_list">
+                @if (LinkTypes != null && LinkTypes.Count > 0)
+                {
+                    foreach (var item in LinkTypes)
+                    {
+                        if (item.LinkType == 1)
+                        {
+                            <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:block">@item.NAME</a>
+                        }
+                        else
+                        {
+                            <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:none">@item.NAME</a>
+                        }
+                    }
+                }
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".spnlinktype").click(function () {
+            $(this).attr("class", "on spnlinktype").siblings().attr("class", "spnlinktype");
+            var linktype = $(this).attr("linkTypeKey");
+            $(".linktypereuslt").each(function () {
+                if ($(this).attr("typekey") == linktype) {
+                    $(this).css("display", "inline");
+                } else {
+                    $(this).css("display", "none");
+                }
+
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+
+    /*
+     * 照片墙
+     */
+    (function () {
+        $('.wall-pace').delegate('li', 'mouseenter', function () {
+            var className = $(this)[0].className;
+            if (className == "rect-x" || className == "rect-k" || className.indexOf("sq-lg") > -1) {
+                var dlMove = className == "sq-lg" ? "156px" : "150px";
+
+                $(this).find('dl').stop().animate({
+                    top: dlMove
+                }, 200)
+                $(this).find('img').stop().animate({
+                    top: "-5%"
+                }, 200)
+            }
+
+        })
+        .delegate('li', 'mouseleave', function () {
+            var className = $(this)[0].className;
+            if (className == "rect-x" || className == "rect-k" || className.indexOf("sq-lg") > -1) {
+                $(this).find('dl').stop().animate({
+                    top: '100%'
+                }, 200)
+                $(this).find('img').stop().animate({
+                    top: '0'
+                }, 200)
+            }
+        });
+    })();
+
+</script>
+
+<script src="~/Scripts/Views/home/home.js"></script>

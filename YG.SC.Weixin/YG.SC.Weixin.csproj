@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DADA6B7D-0C99-402D-8DFC-4F47926B5B4F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YG.SC.WeiXin</RootNamespace>
+    <AssemblyName>YG.SC.WeiXin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NetDimension.Weibo">
+      <HintPath>..\packages\weiboSDK\NetDimension.Weibo.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\项目\openshop\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UserContext.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authentication\CacheINg.cs" />
+    <Compile Include="Authentication\FormAuthenticationService.cs" />
+    <Compile Include="Authentication\IAuthenticationService.cs" />
+    <Compile Include="Authentication\UserContext.cs" />
+    <Compile Include="AutofacConfig.cs" />
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommonContorllers.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OpenShopController.cs" />
+    <Compile Include="Controllers\PostingsController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\ShopBrandController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Enum\LoginOrginType.cs" />
+    <Compile Include="Enum\ShopBrandJoinIn.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Cookie.cs" />
+    <Compile Include="Helper\DESC.cs" />
+    <Compile Include="Models\AdPositonType.cs" />
+    <Compile Include="Models\Home\IndexModel.cs" />
+    <Compile Include="Models\Login\CheckMobileNo.cs" />
+    <Compile Include="Models\Postings\PostingModel.cs" />
+    <Compile Include="Models\ProjectSearchResultItem.cs" />
+    <Compile Include="Models\project\ApplyModelItem.cs" />
+    <Compile Include="Models\project\ProjectApplyModel.cs" />
+    <Compile Include="Models\RegistModel.cs" />
+    <Compile Include="Models\ShopBrand\ApplyBrandModel.cs" />
+    <Compile Include="Models\SimpleResultModel.cs" />
+    <Compile Include="Models\SmsConfig.cs" />
+    <Compile Include="Models\ValidatePhoneStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\basic.css" />
+    <Content Include="css\common.css" />
+    <Content Include="css\companyIndex.css" />
+    <Content Include="css\css.css" />
+    <Content Include="css\findcompany.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\main2.css" />
+    <Content Include="css\pptm.css" />
+    <Content Include="css\xzx.css" />
+    <Content Include="css\zxd.css" />
+    <Content Include="css\zxgl-index.css" />
+    <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\m.kaidianing.com.pubxml" />
+    <None Include="Properties\PublishProfiles\push.pubxml" />
+    <None Include="Properties\PublishProfiles\web.config.pubxml" />
+    <None Include="Properties\PublishProfiles\web.openshop.pubxml" />
+    <None Include="Properties\PublishProfiles\weixin.pubxml" />
+    <None Include="Properties\PublishProfiles\WXkaidianing.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <None Include="Properties\PublishProfiles\www.pubxml" />
+    <Content Include="img\20140522_3fa03dcb1688135b9a2d6MiOH6wMMNNB.jpg" />
+    <Content Include="img\20140522_740d40a5be935bb9076eIQv4Ua1IqR5q.jpg" />
+    <Content Include="img\20140522_8790cda1a0f392688dc7mqo1kj67ft4c_480.jpg" />
+    <Content Include="img\20140522_b6c90fa1b590b7402ff776h184jl3ih5_480.jpg" />
+    <Content Include="img\20140522_cb26de1dee5a0cb5ebe9tbjopedv8tm5_480.jpg" />
+    <Content Include="img\20140522_eb0b88da744643a51775FMb2OgZM6GAo.jpg" />
+    <Content Include="img\20140529_2cbedcb72c900b3f0c43bdkgj4u7ocl6_480.jpg" />
+    <Content Include="img\20140529_7d2239532006e41c87eaoe7xejmixdp9_480.jpg" />
+    <Content Include="img\20140716_661fcab25ef99dac85b35dyszrqzq4bu_480.jpg" />
+    <Content Include="img\20140724_434f4f2ea21e61c55051jw3duezmw728_480.jpg" />
+    <Content Include="img\20140731_fee009cc2d64bce0e5a3jw57b41yc3l6_480.jpg" />
+    <Content Include="img\20150119_7324b2a3f6a0b4bf4b02E7M5ExpzgtJR_s.jpg" />
+    <Content Include="img\20150119_c51c0195411b5c855c84VeFSOMvCg99U_s.jpg" />
+    <Content Include="img\20150330_174aa88750741e0be31fMTje8pi6oiaa_640x360M.jpg" />
+    <Content Include="img\20150402_02797f75cfdc53f36724fd405a15f829.jpg" />
+    <Content Include="img\20150402_03fad4daba7f37ecf25ffd5b1d6e3b1d.jpg" />
+    <Content Include="img\20150402_2a186025d67f1eef03702c76ddd23d41.jpg" />
+    <Content Include="img\20150402_44cdd48921b2434f52d4ccac854d5d7d.jpg" />
+    <Content Include="img\20150402_da1166259c6f445e34e5a7fe3c669e43.jpg" />
+    <Content Include="img\20150402_fe3e0ff36a3d4fbd302cadc979815fad.jpg" />
+    <Content Include="img\20150418_96066bc9e5451551e376cf358bdb92c1.jpg" />
+    <Content Include="img\20150418_a0b59df36292eb23aa81e44f2d18034a.jpg" />
+    <Content Include="img\20150418_ceacdc721c0413d6e49e45ff8da9de07.jpg" />
+    <Content Include="img\20150418_d4d755d90d69fea1d4b910ce80e4d035.jpg" />
+    <Content Include="img\20150418_e99980fbffe038466fcdf1001198debe.jpg" />
+    <Content Include="img\20150423_39cfbbfc1d12b2c0f23ce88308e0b173_640x360M.jpg" />
+    <Content Include="img\20150507_94667ce0d85aaa5bbc7ae974ea1c740d_640x360M.jpg" />
+    <Content Include="img\20150513_065d232b93cdad9e7de0fo7lMOp4mYmr_140x140M.jpg" />
+    <Content Include="img\20150610_9949ed33e924ac3e9eab6HpPwATiMjUV_140x140M.jpg" />
+    <Content Include="img\com_background_1.jpg" />
+    <Content Include="img\headphoto_1009502.jpg" />
+    <Content Include="img\headphoto_1325919.jpg" />
+    <Content Include="img\headphoto_1334412.jpg" />
+    <Content Include="img\headphoto_1359659.jpg" />
+    <Content Include="img\headphoto_1603042.jpg" />
+    <Content Include="img\headphoto_1612081.jpg" />
+    <Content Include="img\headphoto_1732060.jpg" />
+    <Content Include="img\headphoto_2055983.jpg" />
+    <Content Include="img\headphoto_2152612.jpg" />
+    <Content Include="img\headphoto_2584089.jpg" />
+    <Content Include="img\headphoto_2638718.jpg" />
+    <Content Include="img\headphoto_476312.jpg" />
+    <Content Include="img\headphoto_518636.jpg" />
+    <Content Include="img\headphoto_680284.jpg" />
+    <Content Include="img\headphoto_771533.jpg" />
+    <Content Include="img\headphoto_801356.jpg" />
+    <Content Include="img\headphoto_891749.jpg" />
+    <Content Include="img\headphoto_924912.jpg" />
+    <Content Include="img\icon-feidian.png" />
+    <Content Include="img\icon-fuwu.png" />
+    <Content Include="img\icon-jiaqi.png" />
+    <Content Include="img\icon-kaidian.png" />
+    <Content Include="img\icon-ky.png" />
+    <Content Include="img\icon-pp.png" />
+    <Content Include="img\icon-user.png" />
+    <Content Include="img\index-bg.jpg" />
+    <Content Include="img\jiameng_01.jpg" />
+    <Content Include="img\jiameng_03.jpg" />
+    <Content Include="img\jiameng_04.jpg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\tuangou_01.jpg" />
+    <Content Include="img\tuangou_03.jpg" />
+    <Content Include="img\tuangou_04.jpg" />
+    <Content Include="img\tuangou_05.jpg" />
+    <Content Include="img\tuangou_06.jpg" />
+    <Content Include="img\tuangou_07.jpg" />
+    <Content Include="img\tuangou_08.jpg" />
+    <Content Include="img\xgt-1px.png" />
+    <Content Include="img\zxsj-banner2.jpg" />
+    <Content Include="img\zxsj-liucheng2.png" />
+    <Content Include="img\zxsj-p1-new.png" />
+    <Content Include="img\zxsj-p2-new.png" />
+    <Content Include="img\团购报名_02.jpg" />
+    <Content Include="js\2a19dc2ac1471a7470fe7187a5537960_2.js" />
+    <Content Include="js\common.js" />
+    <Content Include="js\companyNew.js" />
+    <Content Include="js\GlobalProvinces.js" />
+    <Content Include="js\h5AppDownload_sourcecharge.js" />
+    <Content Include="js\hm.js" />
+    <Content Include="js\iscroll5.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\lxb.js" />
+    <Content Include="js\postingsAdd.js" />
+    <Content Include="js\seoStatis.js" />
+    <Content Include="js\to8torsas.js" />
+    <Content Include="js\zbcommon.js" />
+    <Content Include="js\zxbj.js" />
+    <Content Include="js\zxd.js" />
+    <Content Include="js\zxglIndex.js" />
+    <Content Include="mobiscroll\js\zepto.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.animation.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.android-ics.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.android.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.ios.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.ios7.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.sense-ui.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\mobiscroll.scroller.wp.css" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\wp_icons.png" />
+    <Content Include="mobiscroll\plugs\mobiscroll\css\wp_icons_light.png" />
+    <Content Include="mobiscroll\plugs\mobiscroll\date-all.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\date-my.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\datetime-all.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\datetime-my.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.core.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.datetime.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.i18n.zh.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.list.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.android-ics.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.android.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.ios.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.ios7.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.scroller.wp.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.select.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\js\mobiscroll.zepto.js" />
+    <Content Include="mobiscroll\plugs\mobiscroll\selarea-init.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\selarea.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\select.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\time-all.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\time-my.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\zepto-all.html" />
+    <Content Include="mobiscroll\plugs\mobiscroll\zepto-my.html" />
+    <Content Include="mobiscroll\plugs\selarea\js\selarea.js" />
+    <Content Include="mobiscroll\说明.jpg" />
+    <Content Include="Scripts\baidumap\contertor.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\compressed.js" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\header\jquery.hammer-full.min.js" />
+    <Content Include="Scripts\header\jquery.min.js" />
+    <Content Include="Scripts\header\lrtk.js" />
+    <Content Include="Scripts\header\plugin.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.2.3.js" />
+    <Content Include="Scripts\jquery-1.2.3.lightBox.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\Views\home\home.js" />
+    <Content Include="Scripts\Views\ProjectDetails.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutPager.cshtml" />
+    <Content Include="Views\Shared\_LayoutLeft.cshtml" />
+    <Content Include="Views\Project\List.cshtml" />
+    <Content Include="Views\Room\list.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\Team.cshtml" />
+    <Content Include="Views\Project\Img.cshtml" />
+    <Content Include="Views\ShopBrand\List.cshtml" />
+    <Content Include="Views\Openshop\Openshop.cshtml" />
+    <Content Include="Views\ShopBrand\Index.cshtml" />
+    <Content Include="Views\ShopBrand\Img.cshtml" />
+    <Content Include="Views\Openshop\img.cshtml" />
+    <Content Include="Views\Openshop\List.cshtml" />
+    <Content Include="Views\Room\room.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Regist.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\ShopBrand\Supplier.cshtml" />
+    <Content Include="Views\Project\ApplyCustomer.cshtml" />
+    <Content Include="Views\ShopBrand\ApplyBrand.cshtml" />
+    <Content Include="Views\Postings\List.cshtml" />
+    <Content Include="Views\Postings\Index.cshtml" />
+    <Content Include="Views\Postings\Add.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YG.SC.Common\YG.SC.Common.csproj">
+      <Project>{2da9c33c-6fb4-4c3d-81ba-5bd570fb4003}</Project>
+      <Name>YG.SC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.DataAccess\YG.SC.DataAccess.csproj">
+      <Project>{2f50f76d-b3f4-4f5c-b51d-4881c4fed704}</Project>
+      <Name>YG.SC.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.Model\YG.SC.Model.csproj">
+      <Project>{cf0583e9-ee62-4d7d-8aa9-bd021ded19ed}</Project>
+      <Name>YG.SC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.Repository\YG.SC.Repository.csproj">
+      <Project>{b813363f-325a-4ef8-bd27-a794d75711e3}</Project>
+      <Name>YG.SC.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.Service\YG.SC.Service.csproj">
+      <Project>{ce1874de-3903-443c-acfb-2f5314ffdfce}</Project>
+      <Name>YG.SC.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>20251</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54975/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

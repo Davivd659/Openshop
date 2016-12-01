@@ -1,0 +1,4 @@
+1、修改内容复制到F:\李文启\gitdir\openshop\documnet
+2、在F:\李文启\gitdir\openshop\  下，右键git  、  pull
+3、在F:\李文启\gitdir\openshop\  下，右键 git commit   全选，填写上传
+4、在F:\李文启\gitdir\openshop\  下，右键git  、  push

@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OpenShopModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CustomerGroupOn">
+      <EntityTypeMapping TypeName="OpenShopModel.CustomerGroupOn">
+        <MappingFragment StoreEntitySet="CustomerGroupOn">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="GroupMode" ColumnName="GroupMode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Link">
+      <EntityTypeMapping TypeName="OpenShopModel.Link">
+        <MappingFragment StoreEntitySet="Link">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="LinkType" ColumnName="LinkType" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenShopPhoto">
+      <EntityTypeMapping TypeName="OpenShopModel.OpenShopPhoto">
+        <MappingFragment StoreEntitySet="OpenShopPhoto">
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Rmark" ColumnName="Rmark" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OpenShopId" ColumnName="OpenShopId" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="PhotoSmall" ColumnName="PhotoSmall" />
+          <ScalarProperty Name="PhotoSquare" ColumnName="PhotoSquare" />
+          <ScalarProperty Name="PhotoRectangle" ColumnName="PhotoRectangle" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenShopShopProject">
+      <EntityTypeMapping TypeName="OpenShopModel.OpenShopShopProject">
+        <MappingFragment StoreEntitySet="OpenShopShopProject">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OpenShopId" ColumnName="OpenShopId" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectPhoto">
+      <EntityTypeMapping TypeName="OpenShopModel.ProjectPhoto">
+        <MappingFragment StoreEntitySet="ProjectPhoto">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+          <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+          <ScalarProperty Name="PhotoUrlSmall" ColumnName="PhotoUrlSmall" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectService">
+      <EntityTypeMapping TypeName="OpenShopModel.ProjectService">
+        <MappingFragment StoreEntitySet="ProjectService">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="IsMvp" ColumnName="IsMvp" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopAttributes">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopAttributes">
+        <MappingFragment StoreEntitySet="ShopAttributes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+          <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="UsageMode" ColumnName="UsageMode" />
+          <ScalarProperty Name="UseAttributeImage" ColumnName="UseAttributeImage" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopAttributeValues">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopAttributeValues">
+        <MappingFragment StoreEntitySet="ShopAttributeValues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+          <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
+          <ScalarProperty Name="ValueStr" ColumnName="ValueStr" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBasAcrRange">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBasAcrRange">
+        <MappingFragment StoreEntitySet="ShopBasAcrRange">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AcrName" ColumnName="AcrName" />
+          <ScalarProperty Name="AcrFrom" ColumnName="AcrFrom" />
+          <ScalarProperty Name="AcrEnd" ColumnName="AcrEnd" />
+          <ScalarProperty Name="AcrCustomOrder" ColumnName="AcrCustomOrder" />
+          <ScalarProperty Name="AcrCreatedtime" ColumnName="AcrCreatedtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBasOpeningTime">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBasOpeningTime">
+        <MappingFragment StoreEntitySet="ShopBasOpeningTime">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OpeningName" ColumnName="OpeningName" />
+          <ScalarProperty Name="OpeningTimeDay" ColumnName="OpeningTimeDay" />
+          <ScalarProperty Name="CustomOrder" ColumnName="CustomOrder" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBasPriceRentRange">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBasPriceRentRange">
+        <MappingFragment StoreEntitySet="ShopBasPriceRentRange">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RPName" ColumnName="RPName" />
+          <ScalarProperty Name="RPFrom" ColumnName="RPFrom" />
+          <ScalarProperty Name="RPEnd" ColumnName="RPEnd" />
+          <ScalarProperty Name="RPCustomerOrder" ColumnName="RPCustomerOrder" />
+          <ScalarProperty Name="RPCreatedtime" ColumnName="RPCreatedtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBasPriceSaleRange">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBasPriceSaleRange">
+        <MappingFragment StoreEntitySet="ShopBasPriceSaleRange">
+          <ScalarProperty Name="PRID" ColumnName="PRID" />
+          <ScalarProperty Name="PRName" ColumnName="PRName" />
+          <ScalarProperty Name="PRFrom" ColumnName="PRFrom" />
+          <ScalarProperty Name="PREnd" ColumnName="PREnd" />
+          <ScalarProperty Name="PRCustomOrder" ColumnName="PRCustomOrder" />
+          <ScalarProperty Name="PRCreatedtime" ColumnName="PRCreatedtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBrand">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBrand">
+        <MappingFragment StoreEntitySet="ShopBrand">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IsAudited" ColumnName="IsAudited" />
+          <ScalarProperty Name="TRC" ColumnName="TRC" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+          <ScalarProperty Name="CIC" ColumnName="CIC" />
+          <ScalarProperty Name="OPC" ColumnName="OPC" />
+          <ScalarProperty Name="OCC" ColumnName="OCC" />
+          <ScalarProperty Name="BLS" ColumnName="BLS" />
+          <ScalarProperty Name="Contactphone" ColumnName="Contactphone" />
+          <ScalarProperty Name="Contactname" ColumnName="Contactname" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="ViewClick" ColumnName="ViewClick" />
+          <ScalarProperty Name="JoinIn" ColumnName="JoinIn" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rmark" ColumnName="Rmark" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="VidoUrl" ColumnName="VidoUrl" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="QRCode" ColumnName="QRCode" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="BrandAD" ColumnName="BrandAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBrandAttributeValues">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBrandAttributeValues">
+        <MappingFragment StoreEntitySet="ShopBrandAttributeValues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="AttributesId" ColumnName="AttributesId" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="AttributeValuesId" ColumnName="AttributeValuesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBrandBranch">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBrandBranch">
+        <MappingFragment StoreEntitySet="ShopBrandBranch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="BranchPhone" ColumnName="BranchPhone" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopBrandPhoto">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopBrandPhoto">
+        <MappingFragment StoreEntitySet="ShopBrandPhoto">
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Rmark" ColumnName="Rmark" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="PhotoSmall" ColumnName="PhotoSmall" />
+          <ScalarProperty Name="PhotoSquare" ColumnName="PhotoSquare" />
+          <ScalarProperty Name="PhotoRectangle" ColumnName="PhotoRectangle" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProject">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopProject">
+        <MappingFragment StoreEntitySet="ShopProject">
+          <ScalarProperty Name="Listings" ColumnName="Listings" />
+          <ScalarProperty Name="Projecthot" ColumnName="Projecthot" />
+          <ScalarProperty Name="ProjectIntro" ColumnName="ProjectIntro" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ShangQuan" ColumnName="ShangQuan" />
+          <ScalarProperty Name="ViewClick" ColumnName="ViewClick" />
+          <ScalarProperty Name="CoverPhoto" ColumnName="CoverPhoto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+          <ScalarProperty Name="TeShe" ColumnName="TeShe" />
+          <ScalarProperty Name="TuanDuiInfo" ColumnName="TuanDuiInfo" />
+          <ScalarProperty Name="YouShi" ColumnName="YouShi" />
+          <ScalarProperty Name="BQuanShu" ColumnName="BQuanShu" />
+          <ScalarProperty Name="BWaiLiMian" ColumnName="BWaiLiMian" />
+          <ScalarProperty Name="BJieGou" ColumnName="BJieGou" />
+          <ScalarProperty Name="JZongJianZhuMianJi" ColumnName="JZongJianZhuMianJi" />
+          <ScalarProperty Name="JZongChengShu" ColumnName="JZongChengShu" />
+          <ScalarProperty Name="JChengGao" ColumnName="JChengGao" />
+          <ScalarProperty Name="PChengMianJi" ColumnName="PChengMianJi" />
+          <ScalarProperty Name="PZhuLiHuxing" ColumnName="PZhuLiHuxing" />
+          <ScalarProperty Name="PWindowOpen" ColumnName="PWindowOpen" />
+          <ScalarProperty Name="PChengZhongZhu" ColumnName="PChengZhongZhu" />
+          <ScalarProperty Name="PHeXinTong" ColumnName="PHeXinTong" />
+          <ScalarProperty Name="PHeiFangJian" ColumnName="PHeiFangJian" />
+          <ScalarProperty Name="YLiftBrand" ColumnName="YLiftBrand" />
+          <ScalarProperty Name="YLiftIntro" ColumnName="YLiftIntro" />
+          <ScalarProperty Name="YLiftFenQu" ColumnName="YLiftFenQu" />
+          <ScalarProperty Name="YLiftSpeed" ColumnName="YLiftSpeed" />
+          <ScalarProperty Name="YAirConditoningBrand" ColumnName="YAirConditoningBrand" />
+          <ScalarProperty Name="YAirConditoningControl" ColumnName="YAirConditoningControl" />
+          <ScalarProperty Name="YPrkingSpace" ColumnName="YPrkingSpace" />
+          <ScalarProperty Name="TeaIntroduction" ColumnName="TeaIntroduction" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProjectMain">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopProjectMain">
+        <MappingFragment StoreEntitySet="ShopProjectMain">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TradeId" ColumnName="TradeId" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="TradingAreaId" ColumnName="TradingAreaId" />
+          <ScalarProperty Name="CircleLineId" ColumnName="CircleLineId" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="RentalPrice" ColumnName="RentalPrice" />
+          <ScalarProperty Name="MetroId" ColumnName="MetroId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="TypeOfOperationId" ColumnName="TypeOfOperationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="OpenShopModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="portrait" ColumnName="portrait" />
+          <ScalarProperty Name="registertime" ColumnName="registertime" />
+          <ScalarProperty Name="Companyid" ColumnName="Companyid" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplyActivity">
+      <EntityTypeMapping TypeName="OpenShopModel.ApplyActivity">
+        <MappingFragment StoreEntitySet="ApplyActivity">
+          <ScalarProperty Name="GrouppurchaseId" ColumnName="GrouppurchaseId" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopAdPosition">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopAdPosition">
+        <MappingFragment StoreEntitySet="ShopAdPosition">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AdPic" ColumnName="AdPic" />
+          <ScalarProperty Name="AdPicSmall" ColumnName="AdPicSmall" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="AdWords" ColumnName="AdWords" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="TypesId" ColumnName="TypesId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopAdPositionDetails">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopAdPositionDetails">
+        <MappingFragment StoreEntitySet="ShopAdPositionDetails">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopDemo">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopDemo">
+        <MappingFragment StoreEntitySet="ShopDemo">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobMinute">
+      <EntityTypeMapping TypeName="OpenShopModel.JobMinute">
+        <MappingFragment StoreEntitySet="JobMinute">
+          <ScalarProperty Name="JobKey" ColumnName="JobKey" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="JobTime" ColumnName="JobTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopPostings">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopPostings">
+        <MappingFragment StoreEntitySet="ShopPostings">
+          <ScalarProperty Name="Endtiem" ColumnName="Endtiem" />
+          <ScalarProperty Name="Addtiem" ColumnName="Addtiem" />
+          <ScalarProperty Name="Pinfo" ColumnName="Pinfo" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+          <ScalarProperty Name="Ptype" ColumnName="Ptype" />
+          <ScalarProperty Name="square" ColumnName="square" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="PIntent" ColumnName="PIntent" />
+          <ScalarProperty Name="hotarea" ColumnName="hotarea" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopRoom">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopRoom">
+        <MappingFragment StoreEntitySet="ShopRoom">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="isCert" ColumnName="isCert" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="fetchDate" ColumnName="fetchDate" />
+          <ScalarProperty Name="from" ColumnName="from" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Rimg" ColumnName="Rimg" />
+          <ScalarProperty Name="Rinfo" ColumnName="Rinfo" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+          <ScalarProperty Name="Face" ColumnName="Face" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="square" ColumnName="square" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="hotarea" ColumnName="hotarea" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenShop">
+      <EntityTypeMapping TypeName="OpenShopModel.OpenShop">
+        <MappingFragment StoreEntitySet="OpenShop">
+          <ScalarProperty Name="Rangeid" ColumnName="Rangeid" />
+          <ScalarProperty Name="Districtid" ColumnName="Districtid" />
+          <ScalarProperty Name="isaudit" ColumnName="isaudit" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="TRC" ColumnName="TRC" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+          <ScalarProperty Name="CIC" ColumnName="CIC" />
+          <ScalarProperty Name="OPC" ColumnName="OPC" />
+          <ScalarProperty Name="OCC" ColumnName="OCC" />
+          <ScalarProperty Name="BLS" ColumnName="BLS" />
+          <ScalarProperty Name="Contactphone" ColumnName="Contactphone" />
+          <ScalarProperty Name="Contactname" ColumnName="Contactname" />
+          <ScalarProperty Name="Distribution" ColumnName="Distribution" />
+          <ScalarProperty Name="Industry" ColumnName="Industry" />
+          <ScalarProperty Name="QRcode" ColumnName="QRcode" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Accountbalance" ColumnName="Accountbalance" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Isguarantee" ColumnName="Isguarantee" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="viewclick" ColumnName="viewclick" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="VidoUrl" ColumnName="VidoUrl" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Rmark" ColumnName="Rmark" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProjectAttributesValues">
+      <EntityTypeMapping TypeName="OpenShopModel.ShopProjectAttributesValues">
+        <MappingFragment StoreEntitySet="ShopProjectAttributesValues">
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="AttrValueId" ColumnName="AttrValueId" />
+          <ScalarProperty Name="AttrId" ColumnName="AttrId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenShopAttributeValues">
+      <EntityTypeMapping TypeName="OpenShopModel.OpenShopAttributeValues">
+        <MappingFragment StoreEntitySet="OpenShopAttributeValues">
+          <ScalarProperty Name="AttributeValuesId" ColumnName="AttributeValuesId" />
+          <ScalarProperty Name="Recsts" ColumnName="Recsts" />
+          <ScalarProperty Name="AttributesId" ColumnName="AttributesId" />
+          <ScalarProperty Name="OpenShopId" ColumnName="OpenShopId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplyBrands">
+      <EntityTypeMapping TypeName="OpenShopModel.ApplyBrand">
+        <MappingFragment StoreEntitySet="ApplyBrand">
+          <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+          <ScalarProperty Name="AuditTime" ColumnName="AuditTime" />
+          <ScalarProperty Name="ApplyTime" ColumnName="ApplyTime" />
+          <ScalarProperty Name="Contract" ColumnName="Contract" />
+          <ScalarProperty Name="ApplyUser" ColumnName="ApplyUser" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmsLogs">
+      <EntityTypeMapping TypeName="OpenShopModel.SmsLog">
+        <MappingFragment StoreEntitySet="SmsLog">
+          <ScalarProperty Name="SendStatus" ColumnName="SendStatus" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerLogs">
+      <EntityTypeMapping TypeName="OpenShopModel.CustomerLog">
+        <MappingFragment StoreEntitySet="CustomerLog">
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="ismanage" ColumnName="ismanage" />
+          <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+          <ScalarProperty Name="Modulid" ColumnName="Modulid" />
+          <ScalarProperty Name="Targetsubject" ColumnName="Targetsubject" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="logmsg" ColumnName="logmsg" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_File">
+      <EntityTypeMapping TypeName="OpenShopModel.C_File">
+        <MappingFragment StoreEntitySet="C_File">
+          <ScalarProperty Name="FileName5" ColumnName="FileName5" />
+          <ScalarProperty Name="FileName4" ColumnName="FileName4" />
+          <ScalarProperty Name="FileName3" ColumnName="FileName3" />
+          <ScalarProperty Name="FileName2" ColumnName="FileName2" />
+          <ScalarProperty Name="FileName1" ColumnName="FileName1" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Object">
+      <EntityTypeMapping TypeName="OpenShopModel.C_Object">
+        <MappingFragment StoreEntitySet="C_Object">
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+          <ScalarProperty Name="LastModifyUser" ColumnName="LastModifyUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Creater" ColumnName="Creater" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ChildrenSet" ColumnName="ChildrenSet" />
+          <ScalarProperty Name="ParentChain" ColumnName="ParentChain" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerDisciplines">
+      <EntityTypeMapping TypeName="OpenShopModel.CustomerDiscipline">
+        <MappingFragment StoreEntitySet="CustomerDiscipline">
+          <ScalarProperty Name="Disciplinetime" ColumnName="Disciplinetime" />
+          <ScalarProperty Name="Disciplinetype" ColumnName="Disciplinetype" />
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+          <ScalarProperty Name="Begintime" ColumnName="Begintime" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="G_Category">
+      <EntityTypeMapping TypeName="OpenShopModel.G_Category">
+        <MappingFragment StoreEntitySet="G_Category">
+          <ScalarProperty Name="IsFixed" ColumnName="IsFixed" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="G_Goods">
+      <EntityTypeMapping TypeName="OpenShopModel.G_Goods">
+        <MappingFragment StoreEntitySet="G_Goods">
+          <ScalarProperty Name="Shopid" ColumnName="Shopid" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="G_Name">
+      <EntityTypeMapping TypeName="OpenShopModel.G_Name">
+        <MappingFragment StoreEntitySet="G_Name">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="G_NameCategoryMapping">
+      <EntityTypeMapping TypeName="OpenShopModel.G_NameCategoryMapping">
+        <MappingFragment StoreEntitySet="G_NameCategoryMapping">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="NameId" ColumnName="NameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="G_Pricing">
+      <EntityTypeMapping TypeName="OpenShopModel.G_Pricing">
+        <MappingFragment StoreEntitySet="G_Pricing">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Creater" ColumnName="Creater" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_Cart">
+      <EntityTypeMapping TypeName="OpenShopModel.O_Cart">
+        <MappingFragment StoreEntitySet="O_Cart">
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Creater" ColumnName="Creater" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_CartGoods">
+      <EntityTypeMapping TypeName="OpenShopModel.O_CartGoods">
+        <MappingFragment StoreEntitySet="O_CartGoods">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="GoodsCount" ColumnName="GoodsCount" />
+          <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_Order">
+      <EntityTypeMapping TypeName="OpenShopModel.O_Order">
+        <MappingFragment StoreEntitySet="O_Order">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="DetailUrl" ColumnName="DetailUrl" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BusinessDataId" ColumnName="BusinessDataId" />
+          <ScalarProperty Name="BusinessDataType" ColumnName="BusinessDataType" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="ColseTime" ColumnName="ColseTime" />
+          <ScalarProperty Name="PaymentTime" ColumnName="PaymentTime" />
+          <ScalarProperty Name="SalerAddress" ColumnName="SalerAddress" />
+          <ScalarProperty Name="SalerMobile" ColumnName="SalerMobile" />
+          <ScalarProperty Name="SalerName" ColumnName="SalerName" />
+          <ScalarProperty Name="ExpressNumber" ColumnName="ExpressNumber" />
+          <ScalarProperty Name="ExpressCompany" ColumnName="ExpressCompany" />
+          <ScalarProperty Name="BuyerAddress" ColumnName="BuyerAddress" />
+          <ScalarProperty Name="BuyerMobile" ColumnName="BuyerMobile" />
+          <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Saler" ColumnName="Saler" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SalerBuyerMapping">
+      <EntityTypeMapping TypeName="OpenShopModel.O_SalerBuyerMapping">
+        <MappingFragment StoreEntitySet="O_SalerBuyerMapping">
+          <ScalarProperty Name="Saler" ColumnName="Saler" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Account">
+      <EntityTypeMapping TypeName="OpenShopModel.P_Account">
+        <MappingFragment StoreEntitySet="P_Account">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Creater" ColumnName="Creater" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="ObjType" ColumnName="ObjType" />
+          <ScalarProperty Name="ObjId" ColumnName="ObjId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Trade">
+      <EntityTypeMapping TypeName="OpenShopModel.P_Trade">
+        <MappingFragment StoreEntitySet="P_Trade">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TradeTime" ColumnName="TradeTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+          <ScalarProperty Name="Expenditure" ColumnName="Expenditure" />
+          <ScalarProperty Name="TraceId" ColumnName="TraceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_Contract">
+      <EntityTypeMapping TypeName="OpenShopModel.M_Contract">
+        <MappingFragment StoreEntitySet="M_Contract">
+          <ScalarProperty Name="MissionId" ColumnName="MissionId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_Period">
+      <EntityTypeMapping TypeName="OpenShopModel.M_Period">
+        <MappingFragment StoreEntitySet="M_Period">
+          <ScalarProperty Name="FailedReasion" ColumnName="FailedReasion" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MissionId" ColumnName="MissionId" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+          <ScalarProperty Name="PayStartTime" ColumnName="PayStartTime" />
+          <ScalarProperty Name="PassTime" ColumnName="PassTime" />
+          <ScalarProperty Name="FirstApplyCheckTime" ColumnName="FirstApplyCheckTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Standard" ColumnName="Standard" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_Mission">
+      <EntityTypeMapping TypeName="OpenShopModel.M_Mission">
+        <MappingFragment StoreEntitySet="M_Mission">
+          <ScalarProperty Name="ContactTime" ColumnName="ContactTime" />
+          <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+          <ScalarProperty Name="ReceiverContact" ColumnName="ReceiverContact" />
+          <ScalarProperty Name="PublisherMobile" ColumnName="PublisherMobile" />
+          <ScalarProperty Name="AppealReason" ColumnName="AppealReason" />
+          <ScalarProperty Name="LimitDate" ColumnName="LimitDate" />
+          <ScalarProperty Name="IsOffLinePayment" ColumnName="IsOffLinePayment" />
+          <ScalarProperty Name="AppealTime" ColumnName="AppealTime" />
+          <ScalarProperty Name="DecideTime" ColumnName="DecideTime" />
+          <ScalarProperty Name="CompleteTime" ColumnName="CompleteTime" />
+          <ScalarProperty Name="ConfirmPaymentTime" ColumnName="ConfirmPaymentTime" />
+          <ScalarProperty Name="ConfirmContractTime" ColumnName="ConfirmContractTime" />
+          <ScalarProperty Name="ConnectingTime" ColumnName="ConnectingTime" />
+          <ScalarProperty Name="CloseReason" ColumnName="CloseReason" />
+          <ScalarProperty Name="DecidePay" ColumnName="DecidePay" />
+          <ScalarProperty Name="DecideRefund" ColumnName="DecideRefund" />
+          <ScalarProperty Name="DecideResult" ColumnName="DecideResult" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Bd" ColumnName="Bd" />
+          <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="PublisheTime" ColumnName="PublisheTime" />
+          <ScalarProperty Name="PublisherContact" ColumnName="PublisherContact" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MissionType" ColumnName="MissionType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Message">
+      <EntityTypeMapping TypeName="OpenShopModel.S_Message">
+        <MappingFragment StoreEntitySet="S_Message">
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="ReceiverNumber" ColumnName="ReceiverNumber" />
+          <ScalarProperty Name="SenderNumber" ColumnName="SenderNumber" />
+          <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+          <ScalarProperty Name="DetailsUrl" ColumnName="DetailsUrl" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="HasShortMessage" ColumnName="HasShortMessage" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grouppurchases">
+      <EntityTypeMapping TypeName="OpenShopModel.Grouppurchase">
+        <MappingFragment StoreEntitySet="Grouppurchase">
+          <ScalarProperty Name="progress" ColumnName="progress" />
+          <ScalarProperty Name="Lastupdate" ColumnName="Lastupdate" />
+          <ScalarProperty Name="Addtime" ColumnName="Addtime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+          <ScalarProperty Name="Begintime" ColumnName="Begintime" />
+          <ScalarProperty Name="Llimit" ColumnName="Llimit" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JoinProjects">
+      <EntityTypeMapping TypeName="OpenShopModel.JoinProject">
+        <MappingFragment StoreEntitySet="JoinProject">
+          <ScalarProperty Name="Addtime" ColumnName="Addtime" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShopProjectId" ColumnName="ShopProjectId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hotareas">
+      <EntityTypeMapping TypeName="OpenShopModel.hotarea">
+        <MappingFragment StoreEntitySet="hotarea">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

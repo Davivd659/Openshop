@@ -1,0 +1,114 @@
+2014-11-07 10:52:05,166 [7] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:52:05
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"633cc385af58489bb40672a8d4bd00b7","AddressId":104,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":1,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":2,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":3,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:52:05***Successful***
+
+
+
+2014-11-07 10:52:19,121 [9] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:52:19
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"633cc385af58489bb40672a8d4bd00b7","AddressId":104,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":1,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":2,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":3,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:52:19***Successful***
+
+
+
+2014-11-07 10:54:16,263 [7] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:54:16
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"633cc385af58489bb40672a8d4bd00b7","AddressId":104,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":1,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":2,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":3,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:54:16***Successful***
+
+
+
+2014-11-07 10:56:12,313 [8] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:56:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"df1043798ea84cc78dc423f44f87eaef","AddressId":2,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":1,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":2,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":3,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:56:12***Successful***
+
+
+
+2014-11-07 10:57:04,451 [10] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:57:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"df1043798ea84cc78dc423f44f87eaef","AddressId":2,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":5,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":6,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":7,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:57:04***Successful***
+
+
+
+2014-11-07 10:57:15,046 [6] INFO  Info 
+========================================================================
+Start at: 2014/11/7 10:57:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/order/add
+
+RequestBody£º[{"UserToken":"df1043798ea84cc78dc423f44f87eaef","AddressId":2,"Invoice":"NONE","Company":"","MaterialPart":[{"Id":5,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":6,"Number":1,"Name":null,"Price":0.0,"Specification":null},{"Id":7,"Number":1,"Name":null,"Price":0.0,"Specification":null}],"Remark":""}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/7 10:57:15***Successful***
+
+
+

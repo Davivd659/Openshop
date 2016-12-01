@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "需求-" + Model.PName;
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";}
+<meta name="keywords" content="开店ing,需求发布，开店网，润嘉众合，开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,主要包括开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall，商场招租，写字楼出租，写字楼出售，商铺装修，商铺家具，餐饮装修等各种需求的列表" />
+<meta name="viewport" content="width=device-width" />
+<link href="~/Content/Demand.css" rel="stylesheet" />
+<link href="~/Content/DemandList.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<style>
+    .title {
+        height: 30px;
+        font-size: 22px;
+    }
+
+    .highLight {
+        color: #ec341d;
+    }
+
+    .item {
+        line-height: 28px;
+        font-size: 16px;
+    }
+
+    .button {
+        line-height: 40px;
+        width: 240px;
+        background-color: #ec341d;
+        color: white;
+        text-align: center;
+        margin-left: 5px;
+    }
+
+    .content div.right div.relate {
+        margin-top: 40px;
+        width: 360px;
+        height: 390px;
+        border: 1px solid #808080;
+    }
+
+        .content div.right div.relate div.imgs {
+            width: 360px;
+            height: 295px;
+        }
+
+        .content div.right div.relate img.fa {
+            float: left;
+            margin: 12px;
+        }
+
+        .content div.right div.relate img.shang {
+            float: right;
+            margin: -50px 40px 0 0;
+        }
+
+        .content div.right div.relate p.title2 {
+            margin-left: 12px;
+            font-size: 18px;
+            color: #ec341d;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content div.right div.relate p.nr {
+            margin-left: 12px;
+            color: #808080;
+            font-size: 16px;
+        }
+
+    .text {
+        padding: 10px;
+    }
+</style>
+
+<div class="content" style="background-color:white;">
+    @*面包屑导航*@
+    <div class="linkChain">当前位置：<a href="/Demand/List">需求</a>&nbsp;&gt;&nbsp;@Model.PName</div>
+    <div class="left">
+        @*求购主要信息（左上）*@
+        <div class="item">
+            <h1 class="title">
+                <img src="~/Images/icon/demandlist4.png" /><span class="highLight">@(Model.PIntent == "false" ? "求租" : "求购")--</span>@Model.PName
+            </h1>
+            <br />
+            面积需求：<span class="highLight">
+                @Model.square
+            </span><br />
+            意向区域：@Model.district @(Model.hotarea != "" ? "-" + Model.hotarea : "")<br />
+            自身行业：@Model.Format<br />
+            价格区间：<span class="highLight">
+                @Model.price
+            </span><br />
+            意向物业：@Model.Ptype<br />
+            发布日期：2015-07-14 16:33<br />
+            截止日期：2015-10-14<br /><br />
+            <div class="button"><img src="~/Images/icon/dianhua.png" />&nbsp;&nbsp;@Model.Contacts：&nbsp;@Model.Mobile</div>
+            <div style="line-height: 50px; border-bottom: #EC341D 1px solid;margin-top:50px; "><span class="highLight"><h1 class="title">需求描述</h1></span></div>
+            <div class="text">
+                @Model.Pinfo
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <a href="/Demand/Issue"><div class="fabu"><img src="~/Images/icon/fabuicon.png" />&nbsp;发布需求</div></a>
+        @{
+            var array = (List<YG.SC.Model.Project.ProjectDetailsViewModel>)ViewBag.array;
+        }
+        @if (array != null && array.Count() > 0)
+        {
+
+            foreach (var proj in array)
+            {
+                <a href="/Project/index?id=@proj.Id">
+                    <div class="relate">
+                        <div class="imgs">
+                            <img class="fa" width="335" height="246" src="@proj.PhotoUrlSmall" />
+                            <img class="shang" src="~/Images/icon/demandlist9.png" />
+                        </div>
+                        <p class="title2">@proj.Name</p>
+                        <p class="nr">@Html.Raw(proj.ProjectFeature.Length > 21 ? proj.ProjectFeature.Substring(0, 21) : proj.ProjectFeature)</p>
+                    </div>
+                </a>
+            }
+        }
+    </div>
+</div>

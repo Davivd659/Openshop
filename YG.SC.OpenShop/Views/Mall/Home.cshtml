@@ -1,0 +1,438 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@{
+    Layout = "~/Views/Shared/_LayoutMall.cshtml";
+    var LinkTypes = ViewBag.LinkTypes as List<Link>;
+    var hotarelist = ViewBag.Hotare as hotarea[];
+    var Objectlist = ViewBag.CategoryList as List<C_Object>;
+}
+
+<script src="~/Scripts/toChinese.js"></script>
+<!-- 顶部结束 -->
+<!--灯箱下的遮罩层开始-->
+<div id="dengxiang"></div>
+<!--灯箱下的遮罩层开始-->
+<!--选择城市区域开始-->
+<div class="m_area">
+    <div class="m_area_tit">选择您所在的商圈<strong class="m_area_off"></strong> </div>
+    <p class="m_city_tit">热门区域</p>
+    <ul class="m_c">
+        @foreach (var item in hotarelist)
+        {
+            <li><a>@item.name</a><input class="hotareid" type="hidden" value="@item.id" /></li>
+        }
+    </ul>
+    <p class="m_city_tit">热门商圈</p>
+    <!-- 首字母选择-->
+    <ul class="m_let">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+        <li>F</li>
+        <li>G</li>
+        <li>H</li>
+        <li>J</li>
+        <li>K</li>
+        <li>L</li>
+        <li>M</li>
+        <li>N</li>
+        <li>P</li>
+        <li>Q</li>
+        <li>R</li>
+        <li>S</li>
+        <li>T</li>
+        <li>W</li>
+        <li>X</li>
+        <li>Y</li>
+        <li>Z</li>
+    </ul>
+    <div class="m_city_z">
+        <ul class="m_city m_city1" id="divName"></ul>
+    </div>
+</div>
+<form action="/Mall/AddCarts" method="post">
+    <!--选择城市区域结束-->
+    <!--二级悬挂导航开始-->
+    <div class="m_nav2" id="nav_top">
+        <ul class="body-warp m_nav_main m_n2">
+            <li><a href="">蔬菜水果</a></li>
+            <li><a href="">餐饮半成品</a></li>
+            <li><a href="">餐饮用品用具</a></li>
+            <li><a href="">酒水饮料</a></li>
+            <li><a href="">冷鲜肉类</a></li>
+            <li><a href="">水产冻货</a></li>
+            <li><a href="">签单粮油</a></li>
+            <li><a href="">调料干货</a></li>
+            <li><a href="">特价优惠</a></li>
+            <!-- 固定导航购物车里的商品-->
+            <div class="m_cart m_cart_tg">
+                <div class="m_cart_z">购物车(<span>0</span>)</div>
+                <div class="m_cart_r">
+                    <img src="~/Images/mall/m_cart_r2.png">
+                </div>
+            </div>
+            <div class="m_car_all">
+                <div class="m_z">
+                </div>
+                <div class="m_car_going">
+                    <p class="m_car_going_tot">总计：￥<span class="red c_total">0</span>元</p>
+                    <input type="submit" class="go_cart" value="去购物车结算" />
+                </div>
+            </div>
+        </ul>
+    </div>
+    <!--二级悬挂导航结束-->
+    <!-- 头部logo部分开始 -->
+    <div class="body-warp m_head">
+        <a class="m_logo" href="/"><img src="~/Images/mall/m_logo.png"></a>
+        <div class="m_search">
+            <input class="m_search_int" type="text" value="请输入您想购买的商品" name="keyword">
+            <input class="m_search_submit" type="submit" value="搜索">
+        </div>
+        <!--头部购物车黑色开始-->
+        <div class="m_cart">
+            <div class="m_cart_z">购物车(<span>0</span>)</div>
+            <div class="m_cart_r">
+                <img src="~/Images/mall/m_cart_r.png">
+            </div>
+        </div>
+        <div class="m_car_all">
+            <div class="m_z">
+
+            </div>
+            <div class="m_car_going">
+                <p class="m_car_going_tot">总计：￥<span class="red c_total">0</span>元</p>
+                <input type="submit" class="go_cart" value="去购物车结算" />
+            </div>
+        </div>
+        <!--头部购物车黑色开始-->
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 导航ban开始  -->
+    <div class="m_nav">
+        <ul class="body-warp m_nav_main">
+            <li class="nav_li1">
+                <strong>全部商品分类</strong>
+            </li>
+            <!-- 竖排商品的分类开始-->
+            <div class="m_nav_shop">
+                <!-- 商品1-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_1.png" />
+                        <span class="goods_1">蔬菜水果</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var FAV = Objectlist.FirstOrDefault(m => m.Id == 1) as C_Object;
+                                if (FAV != null)
+                                {
+                                    foreach (var clsname in FAV.Subset.Where(m => m.ParentId == FAV.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=1">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品2-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_1.png" />
+                        <span class="goods_1">餐饮半成品</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var DSP = Objectlist.FirstOrDefault(m => m.Id == 2) as C_Object;
+                                if (DSP != null)
+                                {
+                                    foreach (var clsname in DSP.Subset.Where(m => m.ParentId == DSP.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=2">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品3-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_3.png" />
+                        <span class="goods_3">餐饮用品用具</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var CE = Objectlist.FirstOrDefault(m => m.Id == 3) as C_Object;
+                                if (CE != null)
+                                {
+                                    foreach (var clsname in DSP.Subset.Where(m => m.ParentId == CE.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=3">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品4-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_4.png" />
+                        <span class="goods_4">酒水饮料</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var Drinks = Objectlist.FirstOrDefault(m => m.Id == 4) as C_Object;
+                                if (Drinks != null)
+                                {
+                                    foreach (var clsname in DSP.Subset.Where(m => m.ParentId == Drinks.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=4">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品5-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_5.png" />
+                        <span class="goods_5">冷鲜肉类</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var CFM = Objectlist.FirstOrDefault(m => m.Id == 5) as C_Object;
+                                if (CFM != null)
+                                {
+                                    foreach (var clsname in DSP.Subset.Where(m => m.ParentId == CFM.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=5">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品6-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_6.png" />
+                        <span class="goods_6">水产冻货</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var AFG = Objectlist.FirstOrDefault(m => m.Id == 6) as C_Object;
+                                if (AFG != null)
+                                {
+                                    foreach (var clsname in AFG.Subset.Where(m => m.ParentId == AFG.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=6">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品7-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_7.png" />
+                        <span class="goods_7">签单粮油</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var TSOAO = Objectlist.FirstOrDefault(m => m.Id == 7) as C_Object;
+                                if (TSOAO != null)
+                                {
+                                    foreach (var clsname in AFG.Subset.Where(m => m.ParentId == TSOAO.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=7">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品8-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_8.png" />
+                        <span class="goods_8">调料干货</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var DCS = Objectlist.FirstOrDefault(m => m.Id == 8) as C_Object;
+                                if (DCS != null)
+                                {
+                                    foreach (var clsname in AFG.Subset.Where(m => m.ParentId == DCS.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=8">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 商品9-->
+                <div class="nav_goods1">
+                    <div class="goods_h">
+                        <img src="~/Images/mall/goods_9.png" />
+                        <span class="goods_9">特价优惠</span>
+                        <!-- 右边re菜单-->
+                        <ol class="goods_r">
+                            @{
+                                var SO = Objectlist.FirstOrDefault(m => m.Id == 8) as C_Object;
+                                if (SO != null)
+                                {
+                                    foreach (var clsname in AFG.Subset.Where(m => m.ParentId == SO.Id))
+                                    {
+                                        <li><a href="/Mall/list?id=@clsname.Id&Parentid=9">@clsname.Name</a></li>
+                                    }
+                                }
+                            }
+                        </ol>
+                        <!-- 右边re菜单-->
+                    </div>
+                </div>
+                <!-- 竖排商品的分类结束-->
+            </div>
+            @if (Objectlist.Count > 0)
+            {
+                foreach (var Category in Objectlist)
+                {
+                    <li>@Category.Name</li>
+                }
+            }
+
+        </ul>
+    </div>
+    <!--ban-->
+    <div class="body-warp">
+        <a href="">
+            <div class="m_banner">
+                <img src="~/Images/mall/m_ban.jpg">
+            </div>
+        </a>
+    </div>
+    <!-- 导航ban结束 -->
+    <!--contant-->
+    <!--商品开始-->
+    @if (Objectlist.Count > 0)
+    {
+        foreach (var Category in Objectlist)
+        {
+
+            <div class="body-warp m_tit">
+                <h2>@Category.Name</h2>
+                <ul class="m_titr">
+                    @foreach (var product in Category.Subset.Where(m => m.ParentId == Category.Id))
+                    {
+                        <li><a href="/Mall/list?id=@product.Id&Parentid=@product.ParentId">@product.Name</a></li>
+                    }
+                    <span><a href="/Mall/list?id=@Category.Id&Parentid=0">更多 》</a></span>
+                </ul>
+            </div>
+            <div class="body-warp m_con">
+                <ul class="m_content">
+                    @foreach (var product in Category.Subset.Where(m => m.ParentId == Category.Id))
+                    {
+                        foreach (var goods in product.Subset.Where(m => m.ParentId == product.Id))
+                        {
+                            <li class="con_goods">
+                                <div class="cart_prom">商品已添加到购物车</div>
+                                <input type="hidden" value="@goods.Id" class="goodsid" />
+                                <div class="con_goods_img">
+                                    <img src="@goods.G_Goods.C_File.FileName">
+                                </div>
+                                <h3 class="con_goods_tit">@goods.G_Goods.Title</h3>
+                                @if (!string.IsNullOrEmpty(goods.Description))
+                                {
+                                    <p> @Html.Raw(goods.Description.Length > 29 ? goods.Description.Substring(0, 29) : goods.Description);</p>
+                                }
+                                <div class="m_price">
+                                    <span>@goods.G_Name.Unit</span>
+                                    <strong>￥<b>@goods.G_Goods.Price</b>元/包</strong>
+                                </div>
+                                <ol class="goods_num">
+                                    <div class="goods_num_choice">
+                                        <a href="javascript:void(0)" class="choice1">-</a>
+                                        <input type="text" value="1" class="num_choice" onkeyup="value=value.replace(/[^\d]/g,'')">
+                                        <a href="javascript:void(0)" class="choice2">+</a>
+                                    </div>
+                                    <span class="goods_car">
+                                        <img src="~/Images/mall/goods_car1.png" />
+                                    </span>
+                                </ol>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+    }
+</form>
+<!--商品开始-->
+<!-- 合作单位开始   -->
+<div class="warp-7 zhuan_7 m_hz">
+    <div class="body-warp">
+        <div class="del-tit4">合作单位</div>
+        <div class="hezuo">
+            <ul class="hezuo-s">
+                <li class="on spnlinktype" linktypekey="@((int)LinkType.政府合作)">@LinkType.政府合作</li>
+                <li class="spnlinktype" linktypekey="@((int)LinkType.媒体合作)"> @LinkType.媒体合作</li>
+                <li class="spnlinktype" linktypekey="@((int)LinkType.开发商合作)">@LinkType.开发商合作</li>
+                <li class="spnlinktype" linktypekey="@((int)LinkType.代理商合作)"> @LinkType.代理商合作</li>
+                <li class="spnlinktype" linktypekey="@((int)LinkType.网站合作)"> @LinkType.网站合作</li>
+            </ul>
+            <ul class="hezuo-x">
+                @if (LinkTypes != null && LinkTypes.Count > 0)
+                {
+                    foreach (var item in LinkTypes)
+                    {
+                        <li>
+                            @if (item.LinkType == 1)
+                            {
+                                <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:block">@item.NAME</a>
+                            }
+                            else
+                            {
+                                <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:none">@item.NAME</a>
+                            }
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $(".spnlinktype").click(function () {
+                $(this).attr("class", "on spnlinktype").siblings().attr("class", "spnlinktype");
+                var linktype = $(this).attr("linkTypeKey");
+                $(".linktypereuslt").each(function () {
+                    if ($(this).attr("typekey") == linktype) {
+                        $(this).css("display", "inline");
+                    } else {
+                        $(this).css("display", "none");
+                    }
+
+                });
+            });
+        });
+
+    </script>
+    <!-- 合作单位结束  -->

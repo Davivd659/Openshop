@@ -1,0 +1,340 @@
+﻿@{
+    ViewBag.Title = "Regist";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<link rel="stylesheet" type="text/css" href="/css/pptm.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<title>用户注册 - 开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+
+	<body onselectstart="return false">
+		
+		<header id="dt-hd" class="navstyle3" style="text-align: left;">
+			<div style="width:98%;padding-left:1%;line-height:40px;font-size: 16px;font-weight: bold;float:left;">
+				快速注册
+			</div>
+			
+			
+		</header>
+		<style>
+			.service_content {
+			        display: none;
+			        position: fixed;
+			        top: 0;
+			        width: 100%;
+			        background: #fff;
+			        right: 0;
+			        height: 100%;
+			        z-index: 11; 
+			        overflow:auto;
+			    }
+			    .service_content h1#hideSel {
+			        font-size: 18px;
+			        padding-left: 15px;
+			        height: 44px;
+			        line-height: 44px;
+			        position: relative;
+			        text-align: center; 
+			    }
+			    .service_content h1#hideSel::after {
+			        position: absolute;
+			        border-right: solid #999 2px;
+			        border-bottom: solid #999 2px;
+			        -webkit-transform: rotate(135deg);
+			        content: '';
+			        height: 16px;
+			        width: 16px;
+			        top: 15px;
+			        left: 15px; 
+			    }
+			    body{
+			         background: #f7f7f7;
+			    }
+		</style>
+		<form action="" method="post">
+			<input name="timer" id="timer" value="120" type="hidden">
+			<section class="user-login-frame">
+				<div id="phone_div">
+                    <input placeholder="输入手机号" name="Moblie" class="reg_info" id="setphone" type="text">
+				</div>
+				<h3></h3>
+				<div id="yzm_div">
+					<input placeholder="输入验证码" name="mobile_yzm" class="reg_info" id="valCode" type="text">
+					<a id="hqyzm" href="javascript:void(0)">获取验证码</a>
+				</div>
+				<h3></h3>
+				<div id="username_div">
+					<input placeholder="设置用户名" name="UserName" class="reg_info" id="setUserName" type="text">
+				</div>
+				<h3></h3>
+				<div id="password_div" class="martop">
+					<input placeholder="设置密码  6-20位数字或字母组成" name="Password" class="reg_info" id="setPassword" type="password">
+				</div>
+				<h3></h3>
+				<div id="reg_submitpwd_div" class="martop">
+					<input placeholder="重复密码" name="password" class="reg_info" id="RPassword" type="password">
+				</div>
+				<h3></h3>
+			</section>
+			<input id="reg_submit" class="invoice-save-button" value="注册" type="submit">
+			<h4 class="agreement">注册既视为同意 <a href="javascript:void(0);" class="service_show">《开店ing服务协议》</a></h4>
+		</form>
+		<style type="text/css">
+			.serivce{
+			        overflow: hidden;
+			        overflow-y: scroll;
+			        -webkit-overflow-scrolling: touch;
+			    }
+			    #hideSel{
+			        border-bottom:solid 1px #e3e3e3    
+			    }
+		</style>
+		<script>
+			$(function () {
+			        var wh = $(window).height() - 55;
+			        $('.serivce').height(wh);
+			    })
+		</script>
+		<div class="service_content" style="display: none">
+			<h1 id="hideSel">服务条款</h1>
+			<article style="height: 728px;" class="serivce">
+				<h1>免责条款</h1> 欢迎使用开店ing！任何使用开店ing的用户均应仔细阅读本声明，用户可选择不使用开店ing，用户使用开店ing的行为，包括进入开店ing主页及各层页面将被视为对本声明全部内容的认可。
+				<br> 开店ing所有刊登内容，以及所提供的信息资料，目的是为了更好地服务我们的访问者，本网站不保证所有信息、文本、图形、链接及其它 项目的绝对准确性和完整性，故仅供访问者参照使用。
+				<br> 开店ing不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不做担保。对于因不可抗力或开店ing不能控 制的原因造成的网络服务中断或其他缺陷，开店ing不承担任何责任，但将尽力减少因此而给用户造成的损失和 影响.开店ing严格保障用户隐私权，对上网用户的个人信息保密，未经上网用户同意不得向他人泄露，但法律另有规定的除外.用户自愿注 册个人信息，用户在注册时提供的所有信息，都是基于自愿，用户有权在任何时候拒绝提供这些信息。注册个人信息的用户同意开店ing对这些信息进行善意利用。用
+				户明确同意其使用开店ing网络服务所存在的风险将完全由其自己承担。
+				<br> 任何单位或个人认为通过开店ing的内容（或通过开店ing到的第三方内容：例如，口袋资源分享）可能涉嫌侵犯其合法权益，应该及时向土 巴兔书面反馈，并提供身份证明、权属证明及详细侵权情况证明，开店ing在收到上述法律文件后，将会尽快删除被控侵权内容。
+				<br> 除开店ing注明之服务条款外，其它因使用开店ing而引致之任何意外、疏忽、合约毁坏、诽谤、版权或知识产权侵犯及其所造成的各种损失 （包括因下载而感染电脑病毒），开店ing概不负责，亦不承担任何法律责任。
+				<br> 任何透过开店ing网页而链接及得到之资讯、产品及服务，开店ing概不负责，亦不负任何法律责任。
+				<br> 开店ing内所有内容并不反映任何开店ing之意见及观点。
+				<br> 开店ing适用于中华人民共和国法律法规规定的其它有关免责规定。
+				<br>
+				<br>
+				<h1>用户协议</h1> 1、协议生效条件
+				<br> 开店ing的各项服务的所有权和运作权归开店ing所有。开店ing提供的服务将完全按照其发布的章程、服务条款和操作规则严格执行。用户完 全完成注册程序，此协议即时生效，您随之成为开店ing的注册用户。
+				<br> 2、注册义务
+				<br> 开店ing通过国际互联网为用户提供网络服务。同时，用户必须：
+				<br> (1)自行配备上网的所需设备，包括个人电脑、调制解调器或其他必备上网装置；
+				<br> (2)自行负担个人上网所支付的与此服务有关的电话费用、网络费用。
+				<br> 为了能使用本服务，您同意以下事项∶
+				<br> (a)依本服务注册表的提示提供您本人真实、正确、最新及完整的资料；
+				<br> (b)维持更新您个人用户信息，确保其真实、正确、最新及完整。若您提供任何错误、不实、过时或不完整的资料，并为开店ing所确知, 或者开店ing有合理的理由怀疑前述资料为错误、不实、过时或不完整，开店ing有权暂停或终止您的帐号，并拒绝您于现在和未来使用土巴 兔全部或部分的服务。
+				<br> (c)用户必须同意接受开店ing通过电子邮件或其他方式向用户发送广告或其他相关商业信息。
+				<br> 3、隐私制度
+				<br> 尊重用户个人隐私是开店ing的一项基本政策。所以，作为对用户注册资料分析的补充，开店ing不会在未经合法用户授权时公开、编辑或透 露其注册资料及保存在开店ing中的非公开内容。除非有法律许可要求或开店ing在诚信的基础上认为透露这些信息在以下情况是必要的：
+				<br> (1) 遵守有关法律规定，遵从开店ing合法服务程序；
+				<br> (2) 保持维护开店ing的商标所有权；
+				<br> (3) 在紧急情况下竭力维护用户个人和社会大众的隐私安全；
+				<br> (4) 符合其他相关的要求。
+				<br> 4、用户信息的存储与限制
+				<br> 开店ing不对用户所发布信息的删除或储存失败负责。开店ing有判定用户的行为是否符合开店ing服务条款的要求和精神的保留权利，如果用 户违背了服务条款的规定，开店ing有中断对其提供网络服务的权利。
+				<br> 5、服务条款的修改
+				<br> 开店ing有权在必要时修改服务条款。开店ing服务条款一旦发生变动，将会在重要页面上提示所修改的内容。如果不同意所改动的内容，用 户可以主动取消获得的网络服务。如果用户继续享用网络服务，则视为接受服务条款的变动。开店ing保留随时修改或中断服务而不需照知 用户的权利。开店ing行使修改或中断服务的权利，不需对用户或第三方负责。 6、拒绝提供担保
+				<br> 用户对网络服务的使用承担风险。开店ing对此不作任何类型的担保，不论是明确的或隐含的，但是不对商业性的隐含担保、特定目的和不 违反规定的适当担保作限制。
+				<br> 7、有限责任
+				<br> 开店ing对任何直接、间接、偶然、特殊及继起的损害不负责任，这些损害可能来自：不正当使用网络服务，在网上购买商品或进行同类型 服务，在网上进行交易，非法使用网络服务或用户传送的信息有所变动。
+				<br> 8、服务的结束
+				<br> 用户或开店ing可随时根据实际情况中断一项或多项网络服务。开店ing不需对任何个人或第三方负责而随时中断服务。用户对后来的条款修 改有异议，或对开店ing的服务不满，可以行使如下权利：(a)停止使用开店ing的网络服务；(b) 通告开店ing停止对该用户的服务.结束用户 服务后，用户使用网络服务的权利马上中止。从那时起，用户没有权利，开店ing也没有义务传送任何未处理的信息或未完成的服务给用户或第三方。
+				<br> 9、用户管理
+				<br> 用户单独承担发布内容的责任。用户对服务的使用是根据所有适用于开店ing的国家法律、地方法律和国际法律标准的。
+				<br> 用户必须遵循：
+				<br> (1)从中国境内向外传输技术性资料时必须符合中国有关法规；
+				<br> (2)使用网络服务不作非法用途；
+				<br> (3)不干扰或混乱网络服务；
+				<br> (4)遵守所有使用网络服务的网络协议、规定、程序和惯例。
+				<br> (5)转贴文章或者上传他人设计作品时事先征得原作者同意，并注明"原作者姓名及出处，版权仅归原作者所有"开店ing对可能由此产 生侵权的直接或间接结果不必承担任何责任。
+				<br> (6)用户须承诺不传输任何非法的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、伤害性的、庸俗的，淫秽等信息资料。另外，用户也不能传输任何教唆他人构 成犯罪行为的资料；不能传输助长国内不利条件和涉及国家安全的资料；不能传输任何不符合当地法规, 国家 法律和国际法律的资料。
+				<br> 10、内容的权利
+				<br> (1)用户对于其创作并在开店ing上发布的合法信息依法享有著作权及其相关权利。
+				<br> (2)对于用户通过开店ing网络服务上传到开店ing网站上可公开获取区域的任何信息，用户同意开店ing在全世界范围内具有永久性的、不可撤销的权利和免许可费、 可完全转授的权利。开店ing可将用户通过开店ing网络服务上传到开店ing网站上可公开获取区域的任何信息免费 进行复制、修改、改编等以用于开店ing业务，并可通过各种形式免费使用上述信息
+				<br> 11、用户的广告宣传
+				<br> 用户在自己发表的信息中加入宣传资料或参与广告策划，在开店ing的免费服务上展示他们的产品，任何这类促销方法，包括运输货物、付 款、服务、商业条件、担保及与广告有关的描述都只是在相应的用户和广告销售商之间发生。开店ing不承担任何责任，开店ing没有义务为 这类广告销售负任何一部分的责任。
+				<br> 12、法律
+				<br> 网络服务条款要与中华人民共和国的法律解释相一致，用户和开店ing一致同意服从高等法院所管辖。如发生开店ing服务条款与中华人民共和国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它条款则依旧保持对用户产生法律效力和影响。
+				<br> 在任何情况下，开店ing用户不得利用开店ing进行违反或可能违反国家法律和法规的言论或行为，否则，开店ing可在任何时候不经任何事先通知终止向您提供服务。并且用户对自己的言论或行为负责。
+				<br>
+				<br>
+				<h1>版权声明|Copyright</h1> 润嘉众合（北京）科技发展有限公司（以下简称"众合科技"）拥有开店ing网站（www.Tubatu.com）内所有资料的版权。
+				<br> 众合科技对其发行的或与合作公司共同发行的包括但不限于产品或服务的全部内容及开店ing网站上的材料拥有版权等知识产权受法律保护。未经本公司书面许可，任 何单位及个人不得以任何方式或理由对上述产品、服务、信息、材料的任何部分进行使用、复制、修改、抄录、传播或与其它产品捆绑使用、销售。
+				<br> 凡侵犯本公司版权等知识产权的，本公司必依法追究其法律责任。
+				<br> 本公司法律事务部受本公司指示，特此郑重法律声明！
+				<br>
+				<br>
+
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</article>
+		</div>
+		<br>
+		<script>
+			var times = 120;
+			    $(function () {
+			        $(".reg_info").blur(function () {
+			            $(this).parent('div').children('span').remove();
+			            $(this).parent('div').next("h3").text('');
+			        });
+			
+			        $("#reg_submit").click(function () {
+			            var flag = 1;
+			            if (!$.trim($("#setUserName").val())) {
+			                $("#username_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入用户名");
+			                flag = 0;
+			            }
+			            if (!$.trim($("#setphone").val())) {
+			                $("#phone_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入电话号码");
+			                flag = 0;
+			            }
+			            if (!$.trim($("#setPassword").val())) {
+			                $("#password_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入密码");
+			                flag = 0;
+			            } else if ($.trim($("#setPassword").val()).length < 6) {
+			                $("#password_div").append('<span class="pptm-icon"></span>').next('h3').text("密码必须大于6个字符");
+			                flag = 0;
+			            }
+			            if (!$.trim($("#RPassword").val())) {
+			                $("#reg_submitpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入确认密码");
+			                flag = 0;
+			            } else if ($("#RPassword").val() != $("#setPassword").val()) {
+			                $("#reg_submitpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("两次密码不一致");
+			                flag = 0;
+			            }
+			            if (!$.trim($("#valCode").val())) {
+			                $("#yzm_div").next('h3').text("请输入验证码");
+			                flag = 0;
+			            }
+			           
+			            $.ajax({
+			                type: "GET",
+			                url: "/Login/ValidateMobile",
+			                data: { Phone: $("#setphone").val(), Code: $("#valCode").val() },
+			                success: function (data) {
+			                    if (data == 'ok') {
+			                        $("#timer").val(times);
+			                    } else {
+			                        $("#yzm_div").next('h3').text("验证码不正确！");
+			                        return false;
+			                    }
+			                }
+			            });
+
+			            //if (_valCode == 0) {
+			            //    $("#yzm_div").next('h3').text("验证码不正确！");
+			            //    flag = 0;
+			            //}
+			            if (!flag) {
+			                return false;
+			            }
+			            //$("#timer").val(times);
+			        });
+			
+			        $("#hqyzm").click(function () {
+			            var phone = $("#setphone").val();
+			            if (phone == "") { alert("请输入手机号"); return;}
+			            if ($(this).attr('disabled') != 'disabled') {
+			                $('#hqyzm').attr('disabled', 'disabled');
+			                $.ajax({
+			                    type: "GET",
+			                    url: "/Login/ajaxSend",
+			                    data: { phone: $("#setphone").val() },
+			                    success: function (data) {
+			                        if (data == '-1')
+			                        {
+			                            alert('验证码申请太频繁，请稍后再试！');
+			                        } else
+			                        {
+			                            times = 60;
+			                            send_agin();
+			                        }
+			                    }
+			                });
+			            }
+			        });
+			        function validatePhone() {
+			            _flag = 0;
+
+			            $.ajax({
+			                type: "GET",
+			                url: "/Login/ValidateMobile",
+			                data: { Phone: $("#setphone").val(), Code: $("#valCode").val() },
+			                success: function (data) {
+			                    if (data == 'ok') {
+			                        _flag = 1;
+			                    } else {
+			                        _flag = 0;
+			                    }
+			                }
+			            });
+			            alert("validatePhone-"+_flag);
+			            return _flag;
+			        }
+
+			        $('.service_show').on('click', function (e) {
+			            $('.service_content').show().addClass('showprovince');
+			        });
+			
+			        $('#hideSel').on('touchstart', function (e) {
+			            e.preventDefault();
+			            e.stopPropagation();
+			            $('.service_content').hide().addClass('hideprovince');
+			        });
+			    });
+			
+			    //send_agin();
+			    function send_agin() {
+			        times = times - 1;
+			        var showtime = '';
+			        if (times > 0) {
+			            setyzm = setTimeout('send_agin()', 1000);
+			            showtime = times + '秒后获取';
+			            $('#hqyzm').text(showtime);
+			        } else {
+			            $('#hqyzm').removeAttr('disabled');
+			            $('#hqyzm').text('重新获取验证码');
+			        }
+			    }
+		</script>
+		<script >
+            var msg = "";
+            @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+            if (msg != "") {
+                alert(msg);
+
+            }
+        </script>
+		<div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+			<div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+				<div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+					<div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+					<div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+						<div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

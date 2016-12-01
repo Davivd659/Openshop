@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "增加店铺";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+        .col-sm-1 {
+            min-width: 120px;
+        }
+
+        #create-warning {
+            display: none;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加店铺图片</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ShopBrand/PhotoAdd" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+          <div class="form-group">
+                <label class="col-sm-1 control-label">图片</label>
+                <input accept="png|jpeg|jpg" type="file" name="BrandPhoto" class="form-control" required="required" />
+                <p style="padding-top:7px;padding-left:20px;display:inline-block; color:red;">建议图片尺寸640*358</p>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">增 加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

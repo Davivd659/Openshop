@@ -1,0 +1,138 @@
+﻿@using YG.SC.Model.Project;﻿
+@model ProjectDetailsViewModel
+
+<meta name="keywords" content="开店ing,创业,润嘉众合,写字楼出租,写字楼出售" />
+<meta name="description" content="根据项目的基本信息介绍、行业、区域、地铁周边、类型、租售状态、开盘时间进行搜索，及相关结果推荐。">
+@{
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
+}
+@section Scripts
+{
+    <link href="/Content/project.css" rel="stylesheet" />
+    <link href="/content/projectsearch.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+}
+
+<div class="kd-index">
+    <div class="search-warp">
+        <div class="searchbox">
+            <div class="rightmod"></div>
+            <div class="site-search">
+                <input type="text" class="site-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." id="txtKeys" name="txtKeys" value="@ViewBag.Keys" />
+                <input type="button" class="site-search-btn btn" value="搜索" id="btn_site_search" />
+            </div>
+            <div class="searchfeater">
+                <div class="project_st">
+                    @Html.Raw(ViewBag.Filter)
+                </div>
+            </div>
+            <div class="rightmod modlast"></div>
+        </div>
+        @{
+            var updata = (Tuple<YG.SC.DataAccess.ShopProject[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+            var array = (YG.SC.Model.Project.ProjectDetailsViewModel[])ViewBag.array;
+        }
+        <div class="kd-result">
+            <div class="kd-s-head">已为您搜索到 <span>@updata.Item2.Total</span>个 房源</div>
+            <div class="kd-prolist">
+                <div id="container">
+                    <ul class="col">
+
+                        @if (array != null && array.Count() > 0)
+                        {
+                            for (int i = 0; i < array.Count(); i++)
+                            {
+                                var proj = array[i];
+                                <li class="kd-li">
+                                    <div class="kd-imgbox">
+                                        <div class=""><a href="/Project/index?id=@proj.Id"><img width="318" height="206" src="@proj.PhotoUrlSmall" /></a></div>
+                                        <div class="kd-pricebox">
+                                            ￥
+                                            <br />@YG.SC.OpenShop.Controllers.ProjectController.GetSalePrice(proj.SalePrice)
+                                        </div>
+                                    </div>
+                                    <div class="kd-info">
+                                        <h4>@proj.Name</h4>
+                                        <p>@proj.ProjectFeature</p>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!--container end-->
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<script language="javascript">
+    function GetRequest(){
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+</script>
+<script type="text/javascript">
+    var ct = 0;
+    var pg = 1;
+    $(function () {
+        //url data function dataType
+        function loadMeinv() {
+            pg = pg + 1;
+            var Request = GetRequest();
+            var sqUrl = "/project/SearchView?keys=" + Request["keys"];
+            sqUrl = sqUrl + "&industry="+Request["industry"];
+            sqUrl = sqUrl + "&quyu=" + Request["quyu"];
+            sqUrl = sqUrl + "&subway=" + Request["subway"];
+            sqUrl = sqUrl + "&type=" + Request["type"];
+            sqUrl = sqUrl + "&pricerent=" + Request["pricerent"];
+            sqUrl = sqUrl + "&pricesale=" + Request["pricesale"];
+            sqUrl = sqUrl + "&status=" + Request["status"];
+            sqUrl = sqUrl + "&opentime=" + Request["opentime"];
+            sqUrl = sqUrl + "&PageIndex=" + pg;
+
+            if(pg<=@updata.Item2.Step)
+            {
+                $.get(sqUrl, function (data){
+                    $minUl = getMinUl();
+                    $minUl.append(data);
+            });
+        }
+    }
+    //无限加载
+    $(".kd-prolist").on("scroll", function() {
+        $minUl = getMinUl();
+        if ($minUl.height() <= $(".kd-prolist").scrollTop() + $(".kd-prolist").height()) {
+            //当最短的ul的高度比窗口滚出去的高度+浏览器高度大时加载新图片
+            loadMeinv();//加载新图片
+        }
+    });
+    function getMinUl() {//每次获取最短的ul,将图片放到其后
+        var $arrUl = $("#container .col");
+        var $minUl = $arrUl.eq(0);
+        $arrUl.each(function (index, elem) {
+            if ($(elem).height() < $minUl.height()) {
+                $minUl = $(elem);
+            }
+        });
+        return $minUl;
+    }
+    //点击更多加载
+    $("#loadMeinvMOre").click(function () {
+        $minUl = getMinUl();
+        loadMeinv();
+    });
+
+    })
+</script>

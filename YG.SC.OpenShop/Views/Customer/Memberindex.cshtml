@@ -1,0 +1,78 @@
+﻿@using YG.SC.DataAccess;
+@using System.IO
+@model YG.SC.DataAccess.ShopBrand
+@{
+    ViewBag.Title = "会员中心";
+    S_Message[] _messageList = (S_Message[])ViewBag.message;
+    var customer = (Customer)ViewBag.customer;
+	int _countOfPendingMission = (int)ViewBag.CountOfPendingMission;
+}
+
+
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">会员中心</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_topbox">
+                    <div class="utc_right_topbox_userbox">
+                        @if (Model != null)
+                        {
+                            <div class="logobox">
+                                <img src="@Html.Raw(File.Exists(Server.MapPath("~"+Model.Logo))? Model.Logo: "/Images/icon/1_06.jpg")" alt="@Model.Name" style="width:106px;height:106px;">
+                            </div>
+                            <span class="Blac   k16">@Model.Name</span><br>
+                            <img src="~/Images/icon/7_03.png" class="litimg">   <span class="Black14">品牌会员</span>
+                        }
+                        else if (customer != null)
+                        {
+                            <div class="logobox">
+                                <img src="@Html.Raw(File.Exists(Server.MapPath("~" + customer.portrait)) ? customer.portrait : "/Images/icon/1_06.jpg")" style="width:106px;height:106px;" alt="">
+                            </div>
+                            <span class="Black16">@customer.Name</span><br>
+                            <img src="~/Images/icon/7_02.png" class="litimg"> <span class="Black14">普通会员</span>
+
+                        }
+
+
+                    </div>
+
+                    <div class="utc_right_topbox_userbox">
+                        <!--<img src="Images/icon/2_03 (2).png" alt=""><br>-->
+                        <div class="utc_right_topbox_money Red14b">0.00</div>
+                        <span class="Black14">账户余额（元）</span><br>
+                    </div>
+
+                    <div class="utc_right_topbox_menubox">
+                        <ul class="ul_utc_right_topbox_menu">
+                            <li><a href="@Html.Raw(_countOfPendingMission > 0 ? "/Mission/List?IsPending=true" : "#")"><img src="~/Images/icon/4_09.png"><br>待处理任务<span class="red">@_countOfPendingMission</span></a></li>
+                            <li><a href=""><img src="~/Images/icon/3_11.png"><br>待发货商品<span class="red">2</span></a></li>
+                            <li style="border: 0px;"><a href=""><img src="~/Images/icon/5_13.png"><br>待确认商品<span class="red">2</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="utc_right_bottombox">
+                    <div class="utc_right_bottombox_title Black14">消息中心</div>
+                    <ul class="ul_right_bottombox_news Black14">
+                        @if (_messageList != null && _messageList.Count() > 0)
+                        {
+                            <ul class="ul_right_bottombox_news Black14">
+                                @foreach (S_Message msg in _messageList)
+                                {
+                                    <li><a href="@msg.DetailsUrl">@msg.Message</a></li>
+                                }
+                            </ul>
+                        }
+                    </ul>
+
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

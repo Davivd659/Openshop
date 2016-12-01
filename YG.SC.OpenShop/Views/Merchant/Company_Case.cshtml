@@ -1,0 +1,117 @@
+﻿@model YG.SC.DataAccess.OpenShopPhoto
+@{
+    ViewBag.Title = "案例信息";
+}
+<link href="~/Content/back.css" rel="stylesheet" />
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<script src="/Scripts/jquery-2.1.1.js"></script>
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+
+        </div>
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">案例信息</div>
+            <div class="utc_right_title_right red">图片文件后缀支持jpg、png、gif，上传图片大小建议在4M以下</div>
+            <div class="clear"></div>
+            <div class="utc_right_uc" style="padding:40px 0px">
+                <form action="/Merchant/Company_Case/@Model.OpenShopId" role="form" method="POST" enctype="multipart/form-data">
+                    <div class="add_imgbox" style="margin:0px auto">
+                            <div id="photolist"></div>
+                            <div class="addimginfobox" style="margin-left:6%;">
+                                <div class="addimgcontentbox"><img src="/Images/9_03.jpg" width="300" height="210" alt=""></div>
+                                <div class="addimgmiaoshubox">
+                                    标题：<input type="text" name="" id="" value="" /><br>
+                                    描述：<textarea></textarea>
+                                </div>
+                                <div class="clear"></div>
+                                <input class="addimgimg_button uploadimg" type="button" value="添加" style="margin-top: 5px;" />
+                            </div>
+                            <div class="clear"></div>
+                        
+
+                    </div>
+                    <div class="clear"></div>
+                    <!--上传案例图片-->
+                    <div class="utc_tagbox tanchuang" id="alertc" style="width:600px;">
+                        <div class="utc_tagbox_header Write14">上传案例信息</div>
+                        <div class="utc_tagbox_tbody Black14">
+                            <div class="add_sjmenubox Gray14" style="margin-top:10px;width:20%;">案例图片：</div>
+                            <div class="add_sjcontentbox" style="margin-top:10px;width:80%;">
+                                <input id="id" name="id" type="hidden" value="@Model.Id" />
+                                <input id="OpenShopId" name="OpenShopId" type="hidden" value="@Model.OpenShopId" />
+                                <img src="@Html.Raw(string.IsNullOrEmpty(Model.Photo) == true ? "/Images/9_03.jpg" : Model.Photo)" width="300" height="210" alt="">
+                                <input type="hidden" id="Photo" name="Photo" value="@Model.Photo" />
+                                <input type="hidden" id="PhotoSmall" name="PhotoSmall" value="@Model.PhotoSmall" />
+                                <input type="hidden" id="PhotoSquare" name="PhotoSquare" value="@Model.PhotoSquare" />
+                                <input type="hidden" id="PhotoRectangle" name="PhotoRectangle" value="@Model.PhotoRectangle" />
+                                <button class="addimgimg_button" type="button" id="imgsubmit" style="margin-left:20px;" onclick="OpenShopPhoto.click()">上传</button>
+                                <input type="file" id="OpenShopPhoto" name="OpenShopPhoto" style="display:none" onchange="upfile.value=this.value" />
+                            </div>
+                            <div class="add_sjmenubox Gray14" style="width:20%;">标题：</div>
+                            <div class="add_sjcontentbox" style="width:80%;">
+                                <input type="text" name="title" id="title" value="@Model.title" style="width:70%;background-color: #fff;" required="required" oninvalid="setCustomValidity('请输入图片标题！');" oninput="    setCustomValidity('');" placeholder="请输入图片标题" />
+                            </div>
+                            <div class="add_sjmenubox Gray14" style="width:20%;">描述：</div>
+                            <div class="add_sjcontentbox" style="width:80%;">
+                                <textarea name="Rmark" id="Rmark" required="required" oninvalid="setCustomValidity('请输入图片描述！');" oninput="    setCustomValidity('');" placeholder="请输入图片描述">@Model.Rmark</textarea>
+                            </div>
+                        </div>
+                        <div class="utc_tagbox_footer">
+                            <button class="add_sjbutton" type="submit" style="margin:0px;">确认</button>
+                            <button class="add_sjbutton hide1" type="button" style="margin:0px 0px 0px 40px;">取消</button>
+                        </div>
+                    </div>
+                    <!--上传案例图片-->
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        if ($("#Photo").val() != "") {
+            $("#alertc").show();
+            $("#imgsubmit").val("修改");
+        } else {
+            $("#alertc").hide();
+        }
+        phlist();
+    })
+    $("#OpenShopPhoto").change(function () {
+        $('form').attr('action', '/Merchant/EditPhoto');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("form").on("click", ".uploadimg", function () {
+        if ($("#alertc").hide()) {
+            $("#id").val($(this).parents(".addimginfobox").find(".OpenShopphoto").val());
+            $("#title").val("");
+            $("#Rmark").val("");
+            $("#alertc").show();
+        }
+        else {
+            $("#alertc").hide();
+
+        }
+    })
+    $("form").on("click", ".hide1", function () {
+        $("#alertc").hide();
+    })
+    function phlist() {
+        $.ajax({
+            url: "/Merchant/CasePartial",
+            type: 'post',
+            anync: false,
+            data: { OpenShopId: $("#OpenShopId").val() },
+            success: function (data) {
+                $("#photolist").html(data);
+            }, error: function () {
+                $("#photolist").html("加载数据失败");
+            }
+        })
+    }
+</script>

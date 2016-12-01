@@ -1,0 +1,1558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OpenShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerGroupOn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupMode" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LinkType" Type="Int32" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OpenShopPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenShopId" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoSmall" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoSquare" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoRectangle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OpenShop" Relationship="OpenShopModel.FK__OpenShopP__OpenS__1BC821DD" FromRole="OpenShopPhoto" ToRole="OpenShop" />
+    <Property Name="Rmark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OpenShopShopProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenShopId" Type="Int32" Nullable="false" />
+    <Property Name="ShopProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShopProject" Relationship="Self.FK__OpenShopS__ShopP__236943A5" FromRole="OpenShopShopProject" ToRole="ShopProject" />
+    <NavigationProperty Name="OpenShop" Relationship="OpenShopModel.FK__OpenShopS__OpenS__22751F6C" FromRole="OpenShopShopProject" ToRole="OpenShop" />
+  </EntityType>
+  <EntityType Name="ProjectPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopProjectId" Type="Int32" Nullable="false" />
+    <Property Name="PhotoName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoUrlSmall" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <Property Name="CreatTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ShopProject" Relationship="Self.FK_ProjectPhoto_ShopProject_ID" FromRole="ProjectPhoto" ToRole="ShopProject" />
+    <Property Name="Type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProjectService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopProjectId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PicUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsMvp" Type="Boolean" />
+    <Property Name="Status" Type="Byte" />
+    <NavigationProperty Name="ShopProject" Relationship="Self.FK_ProjectService_ShopProject" FromRole="ProjectService" ToRole="ShopProject" />
+    <Property Name="Job" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShopAttributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AttributeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DisplaySequence" Type="Int32" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="UsageMode" Type="Int32" Nullable="false" />
+    <Property Name="UseAttributeImage" Type="Boolean" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShopBrandAttributeValues" Relationship="Self.FK__ShopBrand__Attri__2A4B4B5E" FromRole="ShopAttributes" ToRole="ShopBrandAttributeValues" />
+    <NavigationProperty Name="ShopProjectAttributesValues" Relationship="OpenShopModel.FK__ShopProje__AttrI__08B54D69" FromRole="ShopAttributes" ToRole="ShopProjectAttributesValues" />
+    <NavigationProperty Name="OpenShopAttributeValues" Relationship="OpenShopModel.FK__OpenShopA__Attri__4D5F7D71" FromRole="ShopAttributes" ToRole="OpenShopAttributeValues" />
+  </EntityType>
+  <EntityType Name="ShopAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AttributeId" Type="Int32" Nullable="false" />
+    <Property Name="DisplaySequence" Type="Int32" Nullable="false" />
+    <Property Name="ValueStr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShopBrandAttributeValues" Relationship="Self.FK__ShopBrand__Attri__2B3F6F97" FromRole="ShopAttributeValues" ToRole="ShopBrandAttributeValues" />
+    <NavigationProperty Name="ShopProjectAttributesValues" Relationship="OpenShopModel.FK__ShopProje__AttrV__09A971A2" FromRole="ShopAttributeValues" ToRole="ShopProjectAttributesValues" />
+    <NavigationProperty Name="OpenShopAttributeValues" Relationship="OpenShopModel.FK__OpenShopA__Attri__4E53A1AA" FromRole="ShopAttributeValues" ToRole="OpenShopAttributeValues" />
+  </EntityType>
+  <EntityType Name="ShopBasAcrRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AcrName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AcrFrom" Type="Double" Nullable="false" />
+    <Property Name="AcrEnd" Type="Double" Nullable="false" />
+    <Property Name="AcrCustomOrder" Type="Int32" Nullable="false" />
+    <Property Name="AcrCreatedtime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ShopBasOpeningTime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpeningName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OpeningTimeDay" Type="Int32" />
+    <Property Name="CustomOrder" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ShopBasPriceRentRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RPName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RPFrom" Type="Double" Nullable="false" />
+    <Property Name="RPEnd" Type="Double" Nullable="false" />
+    <Property Name="RPCustomerOrder" Type="Int32" Nullable="false" />
+    <Property Name="RPCreatedtime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ShopBasPriceSaleRange">
+    <Key>
+      <PropertyRef Name="PRID" />
+    </Key>
+    <Property Name="PRID" Type="Int32" Nullable="false" />
+    <Property Name="PRName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRFrom" Type="Double" Nullable="false" />
+    <Property Name="PREnd" Type="Double" Nullable="false" />
+    <Property Name="PRCustomOrder" Type="Int32" Nullable="false" />
+    <Property Name="PRCreatedtime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ShopBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rmark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="VidoUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <Property Name="QRCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatTime" Type="DateTime" Precision="3" />
+    <Property Name="BrandAD" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShopBrandAttributeValues" Relationship="Self.FK__ShopBrand__Brand__29572725" FromRole="ShopBrand" ToRole="ShopBrandAttributeValues" />
+    <NavigationProperty Name="ShopBrandBranch" Relationship="Self.FK__ShopBrand__Brand__300424B4" FromRole="ShopBrand" ToRole="ShopBrandBranch" />
+    <NavigationProperty Name="ShopBrandPhoto" Relationship="Self.FK__ShopBrand__Brand__35BCFE0A" FromRole="ShopBrand" ToRole="ShopBrandPhoto" />
+    <Property Name="JoinIn" Type="Boolean" />
+    <Property Name="ViewClick" Type="Int32" />
+    <NavigationProperty Name="ApplyBrands" Relationship="OpenShopModel.FK_ApplyBrand_ShopBrand" FromRole="ShopBrand" ToRole="ApplyBrand" />
+    <Property Name="Abbreviation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Contactname" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Contactphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BLS" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="OCC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="OPC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CIC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="AC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TRC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IsAudited" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShopBrandAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" Nullable="false" />
+    <Property Name="AttributesId" Type="Int32" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <Property Name="AttributeValuesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShopAttributes" Relationship="Self.FK__ShopBrand__Attri__2A4B4B5E" FromRole="ShopBrandAttributeValues" ToRole="ShopAttributes" />
+    <NavigationProperty Name="ShopAttributeValues" Relationship="Self.FK__ShopBrand__Attri__2B3F6F97" FromRole="ShopBrandAttributeValues" ToRole="ShopAttributeValues" />
+    <NavigationProperty Name="ShopBrand" Relationship="Self.FK__ShopBrand__Brand__29572725" FromRole="ShopBrandAttributeValues" ToRole="ShopBrand" />
+  </EntityType>
+  <EntityType Name="ShopBrandBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" Nullable="false" />
+    <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BranchAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BranchPhone" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShopBrand" Relationship="Self.FK__ShopBrand__Brand__300424B4" FromRole="ShopBrandBranch" ToRole="ShopBrand" />
+  </EntityType>
+  <EntityType Name="ShopBrandPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoSmall" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoSquare" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoRectangle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShopBrand" Relationship="Self.FK__ShopBrand__Brand__35BCFE0A" FromRole="ShopBrandPhoto" ToRole="ShopBrand" />
+    <Property Name="Rmark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShopProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TeShe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TuanDuiInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YouShi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BQuanShu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BWaiLiMian" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BJieGou" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="JZongJianZhuMianJi" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="JZongChengShu" Type="Int32" />
+    <Property Name="JChengGao" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PChengMianJi" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PZhuLiHuxing" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PWindowOpen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PChengZhongZhu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PHeXinTong" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PHeiFangJian" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="YLiftBrand" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YLiftIntro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YLiftFenQu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YLiftSpeed" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YAirConditoningBrand" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YAirConditoningControl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YPrkingSpace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TeaIntroduction" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Decimal" Precision="18" Scale="15" />
+    <Property Name="Long" Type="Decimal" Precision="18" Scale="15" />
+    <Property Name="Status" Type="Byte" />
+    <NavigationProperty Name="OpenShopShopProject" Relationship="Self.FK__OpenShopS__ShopP__236943A5" FromRole="ShopProject" ToRole="OpenShopShopProject" />
+    <NavigationProperty Name="ProjectPhoto" Relationship="Self.FK_ProjectPhoto_ShopProject_ID" FromRole="ShopProject" ToRole="ProjectPhoto" />
+    <NavigationProperty Name="ProjectService" Relationship="Self.FK_ProjectService_ShopProject" FromRole="ShopProject" ToRole="ProjectService" />
+    <NavigationProperty Name="ShopProjectMain" Relationship="Self.FK_ShopProjectMain_ShopProject" FromRole="ShopProject" ToRole="ShopProjectMain" />
+    <Property Name="CoverPhoto" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ViewClick" Type="Int32" />
+    <Property Name="ShangQuan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectIntro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShopProjectAttributesValues" Relationship="OpenShopModel.FK__ShopProje__ShopP__0A9D95DB" FromRole="ShopProject" ToRole="ShopProjectAttributesValues" />
+    <Property Name="Projecthot" Type="Int32" />
+    <Property Name="Listings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Grouppurchases" Relationship="OpenShopModel.ShopProjectGrouppurchase" FromRole="ShopProject" ToRole="Grouppurchase" />
+  </EntityType>
+  <EntityType Name="ShopProjectMain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TradeId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegionId" Type="Int32" />
+    <Property Name="TradingAreaId" Type="Int32" />
+    <Property Name="CircleLineId" Type="Int32" />
+    <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RentalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MetroId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StateId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OpenDate" Type="DateTime" Precision="3" />
+    <Property Name="Recsts" Type="Int32" />
+    <Property Name="CreatTime" Type="DateTime" Precision="3" />
+    <Property Name="TypeOfOperationId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShopProject" Relationship="Self.FK_ShopProjectMain_ShopProject" FromRole="ShopProjectMain" ToRole="ShopProject" />
+  </EntityType>
+  <Association Name="FK__OpenShopS__ShopP__236943A5">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="OpenShopShopProject" Type="Self.OpenShopShopProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopShopProject">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectPhoto_ShopProject_ID">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="ProjectPhoto" Type="Self.ProjectPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectPhoto">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectService_ShopProject">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="0..1" />
+    <End Role="ProjectService" Type="Self.ProjectService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectService">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Attri__2A4B4B5E">
+    <End Role="ShopAttributes" Type="Self.ShopAttributes" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="AttributesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Attri__2B3F6F97">
+    <End Role="ShopAttributeValues" Type="Self.ShopAttributeValues" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="AttributeValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__29572725">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__300424B4">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandBranch" Type="Self.ShopBrandBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandBranch">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__35BCFE0A">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandPhoto" Type="Self.ShopBrandPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandPhoto">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopProjectMain_ShopProject">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="ShopProjectMain" Type="Self.ShopProjectMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectMain">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerGroupOn" EntityType="Self.CustomerGroupOn" />
+    <EntitySet Name="Link" EntityType="Self.Link" />
+    <EntitySet Name="OpenShopPhoto" EntityType="Self.OpenShopPhoto" />
+    <EntitySet Name="OpenShopShopProject" EntityType="Self.OpenShopShopProject" />
+    <EntitySet Name="ProjectPhoto" EntityType="Self.ProjectPhoto" />
+    <EntitySet Name="ProjectService" EntityType="Self.ProjectService" />
+    <EntitySet Name="ShopAttributes" EntityType="Self.ShopAttributes" />
+    <EntitySet Name="ShopAttributeValues" EntityType="Self.ShopAttributeValues" />
+    <EntitySet Name="ShopBasAcrRange" EntityType="Self.ShopBasAcrRange" />
+    <EntitySet Name="ShopBasOpeningTime" EntityType="Self.ShopBasOpeningTime" />
+    <EntitySet Name="ShopBasPriceRentRange" EntityType="Self.ShopBasPriceRentRange" />
+    <EntitySet Name="ShopBasPriceSaleRange" EntityType="Self.ShopBasPriceSaleRange" />
+    <EntitySet Name="ShopBrand" EntityType="Self.ShopBrand" />
+    <EntitySet Name="ShopBrandAttributeValues" EntityType="Self.ShopBrandAttributeValues" />
+    <EntitySet Name="ShopBrandBranch" EntityType="Self.ShopBrandBranch" />
+    <EntitySet Name="ShopBrandPhoto" EntityType="Self.ShopBrandPhoto" />
+    <EntitySet Name="ShopProject" EntityType="Self.ShopProject" />
+    <EntitySet Name="ShopProjectMain" EntityType="Self.ShopProjectMain" />
+    <AssociationSet Name="FK__OpenShopS__ShopP__236943A5" Association="Self.FK__OpenShopS__ShopP__236943A5">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="OpenShopShopProject" EntitySet="OpenShopShopProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectPhoto_ShopProject_ID" Association="Self.FK_ProjectPhoto_ShopProject_ID">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ProjectPhoto" EntitySet="ProjectPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectService_ShopProject" Association="Self.FK_ProjectService_ShopProject">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ProjectService" EntitySet="ProjectService" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Attri__2A4B4B5E" Association="Self.FK__ShopBrand__Attri__2A4B4B5E">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Attri__2B3F6F97" Association="Self.FK__ShopBrand__Attri__2B3F6F97">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__29572725" Association="Self.FK__ShopBrand__Brand__29572725">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__300424B4" Association="Self.FK__ShopBrand__Brand__300424B4">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandBranch" EntitySet="ShopBrandBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__35BCFE0A" Association="Self.FK__ShopBrand__Brand__35BCFE0A">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandPhoto" EntitySet="ShopBrandPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopProjectMain_ShopProject" Association="Self.FK_ShopProjectMain_ShopProject">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ShopProjectMain" EntitySet="ShopProjectMain" />
+    </AssociationSet>
+    <EntitySet Name="Customer" EntityType="OpenShopModel.Customer" />
+    <EntitySet Name="ApplyActivity" EntityType="OpenShopModel.ApplyActivity" />
+    <EntitySet Name="ShopAdPosition" EntityType="OpenShopModel.ShopAdPosition" />
+    <EntitySet Name="ShopAdPositionDetails" EntityType="OpenShopModel.ShopAdPositionDetails" />
+    <EntitySet Name="ShopDemo" EntityType="OpenShopModel.ShopDemo" />
+    <EntitySet Name="JobMinute" EntityType="OpenShopModel.JobMinute" />
+    <EntitySet Name="ShopPostings" EntityType="OpenShopModel.ShopPostings" />
+    <EntitySet Name="ShopRoom" EntityType="OpenShopModel.ShopRoom" />
+    <EntitySet Name="OpenShop" EntityType="OpenShopModel.OpenShop" />
+    <AssociationSet Name="FK__OpenShopP__OpenS__1BC821DD" Association="OpenShopModel.FK__OpenShopP__OpenS__1BC821DD">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopPhoto" EntitySet="OpenShopPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopS__OpenS__22751F6C" Association="OpenShopModel.FK__OpenShopS__OpenS__22751F6C">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopShopProject" EntitySet="OpenShopShopProject" />
+    </AssociationSet>
+    <EntitySet Name="ShopProjectAttributesValues" EntityType="OpenShopModel.ShopProjectAttributesValues" />
+    <AssociationSet Name="FK__ShopProje__AttrI__08B54D69" Association="OpenShopModel.FK__ShopProje__AttrI__08B54D69">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProje__AttrV__09A971A2" Association="OpenShopModel.FK__ShopProje__AttrV__09A971A2">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProje__ShopP__0A9D95DB" Association="OpenShopModel.FK__ShopProje__ShopP__0A9D95DB">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <EntitySet Name="OpenShopAttributeValues" EntityType="OpenShopModel.OpenShopAttributeValues" />
+    <AssociationSet Name="FK__OpenShopA__OpenS__4C6B5938" Association="OpenShopModel.FK__OpenShopA__OpenS__4C6B5938">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopA__Attri__4D5F7D71" Association="OpenShopModel.FK__OpenShopA__Attri__4D5F7D71">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopA__Attri__4E53A1AA" Association="OpenShopModel.FK__OpenShopA__Attri__4E53A1AA">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <EntitySet Name="ApplyBrands" EntityType="OpenShopModel.ApplyBrand" />
+    <AssociationSet Name="FK_ApplyBrand_ShopBrand" Association="OpenShopModel.FK_ApplyBrand_ShopBrand">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ApplyBrand" EntitySet="ApplyBrands" />
+    </AssociationSet>
+    <EntitySet Name="SmsLogs" EntityType="OpenShopModel.SmsLog" />
+    <EntitySet Name="CustomerLogs" EntityType="OpenShopModel.CustomerLog" />
+    <EntitySet Name="C_File" EntityType="OpenShopModel.C_File" />
+    <EntitySet Name="C_Object" EntityType="OpenShopModel.C_Object" />
+    <EntitySet Name="CustomerDisciplines" EntityType="OpenShopModel.CustomerDiscipline" />
+    <EntitySet Name="G_Category" EntityType="OpenShopModel.G_Category" />
+    <EntitySet Name="G_Goods" EntityType="OpenShopModel.G_Goods" />
+    <EntitySet Name="G_Name" EntityType="OpenShopModel.G_Name" />
+    <EntitySet Name="G_NameCategoryMapping" EntityType="OpenShopModel.G_NameCategoryMapping" />
+    <EntitySet Name="G_Pricing" EntityType="OpenShopModel.G_Pricing" />
+    <EntitySet Name="O_Cart" EntityType="OpenShopModel.O_Cart" />
+    <EntitySet Name="O_CartGoods" EntityType="OpenShopModel.O_CartGoods" />
+    <EntitySet Name="O_Order" EntityType="OpenShopModel.O_Order" />
+    <EntitySet Name="O_SalerBuyerMapping" EntityType="OpenShopModel.O_SalerBuyerMapping" />
+    <EntitySet Name="P_Account" EntityType="OpenShopModel.P_Account" />
+    <EntitySet Name="P_Trade" EntityType="OpenShopModel.P_Trade" />
+    <EntitySet Name="M_Contract" EntityType="OpenShopModel.M_Contract" />
+    <EntitySet Name="M_Period" EntityType="OpenShopModel.M_Period" />
+    <EntitySet Name="M_Mission" EntityType="OpenShopModel.M_Mission" />
+    <AssociationSet Name="CustomerM_Mission" Association="OpenShopModel.CustomerM_Mission">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="M_Mission" EntitySet="M_Mission" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerM_Mission1" Association="OpenShopModel.CustomerM_Mission1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="M_Mission" EntitySet="M_Mission" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerM_Mission2" Association="OpenShopModel.CustomerM_Mission2">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="M_Mission" EntitySet="M_Mission" />
+    </AssociationSet>
+    <EntitySet Name="S_Message" EntityType="OpenShopModel.S_Message" />
+    <AssociationSet Name="CustomerS_Message" Association="OpenShopModel.CustomerS_Message">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="S_Message" EntitySet="S_Message" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerS_Message1" Association="OpenShopModel.CustomerS_Message1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="S_Message" EntitySet="S_Message" />
+    </AssociationSet>
+    <AssociationSet Name="M_MissionM_Period" Association="OpenShopModel.M_MissionM_Period">
+      <End Role="M_Mission" EntitySet="M_Mission" />
+      <End Role="M_Period" EntitySet="M_Period" />
+    </AssociationSet>
+    <AssociationSet Name="OpenShopShopAttributeValues" Association="OpenShopModel.OpenShopShopAttributeValues">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerO_Order" Association="OpenShopModel.CustomerO_Order">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="O_Order" EntitySet="O_Order" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerO_Order1" Association="OpenShopModel.CustomerO_Order1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="O_Order" EntitySet="O_Order" />
+    </AssociationSet>
+    <AssociationSet Name="ShopAttributeValuesM_Mission" Association="OpenShopModel.ShopAttributeValuesM_Mission">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="M_Mission" EntitySet="M_Mission" />
+    </AssociationSet>
+    <AssociationSet Name="OpenShopCustomer" Association="OpenShopModel.OpenShopCustomer">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <EntitySet Name="Grouppurchases" EntityType="OpenShopModel.Grouppurchase" />
+    <AssociationSet Name="GrouppurchaseApplyActivity" Association="OpenShopModel.GrouppurchaseApplyActivity">
+      <End Role="Grouppurchase" EntitySet="Grouppurchases" />
+      <End Role="ApplyActivity" EntitySet="ApplyActivity" />
+    </AssociationSet>
+    <AssociationSet Name="C_ObjectC_Object" Association="OpenShopModel.C_ObjectC_Object">
+      <End Role="C_Object" EntitySet="C_Object" />
+      <End Role="C_Object1" EntitySet="C_Object" />
+    </AssociationSet>
+    <AssociationSet Name="C_ObjectG_Name" Association="OpenShopModel.C_ObjectG_Name">
+      <End Role="C_Object" EntitySet="C_Object" />
+      <End Role="G_Name" EntitySet="G_Name" />
+    </AssociationSet>
+    <AssociationSet Name="C_FileG_Name" Association="OpenShopModel.C_FileG_Name">
+      <End Role="C_File" EntitySet="C_File" />
+      <End Role="G_Name" EntitySet="G_Name" />
+    </AssociationSet>
+    <EntitySet Name="JoinProjects" EntityType="OpenShopModel.JoinProject" />
+    <AssociationSet Name="ShopProjectGrouppurchase" Association="OpenShopModel.ShopProjectGrouppurchase">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="Grouppurchase" EntitySet="Grouppurchases" />
+    </AssociationSet>
+    <EntitySet Name="hotareas" EntityType="OpenShopModel.hotarea" />
+    <AssociationSet Name="hotareaOpenShop" Association="OpenShopModel.hotareaOpenShop">
+      <End Role="hotarea" EntitySet="hotareas" />
+      <End Role="OpenShop" EntitySet="OpenShop" />
+    </AssociationSet>
+    <AssociationSet Name="C_ObjectOpenShop" Association="OpenShopModel.C_ObjectOpenShop">
+      <End Role="C_Object" EntitySet="C_Object" />
+      <End Role="OpenShop" EntitySet="OpenShop" />
+    </AssociationSet>
+    <AssociationSet Name="C_ObjectG_Goods" Association="OpenShopModel.C_ObjectG_Goods">
+      <End Role="C_Object" EntitySet="C_Object" />
+      <End Role="G_Goods" EntitySet="G_Goods" />
+    </AssociationSet>
+    <AssociationSet Name="C_FileG_Goods" Association="OpenShopModel.C_FileG_Goods">
+      <End Role="C_File" EntitySet="C_File" />
+      <End Role="G_Goods" EntitySet="G_Goods" />
+    </AssociationSet>
+    <AssociationSet Name="hotareahotarea" Association="OpenShopModel.hotareahotarea">
+      <End Role="hotarea" EntitySet="hotareas" />
+      <End Role="hotarea1" EntitySet="hotareas" />
+    </AssociationSet>
+    <AssociationSet Name="O_CartO_CartGoods" Association="OpenShopModel.O_CartO_CartGoods">
+      <End Role="O_Cart" EntitySet="O_Cart" />
+      <End Role="O_CartGoods" EntitySet="O_CartGoods" />
+    </AssociationSet>
+    <AssociationSet Name="C_ObjectO_CartGoods" Association="OpenShopModel.C_ObjectO_CartGoods">
+      <End Role="C_Object" EntitySet="C_Object" />
+      <End Role="O_CartGoods" EntitySet="O_CartGoods" />
+    </AssociationSet>
+    <AssociationSet Name="O_CartO_Order" Association="OpenShopModel.O_CartO_Order">
+      <End Role="O_Cart" EntitySet="O_Cart" />
+      <End Role="O_Order" EntitySet="O_Order" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Online" Type="Boolean" />
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Property" Type="Boolean" Nullable="false" />
+    <Property Name="GroupId" Type="Int32" />
+    <Property Name="Companyid" Type="Int32" Nullable="false" DefaultValue="0" />
+    <Property Name="registertime" Type="DateTime" Precision="3" />
+    <Property Name="portrait" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FkOpenShop" Relationship="OpenShopModel.OpenShopCustomer" FromRole="Customer" ToRole="OpenShop" />
+  </EntityType>
+  <EntityType Name="ApplyActivity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GrouppurchaseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Grouppurchase" Relationship="OpenShopModel.GrouppurchaseApplyActivity" FromRole="ApplyActivity" ToRole="Grouppurchase" />
+  </EntityType>
+  <EntityType Name="ShopAdPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypesId" Type="Int32" Nullable="false" />
+    <Property Name="PositionId" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AdWords" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="AdPicSmall" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AdPic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="KeyId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ShopAdPositionDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Details" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShopDemo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="JobMinute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobTime" Type="DateTime" Precision="3" />
+    <Property Name="JobName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="JobKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShopPostings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hotarea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PIntent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="square" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Ptype" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Contacts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Addtiem" Type="DateTime" Precision="3" />
+    <Property Name="Endtiem" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ShopRoom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopId" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hotarea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="sale" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="square" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Face" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contacts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rimg" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="source" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="from" Type="Int32" />
+    <Property Name="fetchDate" Type="Int64" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="isCert" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OpenShop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Rmark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="VidoUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="viewclick" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OpenShopPhoto" Relationship="OpenShopModel.FK__OpenShopP__OpenS__1BC821DD" FromRole="OpenShop" ToRole="OpenShopPhoto" />
+    <NavigationProperty Name="OpenShopShopProject" Relationship="OpenShopModel.FK__OpenShopS__OpenS__22751F6C" FromRole="OpenShop" ToRole="OpenShopShopProject" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Isguarantee" Type="Boolean" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OpenShopAttributeValues" Relationship="OpenShopModel.FK__OpenShopA__OpenS__4C6B5938" FromRole="OpenShop" ToRole="OpenShopAttributeValues" />
+    <Property Name="TypeId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegionId" Type="Int32" />
+    <Property Name="Accountbalance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Abbreviation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="QRcode" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Industry" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Distribution" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contactname" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Contactphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BLS" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="OCC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="OPC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CIC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="AC" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TRC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="lat" Type="Decimal" Precision="18" Scale="15" />
+    <Property Name="Long" Type="Decimal" Precision="18" Scale="15" />
+    <Property Name="isaudit" Type="Int32" />
+    <NavigationProperty Name="FkType" Relationship="OpenShopModel.OpenShopShopAttributeValues" FromRole="OpenShop" ToRole="ShopAttributeValues" />
+    <Property Name="Districtid" Type="Int32" Nullable="false" />
+    <Property Name="Rangeid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fkhotarea" Relationship="OpenShopModel.hotareaOpenShop" FromRole="OpenShop" ToRole="hotarea" />
+    <NavigationProperty Name="FKObject" Relationship="OpenShopModel.C_ObjectOpenShop" FromRole="OpenShop" ToRole="C_Object" />
+  </EntityType>
+  <Association Name="FK__OpenShopP__OpenS__1BC821DD">
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShopPhoto" Role="OpenShopPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopPhoto">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopS__OpenS__22751F6C">
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShopShopProject" Role="OpenShopShopProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopShopProject">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ShopProjectAttributesValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttrId" Type="Int32" />
+    <Property Name="AttrValueId" Type="Int32" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="ShopProjectId" Type="Int32" />
+    <NavigationProperty Name="ShopAttributes" Relationship="OpenShopModel.FK__ShopProje__AttrI__08B54D69" FromRole="ShopProjectAttributesValues" ToRole="ShopAttributes" />
+    <NavigationProperty Name="ShopAttributeValues" Relationship="OpenShopModel.FK__ShopProje__AttrV__09A971A2" FromRole="ShopProjectAttributesValues" ToRole="ShopAttributeValues" />
+    <NavigationProperty Name="ShopProject" Relationship="OpenShopModel.FK__ShopProje__ShopP__0A9D95DB" FromRole="ShopProjectAttributesValues" ToRole="ShopProject" />
+  </EntityType>
+  <Association Name="FK__ShopProje__AttrI__08B54D69">
+    <End Type="OpenShopModel.ShopAttributes" Role="ShopAttributes" Multiplicity="0..1" />
+    <End Type="OpenShopModel.ShopProjectAttributesValues" Role="ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="AttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProje__AttrV__09A971A2">
+    <End Type="OpenShopModel.ShopAttributeValues" Role="ShopAttributeValues" Multiplicity="0..1" />
+    <End Type="OpenShopModel.ShopProjectAttributesValues" Role="ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="AttrValueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProje__ShopP__0A9D95DB">
+    <End Type="OpenShopModel.ShopProject" Role="ShopProject" Multiplicity="0..1" />
+    <End Type="OpenShopModel.ShopProjectAttributesValues" Role="ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OpenShopAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="OpenShopId" />
+      <PropertyRef Name="AttributesId" />
+      <PropertyRef Name="Recsts" />
+      <PropertyRef Name="AttributeValuesId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpenShopId" Type="Int32" Nullable="false" />
+    <Property Name="AttributesId" Type="Int32" Nullable="false" />
+    <Property Name="Recsts" Type="Int32" Nullable="false" />
+    <Property Name="AttributeValuesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OpenShop" Relationship="OpenShopModel.FK__OpenShopA__OpenS__4C6B5938" FromRole="OpenShopAttributeValues" ToRole="OpenShop" />
+    <NavigationProperty Name="ShopAttributes" Relationship="OpenShopModel.FK__OpenShopA__Attri__4D5F7D71" FromRole="OpenShopAttributeValues" ToRole="ShopAttributes" />
+    <NavigationProperty Name="ShopAttributeValues" Relationship="OpenShopModel.FK__OpenShopA__Attri__4E53A1AA" FromRole="OpenShopAttributeValues" ToRole="ShopAttributeValues" />
+  </EntityType>
+  <Association Name="FK__OpenShopA__OpenS__4C6B5938">
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShopAttributeValues" Role="OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopA__Attri__4D5F7D71">
+    <End Type="OpenShopModel.ShopAttributes" Role="ShopAttributes" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShopAttributeValues" Role="OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="AttributesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopA__Attri__4E53A1AA">
+    <End Type="OpenShopModel.ShopAttributeValues" Role="ShopAttributeValues" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShopAttributeValues" Role="OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="AttributeValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ApplyBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="ShopBrand" Relationship="OpenShopModel.FK_ApplyBrand_ShopBrand" FromRole="ApplyBrand" ToRole="ShopBrand" />
+    <Property Name="ApplyUser" Type="Int32" Nullable="false" />
+    <Property Name="Contract" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApplyTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditTime" Type="DateTime" Precision="3" />
+    <Property Name="RejectReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ApplyBrand_ShopBrand">
+    <End Type="OpenShopModel.ShopBrand" Role="ShopBrand" Multiplicity="1" />
+    <End Type="OpenShopModel.ApplyBrand" Role="ApplyBrand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplyBrand">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SmsLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="SendStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomerLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Customer" Type="Int32" Nullable="false" />
+    <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="logmsg" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="Targetsubject" Type="Int32" />
+    <Property Name="Modulid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Equipment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ismanage" Type="Boolean" />
+    <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileType" Type="Int32" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileName1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileName2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileName3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileName4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileName5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C_Object">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="ParentChain" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChildrenSet" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Creater" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifyUser" Type="Int32" Nullable="false" />
+    <Property Name="LastModifyTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Subset" Relationship="OpenShopModel.C_ObjectC_Object" FromRole="C_Object" ToRole="C_Object1" />
+    <NavigationProperty Name="Parent" Relationship="OpenShopModel.C_ObjectC_Object" FromRole="C_Object1" ToRole="C_Object" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="G_Name" Relationship="OpenShopModel.C_ObjectG_Name" FromRole="C_Object" ToRole="G_Name" />
+    <NavigationProperty Name="G_Goods" Relationship="OpenShopModel.C_ObjectG_Goods" FromRole="C_Object" ToRole="G_Goods" />
+  </EntityType>
+  <EntityType Name="CustomerDiscipline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customerid" Type="Int32" />
+    <Property Name="Property" Type="Boolean" Nullable="false" />
+    <Property Name="Begintime" Type="DateTime" Precision="3" />
+    <Property Name="Endtime" Type="DateTime" Precision="3" />
+    <Property Name="Disciplinetype" Type="Int32" />
+    <Property Name="Disciplinetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="G_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IsFixed" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Goods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Image" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="C_File" Relationship="OpenShopModel.C_FileG_Goods" FromRole="G_Goods" ToRole="C_File" />
+    <Property Name="Shopid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Name">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="C_File" Relationship="OpenShopModel.C_FileG_Name" FromRole="G_Name" ToRole="C_File" />
+  </EntityType>
+  <EntityType Name="G_NameCategoryMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="NameId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Pricing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Creater" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="O_Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Creater" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="FKCartGoods" Relationship="OpenShopModel.O_CartO_CartGoods" FromRole="O_Cart" ToRole="O_CartGoods" />
+    <NavigationProperty Name="FKOrder" Relationship="OpenShopModel.O_CartO_Order" FromRole="O_Cart" ToRole="O_Order" />
+    <Property Name="Flag" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_CartGoods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartId" Type="Int32" Nullable="false" />
+    <Property Name="GoodsId" Type="Int32" Nullable="false" />
+    <Property Name="GoodsCount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <NavigationProperty Name="FKgoods" Relationship="OpenShopModel.C_ObjectO_CartGoods" FromRole="O_CartGoods" ToRole="C_Object" />
+  </EntityType>
+  <EntityType Name="O_Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Saler" Type="Int32" Nullable="false" />
+    <Property Name="Buyer" Type="Int32" Nullable="false" />
+    <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Method" Type="Int32" />
+    <Property Name="BuyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerMobile" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ExpressCompany" Type="Int32" />
+    <Property Name="ExpressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SalerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SalerMobile" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="SalerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentTime" Type="DateTime" Precision="3" />
+    <Property Name="ColseTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="OrderType" Type="Int32" Nullable="false" />
+    <Property Name="BusinessDataType" Type="Int32" Nullable="false" />
+    <Property Name="BusinessDataId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FkBuyer" Relationship="OpenShopModel.CustomerO_Order" FromRole="O_Order" ToRole="Customer" />
+    <NavigationProperty Name="FkSaler" Relationship="OpenShopModel.CustomerO_Order1" FromRole="O_Order" ToRole="Customer" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DetailUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CartId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FKCart" Relationship="OpenShopModel.O_CartO_Order" FromRole="O_Order" ToRole="O_Cart" />
+  </EntityType>
+  <EntityType Name="O_SalerBuyerMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Buyer" Type="Int32" Nullable="false" />
+    <Property Name="Saler" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="P_Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ObjId" Type="Int32" Nullable="false" />
+    <Property Name="ObjType" Type="Int32" Nullable="false" />
+    <Property Name="RealName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Balance" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Creater" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="P_Trade">
+    <Key>
+      <PropertyRef Name="TraceId" />
+    </Key>
+    <Property Name="TraceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Expenditure" Type="Int32" Nullable="false" />
+    <Property Name="Income" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="TradeTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Kind" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="M_Contract">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileId" Type="Int32" Nullable="false" />
+    <Property Name="MissionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_Period">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Period" Type="Int32" Nullable="false" />
+    <Property Name="Standard" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="FirstApplyCheckTime" Type="DateTime" Precision="3" />
+    <Property Name="PassTime" Type="DateTime" Precision="3" />
+    <Property Name="PayStartTime" Type="DateTime" Precision="3" />
+    <Property Name="FinishTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="MissionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FkMission" Relationship="OpenShopModel.M_MissionM_Period" FromRole="M_Period" ToRole="M_Mission" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="FailedReasion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="M_Mission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MissionType" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Publisher" Type="Int32" Nullable="false" />
+    <Property Name="PublisherContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PublisheTime" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="Receiver" Type="Int32" Nullable="false" />
+    <Property Name="ReceiveTime" Type="DateTime" Precision="3" />
+    <Property Name="Bd" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Rate" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="LastTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DecideResult" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DecideRefund" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DecidePay" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="CloseReason" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FkBd" Relationship="OpenShopModel.CustomerM_Mission" FromRole="M_Mission" ToRole="Customer" />
+    <NavigationProperty Name="FkPublisher" Relationship="OpenShopModel.CustomerM_Mission1" FromRole="M_Mission" ToRole="Customer" />
+    <NavigationProperty Name="FkReceiver" Relationship="OpenShopModel.CustomerM_Mission2" FromRole="M_Mission" ToRole="Customer" />
+    <Property Name="ConnectingTime" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmContractTime" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmPaymentTime" Type="DateTime" Precision="3" />
+    <Property Name="CompleteTime" Type="DateTime" Precision="3" />
+    <Property Name="DecideTime" Type="DateTime" Precision="3" />
+    <Property Name="AppealTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PeriodList" Relationship="OpenShopModel.M_MissionM_Period" FromRole="M_Mission" ToRole="M_Period" />
+    <Property Name="IsOffLinePayment" Type="Boolean" Nullable="false" />
+    <Property Name="LimitDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AppealReason" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PublisherMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReceiverContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FkMissionType" Relationship="OpenShopModel.ShopAttributeValuesM_Mission" FromRole="M_Mission" ToRole="ShopAttributeValues" />
+    <Property Name="ContactTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="CustomerM_Mission">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.M_Mission" Role="M_Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="M_Mission">
+        <PropertyRef Name="Bd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerM_Mission1">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.M_Mission" Role="M_Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="M_Mission">
+        <PropertyRef Name="Publisher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerM_Mission2">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.M_Mission" Role="M_Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="M_Mission">
+        <PropertyRef Name="Receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="S_Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sender" Type="Int32" Nullable="false" />
+    <Property Name="Receiver" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="HasShortMessage" Type="Boolean" Nullable="false" />
+    <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DetailsUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiveTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FkReceiver" Relationship="OpenShopModel.CustomerS_Message" FromRole="S_Message" ToRole="Customer" />
+    <NavigationProperty Name="FkSender" Relationship="OpenShopModel.CustomerS_Message1" FromRole="S_Message" ToRole="Customer" />
+    <Property Name="SenderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MessageType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="CustomerS_Message">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.S_Message" Role="S_Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="S_Message">
+        <PropertyRef Name="Receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerS_Message1">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.S_Message" Role="S_Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="S_Message">
+        <PropertyRef Name="Sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_MissionM_Period">
+    <End Type="OpenShopModel.M_Mission" Role="M_Mission" Multiplicity="1" />
+    <End Type="OpenShopModel.M_Period" Role="M_Period" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_Mission">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="M_Period">
+        <PropertyRef Name="MissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OpenShopShopAttributeValues">
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="*" />
+    <End Type="OpenShopModel.ShopAttributeValues" Role="ShopAttributeValues" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShop">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerO_Order">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.O_Order" Role="O_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="O_Order">
+        <PropertyRef Name="Buyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerO_Order1">
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="OpenShopModel.O_Order" Role="O_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="O_Order">
+        <PropertyRef Name="Saler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopAttributeValuesM_Mission">
+    <End Type="OpenShopModel.ShopAttributeValues" Role="ShopAttributeValues" Multiplicity="1" />
+    <End Type="OpenShopModel.M_Mission" Role="M_Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="M_Mission">
+        <PropertyRef Name="MissionType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OpenShopCustomer">
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="1" />
+    <End Type="OpenShopModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Grouppurchase">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Llimit" Type="Int32" />
+    <Property Name="Begintime" Type="DateTime" Precision="3" />
+    <Property Name="Endtime" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Addtime" Type="DateTime" Precision="3" />
+    <Property Name="Lastupdate" Type="DateTime" Precision="3" />
+    <Property Name="progress" Type="Int32" />
+    <NavigationProperty Name="ApplyActivities" Relationship="OpenShopModel.GrouppurchaseApplyActivity" FromRole="Grouppurchase" ToRole="ApplyActivity" />
+    <NavigationProperty Name="ShopProject" Relationship="OpenShopModel.ShopProjectGrouppurchase" FromRole="Grouppurchase" ToRole="ShopProject" />
+  </EntityType>
+  <Association Name="GrouppurchaseApplyActivity">
+    <End Type="OpenShopModel.Grouppurchase" Role="Grouppurchase" Multiplicity="1" />
+    <End Type="OpenShopModel.ApplyActivity" Role="ApplyActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grouppurchase">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplyActivity">
+        <PropertyRef Name="GrouppurchaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_ObjectC_Object">
+    <End Type="OpenShopModel.C_Object" Role="C_Object" Multiplicity="1" />
+    <End Type="OpenShopModel.C_Object" Role="C_Object1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="C_Object1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_ObjectG_Name">
+    <End Type="OpenShopModel.C_Object" Role="C_Object" Multiplicity="1" />
+    <End Type="OpenShopModel.G_Name" Role="G_Name" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="C_Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="G_Name">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FileG_Name">
+    <End Type="OpenShopModel.C_File" Role="C_File" Multiplicity="1" />
+    <End Type="OpenShopModel.G_Name" Role="G_Name" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="G_Name">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="JoinProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopProjectId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="ShopProjectGrouppurchase">
+    <End Type="OpenShopModel.ShopProject" Role="ShopProject" Multiplicity="1" />
+    <End Type="OpenShopModel.Grouppurchase" Role="Grouppurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grouppurchase">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="hotarea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Subet" Relationship="OpenShopModel.hotareahotarea" FromRole="hotarea" ToRole="hotarea1" />
+  </EntityType>
+  <Association Name="hotareaOpenShop">
+    <End Type="OpenShopModel.hotarea" Role="hotarea" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hotarea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OpenShop">
+        <PropertyRef Name="Districtid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_ObjectOpenShop">
+    <End Type="OpenShopModel.C_Object" Role="C_Object" Multiplicity="1" />
+    <End Type="OpenShopModel.OpenShop" Role="OpenShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShop">
+        <PropertyRef Name="Rangeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_ObjectG_Goods">
+    <End Type="OpenShopModel.C_Object" Role="C_Object" Multiplicity="1" />
+    <End Type="OpenShopModel.G_Goods" Role="G_Goods" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="C_Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="G_Goods">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FileG_Goods">
+    <End Type="OpenShopModel.C_File" Role="C_File" Multiplicity="1" />
+    <End Type="OpenShopModel.G_Goods" Role="G_Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="G_Goods">
+        <PropertyRef Name="Image" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hotareahotarea">
+    <End Type="OpenShopModel.hotarea" Role="hotarea" Multiplicity="1" />
+    <End Type="OpenShopModel.hotarea" Role="hotarea1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hotarea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="hotarea1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="O_CartO_CartGoods">
+    <End Type="OpenShopModel.O_Cart" Role="O_Cart" Multiplicity="1" />
+    <End Type="OpenShopModel.O_CartGoods" Role="O_CartGoods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="O_CartGoods">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_ObjectO_CartGoods">
+    <End Type="OpenShopModel.C_Object" Role="C_Object" Multiplicity="1" />
+    <End Type="OpenShopModel.O_CartGoods" Role="O_CartGoods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="O_CartGoods">
+        <PropertyRef Name="GoodsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="O_CartO_Order">
+    <End Type="OpenShopModel.O_Cart" Role="O_Cart" Multiplicity="1" />
+    <End Type="OpenShopModel.O_Order" Role="O_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="O_Order">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

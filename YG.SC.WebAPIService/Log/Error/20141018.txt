@@ -1,0 +1,248 @@
+2014-10-18 02:57:41,025 [6] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 2:57:40
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 2:57:41***Failed***
+
+
+
+2014-10-18 02:58:44,100 [8] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 2:58:44
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 2:58:44***Failed***
+
+
+
+2014-10-18 02:59:56,804 [17] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 2:59:56
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 2:59:56***Failed***
+
+
+
+2014-10-18 03:17:47,148 [16] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 3:17:47
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: StackExchange.Redis.RedisConnectionException
+Message: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+Source: StackExchange.Redis
+StackTrace: 
+   在 StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) 位置 c:\TeamCity\buildAgent\work\58bc9a6df18a3782\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:行号 736
+   在 YG.SC.Common.Cache.Redis..ctor(String keyPrefix, String servers) 位置 e:\work\YG.ShiCai\YG.SC.Common\Cache\Redis.cs:行号 79
+   在 YG.SC.Common.CacheUtility.Register() 位置 e:\work\YG.ShiCai\YG.SC.Common\CacheUtility.cs:行号 22
+   在 YG.SC.WebAPIService.WebApiApplication.Application_Start() 位置 e:\work\YG.ShiCai\YG.SC.WebAPIService\Global.asax.cs:行号 28
+
+End at: 2014/10/18 3:17:47***Failed***
+
+
+
+2014-10-18 03:18:26,557 [8] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 3:18:26
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 3:18:26***Failed***
+
+
+
+2014-10-18 05:36:19,526 [34] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 5:36:19
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 5:36:19***Failed***
+
+
+
+2014-10-18 05:43:23,186 [6] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 5:43:23
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 5:43:23***Failed***
+
+
+
+2014-10-18 05:44:21,329 [6] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 5:44:21
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 5:44:21***Failed***
+
+
+
+2014-10-18 05:57:53,520 [10] ERROR Error - 
+========================================================================
+Start at: 2014/10/18 5:57:53
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/10/18 5:57:53***Failed***
+
+
+

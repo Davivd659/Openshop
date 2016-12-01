@@ -1,0 +1,26 @@
+﻿@{
+    var updata = (Tuple<YG.SC.DataAccess.ShopProject[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+    var array = (YG.SC.Model.Project.ProjectDetailsViewModel[])ViewBag.array;
+ }
+@if (array != null && array.Count() > 0)
+{ 
+for (int i = 0; i < array.Count(); i++)
+{
+    var proj = array[i];
+    <li class="kd-li">
+        <div class="kd-imgbox">
+            <div class="">
+                <a href="/Project/index?id=@proj.Id">
+                    <img src="@proj.CoverPhoto" width="318" height="206" />
+                </a></div>
+            <div class="kd-pricebox">
+                ￥
+                <br />@YG.SC.OpenShop.Controllers.ProjectController.GetSalePrice(proj.SalePrice)
+            </div>
+        </div>
+        <div class="kd-info">
+            <h4>@proj.Name</h4>
+            <p>@proj.ProjectFeature</p>
+        </div>
+    </li>
+}}

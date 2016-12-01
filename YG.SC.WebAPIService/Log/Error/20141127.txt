@@ -1,0 +1,364 @@
+2014-11-27 16:01:15,536 [6] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:01:15
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:01:15***Failed***
+
+
+
+2014-11-27 16:03:53,331 [9] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:03:53
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:03:53***Failed***
+
+
+
+2014-11-27 16:03:55,536 [9] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:03:55
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:03:55***Failed***
+
+
+
+2014-11-27 16:03:56,973 [9] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:03:56
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:03:56***Failed***
+
+
+
+2014-11-27 16:03:57,757 [10] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:03:57
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:03:57***Failed***
+
+
+
+2014-11-27 16:03:58,530 [11] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:03:58
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:03:58***Failed***
+
+
+
+2014-11-27 16:04:04,795 [7] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:04:04
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:04:04***Failed***
+
+
+
+2014-11-27 16:04:05,676 [11] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:04:05
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:04:05***Failed***
+
+
+
+2014-11-27 16:05:23,714 [11] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:05:23
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:05:23***Failed***
+
+
+
+2014-11-27 16:05:24,587 [11] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:05:24
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:05:24***Failed***
+
+
+
+2014-11-27 16:05:25,398 [9] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:05:25
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/api/Android/ListOderDetail”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:05:25***Failed***
+
+
+
+2014-11-27 16:09:22,089 [5] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 16:09:22
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 16:09:22***Failed***
+
+
+
+2014-11-27 17:51:30,957 [6] ERROR Error - 
+========================================================================
+Start at: 2014/11/27 17:51:30
+
+--------Traget & Properties--------
+CalledObject: Global
+
+--------Method & Parameters--------
+CalledMethod: Application_Error()
+
+--------Exception--------
+ExceptionType: System.Web.HttpException
+Message: 未找到路径“/”的控制器或该控制器未实现 IController。
+Source: System.Web.Mvc
+StackTrace: 
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+End at: 2014/11/27 17:51:30***Failed***
+
+
+

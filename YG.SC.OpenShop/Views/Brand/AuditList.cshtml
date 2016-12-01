@@ -1,0 +1,160 @@
+﻿@model YG.SC.Model.BrandApplyFilter
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common
+@{
+    ViewBag.Title = "加盟审批-会员中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, string> _statusList = ViewBag.StatusList;
+    Tuple<ApplyBrand[], PagerEntity> _auditBrandList = ViewBag.AuditBrandList;
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+    function Pass(id) {
+        $("#passApplyId").val(id);
+        $("#divPass").show();
+    }
+    function Reject(id, contract) {
+        $("#rejectApplyId").val(id);
+        $("#spanContract").text(contract);
+        $("#divReject").show();
+    }
+    $(function () {
+        $("#btnCancelPass").bind("click", function () {
+            $("#divPass").hide();
+        });
+        $("#btnCancelReject").bind("click", function () {
+            $("#divReject").hide();
+        });
+    });
+</script>
+<style>
+    #ui-datepicker-div {
+        background-color: #dc9d1a;
+    }
+</style>
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">审批加盟</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_order_top">
+                    @using (Html.BeginForm("AuditList", "Brand", FormMethod.Post, new { @class = "" }))
+                    {
+                        <table id="table_search">
+                            <tr>
+                                <td style="width:80px;">申请时间:</td>
+                                <td>
+                                    <input type="" name="ApplyTimeLeft" id="ApplyTimeLeft" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({ lang: 'zh-cn' })" />
+                                    - <input type="" name="ApplyTimeRight" id="ApplyTimeRight" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({ lang: 'zh-cn' })" />
+                                </td>
+                                <td style="width:80px;">处理结果:</td>
+                                <td style="width:140px;">
+                                    <select name="Status" style="width:120px;">
+                                        <option value="-1">全部</option>
+                                        @if (_statusList != null)
+                                        {
+                                            foreach (KeyValuePair<int, string> status in _statusList)
+                                            {
+                                                <option value="@status.Key">@status.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="" name="Key" id="" placeholder="申请人名称/申请人电话" style="width:195px;" />
+                                </td>
+                                <td><button>搜索</button></td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <div class="utc_right_order_center">
+                    @if (_auditBrandList != null && _auditBrandList.Item1 != null && _auditBrandList.Item1.Count() > 0)
+                    {
+                        <table id="table_info">
+                            <tr>
+                                <th style="width:140px;">序号</th>
+                                <th>申请人</th>
+                                <th style="width:150px;">申请时间</th>
+                                <th style="width:140px;">操作</th>
+                            </tr>
+                            @for (int i = 0; i < _auditBrandList.Item1.Count(); i++)
+                            {
+                                ApplyBrand ab = _auditBrandList.Item1[i];
+                                <tr class="alt">
+                                    <td colspan="5"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Raw(i + 1)
+                                    </td>
+                                    <td>
+                                        @ab.Contract  @ab.Phone
+                                    </td>
+                                    <td>
+                                        <span class="Gray12">@ab.ApplyTime.ToString(Define.DATE_FORMAT_MINUTE)</span>
+
+
+                                    </td>
+                                    <td>
+                                        @if ((CommonEnum.StatusOfBrandApply)ab.Status == CommonEnum.StatusOfBrandApply.Applying)
+                                        {
+                                            <a href="javascript:;" onclick="Pass(@ab.Id);">同意 </a><span>&nbsp;&nbsp;  |&nbsp;&nbsp;  </span><a href="javascript:;" onclick="Reject(@ab.Id,'@ab.Contract');">拒绝</a>
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw((CommonEnum.StatusOfBrandApply)ab.Status == CommonEnum.StatusOfBrandApply.Pass ? "已同意" : "已拒绝")
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+					else
+					{
+						<div class="searchnull Gray18B">未查询到相关数据</div>
+					}
+                </div>
+                @Html.Partial("_LayoutPager", _auditBrandList.Item2)
+            </div>
+            <div class="clear"></div>
+            @using (Html.BeginForm("Pass", "Brand", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div id="divPass" class="utc_tagbox tanchuang" style="display:none;">
+                    <div class="utc_tagbox_header Write14">消息提示</div>
+                    <div class="utc_tagbox_body Black16">
+                        确定同意该用户加盟申请么？
+                    </div>
+                    <div class="utc_tagbox_footer">
+                        <button class="add_sjbutton" style="margin:0px;">确认</button>
+                        <button type="button" id="btnCancelPass" class="add_sjbutton" style="margin:0px 0px 0px 40px;">取消</button>
+                        <input type="hidden" id="passApplyId" name="passApplyId" />
+                    </div>
+                </div>
+            }
+            <div class="clear"></div>
+            @using (Html.BeginForm("Reject", "Brand", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div id="divReject" class="utc_tagbox tanchuang" style="display:none;">
+                    <div class="utc_tagbox_header Write14">加盟申请拒绝说明</div>
+                    <div class="utc_tagbox_tbody Black14">
+                        申请人姓名：<span id="spanContract"></span><br />
+                        拒绝的缘由：<textarea name="rejectReason" required></textarea>
+                    </div>
+                    <div class="utc_tagbox_footer">
+                        <button class="add_sjbutton" style="margin:0px;">确认</button>
+                        <button type="button" id="btnCancelReject" class="add_sjbutton" style="margin:0px 0px 0px 40px;">取消</button>
+                        <input type="hidden" id="rejectApplyId" name="rejectApplyId" />
+                    </div>
+                </div>
+            }
+        </div>
+</div>
+</div>

@@ -1,0 +1,129 @@
+﻿@using System.Collections
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@model YG.SC.WeiXin.Models.HomeIndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+		<title>寻址-开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		
+		</head>
+
+	<body onselectstart="return false">
+		
+		<div class="zxgl-index-wrap">
+			<!--头部搜索块-->
+			<div class="zxgl-search-wrap">
+				<form action="javascript:void();">
+					<div class="input-append">
+						<input id="askSearchKey" placeholder="输入您想寻找的项目" type="search">
+						<i class="icon-clear"></i>
+						<span id="askSearchBtn" class="add-on" data-url="">搜索项目</span>
+					</div>
+				</form>
+
+				<ul class="zxgl-index-modules">
+					<li><a href="/project/list"><i class="icon-zxgl-index-riji"><img src="/img/icon/xiangmu.png"></i><span>找项目</span></a>
+					</li>
+					<li><a href="/room/list"><i class="icon-zxgl-index-xzx"><img src="/img/icon/shangpu.png"></i><span>找商铺</span></a>
+					</li>
+					<li><a href="/Postings/list"><i class="icon-zxgl-index-ask"><img src="/img/icon/xuqiu.png"></i><span>发需求</span></a>
+					</li>
+					
+				</ul>
+			</div>
+
+			<!--模块列表-->
+			<ul class="zxgl-index-modules-list">
+				<!--项目推介-->
+				<li class="zxgl-index-module zxgl-index-riji">
+					<h2 class="zxgl-index-module-header">与好店相知相遇 </h2>
+					<section class="zxgl-index-module-body">
+						<!--项目列表-->
+						<ul class="nl-note-list">
+                        
+                            @foreach (var ad in Model.AdHaoDian)
+                            {
+							<li>
+								<a href="/Project/index?id=@ad.KeyId">
+									<img style="display: block;" class="nl-note-img lazy" data-original="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)"
+									alt="@ad.AdWords" height="340" width="600" onerror="javascript:this.src='/img/icon/xiangmuimg.jpg'">
+									<div class="nl-note-cover">
+										<h3><span>@ad.AdWords</span></h3>
+                                        @{
+                                var array = (List<YG.SC.Model.Project.ProjectDetailsViewModel>)ViewBag.haodian_viewmodel;
+                                if (array != null && array.Count() > 0)
+                                {///取项目信息，排期？
+                                    var project = array.FirstOrDefault(p => p.Id == ad.KeyId);
+                                    var hotarea = "";
+                                    <p class="nl-note-summary">@project.Region  @hotarea</p>
+                                    if (project.TradingArea != "" && project.TradingArea != null)
+                                    {
+                                        hotarea = "/" + project.TradingArea;
+                                    }
+                                            <div>
+                                                
+                                     @{           
+                                        if (project.ProjectServiceViewModels != null && project.ProjectServiceViewModels.Any(p => p.IsVip))
+                                        {
+                                            var serviceLeader = project.ProjectServiceViewModels.FirstOrDefault(p => p.IsVip);
+                                        <img style="display: block;" class="lazy" src="@string.Format("http://admin.kaidianing.com{0}", serviceLeader.PicUrl)"
+                                             data-original="@string.Format("http://admin.kaidianing.com{0}", serviceLeader.PicUrl)" alt="@serviceLeader.Name" height="30" width="30" 
+                                                onerror="javascript:this.src='/img/icon/jingli.gif'">
+                                        }
+                                        else
+                                        {
+                                        <img style="display: block;" class="lazy" src="/img/icon/jingli.gif"
+                                             data-original="/img/icon/jingli.gif" alt="项目经理头像" height="30" width="30">
+                                        }
+                                                }
+
+                                            </div>
+                                            <p class="nl-note-info">
+                                                @project.ProjectFeature
+                                        </p>
+                                }
+
+                                        }
+										
+									</div>
+								</a>
+							</li>
+                            }
+                        
+							
+						</ul>
+						<a class="zxgl-index-submodule" href="/project/list">进入项目寻址</a>
+					</section>
+				</li>
+
+			</ul>
+		</div>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript">
+            $("#askSearchBtn").click(function () {
+                var key = $("#askSearchKey").val();
+                window.location.href = "/Project/List?Keys=" + key;
+            });
+
+    </script>
+		
+	</body>
+
+</html>

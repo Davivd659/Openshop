@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE1874DE-3903-443C-ACFB-2F5314FFDFCE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YG.SC.Service</RootNamespace>
+    <AssemblyName>YG.SC.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplyActivite\ApplyActiviteService.cs" />
+    <Compile Include="ApplyActivite\IApplyActiviteService.cs" />
+    <Compile Include="ApplyBrandService.cs" />
+    <Compile Include="CartGoodsService.cs" />
+    <Compile Include="CartService.cs" />
+    <Compile Include="CommonService.cs" />
+    <Compile Include="CustomerGroupOnService.cs" />
+    <Compile Include="CustomerLogService.cs" />
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="FileService.cs" />
+    <Compile Include="GoodsService.cs" />
+    <Compile Include="HotareaService.cs" />
+    <Compile Include="IService\IApplyBrandService.cs" />
+    <Compile Include="IService\ICartGoodsService.cs" />
+    <Compile Include="IService\ICartService.cs" />
+    <Compile Include="IService\ICustomerGroupOnService.cs" />
+    <Compile Include="IService\ICustomerLogService.cs" />
+    <Compile Include="IService\ICustomerService.cs" />
+    <Compile Include="IService\IFileService.cs" />
+    <Compile Include="IService\IGoodsService.cs" />
+    <Compile Include="IService\IHelloWorldService.cs" />
+    <Compile Include="IService\IHotareaService.cs" />
+    <Compile Include="IService\IJoinProjectService.cs" />
+    <Compile Include="IService\ILinkService.cs" />
+    <Compile Include="IService\IMessageService.cs" />
+    <Compile Include="IService\IMissionService.cs" />
+    <Compile Include="IService\IObjectService.cs" />
+    <Compile Include="IService\IOrderService.cs" />
+    <Compile Include="IService\IProjectPhotoService.cs" />
+    <Compile Include="IService\IProjectTeamService.cs" />
+    <Compile Include="IService\IShopAdPositionDetailsService.cs" />
+    <Compile Include="IService\IShopAdPositionService.cs" />
+    <Compile Include="IService\IOpenShopService.cs" />
+    <Compile Include="IService\IShopAttributesService.cs" />
+    <Compile Include="IService\IShopDemoService.cs" />
+    <Compile Include="IService\IShopPostingsService.cs" />
+    <Compile Include="IService\IShopProjectService.cs" />
+    <Compile Include="IService\IShopRoomService.cs" />
+    <Compile Include="IService\IYgService.cs" />
+    <Compile Include="IService\IShopBrandService.cs" />
+    <Compile Include="JoinProjectService.cs" />
+    <Compile Include="ObjectService.cs" />
+    <Compile Include="LinkService.cs" />
+    <Compile Include="MessageService.cs" />
+    <Compile Include="MissionService.cs" />
+    <Compile Include="OrderService.cs" />
+    <Compile Include="ProjectPhotoService.cs" />
+    <Compile Include="ProjectTeamService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ShopAdPositionDetailsService.cs" />
+    <Compile Include="ShopAdPositionService.cs" />
+    <Compile Include="ShopBrandService.cs" />
+    <Compile Include="ShopAttributesService.cs" />
+    <Compile Include="ShopDemoService.cs" />
+    <Compile Include="ShopPostingsService.cs" />
+    <Compile Include="ShopProjectService.cs" />
+    <Compile Include="OpenShopService.cs" />
+    <Compile Include="ShopRoomService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Service References\ServiceReference1\Sms.wsdl" />
+    <None Include="Service References\ServiceReference1\YG.SC.Service.ServiceReference1.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\YG.SC.Service.ServiceReference1.SendSmsSaveLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Sms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YG.SC.Common\YG.SC.Common.csproj">
+      <Project>{2da9c33c-6fb4-4c3d-81ba-5bd570fb4003}</Project>
+      <Name>YG.SC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.DataAccess\YG.SC.DataAccess.csproj">
+      <Project>{2f50f76d-b3f4-4f5c-b51d-4881c4fed704}</Project>
+      <Name>YG.SC.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.Model\YG.SC.Model.csproj">
+      <Project>{cf0583e9-ee62-4d7d-8aa9-bd021ded19ed}</Project>
+      <Name>YG.SC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YG.SC.Repository\YG.SC.Repository.csproj">
+      <Project>{b813363f-325a-4ef8-bd27-a794d75711e3}</Project>
+      <Name>YG.SC.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

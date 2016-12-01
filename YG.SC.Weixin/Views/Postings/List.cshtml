@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "list";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/css/companyIndex.css">
+		<link rel="stylesheet" type="text/css" href="/css/findcompany.css">
+		<title>找需求-开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		</head>
+
+	<body onselectstart="return false">
+		
+
+		<ul id="menu">
+			 @Html.Raw(ViewBag.Filter)
+		</ul>
+		<!--需求列表-->
+		<ul class="company-list">
+            @{   var PList = (Tuple<YG.SC.DataAccess.ShopPostings[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+        }
+            @foreach (var item in PList.Item1)
+            {
+			            <li>
+				            <a href="/postings/index?id=@item.Id">
+					            <div class="img-wrap">
+						            <img style="display: inline; background-color:#ffffff;" src="/img/icon/shangpu-02.gif"
+						            class="lazy" data-original="/img/icon/shangpu-02.gif"  alt="@item.PName">
+					            </div>
+					            <div class="company-info">
+						            <h2 class="text-overflow" style="line-height:20px">
+                                        【@(item.PIntent == "false"?"求租":"求购")】@item.PName
+                                      
+
+						            </h2>
+						            <div class="company-score">
+							            <div class="wom text-overflow">
+								            <span>需求面积：<em>@item.square</em></span>
+								
+							            </div>
+							            <div class="credit text-overflow">
+								            <span>
+                                                @Convert.ToDateTime(item.Addtiem).ToString("yyyy-MM-dd HH:mm")
+                                             </span>
+								
+							            </div>
+						            </div>
+						            <div class="text-overflow" style="margin-bottom:8px;">
+							            <span class="production-count">意向价格：<em>@item.price</em></span>
+						            </div>
+						            <div class="text-overflow">
+							            <span class="production-count">截止日期：@Convert.ToDateTime(item.Endtiem).ToString("yyyy-MM-dd")</span>
+						            </div>
+						
+					            </div>
+				            </a>
+			            </li>
+            }
+			
+			
+		</ul>
+		@Html.Raw(ViewBag.pager);
+		<div style="height:50px;width:100%"></div>
+
+		<div class="apply-design-price" style="width:100%;margin:0px;z-index:999; position:fixed; bottom:0; left:0; width:100%; _position:absolute;_top: expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight);overflow:visible;">
+			<div style="margin:0px">
+				<a class="click-point" data-point="2_5_1_2" href="/postings/add">
+					<input value="发布需求" type="button" style="height:45px;">
+				</a>
+
+			</div>
+		</div>
+
+		
+		<!--区域类型切换效果开始-->
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/companyNew.js"></script>
+		<script type="text/javascript" src="/js/common.js"></script>
+		<!--区域类型切换效果结束-->
+		
+	</body>
+
+</html>

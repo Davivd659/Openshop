@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "个人中心-我的关注";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using YG.SC.Model.Project
+@using YG.SC.DataAccess
+<link href="/content/projectsearch.css" rel="stylesheet" />
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+
+        <div class="utc_right">
+            <div class="utc_right_title_focus"></div>
+            <div class="utc_right_uc">
+                <div class="utc_title_tjfy">
+                    <i></i>
+                    <h3>团购帮</h3>
+                </div>
+                <div class="utc_tjfy_content">
+
+                    <div class="kd-prolist" style="height: 290px; margin-bottom: 0px;">
+                        @{
+
+                            var shoplist = (List<ProjectDetailsViewModel>)ViewBag.shoplist;
+                            var zhuangxiu = (List<OpenShop>)ViewBag.zhuangxiu;
+                            var jiaju = (List<OpenShop>)ViewBag.jiaju;
+                            //var rongzhi = (List<OpenShop>)ViewBag.rongzhi;
+                            var tuiguang = (List<OpenShop>)ViewBag.tuiguang;
+                        }
+                        @if (shoplist != null && shoplist.Count > 0)
+                        {
+                            foreach (ProjectDetailsViewModel shop in shoplist)
+                            {
+                                <div class="kd-li">
+                                    <div class="kd-imgbox">
+                                        <div class="">
+                                            <img width="318" height="206" src="@string.Format("http://www.kaidianing.com{0}", shop.PhotoUrlSmall)" />
+                                        </div>
+                                        <div class="kd-pricebox">
+                                            ￥
+                                            <br />
+                                            @YG.SC.OpenShop.Controllers.CustomerController.GetSalePrice(shop.SalePrice)
+                                        </div>
+                                    </div>
+                                    <div class="kd-info">
+                                        <h4>@shop.Name</h4>
+                                        <p>@shop.ProjectFeature</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                    <!-- 数据 end -->
+                </div>
+            </div>
+
+
+            <div class="utc_right_uc">
+                <div class="utc_title_tjfy">
+                    <i></i>
+                    <h3>装修帮</h3>
+                </div>
+                <ul class="uct_brand_ul">
+                    @if (zhuangxiu != null && zhuangxiu.Count > 0)
+                    {
+                        foreach(OpenShop shop in zhuangxiu)
+                        {
+                            <li>
+                                <div class="uct_brand_ul_img">
+                                    <img src="@string.Format("http://www.kaidianing.com{0}", shop.Logo)" style="@YG.SC.OpenShop.Controllers.OpenShopController.GetWH(shop.Logo, 145, 137)" />
+                                </div>
+                                <div class="uct_brand_ul_title">@shop.Name</div>
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+            <!-- 家具 -->
+            <div class="utc_right_uc">
+                <div class="utc_title_tjfy">
+                    <i></i>
+                    <h3>家具帮</h3>
+                </div>
+                <ul class="uct_brand_ul">
+                    @if (jiaju != null && jiaju.Count > 0)
+                    {
+                        foreach (OpenShop shop in jiaju)
+                        {
+                            <li>
+                                <div class="uct_brand_ul_img">
+                                    <img  src="@string.Format("http://www.kaidianing.com{0}", shop.Logo)" style="@YG.SC.OpenShop.Controllers.OpenShopController.GetWH(shop.Logo, 145, 137)" />
+                                </div>
+                                <div class="uct_brand_ul_title">@shop.Name</div>
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- 家具 end -->
+            <!-- 家具 -->
+            <div class="utc_right_uc">
+                <div class="utc_title_tjfy">
+                    <i></i>
+                    <h3>推广帮</h3>
+                </div>
+                <ul class="uct_brand_ul">
+                    @if (tuiguang != null && tuiguang.Count > 0)
+                    {
+                        foreach (OpenShop shop in tuiguang)
+                        {
+                            <li>
+                                <div class="uct_brand_ul_img">
+                                    <img src="@string.Format("http://www.kaidianing.com{0}", shop.Logo)" style="@YG.SC.OpenShop.Controllers.OpenShopController.GetWH(shop.Logo, 145, 137)" />
+                                </div>
+                                <div class="uct_brand_ul_title">@shop.Name</div>
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- 家具 end -->
+        </div>
+    </div>
+</div>

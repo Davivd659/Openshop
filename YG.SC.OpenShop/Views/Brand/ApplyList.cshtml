@@ -1,0 +1,99 @@
+﻿@model YG.SC.Model.BrandApplyFilter
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common
+@{
+    ViewBag.Title = "加盟申请-会员中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, string> _statusList = ViewBag.StatusList;
+    Tuple<ApplyBrand[], PagerEntity> _applyBrandList = ViewBag.ApplyBrandList;
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">加盟申请</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_order_top">
+                    @using (Html.BeginForm("ApplyList", "Brand", FormMethod.Post, new { @class = "" }))
+                    {
+                        <table id="table_search">
+                            <tr>
+                                <td style="width:80px;">申请时间:</td>
+                                <td>
+                                    <input type="" name="ApplyTimeLeft" id="ApplyTimeLeft" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({ lang: 'zh-cn' })" />
+                                    - <input type="" name="ApplyTimeRight" id="ApplyTimeRight" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({ lang: 'zh-cn' })" />
+                                </td>
+                                <td style="width:80px;">申请结果:</td>
+                                <td style="width:140px;">
+                                    <select name="Status" style="width:120px;">
+                                        <option value="-1">全部</option>
+                                        @if (_statusList != null)
+                                        {
+                                            foreach (KeyValuePair<int, string> status in _statusList)
+                                            {
+                                                <option value="@status.Key">@status.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="" name="BrandName" id="" placeholder="品牌名称" style="width:195px;" />
+                                </td>
+                                <td><button>搜索</button></td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <div class="utc_right_order_center">
+                    @if (_applyBrandList != null && _applyBrandList.Item1 != null && _applyBrandList.Item1.Count() > 0)
+                    {
+                        <table id="table_info">
+                            <tr>
+                                <th style="width:140px;">序号</th>
+                                <th style="width:300px;">品牌名称</th>
+                                <th>申请结果</th>
+                                <th style="width:140px;">申请时间</th>
+                            </tr>
+                            @for (int i = 0; i < _applyBrandList.Item1.Count(); i++)
+                            {
+                                ApplyBrand ab = _applyBrandList.Item1[i];
+                                <tr class="alt">
+                                    <td colspan="5"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.Raw(i + 1)
+                                    </td>
+                                    <td>
+                                        <span class="Gray12">@Html.Raw(string.IsNullOrEmpty(ab.ShopBrand.Abbreviation) ? string.Empty : "【" + ab.ShopBrand.Abbreviation + "】") </span><a href="~/ShopBrand/brand?shopBrandId=@ab.BrandId" target="_blank">@ab.ShopBrand.Name</a>
+                                    </td>
+                                    <td>
+                                        <img src="~/Images/icon/@Html.Raw((CommonEnum.StatusOfBrandApply)ab.Status == CommonEnum.StatusOfBrandApply.Pass ? "new_green_o.gif" : "new_red_k.png")" />@CommonEnum.GetDescription((CommonEnum.StatusOfBrandApply)ab.Status)<br>
+                                        @if ((CommonEnum.StatusOfBrandApply)ab.Status == CommonEnum.StatusOfBrandApply.Reject)
+                                        {
+                                            <span class="Gray12" style="margin-left:25px;">缘由：@ab.RejectReason</span>
+                                        }
+
+                                    </td>
+                                    <td><span class="Gray12">@ab.ApplyTime.ToString(Define.DATE_FORMAT_MINUTE)</span></td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="searchnull Gray18B">未查询到相关数据</div>
+                    }
+                </div>
+                @Html.Partial("_LayoutPager", _applyBrandList.Item2)
+            </div>
+        </div>
+</div>
+</div>

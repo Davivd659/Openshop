@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>开店帮商家登录</title>
+    <link href="Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/openshop.css" rel="stylesheet" />
+    <link href="Content/brand.css" rel="stylesheet" />
+ 
+</head>
+<body>
+    <header>
+        <div class="head-container">
+            <div class="site-title">我要开店</div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="/home/index">首页</a></li>
+                    <li><a href="/home/index">团购</a></li>
+                    <li><a href="/home/index">开店帮</a></li>
+                    <li><a href="/home/index">品牌街</a></li>
+                </ul>
+            </nav>
+
+            <div class="site-account">
+                <a href="/login">登录</a>
+                <a>|</a>
+                <a href="/regiseter">注册</a>
+            </div>
+            <div class="site-search">
+                <input type="text" class="site-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." name="txtKeys" />
+                <input type="button" class="site-search-btn btn" value="搜索" />
+            </div>
+        </div>
+    </header>
+    <div class="brand-warp">
+        <div class="panel panel-default">
+        <div class="login_left"">
+          <img src="Images/sj_01.png" style="margin:20px 100px 0px 100px;"/>
+        </div>
+        <div class="login_right">
+            <div class="login_title" style="background: url(~/Images/login_sj.jpg) no-repeat; width: 175px;"></div>
+            <div class="panel-body">
+            <form class="form-horizontal" role="form" method="post" action="">
+
+                <div class="form-group">
+                    <div class="input-group input-group-lg" style="border-radius: 22px;">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user" style="background: url(~/Images/login_bg01.jpg) no-repeat;"></i>
+                        </span>
+                        <input type="text" class="form-control" id="username" name="UserName" placeholder="商家联系人姓名/电话" data-content="请输入姓名/电话" style="padding-left:5px"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock" style="background: url(Images/login_bg02.jpg) no-repeat;"></i>
+                        </span>
+                        <input type="password" class="form-control" id="password" name="Password" placeholder="密码" data-content="请输入密码" style="padding-left:5px">
+                    </div>
+                </div>
+                <div class="form-group login_rmbm">
+                    <div class="ml">
+                        <div class="checkbox">
+                            <a class="login_reg" href="?reg" style="margin-left:50px;">商家注册</a>
+                            <a class="login_fgpwd" href="#" style="margin-right:50px;">忘记密码？</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group login_btns">
+                    <button type="button" class="btn btn-login" data-toggle="tooltip" data-loading-text="登录中..." style="background: url(Images/btn_login.jpg) no-repeat;">立即登录</button>
+                </div>
+            </form>
+            
+        </div>
+        </div>
+        
+    </div>
+    </div>
+
+
+    <!-- foooter -->
+    <div class="footer">
+        <div class="warp-line">
+        <div class="service">
+            <div class="inner">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <h3>开店服务</h3>
+                        </li>
+                        <li><a href="#/instruction">购买指南</a></li>
+                        <li><a href="#/payment">支付方式</a></li>
+                        <li><a href="#/delivery">送货政策</a></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3>服务与支持</h3>
+                        </li>
+                        <li><a href="#/service">购买指南</a></li>
+                        <li><a href="#/storelist">支付方式</a></li>
+                        <li><a target="_blank" href="http://preorder.smartisan.com/#/mobile/code">优先购买通道</a>  </li>
+                    </ul>
+                    <ul >
+                        <li>
+                            <h3>关于公司</h3>
+                        </li>
+                        <li><a href="#/about">公司简介</a></li>
+                        <li><a href="#/join">加入我们</a></li>
+                        <li><a href="#/contact">联系我们</a></li>
+                    </ul> 
+                </div>
+                
+                <div class="doublebox">
+                                <div class="doublebox_in">
+                                    <img src="/Images/s-android.jpg" />
+                                    <p>Android二维码</p>
+                                </div>
+                            </div>
+                <div class="online">
+                    <p class="phone-title">客服电话</p>
+                    <p class="tel"><a href="tel:4006190909">400-000-9999</a></p>
+                    <p>周一至周日 9:00-18:0</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        <div class="copyright">
+            <div class="warp-line fn-clear">
+                <div class="copy-label">
+                    <div class="copy-text">
+                        Copyright &copy; 2015, KaiDian Co.., Ltd. All Rights Reserved. 北京开店帮科技有限公司
+                        <br />
+                        京ICP备1404****号-1 京ICP证14****号
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

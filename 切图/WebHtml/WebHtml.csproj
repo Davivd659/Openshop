@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7104AB45-79E0-4400-A846-7E13229AEDAC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebHtml</RootNamespace>
+    <AssemblyName>WebHtml</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="brand.html" />
+    <Content Include="CheckBox.html" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\openshop.css" />
+    <Content Include="Content\projectsearch.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\brand-gd.jpg" />
+    <Content Include="Images\brand01.gif" />
+    <Content Include="Images\brand02.gif" />
+    <Content Include="Images\brand03.gif" />
+    <Content Include="Images\brand_logo.gif" />
+    <Content Include="Images\btn_login.jpg" />
+    <Content Include="Images\close.jpg" />
+    <Content Include="Images\cmt-head.jpg" />
+    <Content Include="Images\cmt_star.jpg" />
+    <Content Include="Images\cts_jd.jpg" />
+    <Content Include="Images\cus_center.jpg" />
+    <Content Include="Images\cus_mono.jpg" />
+    <Content Include="Images\cym.jpg" />
+    <Content Include="Images\f_cy.jpg" />
+    <Content Include="Images\f_sj.jpg" />
+    <Content Include="Images\f_xzl.jpg" />
+    <Content Include="Images\head01.gif" />
+    <Content Include="Images\head02.gif" />
+    <Content Include="Images\index_bg.gif" />
+    <Content Include="Images\index_headbg.jpg" />
+    <Content Include="Images\jjb.jpg" />
+    <Content Include="Images\kd1.jpg" />
+    <Content Include="Images\kd2.jpg" />
+    <Content Include="Images\kd3.jpg" />
+    <Content Include="Images\kdb.jpg" />
+    <Content Include="Images\leader.jpg" />
+    <Content Include="Images\left.gif" />
+    <Content Include="Images\line.jpg" />
+    <Content Include="Images\login_bg.jpg" />
+    <Content Include="Images\login_bg01.jpg" />
+    <Content Include="Images\login_bg02.jpg" />
+    <Content Include="Images\login_bgcode.jpg" />
+    <Content Include="Images\login_bgphone.jpg" />
+    <Content Include="Images\login_lgt.jpg" />
+    <Content Include="Images\login_qq.jpg" />
+    <Content Include="Images\login_s1.jpg" />
+    <Content Include="Images\login_wb.jpg" />
+    <Content Include="Images\login_wx.jpg" />
+    <Content Include="Images\mod.jpg" />
+    <Content Include="Images\page.jpg" />
+    <Content Include="Images\ppj.jpg" />
+    <Content Include="Images\pro_lct.jpg" />
+    <Content Include="Images\projectimage.jpg" />
+    <Content Include="Images\p_option.jpg" />
+    <Content Include="Images\register_lgt.jpg" />
+    <Content Include="Images\reg_s1.jpg" />
+    <Content Include="Images\reg_title.jpg" />
+    <Content Include="Images\right.gif" />
+    <Content Include="Images\rzb.jpg" />
+    <Content Include="Images\s-android.jpg" />
+    <Content Include="Images\scol01.jpg" />
+    <Content Include="Images\scol02.jpg" />
+    <Content Include="Images\scroll-left.gif" />
+    <Content Include="Images\scroll-right.gif" />
+    <Content Include="Images\searchlistimg.jpg" />
+    <Content Include="Images\brandlogo.jpg" />
+    <Content Include="Images\sm.jpg" />
+    <Content Include="Images\s_hy.jpg" />
+    <Content Include="Images\s_jm.jpg" />
+    <Content Include="Images\tgb.jpg" />
+    <Content Include="Images\uct_brand.jpg" />
+    <Content Include="Images\uct_focus_title.jpg" />
+    <Content Include="Images\uct_grzx.jpg" />
+    <Content Include="Images\usc_tuangou.jpg" />
+    <Content Include="Images\zxb.jpg" />
+    <Content Include="index.html" />
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\project.css" />
+    <Content Include="Content\brand.css" />
+    <Content Include="brandindex.html" />
+    <Content Include="login.html" />
+    <Content Include="regist.html" />
+    <Content Include="user_index.html" />
+    <Content Include="user_focus.html" />
+    <Content Include="user_tuan.html" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="photos\blue-fish - 副本.jpg" />
+    <Content Include="photos\blue-fish.jpg" />
+    <Content Include="photos\coral-reef.jpg" />
+    <Content Include="photos\orange-fish.jpg" />
+    <Content Include="photos\red-coral.jpg" />
+    <Content Include="photos\sea-turtle.jpg" />
+    <Content Include="photos\small-fish.jpg" />
+    <Content Include="photos\squid.jpg" />
+    <Content Include="photos\yellow-fish.jpg" />
+    <Content Include="project.html" />
+    <Content Include="projectsearch.html" />
+    <Content Include="Scripts\baidumap\contertor.js" />
+    <Content Include="Scripts\compressed.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="test.aspx" />
+    <Content Include="thumbnails\blue-fish-thumb.jpg" />
+    <Content Include="thumbnails\coral-reef-thumb.jpg" />
+    <Content Include="thumbnails\orange-fish-thumb.jpg" />
+    <Content Include="thumbnails\red-coral-thumb.jpg" />
+    <Content Include="thumbnails\scol01.jpg" />
+    <Content Include="thumbnails\scol02.jpg" />
+    <Content Include="thumbnails\sea-turtle-thumb.jpg" />
+    <Content Include="thumbnails\small-fish-thumb.jpg" />
+    <Content Include="thumbnails\squid-thumb.jpg" />
+    <Content Include="thumbnails\yellow-fish-thumb.jpg" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\dafda.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2845/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

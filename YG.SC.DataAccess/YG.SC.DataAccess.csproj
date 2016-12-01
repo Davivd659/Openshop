@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F50F76D-B3F4-4F5C-B51D-4881C4FED704}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YG.SC.DataAccess</RootNamespace>
+    <AssemblyName>YG.SC.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplyActivity.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyBrand.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDiscipline.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerGroupOn.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerLog.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_File.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Object.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessBinarySerializationEntities.cs" />
+    <Compile Include="Grouppurchase.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_Category.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_Goods.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_Name.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_NameCategoryMapping.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="G_Pricing.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hotarea.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobMinute.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinProject.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Link.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Contract.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Mission.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_Period.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShop.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShopAttributeValues.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShopEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShopPhoto.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShopShopProject.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_Cart.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_CartGoods.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_Order.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SalerBuyerMapping.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectPhoto.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectService.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="P_Account.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="P_Trade.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopAdPosition.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopAdPositionDetails.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopAttributes.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopAttributeValues.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBasAcrRange.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBasOpeningTime.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBasPriceRentRange.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBasPriceSaleRange.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBrand.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBrandAttributeValues.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBrandBranch.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBrandPhoto.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopDemo.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopPostings.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopProject.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopProjectAttributesValues.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopProjectMain.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopRoom.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SmsLog.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="S_Message.cs">
+      <DependentUpon>OpenShopEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OpenShopEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenShopEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenShopEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenShopEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="OpenShopEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpenShopEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OpenShopEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpenShopEntities.edmx</DependentUpon>
+      <LastGenOutput>OpenShopEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="OpenShopEntities.edmx.diagram">
+      <DependentUpon>OpenShopEntities.edmx</DependentUpon>
+    </None>
+    <None Include="OpenShopEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpenShopEntities.edmx</DependentUpon>
+      <LastGenOutput>OpenShopEntities.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

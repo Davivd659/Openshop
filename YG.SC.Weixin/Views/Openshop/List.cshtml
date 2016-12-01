@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = null;
+}
+
+@model  Tuple<OpenShop[], PagerEntity>
+@using YG.SC.DataAccess
+@using YG.SC.Model
+
+@{
+    var Attributes = ViewBag.Attributes as List<ShopAttributeValues>;
+
+    var tuple = Model as Tuple<OpenShop[], PagerEntity>;
+    var attributeValuesId = ViewBag.AttributeValuesId is int ? (int)ViewBag.AttributeValuesId : 9;
+
+}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/css/companyIndex.css">
+		<title>开店帮-开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+
+	<body onselectstart="return false">
+		
+		<div class="widget-search-wrap">
+			<form action="javascript:void();">
+				<div class="input-append">
+						<input id="askSearchKey" placeholder="输入您想寻找的公司" type="search">
+						<i class="icon-clear"></i>
+						<span id="askSearchBtn" class="add-on" data-url="">搜索公司</span>
+					</div>
+			</form>
+		</div>
+
+		<ul id="menu">
+            @Html.Raw(ViewBag.Filter)
+			<li>
+				<span class="current-condition">
+
+         热门排序          </span>
+				<i class="icon-arrow"></i>
+				<ul id="subMenuOrder" class="submenu">
+					<li class="active"><a class="needsclick" href="http://m.to8to.com/bj/company/">排序</a>
+					</li>
+					<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/?order=credit">信誉度</a>
+					</li>
+					<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/?order=designNum">企业规模</a>
+					</li>
+					<li class=""><a class="needsclick" href="http://m.to8to.com/bj/company/?order=projectNum">关注度</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="company-list">
+             @foreach (var item in Model.Item1)
+            {   
+                var Shopphoto = new List<OpenShopPhoto>();
+                if (item.OpenShopPhoto != null && item.OpenShopPhoto.Count > 0)
+                {
+                    Shopphoto = item.OpenShopPhoto.ToList();
+                }
+                
+			    <li>
+				    <a href="/OpenShop/OpenShop?id=@item.Id">
+					    <div class="img-wrap">
+						    <img style="display: inline;" src="@(item.Logo !=null  ? string.Format("http://www.kaidianing.com{0}",item.Logo) : "/img/icon/gongsiLOGO.gif")"
+						    class="lazy" data-original="@(item.Logo !=null ? string.Format("http://www.kaidianing.com{0}",item.Logo) : "/img/icon/gongsiLOGO.gif")" alt="@item.Name"
+                                onerror="javascript:this.src='/img/icon/gongsiLOGO.gif'">
+					    </div>
+					    <div class="company-info">
+						    <h2 class="text-overflow">@item.Name</h2>
+						    <div class="company-score">
+							    <div class="credit text-overflow">
+								    <span>企业类型：</span>
+								    <em>@*@Attributes[0].ValueStr*@
+                                        @item.FkType.ValueStr
+								    </em>
+							    </div>
+							    <div class="wom text-overflow">
+								    <span>信誉评级：</span>
+								    <em>
+                                        已缴纳保证金</em>
+							    </div>
+						    </div>
+						    <div class="text-overflow">
+							    <span class="production-count">企业规模：&nbsp;50-100人</span>
+							
+						    </div>
+					    </div>
+				    </a>
+			    </li>
+                 
+            }
+			
+		</ul>
+
+        <!-- 翻页-->
+        @Html.Raw(ViewBag.pager);
+		<!--区域类型切换效果开始-->
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/companyNew.js"></script>
+		<script type="text/javascript" src="/js/common.js"></script>
+		<!--区域类型切换效果结束-->
+		
+        <script type="text/javascript">
+    $("#askSearchBtn").click(function () {
+        var key = $("#askSearchKey").val();
+       
+        window.location.href = "/Openshop/List?Keys=" + key;
+    });
+
+        </script>
+	</body>
+
+</html>

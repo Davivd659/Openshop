@@ -1,0 +1,43 @@
+﻿@using System.Web.Mvc
+@{
+    Layout = null;
+}
+@{
+    var PositionList = (List<YG.SC.WebUI.Models.AdPosition.AddPositionDayItem>) ViewBag.PositionList;
+    
+}
+<label class="col-sm-1 control-label">显示内容</label>
+<div class="search-result-table" style="width: 600px; margin-left: 100px">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>内容</th>
+                <th>图片</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < PositionList.Count; i++)
+            { 
+            <tr>
+                <td class="text-center">@(i+1)</td>
+                <td class="text-center">@PositionList[i].AdWords</td>
+                <td class="text-center">
+                    @if(string.IsNullOrEmpty(PositionList[i].AdPic))
+                    {
+                        <span>&nsub;</span>
+                    }
+                    else
+                    {
+                        <img src="@PositionList[i].AdPic" stye="width:140px;height:140px;" />
+                    }
+                </td>
+                <td class="text-center">@PositionList[i].Sort</td>
+                <td class="text-center"><a class="deletePosition" onclick="DeletePosition(@PositionList[i].Id)">删除</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

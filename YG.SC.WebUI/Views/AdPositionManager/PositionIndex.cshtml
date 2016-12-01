@@ -1,0 +1,213 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Model.Project
+@using YG.SC.Service 
+@using YG.SC.Common.AttributeExtention
+
+@{
+    ViewBag.Title = "广告排期管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //var tuple = Model as AdPositionModel;
+    //var idx = 0;
+    //if (tuple != null && tuple.ShopAdPositionList.Item1 != null)
+    //{
+    //    idx = tuple.ShopAdPositionList.Item2.Idx;
+    //}
+    //var selRecsts = ViewBag.SelRecsts as string;
+    //var listShopProject = ViewBag.ShopProject as List<ShopAdPosition>;
+    
+}
+@model YG.SC.WebUI.Models.AdPosition.PositonIndexModel
+
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+@section Scripts { 
+<link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<script src="~/Scripts/select2.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script>
+        
+        //删除
+        function Delete(id, state) {
+            var con = true;
+            if (state == "delete") {
+                con = confirm("确定删除？");
+            }
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/ProjectServiceTeam/Delete",
+                    data: {
+                        Id: id,
+                        state: state
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+        //有效
+        function Update(id) {
+
+            //var   con = confirm("确定删除？");
+            var con = true;
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/ShopProject/Update",
+                    data: {
+                        Id: id
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+    </script>
+}
+
+<div class="search-criteria">
+    <form class="form-inline" role="form"  action="/AdPositionManager/PositionIndex">
+        <div class="form-group">
+            @Html.LabelFor(m => m.ViewModel.PositionId, new { @class = "control-label" })
+            @{
+                var detailsList = (IEnumerable<SelectListItem>)ViewBag.PositionDetails;
+            }
+            @Html.DropDownListFor(m => m.PositionId, detailsList, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ViewModel.TypeId, new { @class = "control-label" })
+            @{
+                var typelist = (IEnumerable<SelectListItem>)ViewBag.TypeList;
+            }
+            @Html.DropDownListFor(m => m.TypeId, typelist, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+           @Html.LabelFor(m => m.ViewModel.PositonDate, new { @class = "control-label" })
+           @Html.DateTimeFor(m => m.PositonDate, new { value= ViewBag.PositonDate,  @class = "form-control", @style = "width:120px", @required = "required"})
+        </div>
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="search-action">
+    <a href="/AdPositionManager/Add" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>添加</a>
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table id="Table1" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+            <thead>
+                <tr>
+                    <th style="width:14%;"> <font color="red">星期日</font> </th>
+                    <th style="width:14%;"> 星期一 </th>
+                    <th style="width:14%;"> 星期二 </th>
+                    <th style="width:14%;"> 星期三 </th>
+                    <th style="width:14%;"> 星期四 </th>
+                    <th style="width:14%;"> 星期五 </th>
+                    <th style="width:14%;"> <font color="red">星期六</font> </th>
+                </tr>
+            </thead>
+        </table>
+        @{
+            List<YG.SC.WebUI.Models.PositionItem> itemList = (List<YG.SC.WebUI.Models.PositionItem>)ViewBag.ItemList;
+        }
+        <table id="CView" style="width: 100%; background-color:#fff;" class="tabless table table-bordered" align="center" cellpadding="1" cellspacing="1">
+            <tr style="height: 80px;">
+                <td id="Td1" class="text-center" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList,"Td1"))</td>
+                <td id="Td2" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td2"))</td>
+                <td id="Td3" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td3"))</td>
+                <td id="Td4" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td4"))</td>
+                <td id="Td5" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td5"))</td>
+                <td id="Td6" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td6"))</td>
+                <td id="Td7" style="width:14%;">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td7"))</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td id="Td8">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td8"))</td>
+                <td id="Td9">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td9"))</td>
+                <td id="Td10">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td10"))</td>
+                <td id="Td11">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td11"))</td>
+                <td id="Td12">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td12"))</td>
+                <td id="Td13">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td13"))</td>
+                <td id="Td14">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td14"))</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td id="Td15">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td15"))</td>
+                <td id="Td16">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td16"))</td>
+                <td id="Td17">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td17"))</td>
+                <td id="Td18">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td18"))</td>
+                <td id="Td19">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td19"))</td>
+                <td id="Td20">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td20"))</td>
+                <td id="Td21">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td21"))</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td id="Td22">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td22"))</td>
+                <td id="Td23">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td23"))</td>
+                <td id="Td24">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td24"))</td>
+                <td id="Td25">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td25"))</td>
+                <td id="Td26">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td26"))</td>
+                <td id="Td27">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td27"))</td>
+                <td id="Td28">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td28"))</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td id="Td29">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td29"))</td>
+                <td id="Td30">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td30"))</td>
+                <td id="Td31">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td31"))</td>
+                <td id="Td32">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td32"))</td>
+                <td id="Td33">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td33"))</td>
+                <td id="Td34">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td34"))</td>
+                <td id="Td35">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td35"))</td>
+            </tr>
+            <tr style="height: 80px;">
+                <td id="Td36">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td36"))</td>
+                <td id="Td37">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td37"))</td>
+                <td id="Td38">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td38"))</td>
+                <td id="Td39">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td39"))</td>
+                <td id="Td40">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td40"))</td>
+                <td id="Td41">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td41"))</td>
+                <td id="Td42">@Html.Raw(YG.SC.WebUI.Models.PositionItem.ShowHtml(itemList, "Td42"))</td>
+            </tr>
+        </table>      
+
+    </div>
+
+
+</div>
+
+
+<script>
+    function returnUrl() {
+        window.location = "/AdPositionManager/PositionIndex";
+    }
+    $(function (){
+        $('#PositonDate').datetimepicker({
+            startDate: Date.now,
+            minView: "month", //选择日期后，不会再跳转去选择时分秒
+            format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式
+            language: 'zh-CN', //汉化
+            autoclose: true //选择日期后自动关闭
+        });
+    })
+</script>
+

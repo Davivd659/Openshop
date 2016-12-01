@@ -1,0 +1,224 @@
+﻿@model YG.SC.Model.MissionSearchCriteria
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common
+@{
+	ViewBag.Title = "我的任务";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	CommonEnum.GroupOfCustomer _userGroup = ViewBag.UserGroup;
+    Dictionary<int, string> _statusList = ViewBag.StatusList;
+    Tuple<M_Mission[], PagerEntity> _missionList = ViewBag.MissionList;
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">@Html.Raw(Model != null && Model.IsPending.HasValue && Model.IsPending.Value ? "待处理任务" : "我的任务")</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_order_top">
+                    @using (Html.BeginForm("List", "Mission", FormMethod.Post, new { @class = "" }))
+                    {
+						if (@Model!=null&&@Model.IsPending.HasValue)
+						{
+						@Html.HiddenFor(m=>m.IsPending)
+						}
+                        <table id="table_search">
+                            <tbody>
+                                <tr>
+                                    <td style="width:80px;">发布时间:</td>
+                                    <td>
+                                        <input type="text" id="IssueDateLeft" name="IssueDateLeft" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+                                    </td>
+                                    <td style="width:80px;">截止时间:</td>
+                                    <td>
+                                        <input type="text" id="IssueDateLeft" name="IssueDateLeft" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+                                    </td>
+                                    <td style="width:80px;">任务状态:</td>
+                                    <td style="width:140px;">
+                                        <select name="MissionStatus" style="width:120px;">
+                                            <option value="">全部</option>
+											<option value="0">进行中</option>
+											<option value="1">已完成</option>
+											<option value="2">已取消</option>
+                                        </select>
+                                    </td>
+                                    <td style="width:200px;">
+                                        <input type="" name="Keys" style="width:195px;" placeholder="任务标题/接单商家名称">
+                                    </td>
+                                    <td><button>搜索</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+                <div class="utc_right_order_center">
+                    @if (_missionList != null && _missionList.Item1 != null && _missionList.Item1.Count() > 0)
+                    {
+                        <table id="table_info">
+                            <tbody>
+                                <tr class="alt">
+                                    <td></td>
+                                    <td style="width:200px;"></td>
+                                    <td style="width:140px;"></td>
+                                </tr>
+                                @for (int i = 0; i < _missionList.Item1.Count(); i++)
+                                {
+                                    M_Mission mission = _missionList.Item1[i];
+                                    <tr>
+                                        <td style="text-align: left;">
+                                            <img src="~/Images/icon/9_06.png" style="width:25px;margin:0px 15px 0px 40px">@{@mission.FkMissionType.ValueStr}任务-@mission.Title<br>
+                                                    <span style="margin-left:85px;">
+                                                        赏金：<span class="red">¥ @mission.TotalPrice 元</span> -- @CommonEnum.GetDescription((CommonEnum.StatusOfMission)mission.Status)	<br>
+                                                        @if (mission.Status >= (int)CommonEnum.StatusOfMission.Contract)
+                                                        {
+                                                            <span style="margin-left:85px;">接单商家：@mission.FkReceiver.Name </span><br>
+                                                        }
+                                                        @if (mission.Status >= (int)CommonEnum.StatusOfMission.Issue)
+                                                        {
+                                                            <span class="Gray12" style="margin-left:85px;"><img src="~/Images/icon/7_05.png">	 @mission.PublisheTime.ToString(Define.DATE_FORMAT_MINUTE) </span>
+                                                        }
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    @if ((CommonEnum.StatusOfMission)mission.Status == CommonEnum.StatusOfMission.Cancel)
+                                                    {
+                                                        <img src="~/Images/icon/7_09.png">
+                                                    }
+                                                    else if ((CommonEnum.StatusOfMission)mission.Status == CommonEnum.StatusOfMission.End)
+                                                    {
+                                                        <img src="~/Images/icon/7_11.png">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/Images/icon/7_10.png">
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <a href="/Mission/Edit?id=@mission.Id">查看详情</a><br />
+													@switch ((CommonEnum.StatusOfMission)mission.Status)
+													{
+														case CommonEnum.StatusOfMission.Issue:
+															//发布后等待BD接单。其它角色不能操作。
+															break;
+														case CommonEnum.StatusOfMission.Connecting:
+															//BD接洽后，需要上传合同，只有BD可以操作。其它角色不能操作。
+															break;
+														case CommonEnum.StatusOfMission.Contract:
+															if (_userGroup == CommonEnum.GroupOfCustomer.Member)
+															{
+																<a href="/Mission/Edit?id=@mission.Id&boxName=divPay">确认合同并付款</a>
+																@*<button class="utc_button" type="button" onclick="ShowBox('#divPay');"></button>*@
+															}
+															break;
+														case CommonEnum.StatusOfMission.ConfirmContract:
+															//确认合同时直接选择支付方式。
+															//如果是线上支付，连接支付平台，直接支付。如果成功，直接过渡到支付已确认状态。如果失败，过渡到支付中状态。后续可以重新支付。
+															//如果是线下支付，跳转到支付中状态。后续由BD人员确认支付。
+															if (_userGroup == CommonEnum.GroupOfCustomer.Member && !mission.IsOffLinePayment)
+															{
+																<a href="/Mission/Edit?id=@mission.Id">付款</a>
+																@*<button class="utc_button" type="button" onclick="SubmitForm('ConfirmPayment')">付款</button>*@
+															}
+															break;
+														case CommonEnum.StatusOfMission.ConfirmPayment:
+															//确认付款后，从第一期开始执行任务。操作内容根据当期状态决定。
+															M_Period period = mission.PeriodList.Where(p => (CommonEnum.StatusOfPeriod)p.Status != CommonEnum.StatusOfPeriod.New && (CommonEnum.StatusOfPeriod)p.Status != CommonEnum.StatusOfPeriod.Finish).FirstOrDefault();
+															if (period != null)
+															{
+																switch ((CommonEnum.StatusOfPeriod)period.Status)
+																{
+																	case CommonEnum.StatusOfPeriod.Run:
+																		if (_userGroup == CommonEnum.GroupOfCustomer.OpenShop)
+																		{
+																			<a href="/Mission/Edit?id=@mission.Id&boxName=divCheck">提交验收</a>
+																			@*<button class="utc_button" type="button" onclick="SubmitForm('Check')">提交验收</button>*@
+																		}
+																		break;
+																	case CommonEnum.StatusOfPeriod.Check:
+																		if (_userGroup == CommonEnum.GroupOfCustomer.Member)
+																		{
+																			<a href="/Mission/Edit?id=@mission.Id&boxName=divPass">已合格</a>
+																			@*<button class="utc_button" type="button" onclick="SubmitForm('Pass')">已合格</button>*@
+																			<a href="/Mission/Edit?id=@mission.Id&boxName=divFailed">不合格</a>
+																			@*<button class="utc_button" type="button" onclick="ShowBox('#divFailed');">不合格</button>*@
+																		}
+																		break;
+																	case CommonEnum.StatusOfPeriod.Failed:
+																		if (_userGroup == CommonEnum.GroupOfCustomer.OpenShop)
+																		{
+																			<a href="/Mission/Edit?id=@mission.Id">提交验收</a>
+																			@*<button class="utc_button" type="button" onclick="SubmitForm('Check')">提交验收</button>*@
+																			<a href="/Mission/Edit?id=@mission.Id&boxName=divAppeal">申诉</a>
+																			@*<button class="utc_button" type="button" onclick="ShowBox('#divAppeal');">申诉</button>*@
+																		}
+																		break;
+																	case CommonEnum.StatusOfPeriod.Payment:
+																		if (mission.IsOffLinePayment)
+																		{
+																			if (_userGroup == CommonEnum.GroupOfCustomer.OpenShop)
+																			{
+																				<a href="/Mission/Edit?id=@mission.Id">确认收款</a>
+																				@*<button class="utc_button" type="button" onclick="SubmitForm('ConfirmPaymentPeriod')">确认收款</button>*@
+																			}
+																		}
+																		else
+																		{
+																			if (_userGroup == CommonEnum.GroupOfCustomer.Member)
+																			{
+																				<a href="/Mission/Edit?id=@mission.Id">付款</a>
+																				@*<button class="utc_button" type="button" onclick="SubmitForm('Payment')">付款</button>*@
+																			}
+																		}
+																		break;
+																	default:
+																		break;
+																}
+															}
+															break;
+														case CommonEnum.StatusOfMission.Complete:
+															//竣工等待BD完成最后的打款。其它角色不能进行任何操作。
+															break;
+														case CommonEnum.StatusOfMission.Appeal:
+															//申诉后等待BD裁决。其它角色不能进行任何操作。
+															break;
+														case CommonEnum.StatusOfMission.Decide:
+															//裁决后不能进行任何操作。
+															break;
+														case CommonEnum.StatusOfMission.End:
+															//结束不能进行任何操作。
+															break;
+														case CommonEnum.StatusOfMission.Cancel:
+															//取消任务不能进行任何操作。
+															break;
+														default:
+															break;
+													}
+													@if (mission.Status < (int)CommonEnum.StatusOfMission.ConfirmPayment && (CommonEnum.StatusOfMission)mission.Status != CommonEnum.StatusOfMission.Cancel)//未付款显示取消。
+                                                    {
+                                                        <br /><a href="/Mission/Edit?id=@mission.Id">取消</a>
+														@*<button class="utc_button" type="button" onclick="SubmitForm('Cancel')">取消</button>*@
+													}
+                                                </td>
+                                            </tr>
+                                            <tr class="alt">
+                                                <td colspan="3"></td>
+                                            </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+					else
+					{
+						<div class="searchnull Gray18B">未查询到相关数据</div>
+					}
+                </div>
+                @Html.Partial("_LayoutPager", _missionList.Item2)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿.company-list li {
+    padding: 5px 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    font-family: "微软雅黑";
+}
+
+    .company-list li .img-wrap {
+        background-color: #ececec;
+        box-sizing: border-box;
+    }
+    .company-list li .company-info {
+        margin-left: 70px;
+    }
+
+        .company-list li .company-info h2 {
+            font-size: 16px;
+            font-weight: bolder;
+            line-height: 1;
+        }
+
+        .company-list li .company-info .company-score {
+            font-size: 0;
+            margin: 9px 0 8px 0;
+            overflow: hidden;
+            *zoom: 1;
+        }
+
+        .company-list li .company-info span, .company-list li .company-info em {
+            font-size: 12px;
+            color: #999;
+            line-height: 1;
+            margin-left:5px;
+        }
+
+        .company-list li .company-info em {
+            font-style: normal;
+            color: red;
+        }
+
+        .company-list li .company-info i {
+            margin-right: 2px;
+            vertical-align: baseline;
+            position: relative;
+            top: 1px;
+            line-height: 12px;
+        }
+
+        .company-list li .company-info .credit, .company-list li .company-info .wom {
+            float: left;
+            overflow: hidden;
+            height: 14px;
+            line-height: 12px;
+        }
+
+        .company-list li .company-info .credit {
+            width: 80.89749%;
+        }
+ .credit img, .wom img {
+  margin-bottom: 8px;
+        }
+
+        .company-list li .company-info .wom {
+            width: 17.10251%;
+        }
+
+        .company-list li .company-info .production-count, .company-list li .company-info .distance {
+            display: inline-block;
+        }
+
+        .company-list li .company-info .production-count {
+            width: 70%;
+        }
+
+        .company-list li .company-info .distance {
+            width: 25%;
+            text-align: right;
+        }
+
+/*列表*/
+.kd-prolistroom {
+    overflow: auto;
+    height:400px;
+}

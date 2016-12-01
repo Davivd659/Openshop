@@ -1,0 +1,109 @@
+﻿@model YG.SC.DataAccess.Grouppurchase
+@{
+    ViewBag.Title = "添加项目团购";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 120px;
+        }
+
+        #create-warning {
+            display: none;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加项目团购</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ProjectTeam/Edit" id="addform" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购名称</label>
+                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                <input type="text" id="Name" name="Name" value="@Model.Name" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购所属项目</label>
+                @Html.Raw((string)ViewBag.ProjectName)
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购开始时间</label>
+                <input type="datetime" id="Begintime" name="Begintime" value="@Html.Raw(Model.Begintime == null ? "" : Model.Begintime.Value.ToString("yyyy-MM-dd"))" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购截止时间</label>
+                <input type="datetime" id="Endtime" name="Endtime" value="@Html.Raw(Model.Endtime == null ? "" : Model.Endtime.Value.ToString("yyyy-MM-dd"))" sty style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购人数</label>
+                <input type="number" id="Llimit" name="Llimit" min="0" value="@Model.Llimit">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购进度</label>
+                <select id="Status" name="Status">
+                    <option value="0">第一步</option>
+                    <option value="1">第二步</option>
+                    <option value="2">第三步</option>
+                    <option value="3">第四步</option>
+                    <option value="4">第五步</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购状态</label>
+                <select id="progress" name="progress">
+                    <option value="0">进行中</option>
+                    <option value="1">已结束</option>
+                    <option value="2">已取消</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">修 改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#Status").val("@Model.Status");
+        $("#progress").val("@Model.progress");
+    })
+    $("#btnSubmit").click(function () {
+        if (Date.parse($("#Begintime").val()) > Date.parse($("#Endtime").val())) {
+            alert("开始时间不能小于截止时间");
+            return false;
+        }
+    })
+</script>
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+    }
+</script>

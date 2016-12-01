@@ -1,0 +1,157 @@
+﻿@using YG.SC.WebUI.Controllers
+@using YG.SC.DataAccess
+@using YG.SC.WebUI.Enum
+@model YG.SC.DataAccess.OpenShop
+@using System.Collections.Concurrent
+@using System.Web.UI.WebControls
+@using YG.SC.Common.AttributeExtention
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="~/Content/KindEditor/kindeditor.js"></script>
+<script src="~/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="~/Content/KindEditor/plugins/code/prettify.js"></script>
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 128px;
+        }
+
+        #img_logoimage {
+            clear: left;
+            display: block;
+            margin-top: 40px;
+            margin-left: 128px;
+        }
+
+        .form-span {
+            font-size: 14px;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+        @*   var models=@Model.ShopBrandAttributeValues;
+        for (var i = 0; i < models; i++) {
+            $("#selAttribute").select2('val', models[i].AttributeValuesId);
+        }*@
+
+    </script>
+}
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#content1', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/OpenShop/ProcessFile',
+            fileManagerJson: '/OpenShop/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<div class="panel panel-default">
+    <div class="panel-heading">修改开店帮</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Item", "OpenShop", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <a href="/Merchant/OpenShopPhoto?Id=@Model.Id">图片管理</a>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">开店帮名称</label>
+
+                <label class="form-span"> @Model.Name</label>
+            </div>@*
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">开店帮介绍</label>
+
+                    <input type="text" id="Rmark" name="Rmark" class="form-control" required="required" value="@Model.Rmark">
+                </div>*@
+            <div class="form-group">
+                <label class="col-sm-1 control-label">开店帮类型</label>
+                <label class="form-span">@Model.FkType.ValueStr</label>
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="LogoImg">公司Logo：</label>
+                <img alt="@Model.Logo" id="img_logoimage" width="150" height="150" class="img-thumbnail" src="@Model.Logo">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="LogoImg">公众平台二维码：</label>
+                <img alt="@Model.QRcode" id="img_logoimage" width="150" height="150" class="img-thumbnail" src="@Model.QRcode">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="LogoImg">营业执照：</label>
+                <img alt="@Model.BLS" id="img_logoimage" width="150" height="150" class="img-thumbnail" src="@Model.BLS">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="LogoImg">法人身份证扫描件：</label>
+                <img alt="@Model.CIC" id="img_logoimage" width="150" height="150" class="img-thumbnail" src="@Model.CIC">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">网址：</label>
+                <label class="form-span"> @Model.Url</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="Recsts">是否有效：</label>
+                <label class="form-span">@Html.Raw(Model.Recsts == 1 ? "有效" : "无效")</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">开店帮介绍</label>
+                <textarea id="content1" cols="100" rows="8" style="width: 700px; height: 200px; visibility: hidden;" name="Rmark">
+                    @Model.Introduction
+                </textarea>
+            </div>
+
+            <div class="form-group" @Html.Raw(Model.isaudit == 1 ? "style=\"display: none;\"" : "")>
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">审核</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+
+    }
+</script>

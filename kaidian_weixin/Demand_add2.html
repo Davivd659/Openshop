@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="applicable-device" content="mobile">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="apple-touch-icon-precomposed" href="http://img.to8to.com/wap/v2/iphone_to8to.png">
+		<link rel="canonical" href="http://www.to8to.com/yezhu/zxbj.php/">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/css.css">
+		<script src="js/lxb.js" charset="utf-8"></script>
+		<script src="js/v.htm" charset="utf-8"></script>
+		<script src="js/hm.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/to8torsas.js"></script>
+		<script type="text/javascript" src="js/zbcommon.js"></script>
+		<title>需求发布-开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+
+	<body onselectstart="return false">
+		<style>
+			body{
+			        background-color: #fff;
+			    }
+		</style>
+		<header id="dt-hd" class="navstyle3" style="text-align: left;">
+			<div style="width:98%;padding-left:1%;line-height:40px;font-size: 16px;font-weight: bold;float:left;">
+				发布需求
+			</div>
+			
+			
+		</header>
+		<form class="zxd-form sjbj-form" id="form_zx" action="/zb/post">
+			<section class="bj-frame">
+				<!--<h1><i></i><span style="color:#333333" id="am-pm">下午好</span>，今天已有 <span>3133</span> 人成功发布需求</h1>-->
+				<dl>
+					<dt>意向类型</dt>
+					<dd>
+						<p style="display: none;" class="zx-yixiang">忘记选择意向类型了哦~</p>
+						<label>
+							<select class="needsclick" name="yxlx" id="yxlx" data-msg="请选择您的意向类型">
+								<option selected="selected" value="-1">请选择意向类型</option>
+								<option value="1">求租</option>
+								<option value="2">求购</option>
+							</select>
+						</label>
+					</dd>
+					<dt>标题</dt>
+					<dd>
+						<p style="display: none;" class="zx-bt">忘记输入标题了哦~</p>
+						<input id="xqbt" name="xqbt" class="areaSel" placeholder="请输入您的需求标题" type="number">
+					</dd>
+					<dt>自身业态</dt>
+					<dd>
+						<p style="display: none;" class="zx-zsyt">忘记输入业态了哦~</p>
+						<input id="zsyt" name="zsyt" class="areaSel" placeholder="请输入业态类型" type="number">
+					</dd>
+					<dt>意向区域</dt>
+					<dd>
+						<p style="display: none;" class="zx-quyu">忘记选择意向区域了哦~</p>
+						<label>
+							<select class="needsclick" name="yxqy" id="yxqy" data-msg="请选择您的意向区域">
+								<option selected="selected" value="-1">请选择意向区域</option>
+								<option value="1">朝阳</option>
+								<option value="2">海淀</option>
+							</select>
+						</label>
+					</dd>
+					<dt>需求面积</dt>
+					<dd>
+						<p style="display: none;" class="zx-quyu">忘记添加需求面积了哦~</p>
+						<input id="xqmj" name="xqmj" class="areaSel" placeholder="请输入您的需求面积" type="number">
+					</dd>
+					<dt>意向价格</dt>
+					<dd>
+						<p style="display: none;" class="zx-yxjg">忘记输入价格了哦~</p>
+						<input id="yxjg" name="yxjg" class="areaSel" placeholder="请输入您的意向价格" type="number">
+					</dd>
+					<dt>意向物业</dt>
+					<dd>
+						<p style="display: none;" class="zx-yxwy">忘记选择意向物业类型了哦~</p>
+						<label>
+							<select class="needsclick" name="yxwy" id="yxwy" data-msg="请选择您的意向物业类型">
+								<option selected="selected" value="-1">请选择意向物业类型</option>
+								<option value="1">写字楼</option>
+								<option value="2">独栋</option>
+							</select>
+						</label>
+					</dd>
+					<dt  style="height:146px;">需求详情</dt>
+					<dd  style="height:146px;">
+						<p style="display: none;" class="zx-xqxq">忘记输入需求详情了哦~</p>
+						<textarea rows="5" id="xqxq" name="xqxq" class="areaSel" placeholder="请输入需求详情" type="number"></textarea>
+					</dd>
+					<dt>截止日期</dt>
+					<dd>
+						<p style="display: none;" class="zx-jzrq">忘记输入日期了哦~</p>
+						<input id="jzrq" name="jzrq" class="areaSel" placeholder="请输入截止日期" type="number">
+					</dd>
+					<dt>联系人</dt>
+					<dd>
+						<p style="display: none;" class="zx-lxr">忘记输入联系了哦~</p>
+						<input id="lxr" name="lxr" class="areaSel" placeholder="请输入联系人" type="number">
+					</dd>
+					<dt>手机号码</dt>
+					<dd>
+						<p class="val-phone">请正确输入手机号码</p>
+						<input id="phone" name="" class="phoneNumber" placeholder="只能填写手机号" type="tel">
+					</dd>
+					<dt class="val-code"> 验 证 码 </dt>
+					<dd class="val-code">
+						<p class="val-msg-code">请输入验证码哦~</p>
+						<input class="val-code-show img-captcha" name="captcha" id="captcha" placeholder="输入右边验证码" type="text">
+						<a class="refresh-captcha" href="#">
+							<img src="js/vfcode.png" height="23" width="70">
+							<!--<i class="icon-refresh-zxbj"></i>-->
+						</a>
+
+					</dd>
+					
+					
+					
+					
+					<!--<dt>建筑面积</dt>
+					<dd>
+						<p style="display: none;" class="zx-area">忘记输入房屋面积了哦~</p>
+						<input id="zxd-area" name="oarea" class="areaSel" placeholder="请输入您的房屋面积" type="number"><em>平方米</em>
+					</dd>
+					<dt>所在城市</dt>
+					<dd>
+						<p class="zx-city">忘记填写城市地区了哦~</p>
+						<i></i>
+						<div>
+							<select class="prov needsclick" id="User_Shen" name="shen" onchange="changeProvince('User_Shen', 'User_City', 'User_Town');">
+
+								<option selected="selected" value="省">省/市</option>
+								<option value="安徽">A 安徽</option>
+								<option value="北京">B 北京</option>
+								
+							</select>
+							<select class="citys needsclick" id="User_City" name="city" onchange="changeTown('User_Shen', 'User_City', 'User_Town');">
+								<option value="市" selected="selected">市/地区</option>
+							</select>
+							<select class="form-control needsclick" name="info_town" id="User_Town" hidden="hidden"></select>
+						</div>
+					</dd>
+					<dt>装修状态</dt>
+					<dd>
+						<p class="zx-time">忘记选择装修状态了哦~</p>
+						<label>
+							<select class="needsclick" name="zxzt" id="zxzt" data-msg="请选择您的装修状态">
+								<option selected="selected" value="-1">请选择装修状态</option>
+								<option value="1">还没买房</option>
+								<option value="2">还没交房</option>
+								<option value="3">准备装修</option>
+								<option value="4">已订装修公司</option>
+								<option value="5">已经装修了</option>
+							</select>
+						</label>
+					</dd>
+					<dt>装修风格</dt>
+					<dd>
+						<p class="zx-style">忘记选择装修风格了哦~</p>
+						<label>
+							<select class="needsclick" name="fengge" id="fengge">
+								<option selected="selected" value="">请选择装修风格</option>
+								<option value="1">简约</option>
+								<option value="2">现代</option>
+								<option value="3">中式</option>
+								<option value="4">欧式</option>
+								<option value="5">美式</option>
+								<option value="6">田园</option>
+								<option value="7">新古典</option>
+								<option value="8">混搭</option>
+								<option value="9">地中海</option>
+								<option value="10">东南亚</option>
+								<option value="11">日式</option>
+								<option value="12">宜家</option>
+								<option value="13">北欧</option>
+								<option value="14">简欧</option>
+							</select>
+						</label>
+					</dd>
+					<dt>装修档次</dt>
+					<dd>
+						<p class="zx-dangci">忘记选择装修档次了哦~</p>
+						<label>
+							<select class="needsclick" name="dangci" id="dangci">
+								<option selected="selected" value="">请选择装修档次</option>
+								<option value="1">简装</option>
+								<option value="2">精装</option>
+								<option value="3">豪华</option>
+							</select>
+						</label>
+					</dd>
+					-->
+				</dl>
+			</section>
+			<div class="finish-btn-next">
+				<input id="zxd-form-submit" value="确定发布" type="submit">
+			</div>
+			
+		</form>
+
+		<script type="text/javascript">
+			var descContent = '',
+			            shareTitle = document.title,
+			            appid = '',
+			            imgUrl = '',
+			            lineLink = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx23b5153a96c64877&redirect_uri=http%3A%2F%2Fm.to8to.com%2Fwap%2Findex.php%3Fr%3Dweixin%2Fredirect%26redirect%3Dzxbj&response_type=code&scope=snsapi_base&state=to8toweixin#wechat_redirect';
+			
+			    function shareFriend() {
+			        WeixinJSBridge.invoke('sendAppMessage', {
+			            "appid": appid,
+			            "img_url": imgUrl,
+			            "img_width": "640",
+			            "img_height": "640",
+			            "link": lineLink,
+			            "desc": descContent,
+			            "title": shareTitle
+			        }, function (res) {
+			            _report('send_msg', res.err_msg);
+			        })
+			    }
+			    function shareTimeline() {
+			        WeixinJSBridge.invoke('shareTimeline', {
+			            "img_url": imgUrl,
+			            "img_width": "640",
+			            "img_height": "640",
+			            "link": lineLink,
+			            "desc": descContent,
+			            "title": shareTitle
+			        }, function (res) {
+			            _report('timeline', res.err_msg);
+			        });
+			    }
+			    function shareWeibo() {
+			        WeixinJSBridge.invoke('shareWeibo', {
+			            "content": descContent,
+			            "url": lineLink
+			        }, function (res) {
+			            _report('weibo', res.err_msg);
+			        });
+			    }
+			
+			    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+			    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			
+			        // 发送给好友
+			        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+			            shareFriend();
+			        });
+			
+			        // 分享到朋友圈
+			        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+			            shareTimeline();
+			        });
+			        // 分享到微博
+			        WeixinJSBridge.on('menu:share:weibo', function (argv) {
+			            shareWeibo();
+			        });
+			
+			    }, false);
+			    var gpm;
+			    $(function () {
+			        gpm = new GlobalProvincesModule();
+			        gpm.def_province = ["省/市", "省"];
+			        gpm.def_city1 = ["市/地区", "市"];
+			        gpm.initProvince(get("User_Shen"));
+			        gpm.initProvince(get("User_Shen_1"));
+			    });
+			
+			    $("#am-pm").text(showtime());
+			    function showtime() {
+			        var now = new Date();
+			        var hours = now.getHours();
+			        var timeValue = "";
+			        if (hours >= 18) {
+			            timeValue = "晚上好";
+			        } else if (hours >= 13) {
+			            timeValue = "下午好";
+			        } else if (hours >= 12) {
+			            timeValue = "中午好";
+			        } else {
+			            timeValue = "上午好";
+			        }
+			        return timeValue;
+			    }
+			    $(function () {
+			        $('#post_url').val($("#step_1_url").val());
+			        $("#form_zx input").on('keyup blur', function () {
+			            $(this).prev('p').hide();
+			        });
+			        $("#form_zx select").change(function () {
+			            $(this).parent().prev('p').hide();
+			            $(this).parent().prev().prev('p').hide();
+			        });
+			        
+			        $("#phone").focus(function () {
+			            $(".val-phone").show();
+			        });
+			
+			    });
+		</script>
+
+		<script type="text/javascript" src="js/GlobalProvinces.js"></script>
+		<script type="text/javascript" src="js/zxbj.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/seoStatis.js"></script>
+		<script type="text/javascript" src="js/2a19dc2ac1471a7470fe7187a5537960_2.js"></script>
+		<script type="text/javascript" src="js/h5AppDownload_sourcecharge.js"></script>
+
+		<div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+			<div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+				<div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+					<div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+					<div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+						<div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+div, dl, dt, dd, form, h1, h2, h3, h4, h5, h6, img, ol, ul, li, table, th, td, p, span, a {
+    border: 0;
+}
+
+    a:link {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:visited {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a :active {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+li {
+    list-style: none;
+}
+
+img, input {
+    border: none;
+    vertical-align: middle;
+}
+
+.content {
+    width: 1200px;
+    margin: auto;
+}
+
+.left {
+    float: left;
+    width: 820px;
+    background-color: white;
+}
+
+.right {
+    padding-left: 16px;
+    width: 380px;
+    float: right;
+    background-color: white;
+}
+
+.linkChain {
+    height: 60px;
+    padding-top: 35px;
+    font-size: 16px;
+}

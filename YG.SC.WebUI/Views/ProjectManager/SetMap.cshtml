@@ -1,0 +1,148 @@
+﻿@using System.Collections.Concurrent
+@using System.Web.UI.WebControls
+@using YG.SC.Common.AttributeExtention
+@model YG.SC.Model.Project.ProjectViewModel
+@{
+    ViewBag.Title = "设置项目坐标";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   // Layout = null;
+}
+@section styles{
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+        .col-sm-1 {
+            min-width: 120px;
+        }
+        #create-warning {
+            display: none;
+        }
+        /*body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}*/
+        #btnMapPoint {margin-left:15px; }
+        #allmap {
+            width:80%;
+            height:500px;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=G1CD1d8YwwdWyZTimCidsxqO"></script>
+	
+}
+@section Scripts {
+    
+}
+<div class="panel panel-default">
+    <div class="panel-heading">设置项目坐标</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ProjectManager/SetMap" id="addform" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            <div hidden="hidden">
+                @Html.TextBoxFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Long)
+                @Html.TextBoxFor(m => m.Lat)
+            </div>
+            <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-sm-1 control-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @value = Model.Name, @required = "required", @readonly = "readonly" })
+    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressLine, new { @class = "col-sm-1 control-label" })
+                @Html.TextAreaFor(m => m.AddressLine, new { @class = "form-control", @style = "width:600px", @required = "required" })
+                <button style="float: left" class="btn btn-primary " type="button" id="btnMapPoint" onclick="javascript:createPoint();">找地址</button>
+            </div>
+            <div class="form-group">
+                <label for="ProjectAdvantage" class="col-sm-1 control-label">地图</label>
+                <div id="allmap" class="form-control" style="width:500px; height:500px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">保存</button>
+                </div>
+            </div>
+          
+        </form>
+    </div>
+</div> 
+ 
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map(document.getElementById("allmap"));
+
+    var marker;
+    var myGeo = new BMap.Geocoder();
+
+    function createPoint() {
+        // 创建地址解析器实例
+        var myAddress = $("#AddressLine").val();
+
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint(myAddress, function (point) {
+            if (point) {
+                // 移除旧的
+                var allOverlay = map.getOverlays();
+                for (var i = 0; i < allOverlay.length - 1; i++) {
+                    map.removeOverlay(allOverlay[i]);
+                }
+                map.centerAndZoom(point, 16);
+                marker = new BMap.Marker(point);
+                map.addOverlay(marker);    //增加点
+                // marker.addEventListener("click", attribute);
+                marker.enableDragging();
+
+                //$("#Lat").val(point.lat);
+                //$("#Long").val(point.lng);
+
+            } else {
+                alert("您输入的地址没有解析到结果，请拖拽更新坐标!");
+            }
+        }, "北京市");
+    }
+
+    function InitPoint(point) {
+        if (point) {
+            // 移除旧的
+            var allOverlay = map.getOverlays();
+            for (var i = 0; i < allOverlay.length - 1; i++) {
+                map.removeOverlay(allOverlay[i]);
+            }
+
+            map.centerAndZoom(point, 16);
+            marker = new BMap.Marker(point);
+            map.addOverlay(marker);    //增加点
+            marker.enableDragging();
+
+            // marker.addEventListener("click", attribute);
+            //$("#Lat").val(point.lat);
+            //$("#Long").val(point.lng);
+        }
+    }
+
+    @{
+     if (Model.Lat != 0 && Model.Long != 0)
+     {
+         @Html.Raw("var _layPoint = new BMap.Point(" + Model.Long + " ,"+Model.Lat+");InitPoint(_layPoint);");
+     }
+     else {
+         @Html.Raw("createPoint();");
+     }
+ }
+    function attribute() {
+        var point = marker.getPosition();  //获取marker的位置
+        $("#Lat").val(point.lat);
+        $("#Long").val(point.lng);
+    }
+
+    $("#btnSubmit").click(function () {
+        attribute();
+     
+    });
+</script>
+
+
+
+
+
+ 

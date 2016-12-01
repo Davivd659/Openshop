@@ -1,0 +1,103 @@
+﻿@model YG.SC.Model.MessageSearchCriteria
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common
+@{
+    ViewBag.Title = "我的消息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, string> _messageSourceList = ViewBag.MessageSourceList;
+    Tuple<S_Message[], PagerEntity> _messageList = ViewBag.MessageList;
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">我的消息</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_order_top">
+                    @using (Html.BeginForm("List", "Message", FormMethod.Post, new { @class = "" }))
+                    {
+                        <table id="table_search">
+                            <tbody>
+                                <tr>
+                                    <td style="width:80px;">消息时间:</td>
+                                    <td>
+                                        <input type="" name="SendDateLeft" id="SendDateLeft" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+                                        - <input type="" name="SendDateRight" id="SendDateRight" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+                                    </td>
+                                    <td style="width:80px;">消息来源:</td>
+                                    <td style="width:140px;">
+                                        <select name="MessageSource" style="width:120px;">
+                                            <option value="-1">全部</option>
+                                            @if (_messageSourceList != null)
+                                            {
+                                                foreach (KeyValuePair<int, string> ms in _messageSourceList)
+                                                {
+                                                    <option value="@ms.Key">@ms.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </td>
+                                    <td style="width:200px;">
+                                        <input type="" name="Key" placeholder="商家姓名/商家电话" style="width:195px;">
+                                    </td>
+                                    <td><button>搜索</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+                <div class="utc_right_order_center">
+                    @if (_messageList != null && _messageList.Item1 != null && _messageList.Item1.Count() > 0)
+                    {
+                        <table id="table_info">
+                            <tbody>
+                                <tr>
+                                    <th style="width:140px;">序号</th>
+                                    <th>消息详情</th>
+                                    <th style="width:150px;">时间</th>
+                                    <th style="width:100px;">操作</th>
+                                </tr>
+                                @for (int i = 0; i < _messageList.Item1.Count(); i++)
+                                {
+                                    S_Message message = _messageList.Item1[i];
+                                    <tr class="alt">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.Raw(i + 1)<br>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            @CommonEnum.GetDescription((CommonEnum.TypeOfMessage)message.MessageType)消息-@message.Message<br>
+                                        </td>
+                                        <td><span class="Gray12">@message.SendTime.ToString(Define.DATE_FORMAT_MINUTE)</span></td>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(@message.DetailsUrl))
+                                            {
+                                                <span>&nbsp;</span>
+                                            }
+                                            else
+                                            {
+                                                <a href="@message.DetailsUrl">查看详情</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+					else
+					{
+						<div class="searchnull Gray18B">未查询到相关数据</div>
+					}
+                </div>
+                @Html.Partial("_LayoutPager", _messageList.Item2)
+            </div>
+        </div>
+</div>
+</div>

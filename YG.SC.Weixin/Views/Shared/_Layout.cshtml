@@ -1,0 +1,111 @@
+﻿@using System.Web.Providers.Entities 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/openshop.css" rel="stylesheet" />
+    <link href="~/Content/brand.css" rel="stylesheet" />
+    @*<script src="/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/common.js" type="text/javascript"></script>
+@RenderSection("script", required: false)
+</head>
+<body>
+    <header>
+        <div class="head-container">
+            <a href="/"><div class="site-title">我要开店</div></a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="/home/index">首页</a></li><li><a href="/OpenShop/index">团购</a></li>
+                    <li><a href="/OpenShop/index">开店帮</a></li>
+                    <li><a href="/project/search?keys=">选址</a></li>
+                    <li><a href="/ShopBrand/index">品牌街</a></li>
+                </ul>
+            </nav>
+            <div class="site-account">
+                @if (YG.SC.WeiXin.UserContext.Current.Id > 0 && !string.IsNullOrEmpty(YG.SC.WeiXin.UserContext.Current.Name))
+                {
+               <a href="/Customer/Index?CustomerId=@YG.SC.WeiXin.UserContext.Current.Id">@YG.SC.WeiXin.UserContext.Current.Name</a>
+                <a>|</a>
+                <a href="/Login/Logout">退出</a>
+                }
+                else
+                {
+                 <a href="/login/index">登录</a>
+                <a>|</a>
+                <a href="/Login/Regist">注册</a>
+                }
+            </div>
+            <div class="site-search">
+                <input type="text" class="site-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." id="txtKeys" name="txtKeys" value="@ViewBag.Keys" />
+                <input type="button" class="site-search-btn btn" value="搜索" id="btn_site_search" />
+            </div>
+        </div>
+    </header>
+ 
+    @RenderBody()
+   
+<!-- foooter -->
+    <div class="footer">
+        <div class="warp-line">
+        <div class="service">
+            <div class="inner">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <h3>开店服务</h3>
+                        </li>
+                        <li><a href="#/instruction">购买指南</a></li>
+                        <li><a href="#/payment">支付方式</a></li>
+                        <li><a href="#/delivery">送货政策</a></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3>服务与支持</h3>
+                        </li>
+                        <li><a href="#/service">购买指南</a></li>
+                        <li><a href="#/storelist">支付方式</a></li>
+                        <li><a target="_blank" href="http://preorder.smartisan.com/#/mobile/code">优先购买通道</a>  </li>
+                    </ul>
+                    <ul >
+                        <li>
+                            <h3>关于公司</h3>
+                        </li>
+                        <li><a href="#/about">公司简介</a></li>
+                        <li><a href="#/join">加入我们</a></li>
+                        <li><a href="#/contact">联系我们</a></li>
+                    </ul> 
+                </div>
+                
+                <div class="doublebox">
+                                <div class="doublebox_in">
+                                    <img src="/Images/s-android.jpg" />
+                                    <p>Android二维码</p>
+                                </div>
+                            </div>
+                <div class="online">
+                    <p class="phone-title">客服电话</p>
+                    <p class="tel"><a href="tel:4006190909">400-000-9999</a></p>
+                    <p>周一至周日 9:00-18:0</p>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        <div class="copyright">
+            <div class="warp-line fn-clear">
+                <div class="copy-label">
+                    <div class="copy-text">
+                        Copyright &copy; 2015, KaiDian Co.., Ltd. All Rights Reserved. 北京开店帮科技有限公司
+                        <br />
+                        京ICP备1404****号-1 京ICP证14****号
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+﻿@model YG.SC.Model.OpenShopViewModel
+@{
+    ViewBag.Title = "商家注册-提交公司信息";
+}
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="~/Content/KindEditor/kindeditor.js"></script>
+<script src="~/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="~/Content/KindEditor/plugins/code/prettify.js"></script>
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+        @*   var models=@Model.ShopBrandAttributeValues;
+        for (var i = 0; i < models; i++) {
+            $("#selAttribute").select2('val', models[i].AttributeValuesId);
+        }*@
+
+    </script>
+}
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#content1', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/Merchant/ProcessFile',
+            fileManagerJson: '/Merchant/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<div class="body-warp">
+    <div class="add_jindubox">
+        <ul class="ul_jindutxt Gray16">
+            <li class="red">提交公司信息</li>
+            <li>上传案例图片</li>
+            <li>上传资质图片</li>
+            <li>平台审核</li>
+            <li>注册成功</li>
+        </ul>
+        <ul class="ul_jinduimg">
+            <li>
+                <div style="background-color:#d72315;"></div>
+                <img src="~/Images/icon/3_01.jpg" />
+            </li>
+            <li>
+                <div class="bred"></div>
+                <img src="~/Images/icon/1_02.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_03.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_04.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_05.png">
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="body-warp">
+    <span class="Gray18">添加商家信息</span>
+</div>
+<form action="/Merchant/OpenShop_add1" role="form" method="POST" enctype="multipart/form-data">
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_sjtitlebox Red22">
+                商家信息
+            </div>
+            <div class="add_sjinfobox">
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>商家名称：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Name" id="Name" value="@Model.Name" required="required" oninvalid="setCustomValidity('请输入商家名称！');" oninput="setCustomValidity('');" placeholder="请输入商家名称" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>商家简称：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Abbreviation" id="Abbreviation" value="@Model.Abbreviation" required="required" oninvalid="setCustomValidity('请输入商家简称！');" placeholder="请输入商家简称" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>商家类别：</div>
+                <div class="add_sjcontentbox">
+                    @{ var shoptypeList = (List<SelectListItem>)ViewBag.shopType;}
+                    @Html.DropDownList("Type", shoptypeList)
+                </div>
+                <div id="Districtdiv">
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>经营范围：</div>
+                    <div class="add_sjcontentbox">
+                        @{ var range = (List<SelectListItem>)ViewBag.range;}
+                        @Html.DropDownList("Rangeid", range)
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>配送区域：</div>
+                    <div class="add_sjcontentbox">
+                        @{ var District = (List<SelectListItem>)ViewBag.District;}
+                        @Html.DropDownList("District", District)
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商圈：</div>
+                    <div class="add_sjcontentbox">
+                        <select id="Districtid" name="Districtid"></select>
+                    </div>
+
+                </div>
+
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>商家地址：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Address" id="Address" value="@Model.Address" required="required" oninvalid="setCustomValidity('请输入商家地址！');" oninput="setCustomValidity('');" placeholder="请输入商家地址" />
+                </div>
+                <div class="add_sjmenubox Gray16">商家网址：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Url" id="Url" value="@Model.Url" required="required" oninvalid="setCustomValidity('请输入商家网址！');" oninput="setCustomValidity('');" placeholder="请输入商家网址" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>商家介绍：</div>
+                <div class="add_sjcontentbox">
+                    <textarea id="content1" cols="100" rows="8" style="width: 700px; height: 300px; visibility: hidden;" required="required" oninvalid="setCustomValidity('请输入商家介绍！');" oninput="setCustomValidity('');" placeholder="请输入商家介绍">
+                        @Model.Introduction
+                    </textarea>
+                    <input type="hidden" value="" name="Introduction" id="Introduction" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_imgbox">
+                <div class="addimginfobox">
+                    <div class="addimgtitlebox"><span class="red">*</span>商家logo</div>
+                    <div class="addimgcontentbox"><img src="@Html.Raw(string.IsNullOrEmpty(Model.Logo) == true ? "/Images/9_03.jpg" : Model.Logo)" id="logoimg" alt=""></div>
+                    <input type="hidden" name="Logo" id="Logo" value="@Model.Logo" />
+                    <button class="addimgimg_button" id="logosubmit" type="button" onclick="Logofile.click()">上传</button>
+                    <input type="file" id="Logofile" name="Logofile" style="display:none" onchange="upfile.value=this.value">
+                </div>
+                <div class="addimginfobox">
+                    <div class="addimgtitlebox">商家微信二维码</div>
+                    <div class="clear"></div>
+                    <div class="addimgcontentbox">
+                        <img src="@Html.Raw(string.IsNullOrEmpty(Model.QRcode) == true ? "/Images/9_03.jpg" : Model.QRcode)" id="QRcodeimg" alt="">
+                        <input type="hidden" name="QRcode" id="QRcode" value="@Model.QRcode" />
+                    </div>
+                    <div class="clear"></div>
+                    <button class="addimgimg_button" id="QRcodesubmit" type="button" onclick="QRcodefile.click()">上传</button>
+                    <input type="file" id="QRcodefile" name="QRcodefile" style="display:none" onchange="upfile.value=this.value">
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_sjtitlebox Red22">
+                商家联系信息
+            </div>
+            <div class="add_sjinfobox">
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>联系人姓名：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Customer" id="Customer" value="@Model.Customer" required="required" oninvalid="setCustomValidity('请输入联系人姓名！');" oninput="setCustomValidity('');" placeholder="请输入联系人姓名" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>联系人电话：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Mobile" id="Mobile" value="@Model.Mobile" required="required" oninvalid="setCustomValidity('请输入联系人电话！');" oninput="setCustomValidity('');" placeholder="请输入联系人电话" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>账户密码：</div>
+                <div class="add_sjcontentbox">
+                    <input type="password" name="Password" id="Password" value="@Model.Password" required="required" oninvalid="setCustomValidity('请输入联系人电话！');" oninput="setCustomValidity('');" placeholder="请输入账户密码" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>确认密码：</div>
+                <div class="add_sjcontentbox">
+                    <input type="password" name="ctnPassword" id="ctnPassword" value="" required="required" placeholder="请输入重新密码" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="body-warp">
+        <div class="add_jindubox" style="text-align: center;margin-bottom:0px;">
+            <input type="checkbox" name="checkbox" id="xieyi" /> 同意《开店ing商家注册协议》
+        </div>
+    </div>
+    <div class="body-warp">
+        <div class="add_jindubox" style="text-align: center;margin-top:0px;">
+            <input type="submit" value="下一步" id="add1" class="add_sjbutton" />
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#Type").val() == "200") {
+            $("#Districtdiv").show();
+            var quyu = "@ViewBag.quyu";
+            if (quyu != null) {
+                $("#District").val(quyu);
+            }
+            getnode();
+        }
+        else {
+            $("#Districtdiv").hide();
+        }
+    })
+    $("#District").change(function () {
+        getnode();
+    })
+    $("#Type").change(function () {
+        if ($("#Type").val() == "200") {
+            $("#Districtdiv").show();
+            getnode();
+        }
+        else {
+            $("#Districtdiv").hide();
+        }
+    })
+    $("#Logofile").change(function () {
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Merchant/uploadimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#QRcodefile").change(function () {
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Merchant/uploadimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    function getnode() {
+        $("#Districtid").empty();
+        $.ajax({
+            url: "/Merchant/GetNodelist",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { id: $("#District").val() },
+            success: function (data) {
+                if (data == "") {
+                    $("#Districtid").append("<option value=\"-1\">无</option>");
+                }
+                $.each(data, function (i, item) {
+                    $("<option></option>").val(item["Value"]).text(item["Text"]).appendTo($("#Districtid"));
+
+                })
+            }
+        })
+    }
+    $("#add1").click(function () {
+        var bool = true;
+        $("#add1").attr("disabled", "disabled");
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        $.ajax({
+            url: "/Merchant/validateRename",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { name: $("#Name").val() },
+            success: function (data) {
+                if (data == "True") {
+                    alert("商家名称已存在");
+                    bool = false;
+                }
+            }
+        })
+        if (bool == false) {
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        $.ajax({
+            url: "/Merchant/validateAbbreviation",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { Abbreviation: $("#Abbreviation").val() },
+            success: function (data) {
+                if (data == "True") {
+                    alert("商家简称已存在");
+                    bool = false;
+                }
+            }
+        })
+        if (bool == false) {
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        $.ajax({
+            url: "/Merchant/validateMobile",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { Moblie: $("#Mobile").val() },
+            success: function (data) {
+                if (data == "True") {
+                    alert("联系人电话已存在");
+                    bool = false;
+                }
+            }
+        })
+        if (bool == false) {
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        if ($("#Password").val() != $("#ctnPassword").val()) {
+            alert("密码与确认密码不一致");
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        if ($("#Logo").val() == "") {
+            alert("请上传商家logo");
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        var mobile = /^((1[3-9][0-9]{1})+\d{8})$/
+        if (length != 11 && !mobile.test($("#Mobile").val())) {
+            alert("请输入正确的手机号");
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+        if ($("input[name='checkbox']:checked").length < 1) {
+            alert("请阅读《开店ing商家注册协议》");
+            $("#add1").removeAttr("disabled");
+            return false;
+        }
+
+        $("#add1").removeAttr("disabled");
+
+    })
+</script>

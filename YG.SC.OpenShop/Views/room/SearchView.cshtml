@@ -1,0 +1,76 @@
+﻿@{
+    var updata = (Tuple<YG.SC.DataAccess.ShopRoom[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+}
+@if (updata != null && updata.Item1.Count() > 0)
+{
+    for (int i = 0; i < updata.Item1.Count(); i++)
+    {
+        var proj = updata.Item1[i];
+        <li>
+            <a href="/room/room?id=@proj.Id">
+                <div class="img-wrap">
+                    @{
+        Random ran = new Random();
+        int a = ran.Next(1, 3);
+        var error = "javascript:this.src='/Images/icon/shangpu-0" + a + ".gif'";
+        <img style="display: inline; float:left;" width="58" height="58" src="@string.Format("http://www.kaidianing.com{0}", proj.Rimg)"
+             class="lazy" data-original="@string.Format("http://www.kaidianing.com{0}", proj.Rimg)" alt="@proj.RName"
+             onerror="@error">
+                    }
+                </div>
+                <div class="company-info">
+                    <h2 class="text-overflow">@proj.RName</h2>
+                    <div class="company-score">
+                        <div class="credit text-overflow">
+                            <img src="~/Images/icon/place.png" /><span>
+                                @{
+        string str_add = proj.city;
+        if (!string.IsNullOrEmpty(proj.district))
+        {
+            str_add += "-" + proj.district;
+        }
+        if (!string.IsNullOrEmpty(proj.hotarea))
+        {
+            str_add += "-" + proj.hotarea;
+        }
+        if (!string.IsNullOrEmpty(proj.address))
+        {
+            str_add += "-" + proj.address;
+        }
+                                }
+                                @str_add
+                            </span>
+                        </div>
+                        <div class="wom text-overflow">
+                            <img src="~/Images/icon/time.png" /> <span>
+                                @{
+        string strfetch = proj.fetchDate.ToString();
+        long featdate = Convert.ToInt64(strfetch.Substring(0, strfetch.Length - 3));
+
+        DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+        long lTime = long.Parse(featdate.ToString() + "0000000");
+        TimeSpan toNow = new TimeSpan(lTime);
+        DateTime timeFeat = dtStart.Add(toNow);
+
+                                }
+                                @timeFeat.ToString("yyyy-MM-dd HH:mm")
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-overflow">
+                        <span class="production-count">
+                            <em>
+                                @{
+        string strRent = "出租 : " + proj.price + "元/月";
+        if (proj.sale == "True") { strRent = "出售 : " + proj.price + "元/平米"; }
+                                }
+                                @strRent
+                            </em>
+                        </span>
+                        <!--<span class="distance">1km</span>-->
+                    </div>
+                </div>
+            </a>
+        </li>
+    }
+}

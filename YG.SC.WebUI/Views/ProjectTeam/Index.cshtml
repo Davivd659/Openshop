@@ -1,0 +1,129 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@{
+    ViewBag.Title = "项目团购列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tuple = Model as Tuple<Grouppurchase[], PagerEntity>;
+    var idx = tuple.Item2.Idx;
+}
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+@section Scripts {
+}
+<div class="search-criteria">
+    <form class="form-inline" role="form" action="/ProjectTeam/Index">
+        <div class="form-group">
+            <label class="control-label">项目名称</label>
+            <input type="text" name="txtName" value="@Html.Raw((string)ViewBag.ProjectName)" class="form-control input-sm" />
+        </div>
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="search-action">
+    <a href="/ProjectTeam/Add" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>添加</a>
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>团购名称</th>
+                    <th>项目名称</th>
+                    <th>团购开始时间</th>
+                    <th>团购截止时间</th>
+                    <th>团购进度</th>
+                    <th>团购状态</th>
+                    <th>团购人数</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in tuple.Item1)
+                {
+                    <tr>
+                        <td class="text-center w50">@idx</td>
+                        <td class="text-center">
+                            @item.Name
+                        </td>
+                        <td class="text-center">
+                            @item.ShopProject.NAME
+                        </td>
+                        <td class="text-center">
+                            @item.Begintime
+                        </td>
+                        <td class="text-center">
+                            @item.Endtime
+                        </td>
+                        <td class="text-center">
+                            @if (item.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.one)
+                            {
+                                <span>第一步</span>
+                            }
+                            else if (item.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.two)
+                            {
+                                <span>第二步</span>
+                            }
+                            else if (item.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Three)
+                            {
+                                <span>第三步</span>
+                            }
+                            else if (item.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Four)
+                            {
+                                <span>第四步</span>
+                            }
+                            else if (item.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Five)
+                            {
+                                <span>第五步</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.Conduct)
+                            {
+                                <span>进行中</span>
+                            }
+                            else if (item.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.Cancelled)
+                            {
+                                <span>已取消</span>
+                            }
+                            else if (item.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.End)
+                            {
+                                <span>以结束</span>
+                            }
+                        <td class="text-center">
+                            @item.ApplyActivities.Count / @item.Llimit
+                        </td>
+                        <td class="text-center">
+                            <a href="/ProjectTeam/Edit/@item.Id">编辑</a>
+                            <a href="/applyActivity/Index/@item.Id">查看团购申请</a>
+                        </td>
+                    </tr>
+                            idx++;
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9">
+                        @Html.Partial("_LayoutPager", tuple.Item2)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

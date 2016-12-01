@@ -1,0 +1,125 @@
+﻿@model YG.SC.Model.ProductViewModel
+@{
+    ViewBag.Title = "品名管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var shoptypeList = (List<SelectListItem>)ViewBag.shopType;
+
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 128px;
+        }
+
+        #img_logoimage {
+            clear: left;
+            display: block;
+            margin-top: 40px;
+            margin-left: 128px;
+        }
+    </style>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加分类</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("ProductAdd", "Product", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label class="col-sm-1 control-label">所属一级分类</label>
+                @Html.DropDownList("Category", shoptypeList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">所属二级分类</label>
+                <select id="ParentId" name="ParentId" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">品名名称</label>
+                <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required="required" oninvalid="setCustomValidity('请输入品名名称！');" oninput="    setCustomValidity('');" placeholder="请输入品名名称">
+            </div>
+   <div class="form-group">
+                <label class="col-sm-1 control-label">品名图片</label>
+     <img src="@Model.Image" id="logoimg" alt="">
+       <input type="hidden" name="Image" id="Image" value="@Model.Image" />
+       <button class="addimgimg_button" id="logosubmit" type="button" onclick="Imagefile.click()">上传</button>
+       <input type="file" id="Imagefile" name="Imagefile" style="display:none" onchange="upfile.value=this.value">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">计量单位</label>
+                <input type="text" id="Unit" name="Unit" class="form-control" required="required" value="@Model.Unit" oninvalid="setCustomValidity('请输入计量单位！');" oninput="    setCustomValidity('');" placeholder="请输入计量单位">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">排序</label>
+                <input type="number" id="Sort" name="Sort" class="form-control" required="required" value="@Model.Sort" oninvalid="setCustomValidity('请输入排序！');" oninput="    setCustomValidity('');" placeholder="请输入排序">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">添 加</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        getnode();
+    })
+    $("#Category").change(function () {
+        getnode();
+    })
+    $("#Imagefile").change(function () {
+        $('form').attr('action', '/Product/Postimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#btnSubmit").click(function () {
+        if ($("#Category").val() == "-1") {
+            alert("没有所属一级分类，请先添加一级分类");
+            return false;
+        }
+        if ($("#ParentId").val() == "-1") {
+            alert("没有二级分类，请先添加二级分类");
+            return false;
+        }
+        if ($("#Image").val() == "") {
+            alert("请上传图片");
+            return false;
+        }
+    });
+    function getnode() {
+        $("#ParentId").empty();
+        $.ajax({
+            url: "/Product/GetNodelist",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { id: $("#Category").val() },
+            success: function (data) {
+                if (data == "") {
+                    $("#ParentId").append("<option value=\"-1\">无</option>");
+                }
+                $.each(data, function (i, item) {
+                    $("<option></option>").val(item["Value"]).text(item["Text"]).appendTo($("#ParentId"));
+
+                })
+            }
+        })
+    }
+</script>

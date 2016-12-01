@@ -1,0 +1,109 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common;
+@{
+    ViewBag.Title = "任务管理列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var context = Model as Tuple<M_Mission[], PagerEntity>;
+    //var selRecsts = ViewBag.SelRecsts as string;
+}
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+<div class="search-criteria">
+    <form class="form-inline" role="form" action="/Mission/List">
+        <div class="form-group">
+            <label class="control-label">任务名称</label>
+            <input type="text" name="Title" class="form-control input-sm" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">任务类型</label>
+            @{ var MissionType = (List<SelectListItem>)ViewBag.MissionType;
+             string type = "";
+             foreach (var leixing in MissionType)
+             {
+                 type = leixing.Text;
+             }
+            }
+            @Html.DropDownList("MissionType", MissionType, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>任务标题</th>
+                    <th>任务类型</th>
+                    <th>发布人</th>
+                    <th>发布人联系方式</th>
+                    <th>BD</th>
+                    <th>商家</th>
+                    <th>商家联系方式</th>
+                    <th>发布时间</th>
+                    <th>任务状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in context.Item1)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @item.Id
+                        </td>
+                        <td class="text-center">
+                            @item.Title
+                        </td>
+                        <td class="text-center">
+                            @item.FkMissionType.ValueStr
+                        </td>
+                        <td class="text-center">
+                            @item.FkPublisher.Name
+                        </td>
+                        <td class="text-center">
+                            @item.PublisherContact
+                        </td>
+                        <td>@Html.Raw(item.FkBd == null ? "" : item.FkBd.Name)</td>
+                        <td>@Html.Raw(item.FkReceiver==null?"":item.FkReceiver.Name)</td>
+                        <td>@item.ReceiverContact</td>
+                        <td class="text-center">
+                            @Html.Raw(item.PublisheTime==null?"":item.PublisheTime.ToString(Define.DATE_FORMAT_MINUTE))
+                        </td>
+                        <td>@CommonEnum.GetDescription((CommonEnum.StatusOfMission)item.Status)</td>
+                        <td class="text-center">
+                            <a href="/Mission/Edit?Mid=@item.Id">编辑</a>
+                            <a href="/Mission/Item?id=@item.Id">查看</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        @Html.Partial("_LayoutPager", context.Item2)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

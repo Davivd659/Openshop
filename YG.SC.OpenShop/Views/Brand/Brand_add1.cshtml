@@ -1,0 +1,272 @@
+﻿@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopBrand
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "升级品牌会员-基本信息";
+}
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="~/Content/KindEditor/kindeditor.js"></script>
+<script src="~/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="~/Content/KindEditor/plugins/code/prettify.js"></script>
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+        @*   var models=@Model.ShopBrandAttributeValues;
+        for (var i = 0; i < models; i++) {
+            $("#selAttribute").select2('val', models[i].AttributeValuesId);
+        }*@
+
+    </script>
+}
+@section styles{
+    <style>
+        input[type=checkbox] {
+            clear: both;
+        }
+    </style>
+}
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#content1', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/Merchant/ProcessFile',
+            fileManagerJson: '/Merchant/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<div class="body-warp">
+    <div class="add_jindubox">
+        <ul class="ul_jindutxt Gray16">
+            <li class="red">提交品牌信息</li>
+            <li>上传品牌图片</li>
+            <li>上传资质图片</li>
+            <li>平台审核</li>
+            <li>升级成功</li>
+        </ul>
+        <ul class="ul_jinduimg">
+            <li>
+                <div style="background-color:#d72315;"></div>
+                <img src="~/Images/icon/3_01.jpg" />
+            </li>
+            <li>
+                <div class="bred"></div>
+                <img src="~/Images/icon/1_02.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_03.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_04.png">
+            </li>
+            <li>
+                <div></div>
+                <img src="~/Images/icon/1_05.png">
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="body-warp">
+    <span class="Gray18">添加品牌信息</span>
+</div>
+<form action="/Brand/Brand_add1" role="form" method="POST" enctype="multipart/form-data">
+
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_sjtitlebox Red22">
+                品牌信息
+            </div>
+            <div class="add_sjinfobox">
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>品牌名称：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Name" id="Name" value="@Model.Name" required="required" oninvalid="setCustomValidity('请输入品牌名称！');" oninput="setCustomValidity('');" placeholder="请输入品牌名称" />
+                </div>
+                <div class="add_sjmenubox Gray16">品牌简称：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Abbreviation" id="Abbreviation" value="@Model.Abbreviation" required="required" oninvalid="setCustomValidity('请输入品牌简称！');" placeholder="请输入品牌简称" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>业态：</div>
+                <div class="add_sjcontentbox">
+
+                    @if (ViewBag.shopType != null)
+                    {
+                        foreach (var item in (List<ShopAttributeValues>)ViewBag.shopType)
+                        {
+                            <input id="TypeId_2" name="TypeId" type="checkbox" class="typecheckbox" value="@item.AttributeId-@item.Id" style="width:20px;">
+    <label for="TypeId_2" style="width:60px;text-align:left;">@item.ValueStr</label>
+                        }
+                    }
+                    <input type="hidden" name="selAttribute" id="selAttribute" value="@ViewBag.attributesvalue" />
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>品牌地址：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Address" id="Address" value="@Model.Address" required="required" oninvalid="setCustomValidity('请输入品牌地址！');" oninput="setCustomValidity('');" placeholder="请输入品牌地址" />
+
+                </div>
+                <div class="add_sjmenubox Gray16">品牌网址：</div>
+                <div class="add_sjcontentbox">
+                    <input type="text" name="Url" id="Url" value="@Model.Url" required="required" oninvalid="setCustomValidity('请输入品牌网址！');" oninput="setCustomValidity('');" placeholder="请输入品牌网址" />
+
+                </div>
+                <div class="add_sjmenubox Gray16"><span class="red">*</span>品牌介绍：</div>
+                <div class="add_sjcontentbox">
+                    <textarea id="content1" cols="100" rows="8" style="width: 700px; height: 200px; visibility: hidden;" required="required" oninvalid="setCustomValidity('请输入品牌介绍！');" oninput="setCustomValidity('');" placeholder="请输入品牌介绍">
+                        @Model.Rmark
+                    </textarea>
+                    <input type="hidden" value="" name="Rmark" id="Rmark" />
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="body-warp">
+        <div class="addbox">
+            <div class="add_imgbox">
+                <div class="addimginfobox">
+                    <div class="addimgtitlebox"><span class="red">*</span>品牌logo</div>
+                    <div class="addimgcontentbox"><img src="@Html.Raw(string.IsNullOrEmpty(Model.Logo) == true ? "/Images/9_03.jpg" : Model.Logo)" width="300" height="210" id="logoimg" alt=""></div>
+                    <input type="hidden" name="Logo" id="Logo" value="@Model.Logo" />
+                    <button class="addimgimg_button" id="logosubmit" type="button" onclick="Logofile.click()">上传</button>
+                    <input type="file" id="Logofile" name="Logofile" style="display:none" onchange="upfile.value=this.value">
+                </div>
+                <div class="addimginfobox">
+                    <div class="addimgtitlebox">品牌微信二维码</div>
+                    <div class="clear"></div>
+                    <div class="addimgcontentbox">
+                        <img src="@Html.Raw(string.IsNullOrEmpty(Model.QRCode) == true ? "/Images/9_03.jpg" : Model.QRCode)" width="300" height="210" id="QRcodeimg" alt="">
+                        <input type="hidden" name="QRcode" id="QRcode" value="@Model.QRCode" />
+                    </div>
+                    <div class="clear"></div>
+                    <button class="addimgimg_button" id="QRcodesubmit" type="button" onclick="QRcodefile.click()">上传</button>
+                    <input type="file" id="QRcodefile" name="QRcodefile" style="display:none" onchange="upfile.value=this.value">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="body-warp">
+        <div class="add_jindubox" style="text-align: center;margin-top:0px;">
+            <input type="submit" value="下一步" id="add1" class="add_sjbutton" />
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#selAttribute").val() != "") {
+            var type = $("#selAttribute").val().substring(0, $("#selAttribute").val().length - 1).split(',');
+            $("input[type=checkbox]").each(function () {
+                if (type != "") {
+                    for (var i in type) {
+                        if ($(this).val() == type[i]) {
+                            $(this).attr("checked", true);
+                        }
+                    }
+                }
+            });
+        }
+    })
+    $("#Logofile").change(function () {
+        var type = "";
+        $("input[type=checkbox]:checked").each(function () { //由于复选框一般选中的是多个,所以可以循环输出
+            type += $(this).val() + ",";
+        });
+        $("#selAttribute").val(type);
+        $("#Rmark").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Brand/uploadimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#QRcodefile").change(function () {
+        var type = "";
+        $("input[type=checkbox]:checked").each(function () { //由于复选框一般选中的是多个,所以可以循环输出
+            type += $(this).val() + ",";
+        });
+        $("#selAttribute").val(type);
+        $("#Rmark").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Brand/uploadimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#add1").click(function () {
+        $("#Rmark").val($(".ke-edit-iframe").contents().find('body').html());
+        var type = "";
+        var bool = true;
+        $.ajax({
+            url: "/Brand/validateRename",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { name: $("#Name").val() },
+            success: function (data) {
+                if (data == "True") {
+                    alert("品牌名称已存在");
+                    bool = false;
+                }
+            }
+        })
+        if (!bool) {
+            return false;
+        }
+        $.ajax({
+            url: "/Brand/validateAbbreviation",
+            cache: false,
+            async: false,
+            type: 'post',
+            data: { Abbreviation: $("#Abbreviation").val() },
+            success: function (data) {
+                if (data == "True") {
+                    alert("品牌简称已存在");
+                    bool = false;
+                }
+            }
+        })
+        if (!bool) {
+            return false;
+        }
+        $("input[type=checkbox]:checked").each(function () { //由于复选框一般选中的是多个,所以可以循环输出
+            type += $(this).val() + ",";
+        });
+        $("#selAttribute").val(type);
+        if (type == "") {
+            alert("请选择业态");
+            return false;
+        }
+        if ($("#Logo").val() == "") {
+            alert("请上传品牌logo");
+            return false;
+        }
+    })
+</script>

@@ -1,0 +1,91 @@
+﻿.kd-index {
+    padding-top:30px;
+}
+header {
+    height:80px; 
+}
+
+.kd-index, header {
+ min-width:1550px;
+}
+.kd-index {
+ padding-left:30px;
+ padding-right:0px;
+  }
+
+.searchbox {
+    padding-left:40px;
+    float:left;
+    width:760px;
+    border-right:1px solid #d4d4d4;
+}
+.kd-result {
+    width:740px;
+    float:left;
+}
+
+.rightmod {
+  width:7px;height:7px;
+  overflow:visible; 
+  background-image:url("/images/mod.jpg")
+}
+.rightmod {
+    float:right;
+    margin-right:-4px;
+}
+.searchfeater {
+ width:100%;  
+    min-height:400px;
+}
+.kd-prolist ,.kd-s-head {
+    min-width:720px;
+}
+/*列表*/
+.kd-prolist {
+    height: 600px;
+    margin-bottom:40px;
+    overflow:auto;
+}
+
+.kd-s-head {
+    width: 100%;
+    line-height: 40px;
+    height: 40px;
+    font-size:14px;
+    padding-left:20px;
+    color:#666666;
+    border-bottom:1px solid #ccc;
+}
+    .kd-s-head span {
+    color:#ff3333;
+        } 
+.kd-li {
+    width: 320px;
+    height: 270px;
+    margin-left: 30px;
+    margin-top: 30px;float:left;
+}
+.kd-imgbox {
+    width: 100%;
+    height:210px;
+}
+
+.kd-pricebox {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    line-height:20px;
+    text-align:center;padding-top:8px;
+    background:#ec341d;
+    color:#fff;
+    width:64px;height:64px;
+    font-size:16px;
+    position:relative;
+    right:-240px;
+    top:-38px;
+}
+.kd-info h4 {
+    color:#404040;
+}
+.kd-info p{
+    color:#ec341d;
+}

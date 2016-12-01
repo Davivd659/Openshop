@@ -1,0 +1,4 @@
+E:\liuyongjian\code\OpenShop\Deepleo.Weixin.SDK\bin\Debug\Deepleo.Weixin.SDK.dll
+E:\liuyongjian\code\OpenShop\Deepleo.Weixin.SDK\bin\Debug\Deepleo.Weixin.SDK.pdb
+E:\liuyongjian\code\OpenShop\Deepleo.Weixin.SDK\obj\Debug\Deepleo.Weixin.SDK.dll
+E:\liuyongjian\code\OpenShop\Deepleo.Weixin.SDK\obj\Debug\Deepleo.Weixin.SDK.pdb

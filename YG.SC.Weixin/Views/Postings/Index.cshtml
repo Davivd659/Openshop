@@ -1,0 +1,85 @@
+﻿@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopPostings
+
+@{
+    ViewBag.Title = "room";
+    Layout = null;
+    
+}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/css/findcompany.css">
+		<link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<title>【@(Model.PIntent == "false"?"求租":"求购")】@Model.PName - 开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+	</head>
+
+	<body onselectstart="return false">
+
+		<article>
+
+			<div class="companyintro" style="margin-top:10px;border:0px;">
+				<p style="font-size:14px;padding-top:0px;">
+
+					<span style="font-size:16px;">@(Model.PIntent == "false"?"求租":"求购")--@Model.PName </span>
+					<br>
+					<br> 面积需求：@Model.square
+					<br> 意向区域：@Model.district @(Model.hotarea != "" ? "-" + Model.hotarea : "")
+                    
+					<br> 自身行业： @Model.Format
+					<br> 价格区间： @Model.price
+					<br> 意向物业： @Model.Ptype
+					<br> 发布日期： @Convert.ToDateTime(Model.Addtiem).ToString("yyyy-MM-dd HH:mm")
+					<br> 截止日期 ：@Convert.ToDateTime(Model.Endtiem).ToString("yyyy-MM-dd")
+					<br>
+
+				</p>
+			</div>
+
+			<section>
+
+				<article>
+					<div class="companyintro">
+						<h1 style="color: #000000;font-weight: bold;">| 需求介绍</h1>
+						<p>@Model.Pinfo
+						</p>
+					</div>
+					
+					<div class="phoneyixue phone-icon" style="width:100%;margin:0px;z-index:999; position:fixed; bottom:0; left:0; width:100%; _position:absolute;_top: expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight);overflow:visible;">
+						<a class="click-point" data-point="2_5_1_4" href="tel:@Model.Mobile">
+							<span>@Model.Contacts  @Model.Mobile</span><b> &gt; </b><i>致电</i>
+						</a>
+					</div>
+
+					
+
+				</article>
+
+			</section>
+
+			<div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+				<div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+					<div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+						<div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+						<div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+							<div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+
+</html>

@@ -1,0 +1,4 @@
+E:\liuyongjian\code\OpenShop\YG.SC.Security\bin\Debug\YG.SC.Security.dll
+E:\liuyongjian\code\OpenShop\YG.SC.Security\bin\Debug\YG.SC.Security.pdb
+E:\liuyongjian\code\OpenShop\YG.SC.Security\obj\Debug\YG.SC.Security.dll
+E:\liuyongjian\code\OpenShop\YG.SC.Security\obj\Debug\YG.SC.Security.pdb

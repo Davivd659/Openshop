@@ -1,0 +1,256 @@
+﻿@{
+    ViewBag.Title = "开店帮--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<meta name="keywords" content="线下创业,一站式整合服务平台,线下开店，线上推广运营，店铺装修，原料采购，产业链平台" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,主要包括开店帮，装修帮，推广帮，家具帮，融资帮等部分" />
+<link href="/Content/kaidian.css" rel="stylesheet" />
+@model  Tuple<OpenShop[], PagerEntity>
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@*<h2>Index</h2>
+    <a href="/OpenShop/OpenShop/">详情页</a>*@
+
+<div class="kd_index_ad">
+    <img src="/Images/kd_ad.jpg" />
+</div>
+@{
+
+    var zhuanxiu = Model.Item1.Where(n => n.FkType.ValueStr == "装修帮");
+    var jiaju = Model.Item1.Where(n => n.FkType.ValueStr == "家具帮");
+    var rongzi = Model.Item1.Where(n => n.FkType.ValueStr == "融资帮");
+    var tuiguang = Model.Item1.Where(n => n.FkType.ValueStr == "推广帮");
+
+}
+<div class="kd-warp">
+    <div class="kd-box">
+        <div class="index_kdtitle">
+            <div class="index_kd_title">
+                <div class="index_kd_title_box">装修帮<span>有 @zhuanxiu.Count()家装修公司期待您服务</span></div>
+            </div>
+        </div>
+        <div class="index_kaidian">
+            <div class="index_kaidian_logo">
+                <div class="kdc_logo"><img src="/images/zhuangxiubang.jpg" /></div>
+                <div class="kd_logo_key">
+                    <p><span class="kd_logo_tagname">装修帮</span>装修时开店后必不可少的一步，一家个性漂亮的店铺足以让人流连忘返，开店ing为您推荐专业的商业装修团队，海量商铺案例任您选择...<a class="kd_logo_more" href="/OpenShop/OpenShop/">【详细】</a></p>
+                </div>
+            </div>
+
+            @if (zhuanxiu != null)
+            {
+                if (zhuanxiu.Count() > 0 && zhuanxiu.ElementAt(0).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_one" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(0).Id">
+                        <img class="lazy" src="@string.Format("http://www.kaidianing.com{0}",zhuanxiu.ElementAt(0).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (zhuanxiu.Count() > 1 && zhuanxiu.ElementAt(1).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_two" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(1).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", zhuanxiu.ElementAt(1).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (zhuanxiu.Count() > 2 && zhuanxiu.ElementAt(2).OpenShopPhoto.Count() > 0)
+                {
+
+                    <a class="index_kaidian_three" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(2).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}",zhuanxiu.ElementAt(2).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (zhuanxiu.Count() > 3 && zhuanxiu.ElementAt(3).OpenShopPhoto.Count > 0)
+                {
+                    <a class="index_kaidian_four" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(3).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", zhuanxiu.ElementAt(3).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+            }
+
+
+
+        </div>
+        <ul class="index_kd_brand">
+            @foreach (var zxxx in zhuanxiu.Take(6))
+            {
+                if (zxxx.Logo != null)
+                {
+                    string strStyle = YG.SC.OpenShop.Controllers.OpenShopController.GetWH(zxxx.Logo, 130, 130);
+                    <li>
+                        <div class="kdbr_img"><a target="_blank" href="~/OpenShop/OpenShop?openShopId=@zxxx.Id"><img src="@(zxxx.Logo != null ? string.Format("http://www.kaidianing.com{0}", zxxx.Logo) : "/img/icon/gongsiLOGO.gif")" style="@strStyle" /></a></div>
+                        <div class="kdbr_ct"><a target="_blank" href="~/OpenShop/OpenShop?openShopId=@zxxx.Id">@zxxx.Name</a></div>
+                    </li>
+                }
+            }
+
+        </ul>
+        <div class="kd-indexmore"><img src="/images/kd_bg-more.jpg" /></div>
+    </div>
+    <!-- kd box Satrt -->
+    <div class="kd-box">
+        <div class="index_kdtitle">
+            <div class="index_kd_title">
+                <div class="index_kd_title_box">家具帮<span>有 @jiaju.Count() 家家具公司为您服务</span></div>
+            </div>
+        </div>
+        <div class="index_kaidian">
+            <div class="index_kaidian_logo">
+                <div class="kdc_logo"><img src="/images/jiajubang.jpg" /></div>
+                <div class="kd_logo_key">
+                    <p><span class="kd_logo_tagname">家具帮</span>在店铺的装修过程中，家具的选择至关重要。选择什么样的家具，如何搭配直接决定了店铺的品味与格调，在购买家具之前，店铺的精确尺寸...<a class="kd_logo_more" href="/OpenShop/OpenShop/">【详细】</a></p>
+                </div>
+            </div>
+            @if (jiaju != null)
+            {
+                if (jiaju.Count() > 0 && jiaju.ElementAt(0).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_one" target="_blank" href="~/OpenShop/OpenShop?openShopId=@jiaju.ElementAt(0).Id">
+                        <img class="lazy" src="@string.Format("http://www.kaidianing.com{0}",   jiaju.ElementAt(0).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (jiaju.Count() > 1 && jiaju.ElementAt(1).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_two" target="_blank" href="~/OpenShop/OpenShop?openShopId=@jiaju.ElementAt(1).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", jiaju.ElementAt(1).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (jiaju.Count() > 2 && jiaju.ElementAt(2).OpenShopPhoto.Count() > 0)
+                {
+
+                    <a class="index_kaidian_three" target="_blank" href="~/OpenShop/OpenShop?openShopId=@jiaju.ElementAt(2).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}",jiaju.ElementAt(2).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (jiaju.Count() > 3 && jiaju.ElementAt(3).OpenShopPhoto.Count > 0)
+                {
+                    <a class="index_kaidian_four" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(3).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", zhuanxiu.ElementAt(3).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+            }
+        </div>
+        <ul class="index_kd_brand">
+            @foreach (var juxx in jiaju.Take(6))
+            {
+                string strStyle = YG.SC.OpenShop.Controllers.OpenShopController.GetWH(juxx.Logo, 130, 130);
+                <li>
+                    <div class="kdbr_img"><a href="~/OpenShop/OpenShop?openShopId=@juxx.Id"><img src="@(juxx.Logo != null ? string.Format("http://www.kaidianing.com{0}", juxx.Logo) : "/img/icon/gongsiLOGO.gif")" style="@strStyle" /></a></div>
+                    <div class="kdbr_ct"><a href="~/OpenShop/OpenShop?openShopId=@juxx.Id">@juxx.Name</a></div>
+                </li>
+            }
+        </ul>
+        <div class="kd-indexmore"><img src="/images/kd_bg-more.jpg" /></div>
+    </div>
+    <!-- kd box End -->
+    <!-- kd box Satrt -->
+    @*<div class="kd-box">
+            <div class="index_kdtitle">
+                <div class="index_kd_title">
+                    <div class="index_kd_title_box">融资帮<span>有 @rongzi.Count()  家装修公司期待您服务</span></div>
+                </div>
+            </div>
+            <div class="index_kaidian">
+                <div class="index_kaidian_logo">
+                    <div class="kdc_logo"><img src="/images/kd_zx05.jpg" /></div>
+                    <div class="kd_logo_key">
+                        <p><span class="kd_logo_tagname">融资帮</span>2015年已经开启，希望大家都能正视甲醛的危害,在选择和安装家具的时候格外注意,尽量减少家具中的甲醛含量,为自己和家人创造一个安全、健康、绿色的家居环境...<a class="kd_logo_more" href="/OpenShop/OpenShop/">【详细】</a></p>
+                    </div>
+                </div>
+                @if (rongzi != null)
+                {
+                    if (rongzi.Count() > 0)
+                    {
+                        <a class="index_kaidian_one" target="_blank" href="~/OpenShop/OpenShop?openShopId=@rongzi.ElementAt(0).Id">
+                            <img class="lazy" src="@string.Format("http://www.kaidianing.com{0}", rongzi.ElementAt(0).OpenShopPhoto.Count() > 0 ? rongzi.ElementAt(0).OpenShopPhoto.FirstOrDefault().PhotoSmall : "")" style="display: inline;" />
+                        </a>
+                    }
+                    if (rongzi.Count() > 1)
+                    {
+                        <a class="index_kaidian_two" target="_blank" href="~/OpenShop/OpenShop?openShopId=@rongzi.ElementAt(1).Id">
+                            <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", rongzi.ElementAt(1).OpenShopPhoto.Count() > 0 ? rongzi.ElementAt(1).OpenShopPhoto.FirstOrDefault().PhotoSmall : "")" style="display: inline;" />
+                        </a>
+                    }
+                    if (rongzi.Count() > 2)
+                    {
+
+                        <a class="index_kaidian_three" target="_blank" href="~/OpenShop/OpenShop?openShopId=@rongzi.ElementAt(2).Id">
+                            <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", rongzi.ElementAt(2).OpenShopPhoto.Count() > 0 ? rongzi.ElementAt(2).OpenShopPhoto.FirstOrDefault().PhotoSmall : "")" style="display: inline;" />
+                        </a>
+                    }
+                    if (rongzi.Count() > 3)
+                    {
+                        <a class="index_kaidian_four" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(3).Id">
+                            <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", rongzi.ElementAt(3).OpenShopPhoto.Count>0?zhuanxiu.ElementAt(3).OpenShopPhoto.FirstOrDefault().PhotoSmall:"")" style="display: inline;" />
+                        </a>
+                    }
+                }
+            </div>
+            <ul class="index_kd_brand">
+                @foreach (var juxx in rongzi.Take(6))
+                {
+                    <li>
+                        <div class="kdbr_img"><img src="@(juxx.Logo != null ? string.Format("http://www.kaidianing.com{0}", juxx.Logo) : "/img/icon/gongsiLOGO.gif")" width="130" height="130" /></div>
+                        <div class="kdbr_ct">@juxx.Name</div>
+                    </li>
+                }
+            </ul>
+            <div class="kd-indexmore"><img src="/images/kd_bg-more.jpg" /></div>
+        </div>*@
+    <!-- kd box End -->
+    <!-- kd box Satrt -->
+    <div class="kd-box">
+        <div class="index_kdtitle">
+            <div class="index_kd_title">
+                <div class="index_kd_title_box">推广帮<span>有 @tuiguang.Count() 家装修公司期待您服务</span></div>
+            </div>
+        </div>
+        <div class="index_kaidian">
+            <div class="index_kaidian_logo">
+                <div class="kdc_logo"><img src="/images/tuiguangbao.jpg" /></div>
+                <div class="kd_logo_key">
+                    <p><span class="kd_logo_tagname">推广帮</span>现代实体店铺推广方式多种多样，主要包括网站、微信、微博、电视、活动、软装、户外等方式，开店ing集合众多专业推广公司，为提升您店铺的知名度...<a class="kd_logo_more" href="/OpenShop/OpenShop/">【详细】</a></p>
+                </div>
+            </div>
+            @if (tuiguang != null)
+            {
+                if (tuiguang.Count() > 0 && tuiguang.ElementAt(0).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_one" target="_blank" href="~/OpenShop/OpenShop?openShopId=@tuiguang.ElementAt(0).Id">
+                        <img class="lazy" src="@string.Format("http://www.kaidianing.com{0}",   tuiguang.ElementAt(0).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (tuiguang.Count() > 1 && tuiguang.ElementAt(1).OpenShopPhoto.Count() > 0)
+                {
+                    <a class="index_kaidian_two" target="_blank" href="~/OpenShop/OpenShop?openShopId=@tuiguang.ElementAt(1).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", tuiguang.ElementAt(1).OpenShopPhoto.FirstOrDefault().PhotoSmall )" style="display: inline;" />
+                    </a>
+                }
+                if (tuiguang.Count() > 2 && tuiguang.ElementAt(2).OpenShopPhoto.Count() > 0)
+                {
+
+                    <a class="index_kaidian_three" target="_blank" href="~/OpenShop/OpenShop?openShopId=@tuiguang.ElementAt(2).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}",  tuiguang.ElementAt(2).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+                if (tuiguang.Count() > 3 && tuiguang.ElementAt(3).OpenShopPhoto.Count > 0)
+                {
+                    <a class="index_kaidian_four" target="_blank" href="~/OpenShop/OpenShop?openShopId=@zhuanxiu.ElementAt(3).Id">
+                        <img class="lazy" alt="" src="@string.Format("http://www.kaidianing.com{0}", zhuanxiu.ElementAt(3).OpenShopPhoto.FirstOrDefault().PhotoSmall)" style="display: inline;" />
+                    </a>
+                }
+            }
+        </div>
+        <ul class="index_kd_brand">
+            @foreach (var tgxx in tuiguang.Take(6))
+            {
+                string strStyle = YG.SC.OpenShop.Controllers.OpenShopController.GetWH(tgxx.Logo, 130, 130);
+                <li>
+                    <div class="kdbr_img"><a target="_blank" href="~/OpenShop/OpenShop?openShopId=@tgxx.Id"><img src="@(tgxx.Logo != null ? string.Format("http://www.kaidianing.com{0}", tgxx.Logo) : "/img/icon/gongsiLOGO.gif")" style="@strStyle" /></a></div>
+                    <div class="kdbr_ct"><a target="_blank" href="~/OpenShop/OpenShop?openShopId=@tgxx.Id">@tgxx.Name</a></div>
+                </li>
+            }
+        </ul>
+        <div class="kd-indexmore"><img src="/images/kd_bg-more.jpg" /></div>
+    </div>
+    <!-- kd box End -->
+</div>

@@ -1,0 +1,271 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">签约商户</div>
+    <div class="panel-body">
+        签约商户：<b>111</b> 家。目前营业中商家 <b>12</b> 家，打烊 <b>12</b> 家，关店 <b>12</b> 家。
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">营业额</div>
+    <div class="panel-body">
+        <div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 text-right">
+                <select class="order-summary">
+                    <option selected="selected">今天</option>
+                    <option>昨天</option>
+                    <option>最近三天</option>
+                    <option>最近一周</option>
+                    <option>最近三个月</option>
+                    <option>最近半年</option>
+                </select>
+            </div>
+        </div>
+        <div class="order-summary">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href=".order-summary .table-container" role="tab" data-toggle="tab">表格</a></li>
+                <li><a href=".order-summary .chart-container" role="tab" data-toggle="tab">图表</a></li>
+            </ul>
+            <div class="text-center">
+                <h3>北京区域订单数</h3>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active table-container">
+                </div>
+                <div class="tab-pane chart-container">
+                    <div class="order"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">最近活跃商户数</div>
+    <div class="panel-body active-shop">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href=".active-shop .table-container" role="tab" data-toggle="tab">表格</a></li>
+            <li><a href=".active-shop .chart-container" role="tab" data-toggle="tab">图表</a></li>
+        </ul>
+        <div class="text-center">
+            <h3>活跃商户数</h3>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active table-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">时间</th>
+
+                            <th class="text-center">12</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane chart-container">
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/highcharts.js"></script>
+    <script>
+        var viewInstance = new HomeClass();
+        var bjCounties = ["朝阳区", "海淀区", "丰台区", "东城区", "西城区", "昌平区", "通州区", "房山区", "顺义区", "石景山区", "大兴区", "怀柔区", "平谷区", "门头沟区", "密云县", "延庆县"];
+
+        $(function () {
+            webExpress.utility.ajax.request("/Order/ActiveShop", null, function (data) {
+                viewInstance.bindShopSummary(data);
+            });
+
+            $("select").change(function () {
+                var from = $(":selected", this).attr("from");
+                var to = $(":selected", this).attr("to");
+                webExpress.utility.ajax.request("/Order/Summary", { FromDate: from, ToDate: to }, function (data) {
+                    viewInstance.bindOrderSummary(data);
+                });
+            });
+            $("select").trigger("change");
+        });
+
+        function HomeClass() {
+            var _self = this;
+
+            function _init() {
+                _self.bindOrderSummary = bindOrderSummary;
+                _self.bindShopSummary = bindShopSummary;
+
+                init();
+            }
+
+            function init() {
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    $(window).resize();
+                })
+            }
+
+            function bindOrderSummary(model) {
+                bindOrderSummary_table(model);
+                bindOrderSummary_chart(model);
+                $(window).resize();
+            }
+
+            function bindShopSummary(model) {
+                var activeShopSeries = [];
+                var currentDate = "";
+                var serie;
+                for (var i = 0; i < model.length; i++) {
+                    var item = model[i];
+                    if (currentDate != item.TransactionDate) {
+                        currentDate = item.TransactionDate;
+                        serie = { name: webExpress.utility.date.toStandardDateString(item.TransactionDate), data: webExpress.utility.array.create(bjCounties.length, 0) };
+                        activeShopSeries.push(serie);
+                    }
+                    var countyIndex = bjCounties.indexOf(item.Name);
+                    serie.data[countyIndex] = item.ShopCount;
+                }
+
+                bindShopSummary_table(activeShopSeries);
+                bindShopSummary_chart(activeShopSeries);
+                $(window).resize();
+            }
+
+            function bindOrderSummary_table(model) {
+                var tbody = $(".order-summary .table-container tbody");
+                tbody.empty();
+                for (var i = 0; i < model.length; i++) {
+                    var item = model[i];
+                    var strFormat = "<tr><td class='text-center'>{0}</td><td class='text-center'>{1}</td><td class='text-center'>{2}</td><td class='text-center'>{3}</td><td class='text-center'>{4}</td><td class='text-center'>{5}</td><td class='text-center'>{6}</td></tr>";
+                    var str = webExpress.utility.string.format(strFormat, item.Name, item.FirstOrderCount, item.OtherOrderCount,
+                        item.OrderCount, webExpress.utility.accounting.formatMoney(item.TotalAmount), item.ShopCount, item.CustomerCount);
+                    tbody.append(str);
+                }
+            }
+
+            function bindOrderSummary_chart(model) {
+                var bjCounties = [];
+                var orderAmount = [];
+                var orderCount = [];
+                var count = 0;
+                var amount = 0;
+                for (var i = 0; i < model.length; i++) {
+                    var item = model[i];
+                    bjCounties.push(item.Name);
+                    orderAmount.push(item.TotalAmount);
+                    orderCount.push(item.OrderCount);
+
+                    count += item.OrderCount;
+                    amount += item.TotalAmount;
+                }
+                $("label.order-count").text(count);
+                $("label.order-amount").text(webExpress.utility.accounting.formatMoney(amount));
+                $(".order-summary .chart-container>div").highcharts({
+                    title: {
+                        text: ''
+                    },
+                    xAxis: [{
+                        categories: bjCounties
+                    }],
+                    yAxis: [{
+                        min: 0,
+                        title: {
+                            text: ''
+                        },
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: '#4572A7'
+                            }
+                        },
+                        opposite: true
+                    }, {
+                        min: 0,
+                        labels: {
+                            format: '{value}',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        title: {
+                            text: ''
+                        }
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+
+                    series: [{
+                        name: '订单金额',
+                        color: '#4572A7',
+                        type: 'column',
+                        data: orderAmount,
+                        tooltip: {
+                            valueSuffix: '元'
+                        }
+                    }, {
+                        name: '订单数',
+                        color: '#89A54E',
+                        type: 'spline',
+                        yAxis: 1,
+                        data: orderCount,
+                        tooltip: {
+                            valueSuffix: ' 个'
+                        }
+                    }]
+                });
+            }
+
+            function bindShopSummary_table(model) {
+                var tbody = $(".active-shop .table-container tbody");
+                tbody.empty();
+                for (var i = 0; i < model.length; i++) {
+                    var item = model[i];
+                    var str = "<tr>";
+                    str += "<td class='text-center'>" + item.name + "</td>";
+                    str += $.map(item.data, function (item, index) {
+                        return "<td class='text-center'>" + item + "</td>";
+                    }).join("");
+                    str += "</tr>";
+                    tbody.append(str);
+                }
+            }
+
+            function bindShopSummary_chart(model) {
+                $('.active-shop .chart-container>div').highcharts({
+                    chart: {
+                        renderTo: 'container',
+                        width: $('.active-shop .chart-container>div').width()
+                    },
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: bjCounties
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        }
+                    },
+                    series: model
+                });
+            }
+            _init();
+        }
+    </script>
+}

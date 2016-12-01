@@ -1,0 +1,64 @@
+﻿@model YG.SC.DataAccess.C_Object
+@{
+    ViewBag.Title = "类别管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var shoptypeList = (List<SelectListItem>)ViewBag.shopType;
+
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 128px;
+        }
+
+        #img_logoimage {
+            clear: left;
+            display: block;
+            margin-top: 40px;
+            margin-left: 128px;
+        }
+    </style>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加分类</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("CategoryAdd", "Mall", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label class="col-sm-1 control-label">一级分类</label>
+                @Html.DropDownList("ParentId", shoptypeList, new { @class = "form-control" })  <strong class="red">注：如果一级分类选中无， 默认添加的是一级分类</strong>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">二级分类</label>
+                <input type="text" id="Name" name="Name" class="form-control" required="required">
+            </div>
+                      <div class="form-group">
+                <label class="col-sm-1 control-label">排序</label>
+                          <input type="number" id="Sort" name="Sort" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">添 加</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+    }
+</script>

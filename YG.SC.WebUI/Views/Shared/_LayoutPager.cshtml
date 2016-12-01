@@ -1,0 +1,95 @@
+﻿@using YG.SC.Model
+@{
+    var pagerEntity = Model as PagerEntity;
+    Func<string> currentUrl = () =>
+    {
+        var arr = this.Request.Url.ToString().Split('?');
+        var dic = new Dictionary<string, string>();
+        
+        if (arr.Length > 1)
+        {
+            foreach (var item in arr[1].Split('&'))
+            {
+                var temp = item.ToString().Split('=');
+                dic[temp[0]] = HttpUtility.UrlDecode(temp[1]);
+            }
+        }
+        if (dic.ContainsKey("pg"))
+        {
+            dic.Remove("pg");
+        }
+        string search = string.Join("&", dic.Select(item => string.Format("{0}={1}", item.Key, item.Value)));
+
+        if (search.Length != 0)
+        {
+            search += "&";
+        }
+
+        return arr[0] + "?" + search;
+    };
+
+    int curIndex = pagerEntity.PageIndex;
+    int totalIndex = (int)Math.Ceiling(pagerEntity.Total / (double)pagerEntity.Top);
+    string currentUrlString = currentUrl();
+
+    Func<string> createPrevious = () =>
+    {
+        string url = "javascript:void(0);";
+        string className = "disabled";
+        if (curIndex > 1)
+        {
+            url = string.Format("{0}pg={1}", currentUrlString, curIndex - 1);
+            className = "";
+        }
+        string template = "<li class=\"$CLASS$\"><a href=\"$URL$\"><</a></li>";
+        return template.Replace("$URL$", url).Replace("$CLASS$", className);
+    };
+    Func<string> createContent = () =>
+    {
+        var template = "<li><a href=\"" + currentUrlString + "pg=$PageIndex$\">$PageIndex$</a></li>";
+        var curTempate = "<li class=\"active\"><a href=\"?pg=$PageIndex$\">$PageIndex$</a></li>";
+
+        var regex = new System.Text.RegularExpressions.Regex(@"\$PageIndex\$");
+
+        int startIndex = curIndex >= totalIndex ? totalIndex : curIndex;
+        int endIndex = startIndex + pagerEntity.Step > totalIndex ? totalIndex : startIndex + pagerEntity.Step;
+        var list = new List<string>();
+        //修正起始值
+        if (startIndex + pagerEntity.Step >= totalIndex)
+        {
+            int tempStartIndex = startIndex - ((startIndex + pagerEntity.Step) - totalIndex);
+            startIndex = tempStartIndex > 0 ? tempStartIndex : 1;//如果为负值时修正为1
+        }
+        for (; startIndex <= endIndex; startIndex++)//
+        {
+            var tempTemplate = curIndex == startIndex ? curTempate : template;
+
+            list.Add(regex.Replace(tempTemplate, startIndex.ToString()));
+        }
+        return string.Join("", list);
+    };
+    Func<string> createNext = () =>
+    {
+        string url = string.Format("{0}pg={1}", currentUrlString, curIndex + 1);
+        string className = "";
+        if (curIndex + 1 > totalIndex)
+        {
+            url = "javascript:void(0);";
+            className = "disabled";
+        }
+        string template = "<li class=\"$CLASS$\"><a href=\"$URL$\">></a></li>";
+
+        return template.Replace("$CLASS$", className).Replace("$URL$", url);
+    };
+}
+@{
+    if (totalIndex > 1)
+    {
+    <label style="float: left; margin-top: 36px; margin-right: 6px;">共：@(pagerEntity.Total)条记录，分@(totalIndex)页显示</label>
+    <ul class="pagination">
+        @Html.Raw(createPrevious())
+        @Html.Raw(createContent())
+        @Html.Raw(createNext())
+    </ul>
+    }
+}

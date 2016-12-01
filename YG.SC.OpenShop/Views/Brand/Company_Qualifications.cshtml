@@ -1,0 +1,73 @@
+﻿@model YG.SC.DataAccess.ShopBrand
+@{
+    ViewBag.Title = "品牌资质-会员中心";
+}
+<link href="~/Content/back.css" rel="stylesheet" />
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">资质信息</div>
+            <div class="utc_right_title_right red">请上传清晰、无污物、完整的证件扫描件或彩色扫描件，文件后缀支持jpg、png、gif，上传图片大小建议在4M以下</div>
+            <div class="clear"></div>
+            <div class="utc_right_uc" style="padding:40px 0px">
+                <form action="/Brand/Company_Qualifications/@Model.Id" role="form" method="POST" enctype="multipart/form-data">
+                  
+                            <div class="add_imgbox">
+                                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                                <div class="addimginfobox">
+                                    <div class="addimgtitlebox"><span class="red">*</span>营业执照扫描件</div>
+                                    <div class="addimgcontentbox"><img src="@Html.Raw(string.IsNullOrEmpty(Model.BLS) == true ? "/Images/9_03.jpg" : Model.BLS)" width="300" height="210" alt=""></div>
+                                    <input type="hidden" name="BLS" id="BLS" value="@Model.BLS" />
+                                    @*<button type="button" class="addimgimg_button" onclick="BLSfile.click()">上传</button>
+                                    <input type="file" id="BLSfile" name="BLSfile" style="display:none" onchange="upfile.value=this.value" />*@
+                                </div>
+                                <div class="addimginfobox">
+                                    <div class="addimgtitlebox"><span class="red">*</span>商家法人身份证正面</div>
+                                    <div class="clear"></div>
+                                    <div class="addimgcontentbox"><img src="@Html.Raw(string.IsNullOrEmpty(Model.CIC) == true ? "/Images/9_03.jpg" : Model.CIC)" width="300" height="210" alt=""></div>
+                                    <input type="hidden" name="CIC" id="CIC" value="@Model.CIC" />
+                                    <div class="clear"></div>
+                                    @*<button class="addimgimg_button" type="button" onclick="CICfile.click()">上传</button>
+                                    <input type="file" id="CICfile" name="CICfile" style="display:none" onchange="upfile.value=this.value" />*@
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                       
+                    @*<div class="body-warp">
+                        <div class="add_jindubox" style="text-align: center;margin-top:0px;">
+                            <button type="submit" id="add1" class="add_sjbutton">提交审核</button>
+                        </div>
+                    </div>*@
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#BLSfile").change(function () {
+                $('form').attr('action', '/Brand/Company_infoimg');
+                $('form').attr('method', "post");
+                $('form').submit();
+            })
+            $("#CICfile").change(function () {
+                $('form').attr('action', '/Brand/Company_infoimg');
+                $('form').attr('method', "post");
+                $('form').submit();
+            })
+            $("#add1").click(function () {
+                if ($("#BLS").val() == "") {
+                    alert("请上传营业执照扫描件");
+                    return false;
+                }
+                if ($("#CIC").val() == "") {
+                    alert("请上传商家法人身份证正面");
+                    return false;
+                }
+            })
+        })
+    </script>

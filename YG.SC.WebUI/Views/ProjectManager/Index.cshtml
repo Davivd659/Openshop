@@ -1,0 +1,165 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@{
+    ViewBag.Title = "项目管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tuple = Model as Tuple<ShopProject[], PagerEntity>;
+    var idx = tuple.Item2.Idx;
+    var selRecsts = ViewBag.SelRecsts as string;
+    var listShopProject = ViewBag.ShopProject as List<ShopProject>;
+}
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        $("#selRecsts").val(@selRecsts);
+        //删除
+        function Delete(id, state) {
+            var con = true;
+            if (state == "delete") {
+                con = confirm("确定删除？");
+            }
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/ProjectManager/Delete",
+                    data: {
+                        Id: id,
+                        state: state
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+        //有效
+        function Update(id) {
+
+            //var   con = confirm("确定删除？");
+            var con = true;
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/ShopProject/Update",
+                    data: {
+                        Id: id
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+    </script>
+}
+
+<div class="search-criteria">
+    <form class="form-inline" role="form" action="/ProjectManager/Index">
+        <div class="form-group">
+            <label class="control-label">图片名称</label>
+            <input type="text" name="txtImageName" class="form-control input-sm" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">项目名称</label>
+            <select class="form-control" name="ShopProjectId" id="ShopProjectId">
+                <option value="">全部</option>
+                @foreach (var item in listShopProject)
+                {
+                    <option value="@item.Id">@item.NAME</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="search-action">
+
+    <a href="/ProjectManager/Add" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>添加</a>
+
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>项目名称</th>
+                    <th>层高</th>
+                    <th>总层数</th>
+                    <th>总建筑面积</th>
+                    <th>封面图</th>
+                    <th>是否有效</th>
+                    <th>图片</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in tuple.Item1)
+                {
+                    <tr>
+                        <td class="text-center w50">@idx</td>
+                        <td class="text-center">
+                            @item.NAME
+                        </td>
+                        <td class="text-center">
+                            @item.JChengGao
+                        </td>
+                        <td class="text-center">
+                            @item.JZongChengShu
+                        </td>
+                        <td class="text-center">
+                            @item.JZongJianZhuMianJi
+                        </td>
+                        <td class="text-center">
+                            <img height="100" width="100" src="@item.CoverPhoto" />
+                        </td>
+                        <td class="text-center">
+                            @(item.Status == 1 ? "有效" : "无效")
+                        </td>
+                        <td class="text-center">
+                            <a href="/ProjectPhoto/Index?ShopProjectId=@item.Id">项目图</a>
+                        </td>
+                        <td class="text-center">
+
+                            <a href="/ProjectManager/Edit/@item.Id">编辑</a>
+                            <a href="#" id="delete" onclick="Delete(@item.Id,'delete')">删除</a>
+                            <a  href="/ProjectManager/SetMap/@item.Id">设置坐标</a>
+                            <a href="/ProjectTeam/Index/@item.Id">查看项目团购</a>
+                        </td>
+                    </tr>
+                            idx++;
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8">
+                        @Html.Partial("_LayoutPager", tuple.Item2)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+</div>
+

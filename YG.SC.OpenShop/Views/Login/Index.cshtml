@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "会员登陆--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var loginName = ViewBag.RememberMe as string;
+    //var passWord = ViewBag.rememberMePassword as string;
+}
+<link href="~/Content/h_login.css" rel="stylesheet" />
+<title>个人、企业登陆--开店ing，一站式开店服务平台</title>
+<meta name="keywords" content="线下创业,一站式整合服务平台,线下开店，线上推广运营，店铺装修，原料采购，产业链平台,个人登陆，企业登陆" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台，个人登陆，发布需求，发布任务，找商铺，找写字楼，商铺装修，商铺家具，餐饮装修；企业登陆，出租售商铺、写字楼，接任务，提供资源，融投资" />
+<style>
+    .popover {
+        color: red;
+    }
+
+    #loginName, #password {
+        padding-left: 6px;
+    }
+</style>
+
+<div class="brand-warp">
+    <div class="panel panel-default">
+        <div class="login_left">
+            <img src="/Images/login_s1.jpg" />
+        </div>
+        <div class="login_right">
+            <div class="login_title"></div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="post" action="">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control" id="loginName" name="LoginName" placeholder="用户名/手机号" data-content="请输入用户名/手机号" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="Password" placeholder="密码" data-content="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group login_rmbm">
+                        <div class="ml">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"/>
+                                    自动登录
+                                </label>
+                                <a class="login_reg" href="~/Login/regist">立即注册</a>
+                                <a class="login_fgpwd" href="#">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group login_btns">
+						<input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"></input>
+                        <input type="submit" id="btnlogin" class="btn btn-login" data-toggle="tooltip" data-loading-text="登录中..." style=""></input>
+                    </div>
+                </form>
+                @*<div class="login_s3">
+                        <a class="login_s3_wx" href="">微信登录</a>
+                        <a class="login_s3_qq" href="">QQ登录</a>
+                        <a class="login_s3_wb" href="">微博登录</a>
+                    </div>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    $('#btnlogin').click(function () {
+
+        var LoginName = $.trim($('#loginName').val());
+        if (LoginName.length === 0) {
+            $('#loginName').popover('show');
+            return false;
+        } else {
+            $('#loginName').popover('hide');
+        }
+        var password = $.trim($('#password').val());
+        if (password.length === 0) {
+            $('#password').popover('show');
+            return false;
+        } else {
+            $('#password').popover('hide');
+        }
+        var remembereMe = $('input[type=checkbox]').is(":checked");
+    });
+
+    $('body').keydown(function (e) {
+        if (e.keyCode === 13) {
+            $('.btn').click();
+        }
+    });
+</script>
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+    }
+</script>

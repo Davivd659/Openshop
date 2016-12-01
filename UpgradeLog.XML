@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="YG.OpenShop">
+</Property><Property Name="解决方案文件" Value="D:\david\demo\OpenShop\OpenShop\YG.OpenShop.sln">
+</Property><Property Name="Date" Value="2016年8月24日">
+</Property><Property Name="Time" Value="15:59">
+</Property></Properties><Event ErrorLevel="0" Project="YG.SC.Admin" Source="YG.SC.WebUI\YG.SC.Admin.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Admin" Source="YG.SC.WebUI\YG.SC.Admin.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Model" Source="YG.SC.Model\YG.SC.Model.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Model" Source="YG.SC.Model\YG.SC.Model.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Common" Source="YG.SC.Common\YG.SC.Common.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Common" Source="YG.SC.Common\YG.SC.Common.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Security" Source="YG.SC.Security\YG.SC.Security.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Security" Source="YG.SC.Security\YG.SC.Security.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Service" Source="YG.SC.Service\YG.SC.Service.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Service" Source="YG.SC.Service\YG.SC.Service.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Common.Test" Source="YG.SC.Common.Test\YG.SC.Common.Test.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Common.Test" Source="YG.SC.Common.Test\YG.SC.Common.Test.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Service.Test" Source="YG.SC.Service.Test\YG.SC.Service.Test.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Service.Test" Source="YG.SC.Service.Test\YG.SC.Service.Test.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Repository.Test" Source="YG.SC.Repository.Test\YG.SC.Repository.Test.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Repository.Test" Source="YG.SC.Repository.Test\YG.SC.Repository.Test.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Repository" Source="YG.SC.Repository\YG.SC.Repository.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Repository" Source="YG.SC.Repository\YG.SC.Repository.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Controller.Test" Source="YG.SC.Controller.Test\YG.SC.Controller.Test.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Controller.Test" Source="YG.SC.Controller.Test\YG.SC.Controller.Test.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.OpenShop" Source="YG.SC.OpenShop\YG.SC.OpenShop.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.OpenShop" Source="YG.SC.OpenShop\YG.SC.OpenShop.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.DataAccess" Source="YG.SC.DataAccess\YG.SC.DataAccess.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.DataAccess" Source="YG.SC.DataAccess\YG.SC.DataAccess.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="Deepleo.Weixin.SDK" Source="Deepleo.Weixin.SDK\Deepleo.Weixin.SDK.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="Deepleo.Weixin.SDK" Source="Deepleo.Weixin.SDK\Deepleo.Weixin.SDK.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="Deepleo.Web.Demo" Source="Deepleo.Web.Demo\Deepleo.Web.Demo.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="Deepleo.Web.Demo" Source="Deepleo.Web.Demo\Deepleo.Web.Demo.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.WebCrawler" Source="YG.SC.WebCrawler\YG.SC.WebCrawler.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.WebCrawler" Source="YG.SC.WebCrawler\YG.SC.WebCrawler.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="YG.SC.Weixin" Source="YG.SC.WeiXin\YG.SC.Weixin.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="YG.SC.Weixin" Source="YG.SC.WeiXin\YG.SC.Weixin.csproj" Description="无需转换">
+</Event><Event ErrorLevel="2" Project="YG.SC.Admin" Source="YG.SC.WebUI\YG.SC.Admin.csproj" Description="无法打开项目文件“D:\david\demo\OpenShop\OpenShop\YG.SC.WebUI\YG.SC.Admin.csproj”。&#xA;&#xA;此安装不支持该项目类型。">
+</Event><Event ErrorLevel="2" Project="YG.SC.OpenShop" Source="YG.SC.OpenShop\YG.SC.OpenShop.csproj" Description="无法打开项目文件“D:\david\demo\OpenShop\OpenShop\YG.SC.OpenShop\YG.SC.OpenShop.csproj”。&#xA;&#xA;此安装不支持该项目类型。">
+</Event><Event ErrorLevel="2" Project="Deepleo.Web.Demo" Source="Deepleo.Web.Demo\Deepleo.Web.Demo.csproj" Description="无法打开项目文件“D:\david\demo\OpenShop\OpenShop\Deepleo.Web.Demo\Deepleo.Web.Demo.csproj”。&#xA;&#xA;此安装不支持该项目类型。">
+</Event><Event ErrorLevel="2" Project="YG.SC.WebCrawler" Source="YG.SC.WebCrawler\YG.SC.WebCrawler.csproj" Description="无法打开项目文件“D:\david\demo\OpenShop\OpenShop\YG.SC.WebCrawler\YG.SC.WebCrawler.csproj”。&#xA;&#xA;此安装不支持该项目类型。">
+</Event><Event ErrorLevel="2" Project="YG.SC.Weixin" Source="YG.SC.WeiXin\YG.SC.Weixin.csproj" Description="无法打开项目文件“D:\david\demo\OpenShop\OpenShop\YG.SC.WeiXin\YG.SC.Weixin.csproj”。&#xA;&#xA;此安装不支持该项目类型。">
+</Event><Event ErrorLevel="0" Project="" Source="YG.OpenShop.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="YG.OpenShop.sln" Description="Converted">
+</Event></UpgradeLog>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>check box Test </title>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+
+<h2>checkbox </h2>
+        <div class="control-group" id="divControlType">
+            <!-- Text input-->
+            <label class="control-label" for="input01">选择选项</label>
+            <div class="controls">
+                <input id="chkControlType" type="checkbox" name="chkControlType" /><label for="chkControlType">单选</label>
+                <p class="help-block"></p>
+            </div>
+        </div>
+
+
+    <input type="button" id="btn_check" value="选择" />
+    <input type="button" id="Button1" value="取消选择" />
+
+
+   <script type="text/javascript" >
+       $(document).ready(function () {
+           $("#btn_check").click(function () {
+               // $("#chkControlType").attr("checked", "checked");
+               var ck = document.getElementById("chkControlType");
+               ck.checked = true
+           });
+
+           $("#Button1").click(function () {
+               $("#chkControlType").removeAttr("checked");
+           });
+
+
+       });
+
+   </script>
+</body>
+</html>

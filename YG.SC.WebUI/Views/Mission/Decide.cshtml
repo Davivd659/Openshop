@@ -1,0 +1,46 @@
+﻿@model YG.SC.DataAccess.M_Mission
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+            border:0;
+        }
+        .form-horizontal .form-input {
+            width: 200px;
+            float: left;
+        }
+    </style>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">裁决任务</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Decide", "Mission", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.Partial("ItemPartial")
+            <div hidden="hidden">
+                @Html.TextBoxFor(m => m.Id)
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">裁决意见</label>
+                @Html.TextAreaFor(m => m.DecideResult, new { @class = "form-input", @style = "width:600px", @required = "required" })
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">给开店者退款</label>
+                @Html.TextBoxFor(m => m.DecideRefund, new { @class = "form-input", @required = "required", @default = "0" })元
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">给开店帮付款</label>
+                @Html.TextBoxFor(m => m.DecidePay, new { @class = "form-input", @required = "required", @default = "0" })元
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">保存</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

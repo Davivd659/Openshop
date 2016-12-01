@@ -1,0 +1,164 @@
+﻿@{
+    Layout = null;
+}
+@model  Tuple<ShopBrand[], PagerEntity>
+@using YG.SC.DataAccess
+@using YG.SC.Model
+
+@{
+    var Attributes = ViewBag.Attributes as List<ShopAttributeValues>;
+
+    var tuple = Model as Tuple<ShopBrand[], PagerEntity>;
+    var attributeValuesId = ViewBag.AttributeValuesId is int ? (int)ViewBag.AttributeValuesId : 0;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/companyIndex.css">
+    <link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+    <title>品牌汇-开店ing</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+
+<body onselectstart="return false">
+
+    <div class="widget-search-wrap">
+        <form action="javascript:void();">
+            <div class="input-append">
+                <input id="askSearchKey" placeholder="输入您想寻找的品牌" type="search">
+                <i class="icon-clear"></i>
+                <span id="askSearchBtn" class="add-on" data-url="">搜索品牌</span>
+            </div>
+        </form>
+    </div>
+
+    <ul id="menu">
+        <li style="width:100%">
+            <span class="current-condition">
+                行业不限
+            </span>
+            <i class="icon-arrow"></i>
+
+            <input type="hidden" id="hiddAttribute" value="@ViewBag.AttributeValuesId " />
+            <div id="subMenuArea" class="submenu">
+                <ul class="clearfix submenu-type-ul">
+                   
+                    @if (attributeValuesId == 0)
+                    {
+                        <li class="active">
+                            <a class="needsclick" href="/ShopBrand/List?AttributeValuesId=0">行业不限</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="">
+                            <a class="needsclick" href="/ShopBrand/List?AttributeValuesId=0">行业不限</a>
+                        </li>
+                    }
+                    @if (Attributes != null && Attributes.Count > 0)
+                    {
+                        foreach (var item in Attributes)
+                        {
+                            if (attributeValuesId == item.Id)
+                            {
+                                <li class="active">
+                                    <a class="needsclick" href="/ShopBrand/List?AttributeValuesId=@item.Id">@item.ValueStr</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="">
+                                    <a class="needsclick" href="/ShopBrand/List?AttributeValuesId=@item.Id">@item.ValueStr</a>
+                                </li>
+                            }
+                        }
+                    }
+                    
+                    @*<li class="">
+                        <a class="needsclick" href="http://m.to8to.com/bj/company/daxingqu/">银行</a>
+                    </li>
+                    <li class="">
+                        <a class="needsclick" href="http://m.to8to.com/bj/company/dongchengqu1/">专卖店</a>
+                    </li>*@
+
+                </ul>
+            </div>
+        </li>
+
+
+    </ul>
+    <!--项目列表-->
+    <ul class="nl-note-list">
+        @foreach (var item in Model.Item1)
+        {   
+            var brandphoto = new List<ShopBrandPhoto>();
+            if (item.ShopBrandPhoto != null && item.ShopBrandPhoto.Count > 0)
+            {
+                brandphoto = item.ShopBrandPhoto.ToList();
+            }
+            
+            
+            <li>
+                <a href="/ShopBrand/index?id=@item.Id">
+                    <img style="display: block;" class="nl-note-img lazy"
+                         data-original=""
+                         src="@(brandphoto.Count > 0 ? string.Format("http://www.kaidianing.com{0}",brandphoto[0].Photo) : "/img/icon/pinpaiimg.jpg")"
+                         alt="@item.Name" height="340" width="600">
+                    <div class="nl-note-cover">
+                        <h3><span>@item.Name</span></h3>
+                        @{ var attrList = (item.ShopBrandAttributeValues.ToList());
+                        }
+                        <p class="nl-note-summary">
+                            @{
+            foreach (var attr in attrList)
+            {
+                    <span>@attr.ShopAttributeValues.ValueStr</span>
+            }
+                            }
+                        </p>
+                        <div>
+                            <img style="display: block;" class="lazy" src="@string.Format("http://www.kaidianing.com{0}",item.Logo)"
+                                 data-original="@string.Format("http://www.kaidianing.com{0}",item.Logo)" alt="@item.Name" height="30" width="30" onerror="javascript:this.src='/img/icon/pinpaiLOGO.gif'">
+                        </div>
+                        <p class="nl-note-info">
+                            关注度：@(item.ViewClick != null ? item.ViewClick : 1)
+                        </p>
+                    </div>
+                </a>
+            </li>
+        }
+       
+        </ul>
+    
+    <!-- 翻页-->
+    @Html.Raw(ViewBag.pager);
+
+    <!--区域类型切换效果开始-->
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/companyNew.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!--区域类型切换效果结束-->
+
+    <script type="text/javascript">
+    $("#askSearchBtn").click(function () {
+        var key = $("#askSearchKey").val();
+        window.location.href = "/ShopBrand/List?Keys=" + key;
+    });
+
+    </script>
+</body>
+
+</html>

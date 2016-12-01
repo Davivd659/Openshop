@@ -1,0 +1,190 @@
+﻿@model YG.SC.DataAccess.OpenShop
+@{
+    ViewBag.Title = "商家资料";
+}
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="~/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="~/Content/KindEditor/kindeditor.js"></script>
+<script src="~/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="~/Content/KindEditor/plugins/code/prettify.js"></script>
+<script src="/Scripts/jquery-2.1.1.js"></script>
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+        @*   var models=@Model.ShopBrandAttributeValues;
+        for (var i = 0; i < models; i++) {
+            $("#selAttribute").select2('val', models[i].AttributeValuesId);
+        }*@
+
+    </script>
+}
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#content1', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/Merchant/ProcessFile',
+            fileManagerJson: '/Merchant/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <form action="/Merchant/Company_info" role="form" method="POST" enctype="multipart/form-data">
+            <div class="utc_right">
+                <div class="utc_right_title Gray18B">商家资料</div>
+                <div class="utc_right_title_right"></div>
+                <div class="clear"></div>
+                <div class="utc_right_uc" style="padding:40px 0px">
+                    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商家名称：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="hidden" name="Name" id="Name" value="@Model.Name" />
+                        <input type="hidden" name="Abbreviation" id="Abbreviation" value="@Model.Abbreviation" />
+                        <input type="hidden" name="ValueStr" id="ValueStr" value="@ViewBag.ValueStr" />
+                        <input type="hidden" name="District" id="District" value="@ViewBag.District" />
+                        <input type="hidden" name="Range" id="Range" value="@ViewBag.Range" />
+                        @Model.Name
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商家简称：</div>
+                    <div class="add_sjcontentbox">
+                        @Model.Abbreviation
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商家类别：</div>
+                    <div class="add_sjcontentbox">
+                        @ViewBag.ValueStr 
+                    </div>
+                    @if (ViewBag.Range != null)
+                    {
+                        <div class="add_sjmenubox Gray16"><span class="red">*</span>经营范围：</div>
+                        <div class="add_sjcontentbox">
+                      @ViewBag.Range
+                        </div>
+                    }
+                    @if (ViewBag.District != null)
+                    { 
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商圈：</div>
+                    <div class="add_sjcontentbox">
+                        @ViewBag.District
+                    </div>
+                    }
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商家地址：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="text" name="Address" id="Address" value="@Model.Address" required="required" oninvalid="setCustomValidity('请输入商家地址！');" oninput="setCustomValidity('');" placeholder="请输入商家地址" />
+                    </div>
+                    <div class="add_sjmenubox Gray16">商家网址：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="text" name="Url" id="Url" value="@Model.Url" required="required" oninvalid="setCustomValidity('请输入商家网址！');" oninput="setCustomValidity('');" placeholder="请输入商家网址" />
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>商家介绍：</div>
+                    <div class="add_sjcontentbox">
+                        <textarea id="content1" cols="100" rows="8" style="width: 700px; height: 300px; visibility: hidden;" required="required" oninvalid="setCustomValidity('请输入商家介绍！');" oninput="setCustomValidity('');" placeholder="请输入商家介绍">
+                            @Model.Introduction
+                        </textarea>
+                        <input type="hidden" value="" name="Introduction" id="Introduction" />
+
+                    </div>
+
+
+                    <div class="clear"></div>
+
+                    <div class="add_imgbox" style="margin:32px auto;">
+                        <div class="addimginfobox">
+                            <div class="addimgtitlebox"><span class="red">*</span>商家logo</div>
+                            <div class="addimgcontentbox"><img src="@Html.Raw(string.IsNullOrEmpty(Model.Logo) == true ? "/Images/9_03.jpg" : Model.Logo)" width="300" height="210" id="logoimg" alt=""></div>
+                            <input type="hidden" name="Logo" id="Logo" value="@Model.Logo" />
+                            <button class="addimgimg_button" id="logosubmit" type="button" onclick="Logofile.click()">上传</button>
+                            <input type="file" id="Logofile" name="Logofile" style="display:none" onchange="upfile.value=this.value">
+
+                        </div>
+                        <div class="addimginfobox">
+                            <div class="addimgtitlebox"><span class="red">*</span>商家微信二维码</div>
+                            <div class="clear"></div>
+                            <div class="addimgcontentbox">
+                                <img src="@Html.Raw(string.IsNullOrEmpty(Model.QRcode) == true ? "/Images/9_03.jpg" : Model.QRcode)" width="300" height="210" id="QRcodeimg" alt="">
+                                <input type="hidden" name="QRcode" id="QRcode" value="@Model.QRcode" />
+                            </div>
+                            <div class="clear"></div>
+                            <button class="addimgimg_button" id="QRcodesubmit" type="button" onclick="QRcodefile.click()">上传</button>
+                            <input type="file" id="QRcodefile" name="QRcodefile" style="display:none" onchange="upfile.value=this.value">
+
+                        </div>
+                        <div class="clear"></div>
+
+                    </div>
+
+                    <div class="add_jindubox"  style="text-align: center;margin:0px;">
+                        <button class="add_sjbutton" type="button" id="add1" style="margin:0px;">确认</button>
+                        <button class="add_sjbutton" type="reset" style="margin:0px 0px 0px 100px;">取消</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="utc_tagbox tanchuang" id="alertc">
+                <div class="utc_tagbox_header Write14">消息提示</div>
+                <div class="utc_tagbox_body Black16">
+                </div>
+                <div class="utc_tagbox_footer">
+                    <button class="add_sjbutton" id="closediv" type="submit" style="margin:0px;">确认</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#alertc").hide();
+    })
+    $("#closediv").click(function () {
+        $("#alertc").hide();
+        var flag = 1;
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        if ($("#Logo").val() == "") {
+            alert("请上传商家logo");
+            return false;
+        }
+    })
+    $("#Logofile").change(function () {
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Merchant/Company_infoimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#QRcodefile").change(function () {
+        $("#Introduction").val($(".ke-edit-iframe").contents().find('body').html());
+        $('form').attr('action', '/Merchant/Company_infoimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+    $("#add1").click(function () {
+        $(".utc_tagbox_body").text("修改成功")
+        $("#alertc").show();
+    })
+</script>

@@ -1,0 +1,72 @@
+﻿@using YG.SC.DataAccess
+@using System.IO
+@model YG.SC.DataAccess.OpenShop
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "商家中心";
+    S_Message[] _messageList = (S_Message[])ViewBag.message;
+    int _countOfPendingMission = (int)ViewBag.CountOfPendingMission;
+}
+
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">商家中心</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc">
+                <div class="utc_right_topbox">
+                    <div class="utc_right_topbox_userbox">
+                        @*<img src="~/Images/icon/1_06.png" alt=""><br>*@
+                        <div class="logobox">
+                            <img src="@Html.Raw(File.Exists(Server.MapPath("~" + Model.Logo)) ? Model.Logo : "/Images/icon/1_07.jpg")" alt="@Model.Name">
+                        </div>
+                        <span class="Black16">@Model.Name</span><br>
+                        @if (Model.isaudit == 1)
+                        {
+                            <img src="~/Images/icon/new_green_o.gif" class="litimg">  <span class="Gray14">
+                                已审核
+                            </span>
+
+                        }
+                        else
+                        {
+                            <img src="~/Images/icon/new_red_k.png" class="litimg">  <span class="Black14"> 审核中         </span>
+                        }
+
+                        </span>
+                    </div>
+
+                    <div class="utc_right_topbox_userbox">
+                        <!--<img src="Images/icon/2_03 (2).png" alt=""><br>-->
+                        <div class="utc_right_topbox_money Red14b">0</div>
+                        <span class="Black14">账户余额（元）</span><br>
+                    </div>
+                    <div class="utc_right_topbox_menubox">
+                        <ul class="ul_utc_right_topbox_menu">
+                            <li><a href="@Html.Raw(_countOfPendingMission > 0 ? "/Mission/List?IsPending=true" : "#")"><img src="~/Images/icon/4_09.png"><br>待处理任务<span class="red">@_countOfPendingMission</span></a></li>
+                            <li><a href=""><img src="~/Images/icon/3_11.png"><br>待发货商品<span class="red">2</span></a></li>
+                            <li style="border: 0px;"><a href=""><img src="~/Images/icon/5_13.png"><br>待确认商品<span class="red">2</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="utc_right_bottombox">
+                    <div class="utc_right_bottombox_title Black14">消息中心</div>
+                    @if (_messageList != null && _messageList.Count() > 0)
+                    {
+                        <ul class="ul_right_bottombox_news Black14">
+                            @foreach (S_Message msg in _messageList)
+                            {
+                                <li><a href="@msg.DetailsUrl">@msg.Message</a></li>
+                            }
+                        </ul>
+                    }
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

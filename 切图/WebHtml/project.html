@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>项目详情页</title>
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/Content/openshop.css" rel="stylesheet" />
+    <link href="/Content/project.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3a5359ab120180f124500eed5aa577a4"></script>
+    <script type="text/javascript" src="/scripts/baidumap/convertor.js"></script>
+    <script type="text/javascript" src="/scripts/baidumap/base-map.js"></script>
+</head>
+<body>
+    <header>
+        <div class="head-container">
+            <div class="site-title">我要开店</div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="/home/index">首页</a></li>
+                    <li><a href="/home/index">团购</a></li>
+                    <li><a href="/home/index">开店帮</a></li>
+                    <li><a href="/home/index">品牌街</a></li>
+                </ul>
+            </nav>
+
+            <div class="site-account">
+                <a href="/login">登录</a>
+                <a>|</a>
+                <a href="/regiseter">注册</a>
+            </div>
+            <div class="site-search">
+                <input type="text" class="site-search-input" placeholder="请输入关键字（小区名、楼盘名等您要查询的地理位置）..." name="txtKeys" />
+                <input type="button" class="site-search-btn btn" value="搜索" />
+            </div>
+        </div>
+    </header>
+    <div class="proj-imgbox">
+        <img src="/images/projectimage.jpg" />
+    </div>
+    <div class="pro-info">
+        <div class="warp-center ">
+             <ul class="pro-nav pro-left">
+                <li>
+                    <h3><a href="#">照片</a></h3>
+                </li>
+                <li>
+                    <h3><a class="on">关于此房源</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#" class="">评价</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#" class="">服务团队</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#" class="">位置</a></h3>
+                </li>
+                <li>
+                    <h3><a href="#" class="">团购流程图</a></h3>
+                </li>
+            </ul>
+            <div class="pro-right">
+                <h3>申请报名</h3>
+            </div>
+        </div>
+    </div>
+    <div class="pro-info">
+        <div class="warp-center ">
+            <div class="pro-left">
+                <div class="pro-team">
+                    <div class="pro-team-one">
+                        <img src="/images/leader.jpg" width="100" height="100" />
+                        <p>傅小司</p>
+                    </div>
+                    <div class="pro-header">
+                        <h1>华腾世纪总部公园</h1>
+                        <div class="pro-header-dz">地址：地址：北京市朝阳区高碑店乡八里庄村陈家林9号院</div>
+                        <ul class="pro-feature">
+                            <li>
+                                <div><img src="/images/f_xzl.jpg" /></div>
+                                <em>写字楼</em>
+                            </li>
+                            <li>
+                                <div><img src="/images/f_cy.jpg" /></div><em>餐饮</em>
+                            </li>
+                            <li>
+                                <div><img src="/images/f_sj.jpg" /></div><em>10家</em>
+                            </li>
+                            <li>
+                                <div><img src="/images/f_xzl.jpg" /></div><em>写字楼</em>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="pro-js">
+                    <p><span>项目特色：</span>入园企业享受我区市级开发区政策，根据入园时间可享受不同程度的房租优惠，社会保险补贴，企业融资支持，专利申报成果奖励，市级人才项目申报推荐等相关政策支持。 </p>
+                    <p><span>项目优势：</span>对入驻符合政策的实体企业提供房租补贴，对注册在园区的高成长企业提供企业扶持资金。对入驻园区办理属地工商注册和属地纳税的企业，园区为入驻企业提供基本办公家具；法律、会计、审计、评估、专利等咨询服务；协助企业人员办理人事档案、接转党、团组织关系、职称评定、劳动保险等相关业务，给予房屋租金补贴 </p>
+                </div>
+
+                <div class="pro-zb">
+                    <div class="pro-zb-name"><h3>基本信息</h3></div>
+                    <ul class="pro-zb-box">
+                        <li class="pro-zb-li">业态：写字楼</li>
+                        <li class="pro-zb-li">权属性质：商业用地</li>
+                        <li class="pro-zb-li">外立面形式：干挂石材</li>
+                        <li class="pro-zb-li">建筑结构：框架</li>
+                    </ul>
+                </div>
+                <div class="pro-zb">
+                    <div class="pro-zb-name"><h3>建筑指标</h3></div>
+                    <ul class="pro-zb-box">
+                        <li class="pro-zb-li">总建筑面积：176487.9平米</li>
+                        <li class="pro-zb-li">总层数：3层</li>
+                        <li class="pro-zb-li">标准层净高：3.2米</li>
+                    </ul>
+                </div>
+                <div class="pro-zb">
+                    <div class="pro-zb-name"><h3>平面布局</h3></div>
+                    <ul class="pro-zb-box">
+                        <li class="pro-zb-li">标准层面积：写字楼</li>
+                        <li class="pro-zb-li">主力户型（开间面积）：80.3平米</li>
+                        <li class="pro-zb-li">窗户是否可开：贴边</li>
+                        <li class="pro-zb-li">核心筒布局：外侧桶式</li>
+                    </ul>
+                </div>
+                <div class="pro-zb">
+                    <div class="pro-zb-name"><h3>硬件配套</h3></div>
+                    <ul class="pro-zb-box">
+                        <li class="pro-zb-li">电梯品牌：苏州铃木</li>
+                        <li class="pro-zb-li">电梯数量：客梯4部、货梯1部</li>
+                        <li class="pro-zb-li">是否分区可控：是</li>
+                        <li class="pro-zb-li">空调品牌：日立</li>
+                        <li class="pro-zb-li">中央空调制式：水冷</li>
+                        <li class="pro-zb-li">梯速：0.4米/秒（客梯）</li>
+                        <li class="pro-zb-li">车位：192个（地上）</li>
+                    </ul>
+                </div>
+
+                <div class="pro-comment pro-zb">
+                    <div class="pro-zb-name"><h3>用户评价</h3></div>
+                    <div class="comment-list">
+                        <div class="comment-li">
+                            <div class="comment-img">
+                                <img src="/images/cmt-head.jpg" width="75" height="75" />
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-cont">我觉得给五星不足以表达我对开店网的评价，真是太棒了！</div>
+                                <div class="comment-start">
+                                    <img src="/images/cmt_star.jpg" width="86" height="23" />
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="comment-li">
+                            <div class="comment-img"><img src="/images/cmt-head.jpg" width="75" height="75" /></div>
+                            <div class="comment-item">
+                                <div class="comment-cont">我觉得给五星不足以表达我对开店网的评价，真是太棒了！</div>
+                                <div class="comment-start">
+                                    <img src="/images/cmt_star.jpg" width="86" height="23" />
+                                </div>
+                            </div>
+                             <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="cmt-page">
+                        <img src="/images/page.jpg" />
+                    </div>
+                    <div class="cmt-add">
+                        我要评论
+                    </div>
+                </div>
+
+                <div class="pro-team">
+                    <div class="pro-zb-name"><h3>服务团队</h3></div>
+                    <div class="pro-team-one">
+                        <img src="/images/leader.jpg" width="100" height="100" />
+                        <p>傅小司</p>
+                    </div>
+                    <div class="pro-team-intro">
+                        二环内稀缺办公面积、临近三条地铁，坐拥崇文门便捷交通枢纽、地标建筑综合体和成熟商务配套倍增投资价值、带租约销售，投资回报率达到6%以上。
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="pro-team-list">
+                        <div class="pro-team-one">
+                            <img src="/images/leader.jpg" width="100" height="100" />
+                            <p>傅小司</p>
+                        </div>
+                        <div class="pro-team-one">
+                            <img src="/images/leader.jpg" width="100" height="100" />
+                            <p>傅小司</p>
+                        </div>
+                        <div class="pro-team-one">
+                            <img src="/images/leader.jpg" width="100" height="100" />
+                            <p>傅小司</p>
+                        </div>
+                        <div class="pro-team-one">
+                            <img src="/images/leader.jpg" width="100" height="100" />
+                            <p>傅小司</p>
+                        </div>
+                    <div class="clear"></div>
+                    </div>
+                <div class="pro-qw pro-zbt">
+                    <div class="pro-zb-name"><h3>区位图</h3></div>
+                    <div class="pro-zb-ditu">
+                        <!-- 百度地图begin -->
+                        <div id="baiduMap" class="map" style="width: 100%; height: 400px;"></div>
+                        <script type="text/javascript">
+                            baiduMap("baiduMap", "万开中心", "北京市丰台区万丰路316号", 116.3009033203125, 39.880828857421875, "项目名称");
+                        </script>
+                        <!-- 百度地图end -->
+                    </div>
+                </div>
+                <div class="pro-lct pro-zb">
+                    <div class="pro-zb-name"><h3>流程图</h3></div>
+                    <div class="pro-lct-info">
+                        <img src="/images/pro_lct.jpg" style="width:100%;" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="pro-right pro-applydiv">
+                <div class="pro-apply">
+                    <div class="pro-applyform">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="input01">姓名</label>
+                            <div class="controls">
+                                <input placeholder="请输入姓名" class="input-xlarge" type="text" />
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="input01">手机</label>
+                            <div class="controls">
+                                <input placeholder="请输入手机号" class="input-xlarge" type="text" />
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">类型</label>
+                            <div class="controls">
+                                <!-- Multiple Radios -->
+                                <label class="radio">
+                                    <input checked="checked" value="个人" name="grouptype" type="radio" />
+                                    个人
+                                </label>
+                                <label class="radio">
+                                    <input value="公司" name="grouptype" type="radio" />
+                                    公司
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="control-group">
+                            <!-- Button -->
+                                <button class="btn btn-apply">申请报名</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="pro-apply">
+                    <div class="pro-applied-title">已报名</div>
+                    <ul>
+                        <li>
+                            <div class="apply-name">华腾世纪大厦</div>
+                            <div class="apply-phone">135****3658</div>
+                            <div class="apply-status">申请成功</div>
+                        </li>
+                        <li>
+                            <div class="apply-name">华腾世纪大厦</div>
+                            <div class="apply-phone">135****3658</div>
+                            <div class="apply-status">申请成功</div>
+                        </li>
+                        <li>
+                            <div class="apply-name">华腾世纪大厦</div>
+                            <div class="apply-phone">135****3658</div>
+                            <div class="apply-status">申请成功</div>
+                        </li>
+                        <li>
+                            <div class="apply-name">华腾世纪大厦</div>
+                            <div class="apply-phone">135****3658</div>
+                            <div class="apply-status">申请成功</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

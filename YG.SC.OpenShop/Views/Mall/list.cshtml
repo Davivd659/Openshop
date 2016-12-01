@@ -1,0 +1,148 @@
+﻿@using YG.SC.DataAccess;
+@{
+    Layout = "~/Views/Shared/_LayoutMall.cshtml";
+    var Objectlist = ViewBag.CategoryList as List<C_Object>;
+    var Category = ViewBag.GoodsList as C_Object;
+}
+
+<!--二级悬挂导航开始-->
+<div class="m_nav2" id="nav_top">
+    <ul class="body-warp m_nav_main m_n2">
+        @foreach (var Object in Objectlist)
+        {
+            <li><a href="/Mall/list?id=@Object.Id&Parentid=0">@Object.Name</a></li>
+        }
+
+        <!-- 固定导航购物车里的商品-->
+        <div class="m_cart m_cart_tg">
+            <div class="m_cart_z">购物车(<span>0</span>)</div>
+            <div class="m_cart_r">
+                <img src="~/Images/mall/m_cart_r2.png">
+            </div>
+        </div>
+        <div class="m_car_all">
+            <div class="m_z">
+
+            </div>
+            <div class="m_car_going">
+                <p class="m_car_going_tot">总计：￥<span class="red c_total">0</span>元</p>
+                <a class="go_cart" href="/Mall/Carts">去购物车结算</a>
+            </div>
+        </div>
+    </ul>
+</div>
+<!--二级悬挂导航结束-->
+<!-- 头部logo部分开始 -->
+<div class="body-warp m_head">
+    <a class="m_logo" href="/"><img src="~/Images/mall/m_logo.png"></a>
+    <div class="m_search">
+        <input class="m_search_int" type="text" value="请输入您想购买的商品" name="keyword">
+        <input class="m_search_submit" type="submit" value="搜索">
+    </div>
+    <!--头部购物车黑色开始-->
+    <div class="m_cart">
+        <div class="m_cart_z">购物车(<span>0</span>)</div>
+        <div class="m_cart_r">
+            <img src="~/Images/mall/m_cart_r.png">
+        </div>
+    </div>
+    <div class="m_car_all">
+        <div class="m_z">
+        </div>
+        <div class="m_car_going">
+            <p class="m_car_going_tot">总计：￥<span class="red c_total">0</span>元</p>
+            <a class="go_cart" href="/Mall/Carts">去购物车结算</a>
+        </div>
+    </div>
+    <!--头部购物车黑色开始-->
+</div>
+<!-- 头部logo部分结束 -->
+<!-- 导航ban开始  -->
+<div class="m_nav">
+    <ul class="body-warp m_nav_main">
+        <li class="nav_li1">
+            <a href="">商城首页</a>
+        </li>
+
+        @foreach (var Object in Objectlist)
+        {
+            <li><a href="/Mall/list?id=@Object.Id&Parentid=0">@Object.Name</a></li>
+        }
+    </ul>
+</div>
+<!-- 导航ban结束 -->
+<!--面包屑路径s-->
+<div class="body-warp">
+    <div class="list_road">
+        @if (Category != null)
+        {
+            <a href="/">首页</a><text>></text> <a href="/Mall/Home">商城</a>
+            if (Category.Parent != null)
+            {
+                <text>></text>                <a href="/Mall/list?id=@Category.Parent.Id&Parentid=0">@Category.Parent.Name</a>
+            } <text>></text> <span>@Category.Name</span>
+        }
+    </div>
+</div>
+<!--面包屑路径e-->
+<!--contant-->
+<div class="body-warp list_con">
+    <div class="list_l">
+        <!-- 蔬果分类-->
+        <ul class="list_sort">
+            @if (Category != null)
+            {
+                if (Category.Parent != null)
+                {
+                    foreach (var product in Category.Parent.Subset)
+                    {
+                        <li><a href="/Mall/list?id=@product.Id&Parentid=0">@product.Name</a> </li>
+                    }
+                }
+                else
+                {
+                    foreach (var product in Objectlist)
+                    {
+                        <li><a href="/Mall/list?id=@product.Id&Parentid=0">@product.Name</a> </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+    <div class="list_r">
+        <ul class="m_content">
+            @if (Category != null)
+            {
+                foreach (var goods in YG.SC.OpenShop.Controllers.MallController.getGoods(Category))
+                {
+                    <li class="con_goods">
+                        <div class="cart_prom">商品已添加到购物车</div>
+                        <input type="hidden" value="1" class="goodsid" />
+                        <div class="con_goods_img">
+                            <img src="@goods.G_Goods.C_File.FileName">
+                        </div>
+                        <h3 class="con_goods_tit">@goods.Name</h3>
+                        @if (!string.IsNullOrEmpty(goods.Description))
+                        {
+                            <p> @Html.Raw(goods.Description.Length > 29 ? goods.Description.Substring(0, 29) : goods.Description);</p>
+                        }
+                        <div class="m_price">
+                            <span>@goods.G_Name.Unit</span>
+                            <strong>￥<b>@goods.G_Goods.Price</b>元/包</strong>
+                        </div>
+                        <ol class="goods_num">
+                            <div class="goods_num_choice">
+                                <a href="javascript:void(0)" class="choice1">-</a>
+                                <input type="text" value="1" class="num_choice" onkeyup="value=value.replace(/[^\d]/g,'')">
+                                <a href="javascript:void(0)" class="choice2">+</a>
+                            </div>
+                            <span class="goods_car">
+                                <img src="~/Images/mall/goods_car1.png" />
+                            </span>
+                        </ol>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

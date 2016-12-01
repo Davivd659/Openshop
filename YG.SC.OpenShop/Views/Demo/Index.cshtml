@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "demo service";
+    Layout = null;
+    
+}
+
+<h2>Index</h2>
+
+@{
+    var demo = (YG.SC.DataAccess.ShopDemo) ViewBag.demo;
+    
+}
+
+id: @demo.Id
+<br />
+
+
+Name: @demo.Name
+

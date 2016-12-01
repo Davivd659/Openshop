@@ -1,0 +1,304 @@
+2014-10-20 15:32:40,323 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:32:40
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:32:40***Successful***
+
+
+
+2014-10-20 15:39:04,226 [15] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:39:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:39:04***Successful***
+
+
+
+2014-10-20 15:39:28,334 [15] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:39:28
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:39:28***Successful***
+
+
+
+2014-10-20 15:39:47,674 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:39:47
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:39:47***Successful***
+
+
+
+2014-10-20 15:39:58,146 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:39:58
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:39:58***Successful***
+
+
+
+2014-10-20 15:42:48,744 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:42:48
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:42:48***Successful***
+
+
+
+2014-10-20 15:44:12,638 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:44:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:44:12***Successful***
+
+
+
+2014-10-20 15:44:15,813 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:44:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:44:15***Successful***
+
+
+
+2014-10-20 15:44:26,255 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:44:26
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:44:26***Successful***
+
+
+
+2014-10-20 15:45:35,394 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:45:35
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:45:35***Successful***
+
+
+
+2014-10-20 15:45:49,066 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:45:49
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:45:49***Successful***
+
+
+
+2014-10-20 15:46:32,530 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:46:32
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:46:32***Successful***
+
+
+
+2014-10-20 15:48:04,088 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:48:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:48:04***Successful***
+
+
+
+2014-10-20 15:50:27,342 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:50:27
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:50:27***Successful***
+
+
+
+2014-10-20 15:51:45,074 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:51:45
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:51:45***Successful***
+
+
+
+2014-10-20 15:59:21,262 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/20 15:59:21
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/20 15:59:21***Successful***
+
+
+

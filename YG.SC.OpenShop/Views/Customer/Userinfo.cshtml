@@ -1,0 +1,90 @@
+﻿@using System.IO;
+@{
+    ViewBag.Title = "个人中心-我的资料";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model YG.SC.DataAccess.Customer
+<link href="~/Content/back.css" rel="stylesheet" />
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft");
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">会员资料</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc" style="padding:40px 0px">
+                @using (Html.BeginForm("Userinfo", "Customer", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+                {
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>用户名：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                        <input type="hidden" id="Mobile" name="Mobile" value="@Model.Mobile" />
+                        <input type="hidden" id="LoginName" name="LoginName" value="@Model.LoginName" />
+                <label>@Model.LoginName</label>
+                    </div>
+                    <div class="add_sjmenubox Gray16">真实姓名：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="text" id="Name" name="Name" value="@Model.Name" />
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>手机号：</div>
+                    <div class="add_sjcontentbox">
+                        <label>@Model.Mobile</label>  <span class="red"> *</span>手机号只能通过客服修改
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>邮箱：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="email" name="Email" id="Email" value="@Model.Email" />
+                    </div>
+                    <div class="add_sjmenubox Gray16" style="margin-top:10px">会员头像：</div>
+                    <div class="add_sjcontentbox" style="margin-top:10px">
+                        <div class="addimgcontentbox" style="width:260px">
+                            <img src="@Html.Raw(File.Exists(Server.MapPath(Model.portrait)) ? Model.portrait : "/Images/9_03.jpg")" width="240" height="240" alt="">
+                        </div>
+                        <input type="hidden" name="portrait" id="portrait" value="@Model.portrait" />
+                        <button class="addimgimg_button" style="margin-left:50px;" id="logosubmit" type="button" onclick="portraitfile.click()">上传</button>
+                        <input type="file" id="portraitfile" name="portraitfile" style="display:none" onchange="upfile.value=this.value">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="add_jindubox" style="text-align: center;margin:20px auto;">
+                        <button class="add_sjbutton" type="submit" style="margin-right:150px;">确认</button>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="utc_tagbox tanchuang" id="alertc">
+    <div class="utc_tagbox_header Write14">消息提示</div>
+    <div class="utc_tagbox_body Black16">
+    </div>
+    <div class="utc_tagbox_footer">
+        <button class="add_sjbutton" id="closediv" style="margin:0px;">确认</button>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#alertc").hide();
+        var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+        if (str_msg != "")
+        {
+            @Html.Raw("msg=\""+str_msg+"\"");
+        }
+    }
+        if (msg != "") {
+            $(".utc_tagbox_body").text("修改成功")
+            $("#alertc").show();
+        }
+    })
+    $("#closediv").click(function () {
+        $("#alertc").hide();
+    })
+    $("#portraitfile").change(function () {
+        $('form').attr('action', '/Customer/uploadimg');
+        $('form').attr('method', "post");
+        $('form').submit();
+    })
+</script>

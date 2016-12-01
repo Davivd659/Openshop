@@ -1,0 +1,85 @@
+﻿@using YG.SC.Common
+@{
+    Layout = "";
+}
+<link href="~/Content/back.css" rel="stylesheet" />
+@*<script>
+        $(function () {
+            $("ul.utc_nav_ul li").bind("click", function () {
+                $("ul li").removeAttr("style");
+                $(this).attr("style", "border-left:2px solid #d72315;background: #f9f9f9;");
+            });
+        });
+    </script>*@
+<div class="uct_left">
+    <div class="utc_nav">
+        @if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.OpenShop)
+        {
+            <div class="utc_title"></div>
+        }
+        else if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.Member)
+        {
+            <div class="utc_title_user"></div>
+        }
+        <ul class="utc_nav_ul">
+            @if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.OpenShop)
+            {
+                <li class="blod"><a href="/Merchant/Company_index/@YG.SC.OpenShop.UserContext.Current.Companyid">商家首页 </a></li>
+            }
+            else if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.Member)
+            {
+                <li class="blod"><a href="/Customer/Memberindex/@YG.SC.OpenShop.UserContext.Current.Companyid">会员首页 </a></li>
+            }
+            <li><a href="~/Customer/Accounts">我的账户 </a></li>
+            <li><a href="~/Mission/List">我的任务 </a></li>
+            <li><a href="~/Order/List">我的订单 </a></li>
+            <li><a href="~/Message/List">我的消息 </a></li>
+            @*<li class="blod" style="font-size: 16px;background: #f9f9f9;"><a href="#">采买管理 </a></li>*@
+            @*<li><a href="#">已买到商品 </a></li>
+                <li><a href="#">消费统计 </a></li>
+                <li><a href="#">历史价格 </a></li>
+                <li><a href="#">我的投诉 </a></li>*@
+            @if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.OpenShop)
+            {
+                <li class="blod" style="font-size: 16px;background: #f9f9f9;"><a href="#">资料管理 </a></li>
+                <li><a href="/Merchant/Company_info/@YG.SC.OpenShop.UserContext.Current.Companyid">商家资料 </a></li>
+                <li><a href="/Merchant/Company_Case/@YG.SC.OpenShop.UserContext.Current.Companyid">商家图库 </a></li>
+                <li><a href="/Merchant/Company_Qualifications/@YG.SC.OpenShop.UserContext.Current.Companyid">资质信息 </a></li>
+            }
+            else if (YG.SC.OpenShop.UserContext.Current.Groupid == (int)YG.SC.Common.CommonEnum.GroupOfCustomer.Member)
+            {
+                if (YG.SC.OpenShop.UserContext.Current.Companyid != 0)
+                {
+                    <li><a href="~/Brand/AuditList">加盟审批 </a></li>
+                    <li class="blod" style="font-size: 16px;background: #f9f9f9;"><a href="#">资料管理 </a></li>
+                    <li><a href="/Brand/Company_info/@YG.SC.OpenShop.UserContext.Current.Companyid">品牌资料 </a></li>
+                    <li><a href="/Brand/Company_Case/@YG.SC.OpenShop.UserContext.Current.Companyid">品牌图库 </a></li>
+                    <li><a href="/Brand/Company_Qualifications/@YG.SC.OpenShop.UserContext.Current.Companyid">资质信息 </a></li>
+                }
+                else
+                {
+                          <li><a href="/Customer/Tuan/@YG.SC.OpenShop.UserContext.Current.Id">项目团购 </a></li>
+                    <li><a href="~/Brand/ApplyList">加盟申请 </a></li>
+                    <li class="blod" style="font-size: 16px;background: #f9f9f9;"><a href="javascript:;">会员资料 </a></li>
+                    <li><a href="/Customer/Userinfo/@YG.SC.OpenShop.UserContext.Current.Id">修改个人资料 </a></li>
+                    <li><a href="~/Brand/Brand_add1">升级品牌用户 </a></li>
+
+                }
+            }
+            <li><a href="~/Customer/EditPwd?CustomerId=@YG.SC.OpenShop.UserContext.Current.Id">修改密码 </a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".utc_nav_ul").find("li").each(function () {
+            var $this = $(this);
+            if (window.location.href == $this.find("a")[0].href) {
+                $(this).addClass("utc_nav_ul_on");
+            }
+            else {
+                $(this).removeClass("utc_nav_ul_on");
+            }
+        })
+    })
+</script>

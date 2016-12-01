@@ -1,0 +1,25 @@
+
+
+/*这些需要更改的样式*/
+#dengxiang{opacity: 0.7;}
+.warp_1{ padding-bottom:20px; height: 418px; position: relative;}
+.del-r{ float: left; width:775px;  height: 400px;}
+/*这些需要更改的样式*/
+
+
+
+
+.del_baoming{ position: fixed;width: 364px; height: 407px; background: #f5f5f5;  display: none;   z-index: 200;top: 50%;margin-top: -200px;left: 50%;margin-left: -182px;}
+.del_baoming_top{width: 100%; height: 45px; background: #ec341d; }
+.del_baoming_top span{display: block; float: left; font-size: 18px; color: #fff;  line-height: 45px; margin-left: 146px;}
+.del_baoming_top strong{ display: block; float: right; width: 24px; height: 24px;background: url(../Images/icon/dei_baoming_1.png) no-repeat left 5px; margin: 5px 5px;}
+
+.del_baoming ul{padding: 0 34px 0 40px; font-size: 16px; line-height: 40px; color: #666; width: 295px; }
+.del_baoming ul .dei_biaoming_bt{height: 80px; line-height: 80px;}
+.dei_biaoming_bt span{ color: #ec341d;padding-left: 22px;}
+.del_baoming .del_name1{ height: 36px; width: 210px; border: 1px solid #ddd; border-radius: 5px; margin-left: 20px; padding-left: 10px; outline: none;}
+.del_baoming ul li{height: 52px; line-height: 52px;width: 290px;}
+.del_baoming ul li strong{ margin-left: 15px; padding-left: 30px; }
+
+.del_baoming  #btnbuy{ display: block; width: 285px; height: 40px;background: #ec341d; text-align: center; line-height: 40px; font-size: 14px; border-radius: 5px; color: #fff; margin: 20px 0 5px 40px;}
+.del_baoming b{ display: block; color: #ec341d;line-height: 40px; margin-left: 40px}

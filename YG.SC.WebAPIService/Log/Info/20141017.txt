@@ -1,0 +1,817 @@
+2014-10-17 17:03:31,252 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:03:31
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:03:31***Successful***
+
+
+
+2014-10-17 17:03:43,950 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:03:43
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:03:43***Successful***
+
+
+
+2014-10-17 17:06:09,966 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:06:09
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:06:09***Successful***
+
+
+
+2014-10-17 17:07:36,518 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:07:36
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:07:36***Successful***
+
+
+
+2014-10-17 17:09:19,309 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:09:19
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:09:19***Successful***
+
+
+
+2014-10-17 17:10:38,593 [10] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:10:38
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:10:38***Successful***
+
+
+
+2014-10-17 17:11:00,928 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:00
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:00***Successful***
+
+
+
+2014-10-17 17:11:05,312 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:05
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:05***Successful***
+
+
+
+2014-10-17 17:11:05,965 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:05
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:05***Successful***
+
+
+
+2014-10-17 17:11:06,421 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:06
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:06***Successful***
+
+
+
+2014-10-17 17:11:06,789 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:06
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:06***Successful***
+
+
+
+2014-10-17 17:11:07,197 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:11:07
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:11:07***Successful***
+
+
+
+2014-10-17 17:13:25,231 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:13:25
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:13:25***Successful***
+
+
+
+2014-10-17 17:13:44,908 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:13:44
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:13:44***Successful***
+
+
+
+2014-10-17 17:20:55,121 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:20:55
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=9
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:20:55***Successful***
+
+
+
+2014-10-17 17:21:04,593 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:21:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:21:04***Successful***
+
+
+
+2014-10-17 17:22:04,598 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:22:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"783496"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:22:04***Successful***
+
+
+
+2014-10-17 17:51:13,332 [39] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:51:13
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:51:13***Successful***
+
+
+
+2014-10-17 17:51:29,904 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:51:29
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:51:29***Successful***
+
+
+
+2014-10-17 17:55:48,204 [13] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:55:48
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:55:48***Successful***
+
+
+
+2014-10-17 17:56:17,842 [7] INFO  Info 
+========================================================================
+Start at: 2014/10/17 17:56:17
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/AdPicture/Banner
+
+RequestBody£º[]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 17:56:17***Successful***
+
+
+
+2014-10-17 23:03:28,547 [41] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:03:28
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:03:28***Successful***
+
+
+
+2014-10-17 23:07:12,478 [36] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:07:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetNew?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:07:12***Successful***
+
+
+
+2014-10-17 23:07:12,478 [31] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:07:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetNew?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:07:12***Successful***
+
+
+
+2014-10-17 23:07:52,568 [36] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:07:52
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetNew?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:07:52***Successful***
+
+
+
+2014-10-17 23:10:43,462 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:10:43
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:10:43***Successful***
+
+
+
+2014-10-17 23:11:17,663 [29] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:11:17
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"356757"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:11:17***Successful***
+
+
+
+2014-10-17 23:12:10,266 [21] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:12:10
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"356757"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:12:10***Successful***
+
+
+
+2014-10-17 23:12:18,843 [23] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:12:18
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:12:18***Successful***
+
+
+
+2014-10-17 23:12:32,924 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:12:32
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"754682"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:12:32***Successful***
+
+
+
+2014-10-17 23:14:15,667 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:14:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:14:15***Successful***
+
+
+
+2014-10-17 23:14:22,594 [16] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:14:22
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:14:22***Successful***
+
+
+
+2014-10-17 23:14:30,402 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:14:30
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:14:30***Successful***
+
+
+
+2014-10-17 23:24:43,306 [33] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:24:43
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite?number=-1
+
+RequestBody£º[-1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:24:43***Successful***
+
+
+
+2014-10-17 23:24:53,347 [33] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:24:53
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:24:53***Successful***
+
+
+
+2014-10-17 23:25:08,848 [16] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:25:08
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"151133"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:25:08***Successful***
+
+
+
+2014-10-17 23:25:11,310 [16] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:25:11
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"151133"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:25:11***Successful***
+
+
+
+2014-10-17 23:25:12,950 [33] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:25:12
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"151133"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:25:12***Successful***
+
+
+
+2014-10-17 23:30:05,650 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:30:05
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Goods/GetElite
+
+RequestBody£º[9]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:30:05***Successful***
+
+
+
+2014-10-17 23:45:00,383 [20] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:45:00
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:45:00***Successful***
+
+
+
+2014-10-17 23:45:37,719 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:45:37
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:45:37***Successful***
+
+
+
+2014-10-17 23:46:08,445 [5] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:46:08
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/SendCode
+
+RequestBody£º[{"Phone":"18701632164","Code":null}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:46:08***Successful***
+
+
+
+2014-10-17 23:46:29,227 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/17 23:46:29
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/User/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"691917"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/17 23:46:29***Successful***
+
+
+

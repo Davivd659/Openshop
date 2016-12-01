@@ -1,0 +1,95 @@
+2014-11-27 16:06:30,686 [17] INFO  Info 
+========================================================================
+Start at: 2014/11/27 16:06:30
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/Android/order/ListOderDetail
+
+RequestBody£º["",1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/27 16:06:30***Successful***
+
+
+
+2014-11-27 16:09:25,496 [8] INFO  Info 
+========================================================================
+Start at: 2014/11/27 16:09:25
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/Android/order/ListOderDetail
+
+RequestBody£º["",1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/27 16:09:25***Successful***
+
+
+
+2014-11-27 17:52:20,071 [7] INFO  Info 
+========================================================================
+Start at: 2014/11/27 17:52:20
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/user/Login
+
+RequestBody£º[{"Phone":null,"Code":"123456"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/27 17:52:20***Successful***
+
+
+
+2014-11-27 17:52:54,318 [10] INFO  Info 
+========================================================================
+Start at: 2014/11/27 17:52:54
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/user/Login
+
+RequestBody£º[{"Phone":"18701632164","Code":"123456"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/27 17:52:54***Successful***
+
+
+
+2014-11-27 17:54:31,056 [5] INFO  Info 
+========================================================================
+Start at: 2014/11/27 17:54:31
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/user/Login
+
+RequestBody£º[{"Phone":"15510116605","Code":"123456"}]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/27 17:54:31***Successful***
+
+
+

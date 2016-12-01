@@ -1,0 +1,579 @@
+﻿@using YG.SC.Model.Project;﻿
+@using YG.SC.Model
+@using YG.SC.Common
+@using YG.SC.DataAccess;
+@model ProjectDetailsViewModel
+@{
+    ViewBag.Title = "项目-" + Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ProjectPhoto = (ProjectPhoto[])ViewBag.PhotosList;
+    var LinkTypes = ViewBag.LinkTypes as List<Link>;
+    ViewBag.type = "";
+}
+<meta charset="utf-8">
+<link href="~/Content/shenqing.css" rel="stylesheet" />
+<!--<link href="Content/huandeng.css" rel="stylesheet"/>-->
+<!--<script type="text/javascript" src="Scripts/lrtk.js"></script>-->
+<!-- 引入js-->
+<script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+<!-- 引入js-->
+<!--搜索下拉框-->
+<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="~/Scripts/common_new.js" type="text/javascript"></script>
+<script src="~/Scripts/details.js" type="text/javascript"></script>
+<!--搜索下拉框-->
+<!-- 相册-->
+<script type="text/javascript" src="~/Scripts/jquery.album.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/album.css" media="all" />
+<!--正文开始-->
+<!--开店好礼，去看看开始-->
+<div class="warp warp-d1">
+    <div class="body-warp">
+        <a href="/Project/Special?id=44"><img src="~/Images/del_ban.jpg" alt="开店送好礼banner图"></a>
+    </div>
+</div>
+<!--开店好礼，去看看结束-->
+<!--文创园图文简介1开始-->
+<!--灯箱幻灯片开始-->
+<div id="dengxiang"></div>
+
+<!--相册-->
+<div id="dx_slide">
+    <div class="dx_guan">
+        <img src="/Images/dx_guan.png">
+    </div>
+    <div class="album-box" id="album">
+        <div  class="pre-btn" id="preBtn" title="上一张 "><i></i></div>
+        <div class="next-btn" id="nextBtn" title="下一张 "><i></i></div>
+        <div class="album-con">
+            <div class="valin">
+                <span></span>
+                <img src="~/images/album-big/1.JPG" id="realImg" />
+                <p class="pic-alt" id="txtDes"></p>
+            </div>
+            <div id="imgLoading"></div>
+        </div>
+        <div  class="thum-box" id="thumBox">
+            <div class="thum-wrap" id="thumWrap">
+                <ul class="imglist fix" id="photoList"></ul>
+            </div>
+            <i class="thum-pre-btn" id="thumPreBtn" title="上一页"></i>
+            <i class="thum-next-btn" id="thumNextBtn" title="下一页"></i>
+        </div>
+    </div>
+   <textarea class="dn" id="albumDataList">
+        @if (ProjectPhoto.Count() > 0)
+        {
+            foreach (var alertph in ProjectPhoto.OrderBy(M => M.Sort).Take(4))
+        {
+            <li>
+                <div><img src="@alertph.PhotoUrl" onload="scaleImage(this,99,75)"></div>
+                <p>@alertph.PhotoName</p>
+                <i class="dn">@alertph.PhotoUrl</i>
+            </li>
+        }
+    }
+    </textarea>
+</div>
+
+<script type="text/javascript">
+    var _current_num = 0;//设置从第几张图片开始
+    $(window).on("load","body",function () {
+        var str_h = 0;
+        $("#album").find("div[h]").each(function (i, ele) {
+            str_h += $(ele).height();
+        });
+        $("#album").height(str_h);
+    })
+    function scaleImage(o, w, h) {
+        var img = new Image();
+        img.src = o.src;
+        if (img.width > 0 && img.height > 0) {
+            if (img.width / img.height >= w / h) {
+                if (img.width > w) {
+                    o.width = w;
+                    o.height = (img.height * w) / img.width;
+                } else {
+                    o.width = img.width;
+                    o.height = img.height;
+                }
+            } else {
+                if (img.height > h) {
+                    o.height = h;
+                    o.width = (img.width * h) / img.height;
+                } else {
+                    o.width = img.width;
+                    o.height = img.height;
+                }
+            }
+        }
+    }
+</script>
+<!--//相册-->
+<!--相册1-->
+<!--灯箱幻灯片结束-->
+<div class="body-warp warp_1">
+    <!--左边图片-->
+    <div class="del-l">
+        @if (ProjectPhoto.Count() > 0)
+        {
+            <div class="del-s" id="del_img">
+                <img class="img-1" width="440" height="336" src="@ProjectPhoto[0].PhotoUrl" alt="@Model.Name">
+
+            </div>
+            <ul class="del-x">
+
+                @foreach (var Photo in ProjectPhoto.OrderBy(M=>M.Sort).Take(4))
+                {
+                    <li>
+                        <img src="@Photo.PhotoUrl">
+                        <p class="Write14">@Html.Raw(Photo.PhotoName.Length > 6 ? Photo.PhotoName.Substring(0, 6) : Photo.PhotoName)</p>
+                    </li>
+                }
+
+            </ul>
+        }
+
+    </div>
+    <!--右边简介-->
+    <div class="del-r">
+        <h1 class="grayh1">@Model.Name</h1>
+
+        <div><span class="Black16">地址</span>@Model.AdressLine</div>
+        <img src="~/Images/del_t.jpg" alt="周边服务">
+
+        <p class="red"><span class="Black16">价格</span>@Model.GetPrice</p>
+
+        <p class="red"><span class="Black16">电话</span>@Model.ContactPhone</p>
+
+        <div class="space"><span class="Black16">面积</span>建筑面积：@Model.TotalFloorArea 平米 <b>标准层面积：@Model.SignalLayerArea 平米</b></div>
+        <div class="tuangou">
+            <span class="Black16">团购</span>
+
+            <div>
+                <p id="divdown1">
+                    距离结束&nbsp;&nbsp;&nbsp;&nbsp;<b>10</b><strong>天</strong><b>10</b><strong>小时</strong><b>10</b><strong>分</strong><b>10</b><strong>秒</strong>
+                </p>
+
+                <p>
+                    可售251套&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人数 @ViewBag.Groupcount 人
+                    <a href="javascript:;" class="shenqing">立即申请</a>
+                </p>
+
+
+            </div>
+
+        </div>
+        <!-- <div class="youdian"><strong class="wukong Black16">项目亮点</strong>
+         <p>融情于景的4—8层托斯卡纳原乡建筑，1.5低容积率，105～140㎡全尺度墅质生活空间，高得房率，
+             为财智新贵量身定制，轻松私藏一生，轻享奢尚。</p></div>   -->
+
+
+    </div>
+    <!-- 申请报名弹出框 -->
+
+    <div class="del_baoming">
+        <div class="del_baoming_top">
+            <span>申请报名</span>
+            <strong class="guanbi"></strong>
+            <input type="hidden" id="ProjectId" name="ProjectId" value="@Model.Id" />
+            <input type="hidden" id="GrouppurchaseId" name="GrouppurchaseId" value="@Model.GrouppurchaseId" />
+        </div>
+        <ul>
+            <li class="dei_biaoming_bt">项目<span>@Model.Name</span></li>
+            <li>姓名<input id="ApplyName" name="UserName" class="del_name1" type="text" value=""></li>
+            <li>手机<input id="ApplyPhone" name="UserPhone" class="del_name1" type="text" value=""></li>
+            <li>
+                类型
+                <strong><input type="radio" name="GroupType" value="0" />个人</strong>
+                <strong><input type="radio" name="GroupType" value="1" />公司</strong>
+            </li>
+        </ul>
+        <input type="submit" id="btnbuy" value="立即申请" />
+        <b></b>
+    </div>
+
+
+    <!-- /申请报名弹出框 -->
+</div>
+
+
+<!--文创园图文简介1结束-->
+<!--项目流程介绍开始-->
+<ul class="body-warp warp_2" id="pdetails">
+    <li class="li_hover" id="li_1">项目介绍</li>
+    
+    <li id="li_3">基本信息</li>
+    <li id="li_4">房源介绍</li>
+    <li id="li_5"><a href="#spt">沙盘图</a></a></li>
+    <li id="li_6"><a href="#hxt">户型图</a> </li>
+    <li id="li_7"><a href="#xmtp">项目图片</a></li>
+    <li id="li_8">服务团队</li>
+    <li id="li_9"><a href="#weizhi">位置</a></li>
+    <li id="li_10"><a href="#lct">流程图</a> </li>
+</ul>
+
+<!-- 添加项目亮点简介开始 -->
+<div class="body-warp ">
+    <div class="xm_ld">
+        <strong class="xm_tit">项目亮点：</strong>
+        <span>中国第一个电影主题的创意产业园; 城千亩公园内，为企业办公提供体面门户; 前五年包租承诺，年收益10%  </span>
+    </div>
+</div>
+<!-- 添加项目亮点简介结束 -->
+<div class="body-warp">
+    <div class="warp-box" id="xiangmu_js">@Model.ProjectIntro</div>
+    
+    <div class="warp-box" id="xiangmu_xx">
+        <div class="pro-zb xiangmu_xx_x">
+            <div class="pro-zb-name"><strong>基本信息</strong><a id="fangyuan"></a></div>
+            <ul class="pro-zb-box">
+                <li class="pro-zb-li">业态：@Model.TypeOfOperation</li>
+                <li class="pro-zb-li">权属性质：@Model.OwnerShip</li>
+                <li class="pro-zb-li">外立面形式：@Model.Facade</li>
+                <li class="pro-zb-li">建筑结构：@Model.Architecture</li>
+            </ul>
+        </div>
+        <div class="pro-zb xiangmu_xx_x">
+            <div class="pro-zb-name"><strong>建筑指标</strong></div>
+            <ul class="pro-zb-box">
+                <li class="pro-zb-li">总建筑面积：@Model.TotalFloorArea 平米</li>
+                <li class="pro-zb-li">总层数：@Model.TotalLayerNum 层</li>
+                <li class="pro-zb-li">标准层净高：@Model.SignalLayerHeight 米</li>
+            </ul>
+        </div>
+        <div class="pro-zb xiangmu_xx_x">
+            <div class="pro-zb-name"><strong>平面布局</strong></div>
+            <ul class="pro-zb-box">
+                <li class="pro-zb-li">标准层面积：@Model.SignalLayerArea 平米</li>
+                <li class="pro-zb-li">主力户型（开间面积）：@Model.MainUnit 平米</li>
+                @{
+                    var isOpen = Model.WinIsOpen ? "是" : "否";
+                    <li class="pro-zb-li">是否分区可控：@isOpen</li>
+                }
+                <li class="pro-zb-li">核心筒布局：@Model.CoreTubeLayout</li>
+            </ul>
+        </div>
+    </div>
+    <div class="warp-box" id="xiangmu_fy">@Model.Listings</div>
+    <div class="warp-box" id="xiangmu_fw">
+        <h2>服务团队</h2>
+        @if (Model.ProjectServiceViewModels.Count() > 0)
+        {
+            <div class="f1">
+                <div class="f-r">
+                    <img src="@Model.ProjectServiceViewModels.FirstOrDefault(m=>m.IsVip==true).PicUrl" width="100" height="100">
+
+                    <p>@Model.ProjectServiceViewModels.FirstOrDefault(m => m.IsVip == true).Name</p>
+                </div>
+                <p>
+                    @Model.TuanDuiInfo
+                </p>
+            </div>
+            <ul class="f2">
+                @foreach (var ProjectService in Model.ProjectServiceViewModels.Where(m => m.IsVip != true))
+                {
+                    <li>
+                        <img src="@ProjectService.PicUrl" width="100" height="100">
+                        <p>@ProjectService.Name</p>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>   
+<!--项目流程介绍结束-->
+<!-- 沙盘图 户型图开始 -->
+@if (ProjectPhoto.Count() > 0)
+{
+    <div class="warp-3">
+        <a name="spt"></a>
+        <a name="hxt"></a>
+        <div class="body-warp">
+            <!-- 左边沙盘图 -->
+            <div class="shanpan">
+                <div class="del-tit">沙盘图</div>
+                @if (ProjectPhoto.Where(m => m.Type == 0).Count() > 0)
+                {
+                    <input type="hidden" class="typeid" value="@ProjectPhoto.Where(m => m.Type == 0).OrderByDescending(m => m.CreatTime).FirstOrDefault().Type" />
+
+                    <img src="@ProjectPhoto.Where(m => m.Type == 0).OrderByDescending(m => m.CreatTime).FirstOrDefault().PhotoUrl">
+                }
+            </div>
+            <!-- 右边户型图 -->
+
+            <div class="huxing">
+                <div class="del-tit">户型图(@ProjectPhoto.Where(m => m.Type == 1).Count())</div>
+                <ul>
+                    @if (ProjectPhoto.Where(m => m.Type == 1).Count() > 0)
+                    {
+                        foreach (var item in ProjectPhoto.Where(m => m.Type == 1).Take(4))
+                        {
+                            <li>
+                                <input type="hidden" class="typeid" value="@item.Type" />
+                                <img src="@item.PhotoUrl">
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 沙盘图 户型图结束 -->
+    <!-- 项目图片开始 -->
+    <div class="body-warp warp-4">
+        <div class="del-tit2">
+            <a name="xmtp"></a>
+            <span>项目图片(@ProjectPhoto.Count())</span>
+            <ul>
+                @if (ProjectPhoto.Where(m => m.Type == 0).Count() > 0)
+                {
+                    <li id="xmg3" class="on spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Panoramic)">沙盘图(@ProjectPhoto.Where(m => m.Type == 0).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 1).Count() > 0)
+                {
+                    <li id="xmg1" class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Apartment)">户型图(@ProjectPhoto.Where(m => m.Type == 1).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 2).Count() > 0)
+                {
+                    <li id="xmg2" class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Traffic)">交通图(@ProjectPhoto.Where(m => m.Type == 2).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 3).Count() > 0)
+                {
+                    <li class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Location)">外景图(@ProjectPhoto.Where(m => m.Type == 3).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 4).Count() > 0)
+                {
+                    <li class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Real)">实景图(@ProjectPhoto.Where(m => m.Type == 4).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 5).Count() > 0)
+                {
+                    <li class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Effect)">效果图(@ProjectPhoto.Where(m => m.Type == 5).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 7).Count() > 0)
+                {
+                    <li>样板间(@ProjectPhoto.Where(m => m.Type == 7).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 8).Count() > 0)
+                {
+                    <li>项目现场(@ProjectPhoto.Where(m => m.Type == 8).Count())</li>
+                }
+                @if (ProjectPhoto.Where(m => m.Type == 6).Count() > 0)
+                {
+                    <li class="spnPhototype" phototypekey="@((int)CommonEnum.ProjectPhotoType.Supporting)">配套图(@ProjectPhoto.Where(m => m.Type == 6).Count())</li>
+                }
+            </ul>
+
+        </div>
+        <ul class="xm-img" id="xm-img1">
+            @foreach (var item in ProjectPhoto)
+            {
+                @*if (item.Type != null)
+                {
+                                        <li class="Phototypereuslt" phototype="@item.Type" style="display: none"><input type="hidden" class="typeid" value="@item.Type" /><img src="@item.PhotoUrl"></li>
+                }
+                else
+                {
+                    <li class="Phototypereuslt" phototype="@item.Type" style="display:block"><input type="hidden" class="typeid" value="@item.Type" /><img width="230" height="155" src="@item.PhotoUrl"></li>
+
+                }*@
+            <li class="Phototypereuslt" phototype="@item.Type" style="display: none"><input type="hidden" class="typeid" value="@item.Type" /><img src="@item.PhotoUrl"></li>
+            }
+        </ul>
+
+
+    </div>
+}
+<!-- 项目图片结束 -->
+<!-- 地理位置开始-->
+<div class="body-warp warp-5">
+    <a name="weizhi"></a>
+    <div class="del-tit">位置</div>
+    <div class="pro-zb-ditu">
+        <!-- 百度地图begin -->
+        <div id="allmap"  style="width: 100%; height: 500px;"></div>
+        @*<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+        <script language="javascript" type="text/javascript">
+
+            //默认红色标注
+            var point = new BMap.Point();
+            point.lng=@Model.Long
+            point.lat=@Model.Lat
+
+            var map = new BMap.Map("maps");
+            map.centerAndZoom(point, 15);
+            map.enableScrollWheelZoom();
+            var marker = new BMap.Marker(new BMap.Point(@Model.Long,@Model.Lat));  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+
+            var sendphone = {};
+            sendphone.showbox = function (e, obj) {
+                //公用插件弹出层
+                $("#" + obj).Dialog({
+                    clickPosition: { position: e, bind: true }, //点击对象
+                    winBar: "#mask", //蒙层
+                    winPage: ".popup", //弹层
+                    colosePanel: "#closex", //关闭按钮
+                    winBarbindClick: false//是否点击蒙层 关闭 默认true
+                });
+            }
+
+        </script>*@   
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZPi6MqM3Qof2x4nGs5sLPNl6"></script>    
+        <script type="text/javascript">
+            // 百度地图API功能
+            var map = new BMap.Map("allmap");
+            var point = new BMap.Point(@Model.Long, @Model.Lat);
+            map.centerAndZoom(point, 15);
+
+            //创建小狐狸
+            var pt = new BMap.Point(@Model.Long, @Model.Lat);
+            var myIcon = new BMap.Icon("/Images/icon/marker_red_sprite.png", new BMap.Size(39, 25));
+            var marker2 = new BMap.Marker(pt, { icon: myIcon });  // 创建标注
+            map.addOverlay(marker2);              // 将标注添加到地图中
+        </script>
+                
+         <!-- 百度地图end -->
+    </div>
+</div>
+<!-- 地理位置结束-->
+<!-- 流程图开始 -->
+<div class="warp-6">
+    <div class="body-warp">
+        <a name="lct"></a>
+            <div class="del-tit3">流程图</div>
+            <img src="~/images/del_lct.jpg">
+    </div>
+</div>
+<!-- 流程图结束 -->
+<!-- 合作单位开始   -->
+@*<div class="warp-7">
+        <div class="body-warp">
+            <div class="del-tit4">合作单位</div>
+            <div class="hezuo">
+                <ul class="hezuo-s">
+                    <li class="on spnlinktype" linktypekey="@((int)LinkType.政府合作)">@LinkType.政府合作</li>
+                    <li class="spnlinktype" linktypekey="@((int)LinkType.媒体合作)"> @LinkType.媒体合作</li>
+                    <li class="spnlinktype" linktypekey="@((int)LinkType.开发商合作)">@LinkType.开发商合作</li>
+                    <li class="spnlinktype" linktypekey="@((int)LinkType.代理商合作)"> @LinkType.代理商合作</li>
+                    <li class="spnlinktype" linktypekey="@((int)LinkType.网站合作)"> @LinkType.网站合作</li>
+                </ul>
+                <ul class="hezuo-x">
+                    @if (LinkTypes != null && LinkTypes.Count > 0)
+                    {
+                        foreach (var item in LinkTypes)
+                        {
+                            <li>
+                                @if (item.LinkType == 1)
+                                {
+                                    <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:block">@item.NAME</a>
+                                }
+                                else
+                                {
+                                    <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:none">@item.NAME</a>
+                                }
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>*@
+<!-- 合作单位结束   -->
+<script>
+    var interval = 1000;
+    window.setInterval(function () {
+        var date = "";
+        ShowCountDown("@ViewBag.jzsj", 'divdown1');
+    }, interval);
+    //$(function () {
+    //    $(".spnlinktype").click(function () {
+    //        $(this).attr("class", "on spnlinktype").siblings().attr("class", "spnlinktype");
+    //        var linktype = $(this).attr("linkTypeKey");
+    //        $(".linktypereuslt").each(function () {
+    //            if ($(this).attr("typekey") == linktype) {
+    //                $(this).css("display", "inline");
+    //            } else {
+    //                $(this).css("display", "none");
+    //            }
+
+    //        });
+    //    });
+    //});
+    $(function(){
+        $(".Phototypereuslt").each(function (i) {
+            if(i<5)
+            {
+                $(this).css("display", "inline");
+            }
+        });
+    })
+    $(".spnPhototype").click(function () {
+        $(this).attr("class", "on spnPhototype").siblings().attr("class", "spnPhototype");
+        var linktype = $(this).attr("photoTypeKey");
+        var ph=0;
+        $(".Phototypereuslt").each(function (i) {
+            if ($(this).attr("phototype") == linktype) {
+                if(ph<5)
+                {
+                $(this).css("display", "inline");
+                ph++;
+                }
+            } else {
+                $(this).css("display", "none");
+            }
+
+        });
+    });
+    //手机号码验证信息
+    function isMobil(s)
+    {
+        var patrn = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+        if (!patrn.exec(s))
+        {
+            return false;
+        } return true;
+    }
+    $("#btnbuy").bind('click',function(){
+        var name = $('#ApplyName').val();
+        var phone = $('#ApplyPhone').val();
+        var grouptype = $("input:radio[name=GroupType]:checked").val();
+        var GrouppurchaseId = $("#GrouppurchaseId").val();
+        var ProjectId = $("#ProjectId").val();
+        if(name==""){ alert("请输入姓名");return ;}
+        var isphone = isMobil(phone);
+        if(!isphone){
+            alert("请填写正确的手机号");
+            return;
+        }
+
+        var paramaters = {};
+        paramaters.ApplyName = name;
+        paramaters.ApplyPhone = phone;
+        paramaters.GroupType = grouptype;
+        paramaters.ProjectId = ProjectId;
+        paramaters.GrouppurchaseId = GrouppurchaseId;
+
+        var url = "/Project/Apply";
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: paramaters,
+            success: function (result) {
+                if (result == "true") {
+                    alert("已报名");
+                    $("#dengxiang").hide();
+                    $(".warp_1 .del_baoming").hide();
+
+                }else if(result=="0")
+                {
+                    alert("该用户已报名");
+                }
+                else {
+                    alert("报名失败，请重试！")
+                }
+            }
+        });
+    });
+</script>
+<!-- 合作单位结束  -->

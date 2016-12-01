@@ -1,0 +1,64 @@
+﻿@model YG.SC.DataAccess.M_Mission
+@using YG.SC.Common
+@if (@Model.Status >= (int)CommonEnum.StatusOfMission.Issue)
+{
+    <style>
+        .stepClass {
+            padding: 10px;
+            border-left: 1px #808080 solid;
+            text-align: center;
+        }
+    </style>
+    <table style="margin-top: 30px; margin-bottom: 30px; ">
+        <tr>
+            @for (int i = 0; i <= @Model.Status; i++)
+            {
+				if ((CommonEnum.StatusOfMission)i==CommonEnum.StatusOfMission.Cancel)
+				{
+					continue;
+				}
+                    <td class="stepClass" @Html.Raw(i==1?"style=\"border:0\"":"")>
+                        @CommonEnum.GetDescription((CommonEnum.StatusOfMission)i)<br />
+                        @{
+    DateTime? dt = null;
+    switch ((CommonEnum.StatusOfMission)i)
+    {
+        case CommonEnum.StatusOfMission.Issue:
+            dt = @Model.PublisheTime;
+            break;
+        case CommonEnum.StatusOfMission.Connecting:
+            dt = @Model.ConnectingTime;
+            break;
+        case CommonEnum.StatusOfMission.Contract:
+            dt = @Model.ReceiveTime;
+            break;
+        case CommonEnum.StatusOfMission.ConfirmContract:
+            dt = @Model.ConfirmContractTime;
+            break;
+        case CommonEnum.StatusOfMission.ConfirmPayment:
+            dt = @Model.ConfirmPaymentTime;
+            break;
+        case CommonEnum.StatusOfMission.Complete:
+            dt = @Model.CompleteTime;
+            break;
+        case CommonEnum.StatusOfMission.Decide:
+            dt = @Model.DecideTime;
+            break;
+        case CommonEnum.StatusOfMission.Appeal:
+            dt = @Model.AppealTime;
+            break;
+        case CommonEnum.StatusOfMission.End:
+            dt = @Model.LastTime;
+            break;
+        default:
+            break;
+    }
+                        }
+                        @if (dt.HasValue)
+                {
+                            @dt.Value.ToString("yyyy-MM-dd HH:mm");
+                }
+                    </td>
+                    }
+            </table>
+}

@@ -1,0 +1,67 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote,th,td,p{margin:0;padding:0;font-family:微软雅黑,Tohoma;}
+input,button,select,textarea{outline:none;}textarea{resize:none;overflow:auto;}li{list-style:none;}img{border:none;}i,em{font-style:normal;}
+html{overflow-y:scroll;}body{background:#fff;}
+body,input,textarea{font-size:12px;font-family:微软雅黑,"Microsoft YaHei"}
+a{color:#070707;text-decoration:none;/*outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);*/}
+input{padding:0 3px;color:#666;box-shadow:none;}
+textarea{border:1px solid #d4d8e3;padding:0 3px;line-height:22px;color:#666;box-shadow:none;} 
+select{border:1px solid #d4d8e3;height:22px;line-height:22px;color:#666;}
+table{border-collapse:collapse;cellpadding:0;cellspacing:0;}
+.clear:after,.main:after,.rightBox:after,.member_info_edit li:after{content:".";display:block;height:0;line-height:0;clear:both;visibility:hidden;}
+.clear{*zoom:1;clear: both;}
+
+/*整体背景*/
+.body{background-color: #f6f6f6;}
+/*基本页面结构*/
+.zIndex1{z-index: 1;}
+.zIndex2{z-index: 2;}
+.fl{float:left;*display:inline;}
+.fr{float:right;*display:inline;}
+.fb{font-weight: bold;}
+.listLf li{float:left;*display:inline;}
+.pr{position: relative;}
+.text-center{text-align:center;}
+.text-right{text-align: right;}
+.hide{display: none;}
+.hr{height:1px;background-color:#ddd;width:90%;margin:1em 5%;}
+.vam{vertical-align: middle;}
+.colortip{color: #e04736;}
+.colorff6600{color: #ff6600;}
+.color189ecb{color: #189ecb;}
+.color85b220{color: #85b220;}
+.color7e7e7e{color: #7e7e7e;}
+.color00cc99{color: #00cc99;}
+
+.btn1{background-color: #db2533;color: #fff;display: inline-block;text-align: center;padding: 0.6em 0;}
+/* margin & padding */
+.mt1em{margin-top: 1em;}
+.mt2em{margin-top: 2em;}
+
+.mr1em{margin-right: 1em;}
+
+
+.mb1em{margin-bottom: 1em;}
+.mb5em{margin-bottom:5em;}
+
+.ml1em{margin-left: 1em;}
+
+
+.pb3em{padding-bottom:3em;}
+
+/*font size*/
+.fs1_4{font-size: 1.4em;}
+.fs1_2{font-size: 1.2em;}
+
+
+/*footer*/
+html, body{height:100%;}
+.content{
+    min-height:100%;
+    _height:100%;
+    margin-bottom:-3.6em;   /*假定页脚的高度为120px*/
+}
+.footer{padding: 1em 2%;border-top: 1px solid #d6d6d6;background-color: #fff;width: 96%;color: #3c3c3c;}
+.footer p{line-height: 1.6em;}
+
+

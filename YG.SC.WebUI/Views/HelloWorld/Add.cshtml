@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <style type="text/css">
+        label {
+            display: inline-block;
+            width: 80px;
+            line-height: 22px;
+        }
+
+        input[type=text], input[type=number] {
+            width: 160px;
+            line-height: 22px;
+        }
+
+        input[type=submit] {
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Add</legend>
+        <form action="~/HelloWorld/Add" method="POST">
+            <div>
+                <label>UserName：</label><input type="text" name="UserName" required="required" /><br />
+                <label>Age：</label><input type="number" name="Age" required="required" /><br />
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>AddTran</legend>
+        <form action="~/HelloWorld/AddTranPost" method="POST">
+            <div>
+                <label>UserName：</label><input type="text" name="UserName" required="required" /><br />
+                <label>Age：</label><input type="number" name="Age" required="required" /><br />
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </fieldset>
+</body>
+</html>

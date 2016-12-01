@@ -1,0 +1,146 @@
+﻿@model YG.SC.DataAccess.M_Mission
+@using YG.SC.Common
+@using YG.SC.DataAccess
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<M_Period> pList = ViewBag.pList as List<M_Period>;
+	bool isExistContractAndPeriod = (bool)ViewBag.IsExistContractAndPeriod;
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+            border:0;
+        }
+    </style>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">任务详情</div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-1 control-label" style="line-height:126px;vertical-align: middle;">任务进度</label>
+                <label class="form-text">@Html.Partial("StepPartial", @Model)</label>
+            </div>
+            @Html.Partial("ItemPartial", @Model)
+        </div>
+    </div>
+    @if (!string.IsNullOrEmpty(ViewBag.ContractSrc))
+    {
+        <div class="panel-heading">合同</div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" style="line-height:126px;vertical-align: middle;">合同</label>
+                    <label class="form-text"><a href="@ViewBag.ContractSrc">下载</a></label>
+                </div>
+            </div>
+        </div>
+    }
+    @if (pList != null&&pList.Count>0)
+    {
+        <div class="panel-heading">任务周期</div>
+        <div class="table-responsive" style="margin-top: 10px;">
+            <div class="search-result-table">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>期</th>
+                            <th>验收标准</th>
+                            <th>金额</th>
+                            <th>状态</th>
+                            <th>开始时间</th>
+                            <th>首次提交验收时间</th>
+                            <th>验收合格时间</th>
+                            <th>支付开始时间</th>
+                            <th>完成时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in pList)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @item.Id
+                                </td>
+                                <td class="text-center">
+                                    第 @item.Period 期
+                                </td>
+                                <td class="text-center">
+                                    @item.Standard
+                                </td>
+                                <td class="text-center">
+                                    @item.Price 元
+                                </td>
+                                <td class="text-center">
+                                    @Html.Raw(CommonEnum.GetDescription((CommonEnum.StatusOfPeriod)@item.Status))
+                                </td>
+                                <td class="text-center">
+                                    @Html.Raw(item.StartTime.HasValue?item.StartTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):string.Empty)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.FirstApplyCheckTime.HasValue?item.FirstApplyCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):string.Empty)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.PassTime.HasValue?item.PassTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):string.Empty)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.PayStartTime.HasValue?item.PayStartTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):string.Empty)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.FinishTime.HasValue?item.FinishTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):string.Empty)
+                                </td>
+                                <td class="text-center">
+                                    <a href="/Mission/Period?MissionId=@item.MissionId&id=@item.Id">编辑</a>
+                                    <a onclick="return confirm('确认删除吗？');" href="/Mission/DeletePeriod?MissionId=@item.MissionId&id=@item.Id">删除</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    @*已发布任务可以接单。*@
+                    @if ((CommonEnum.StatusOfMission)@Model.Status == CommonEnum.StatusOfMission.Issue)
+                    {
+                        @Html.ActionLink("接单", "Connecting", "Mission", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+                    }
+                    @*已接单任务可以录入合同和周期。*@
+                        @if ((CommonEnum.StatusOfMission)@Model.Status == CommonEnum.StatusOfMission.Connecting)
+                    {
+                        @Html.ActionLink("录入合同", "Contract", "Mission", new { missionId = @Model.Id }, new { @class = "btn btn-primary" })<span>&nbsp;</span>@Html.ActionLink("添加周期", "Period", "Mission", new { missionId = @Model.Id }, new { @class = "btn btn-primary" })
+                    }
+					@*通知开店者合同已上传、周日已录入。*@
+					@if (isExistContractAndPeriod&&(CommonEnum.StatusOfMission)@Model.Status<CommonEnum.StatusOfMission.Contract)
+					{
+                        @Html.ActionLink("合同和周期设定完成", "FinishContract", "Mission", new { id = @Model.Id }, new { @class = "btn btn-primary" })<span>&nbsp;</span>
+					}
+					@*确认已经托管了资金*@
+					@if ((CommonEnum.StatusOfMission)@Model.Status==CommonEnum.StatusOfMission.ConfirmContract)
+					{
+						@Html.ActionLink("确认资金托管", "ConfirmPayment", "Mission", new { id = @Model.Id }, new { @class = "btn btn-primary" })<span>&nbsp;</span>
+					}	
+                    @*已申诉任务可以裁决。*@
+					@if ((CommonEnum.StatusOfMission)@Model.Status == CommonEnum.StatusOfMission.Appeal)
+                    {
+                        @Html.ActionLink("裁决", "Decide", "Mission", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+                    }
+                    @*没发布和已关闭任务不能关闭。*@
+                    @if ((CommonEnum.StatusOfMission)@Model.Status != CommonEnum.StatusOfMission.Cancel
+                    && (CommonEnum.StatusOfMission)@Model.Status != CommonEnum.StatusOfMission.End)
+                    {
+                        @Html.ActionLink("取消", "Close", "Mission", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

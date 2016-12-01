@@ -1,0 +1,603 @@
+﻿/*全局样式*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div, dl, dt, dd, form, h1, h2, h3, h4, h5, h6, img, ol, ul, li, table, th, td, p, span, a {
+    border: 0;
+}
+
+img, input {
+    border: none;
+    vertical-align: middle;
+}
+
+body {
+    font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+    font-size: 12px;
+    background: #FFF;
+    color: #fff;
+    color: #000;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+th, td, input {
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5, h6, b {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    background-color: transparent;
+}
+
+select {
+    border-width: 1px;
+    _zoom: 1;
+    border-style: solid;
+    padding-top: 2px;
+    font-size: 12px;
+}
+
+.clear {
+    clear: both;
+    font-size: 1px;
+    height: 0;
+    visibility: hidden;
+    line-height: 0;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+.warp {
+    width: 100%;
+}
+
+.flash-box {
+    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.flash-img {
+    background: url("/Images/index_headbg.png") no-repeat scroll center top transparent;
+    height: 500px;
+    width: 100%;
+}
+
+.flash-seach {
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background: none repeat scroll 0 0 #000;
+    opacity: 0.55;
+}
+
+.flash-search-control {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.flash-search-box {
+    overflow: hidden;
+    height: 64px;
+    width: 890px;
+    margin: 42px auto;
+    position: relative;
+}
+
+.wykd {
+    font-size: 30px;
+    line-height: 50px;
+    color: #fff;
+    overflow: hidden;
+    height: 90px;
+    width: 150px;
+    margin-left: 80px;
+    position: absolute;
+    top: 50px;
+    background: url("/Images/index_logo.png") no-repeat scroll center top;
+}
+
+.loginbox {
+    overflow: hidden;
+    height: 64px;
+    width: 390px;
+    top: 60px;
+    right: 0;
+    float: right;
+    margin-right: 50px;
+    position: absolute;
+}
+
+    .loginbox a {
+        font-size: 18px;
+        color: #fff;
+        margin-right: 15px;
+    }
+
+.flash-search-input {
+    border-radius: 5px;
+    background: #fff;
+    width: 770px;
+    height: 64px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    font-family: "微软雅黑";
+    padding: 0px;
+    margin: 0px;
+    padding-left: 10px;
+    color: #666;
+    float: left;
+}
+
+.flash-search-btn {
+    float: left;
+    width: 106px;
+    height: 64px;
+    color: #FFF;
+    border: 1px solid #ff3333;
+    background-color: #ff3333;
+    font-size: 22px;
+    line-height: 30px;
+    font-family: "微软雅黑";
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: -5px;
+}
+
+.clear {
+    clear: both;
+}
+
+.warp-line {
+    width: 1010px;
+    margin: 14px auto;
+    clear: both;
+}
+
+.warp-head-tuan {
+    height: 90px;
+    background: url("/Images/head01.gif") no-repeat;
+    width: 100%;
+    text-indent: -5200px;
+}
+
+.warp-head-cym {
+    height: 50px;
+    width: 100%;
+    text-indent: -5200px;
+    background: url("/Images/head02.gif") no-repeat;
+}
+
+.index_cym, div.index_kdb, div.index_ppj {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    min-width: 1000px;
+    clear: both;
+    margin: 30px 0 30px 0;
+}
+
+.index_cym_1 {
+    height: 386px;
+    width: 998px;
+    left: 0;
+    top: 0;
+}
+
+
+.index_kdb_1 {
+    height: 376px;
+    left: 0;
+    top: 0;
+    width: 998px;
+}
+
+
+
+.index_ppj_1 {
+    height: 376px;
+    left: 0;
+    top: 0;
+    width: 998px;
+}
+
+
+
+.index_a {
+    overflow: hidden;
+    position: absolute;
+}
+
+.index_line {
+    height: 8px;
+    width: 100%;
+    background: url("/Images/line.jpg") no-repeat;
+    margin: 5px auto;
+}
+
+.tuan-project {
+}
+
+.tuan-project-item {
+    float: left;
+    padding: 30px 8px;
+}
+
+img.tuan-img {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+}
+
+.index_hezuo {
+    margin-top: 20px;
+    /*border-bottom: 1px solid #949494;
+    background-color:#353535;*/
+}
+
+.hezuo_title {
+    font-family: "微软雅黑";
+    font-size: 22px;
+    color: #ff3333;
+    text-align: left;
+    padding-bottom: 14px;
+    padding: 10px;
+}
+
+.hezuobox {
+    margin: 1px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    font-weight: 500;
+    font-family: "微软雅黑",华文黑体,"Microsoft YaHei",微软雅黑,STHei,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+div.hezuo_head {
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+    div.hezuo_head span {
+        font-size: 18px;
+        color: #7d7d7d;
+        width: 120px;
+        display: block;
+        float: left;
+        line-height: 50px;
+        border-right: 1px solid #ccc;
+        font-weight: lighter;
+        cursor: pointer;
+        text-align: center;
+    }
+
+        div.hezuo_head span.on {
+            cursor: none;
+            background: #ededed;
+            border-bottom: 1px solid #ededed;
+        }
+
+.hezuo_list {
+    text-align: left;
+    padding-left: 20px;
+    clear: both;
+    color:#747474;
+}
+
+    .hezuo_list a {
+        font-size: 14px;
+        line-height: 40px;
+        text-wrap: inherit;
+        height: 50px;
+        margin-right: 20px;
+        /*margin:10px 10px 10px 10px;*/
+        color: #999999;
+        text-align: left;
+    }
+
+        .hezuo_list a:hover {
+            color: #ff3333;
+        }
+
+
+
+.footer {
+    background: none repeat scroll 0 0 #f5f4f4;
+    clear: both;
+    height: 300px;
+    min-width: 988px;
+    font-weight: 500;
+    text-align: left;
+}
+
+    .footer .inner {
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .footer .info ul {
+        float: left;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        width: 172px;
+    }
+
+        .footer .info ul li {
+            color: #ccc;
+            font-size: 12px;
+            line-height: 12px;
+            padding: 6px 0;
+        }
+
+    .footer .doublebox {
+        width: 146px;
+        height: 174px;
+        padding: 6px;
+        float: left;
+        border: #d8d8d8 solid 1px;
+        background: #fafafa;
+        margin: 15px 0px 0px 0px;
+        position: absolute;
+        right: 220px;
+    }
+
+    .footer .doublebox_in {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #f8f8f8;
+        background: #fff;
+        text-align: center;
+    }
+
+        .footer .doublebox_in img {
+            margin: 5px auto;
+        }
+
+        .footer .doublebox_in p {
+            font-size: 16px;
+            height: 34px;
+            line-height: 34px;
+        }
+
+    .footer .service {
+        height: 220px;
+    }
+
+        .footer .service h3 {
+            color: #434d55;
+            font-family: 华文黑体,"Microsoft YaHei",微软雅黑,STHei,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 18px;
+            line-height: 18px;
+            padding: 9px 0 13px;
+        }
+
+        .footer .service a {
+            color: #434d55;
+            font-family: 华文黑体,"Microsoft YaHei",微软雅黑,STHei,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+            .footer .service a:hover {
+                color: #84a3e3;
+            }
+
+    .footer .online {
+        line-height: 34px;
+        overflow: hidden;
+        padding: 32px 0 0;
+        position: absolute;
+        right: 0;
+    }
+
+        .footer .online p {
+            clear: both;
+            color: #999;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: right;
+            width: 230px;
+        }
+
+            .footer .online p a.online-services {
+                background: url("../img/need-help-button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+                color: #fff;
+                cursor: pointer;
+                float: right;
+                font-size: 16px;
+                height: 34px;
+                line-height: 34px;
+                padding: 0 0 0 26px;
+                text-align: left;
+                text-indent: 15px;
+                width: 91px;
+            }
+
+    .footer .service .inner .phone-title {
+        font-size: 24px;
+        color: #ec341d;
+        line-height: 54px;
+        height: 54px;
+        font-family: "微软雅黑";
+    }
+
+    .footer .online p a.online-services:hover {
+        color: #fff;
+    }
+
+    .footer .online .tel {
+        color: #666;
+        font-size: 28px;
+        line-height: 51px;
+    }
+
+        .footer .online .tel a {
+            cursor: default;
+        }
+
+            .footer .online .tel a:hover {
+                color: #666;
+            }
+
+    .footer .copyright {
+        background: none repeat scroll 0 0 #fff;
+        color: #434d55;
+        font-size: 12px;
+        line-height: 31px;
+        height: 80px;
+        width: 100%;
+        margin: 14px auto;
+        text-align: center;
+    }
+
+        .footer .copyright .inner {
+            position: relative;
+        }
+
+        .footer .copyright .copy-label {
+            float: left;
+            padding-top: 18px;
+            min-width: 1200px;
+            padding-bottom: 18px;
+        }
+
+        .footer .copyright .copy-text {
+            color: #666;
+            font-size: 12px;
+            line-height: 25px;
+        }
+
+        .footer .copyright p {
+            color: #6c7478;
+            float: left;
+            line-height: 18px;
+            padding-top: 20px;
+        }
+
+            .footer .copyright p a {
+                color: #434d55;
+                padding: 0 5px;
+            }
+
+    .footer .language {
+        background: url("../img/global-white-bg-defualt-bg-footer.jpg") repeat-x scroll left bottom #fff;
+        border-radius: 6px;
+        bottom: 20px;
+        line-height: 30px;
+        padding: 0 5px;
+        position: absolute;
+        right: 0;
+        width: 145px;
+        z-index: 3;
+    }
+
+        .footer .language ul {
+            background: none repeat scroll 0 0 #fff;
+            border-radius: 8px 8px 0 0;
+            display: none;
+            overflow: hidden;
+            padding: 0 5px;
+            width: 145px;
+        }
+
+        .footer .language h3 {
+            color: #45474b;
+            cursor: pointer;
+            padding: 0 0 0 20px;
+        }
+
+            .footer .language h3 span {
+                background: url("../img/language-arrow-footer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+                bottom: 11px;
+                height: 7px;
+                position: absolute;
+                right: 14px;
+                width: 7px;
+            }
+
+        .footer .language ul li {
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 0 0 3px;
+            padding: 0 12px;
+            width: 120px;
+        }
+
+            .footer .language ul li:hover {
+                background: none repeat scroll 0 0 #8f9096;
+                color: #fff;
+            }
+
+.font_img {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+    .font_img img {
+        position: relative;
+        margin: 198px auto;
+    }
+
+.center_banner {
+    margin: 0 auto;
+    padding-top: 40px;
+    width: 1000px;
+}
+
+.img_banner {
+    float: left;
+    width: 250px;
+    height: 106px;
+    font-family: "微软雅黑";
+}
+
+    .img_banner img {
+        float: left;
+        margin:0 10px 0px 5px;
+    }
+
+    .img_banner span {
+        color: #666;
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+
+    .img_banner p {
+        color: rgb(143, 143, 143);
+        font-size: 12px;
+    }
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}

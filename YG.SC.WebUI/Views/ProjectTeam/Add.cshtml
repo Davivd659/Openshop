@@ -1,0 +1,87 @@
+﻿@using YG.SC.DataAccess
+@{
+    ViewBag.Title = "添加项目团购";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ProjectList = (List<SelectListItem>)ViewBag.Project;
+}
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 120px;
+        }
+
+        #create-warning {
+            display: none;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加项目团购</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ProjectTeam/Add" id="addform" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购名称</label>
+                <input type="text" id="Name" name="Name" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购所属项目</label>
+                @Html.DropDownList("ShopProjectId", ProjectList)
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购开始时间</label>
+                <input type="datetime" id="Begintime" name="Begintime" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购截止时间</label>
+                <input type="datetime" id="Endtime" name="Endtime" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">团购人数</label>
+                <input type="number" id="Llimit" name="Llimit" min="0">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">增 加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script >
+    $("#btnSubmit").click(function () {     
+        if (Date.parse($("#Begintime").val()) > Date.parse($("#Endtime").val())) {
+            alert("开始时间不能小于截止时间");
+            return false;
+        }
+    })
+</script>
+
+<script>
+    var msg = "";
+    @{string str_msg = (string)ViewBag.msg;
+              if (str_msg != "")
+              {
+                  @Html.Raw("msg=\""+str_msg+"\"");
+              }
+                }
+    if (msg != "") {
+        alert(msg);
+    }
+</script>

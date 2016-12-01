@@ -1,0 +1,165 @@
+﻿/**kaidian Css */
+.kaidian-shop-title {
+    width: 100%;
+    height: 60px;
+   text-align:center;
+}
+.brand-shop {
+margin-top:30px;}
+ul.kaidian-usccess-ul {list-style:none;float:left;margin-right:20px;}
+ul.kaidian-usccess-ul li{
+    float:left;
+    -moz-border-bottom-colors:none;
+    -moz-border-left-colors:none;
+    -moz-border-right-colors:none;
+    -moz-border-top-colors:none;
+    background-color:#fff;
+    background-image:linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    background-repeat:repeat-x;
+    border-color:#e6e6e6 #e6e6e6 #B3B3B3;
+    border-image:none;
+    border-radius:4px 4px 4px 4px;
+    border-style:solid;
+    border-width:1px;
+    box-shadow:0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);  
+}
+
+.kd-li {
+    width: 320px;
+    height: 270px;
+    margin-left: 30px;
+    margin-top: 10px;float:left;
+}
+.kd-imgbox {
+    width: 100%;
+    height:210px;
+}
+
+.kd-pricebox {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    line-height:20px;
+    text-align:center;padding-top:8px;
+    background:#ec341d;
+    color:#fff;
+    width:64px;height:64px;
+    font-size:16px;
+    position:relative;
+    right:-240px;
+    top:-38px;
+}
+.kd-info h4 {
+    color:#404040;
+}
+.kd-info p{
+    color:#ec341d;
+    overflow:hidden; 
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.kd-warp {
+    min-width:1020px;
+    max-width:1230px;
+    /*padding:0 30px;*/
+    margin: 0 auto;
+}
+.kd_index_ad {  min-width:1020px;
+}
+.kd_index_ad img { width:100%;
+ }
+.index_kdtitle {
+margin-top:30px;}
+.index_kd_title { width:640px;height:54px;margin:0 auto;background:url(/images/kd_bg-ws.jpg) no-repeat;
+}
+.index_kd_title_box { font-size:30px; font-family:'微软雅黑';color:#666666;padding-left:150px;
+}
+    .index_kd_title_box span {font-size:16px; font-family:'微软雅黑';color:#ababab;margin-left:20px;
+    }
+/**品牌列表页*/
+.index_kaidian {
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    width: 1230px;
+    margin-top:10px;
+}
+.index_kaidian a, .index_kaidian a span, .index_kaidian a p, .index_kaidian a em {
+    overflow: hidden;
+    position: absolute;
+}
+
+ 
+.index_kaidian div.index_kaidian_logo {
+    width:524px;height: 455px; position: absolute;
+    left: 353px;
+    top: 0;
+    text-align:center;
+    }
+    .index_kaidian div.index_kaidian_logo img {
+        width: 524px;
+    }
+div.index_kaidian_logo div.kdc_logo {
+    height:300px;
+}
+
+div.index_kaidian_logo p {
+    font-size:16px;
+   line-height:30px;
+    color:#777;
+}
+.index_kaidian_logo .brand-featuer {
+    margin:0px 0 0 ;
+}
+    .index_kaidian_logo .brand-featuer img {
+        float:none;
+    }
+.index_kaidian_logo .featurei {
+   margin:0 10px 0 10px;
+}
+.index_kaidian_logo .kd_logo_key {text-align:left;padding:0 10px;height:148px;overflow:hidden;
+}
+.index_kaidian_logo .kd_logo_tagname {color:#EC361E;font-size:24px;margin-right:8px;
+}
+    .index_kaidian_logo .kd_logo_tagname p {color:#ababab;font-size:14px;
+    }
+.index_kaidian_logo .kd_logo_more {color:#EC361E; font-size:14px;
+
+}
+.index_kaidian a.index_kaidian_one, .index_kaidian a.index_kaidian_two, .index_kaidian a.index_kaidian_three, .index_kaidian a.index_kaidian_four {
+width:345px;height:220px;
+}
+img.lazy {width:345px;height:220px;
+}
+.index_kaidian a.index_kaidian_one {
+left: 0;
+top: 0;
+}
+.index_kaidian a.index_kaidian_two {
+    top: 0;
+    right:0;
+}
+.index_kaidian a.index_kaidian_three {
+    left: 0;
+    top: 228px;
+}
+
+.index_kaidian a.index_kaidian_four {
+right:0;
+top: 228px;
+}/*
+.index_kaidian a.index_kaidian_five {
+    height: 340px;
+    left: 0;
+    top: 0;
+    width: 476px;
+}*/
+.index_kd_brand { width:100%;margin-top:28px;height:178px; overflow:hidden;}
+    .index_kd_brand li { 
+        float: left;margin-right:36px;border:1px solid #dfdfdf;width:145px;padding-bottom:15px; text-align:center;
+    }
+        .index_kd_brand li:last-child {margin-right:0px;
+        }
+    .index_kd_brand .kdbr_img {width:145px;height:130px;
+    }
+    .index_kd_brand .kdbr_ct {color:#333333;font-size:14px;
+    }

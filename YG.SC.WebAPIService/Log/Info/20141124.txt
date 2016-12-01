@@ -1,0 +1,95 @@
+2014-11-24 11:55:04,439 [6] INFO  Info 
+========================================================================
+Start at: 2014/11/24 11:55:04
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/order/OderDetail?ordernumber=""
+
+RequestBody£º["\"\"",1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/24 11:55:04***Successful***
+
+
+
+2014-11-24 11:55:28,324 [5] INFO  Info 
+========================================================================
+Start at: 2014/11/24 11:55:28
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/order/OderDetail?ordernumber=
+
+RequestBody£º[null,1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/24 11:55:28***Successful***
+
+
+
+2014-11-24 11:55:51,834 [9] INFO  Info 
+========================================================================
+Start at: 2014/11/24 11:55:51
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/order/OderDetail?ordernumber=&&pg=2
+
+RequestBody£º[null,2]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/24 11:55:51***Successful***
+
+
+
+2014-11-24 11:58:19,727 [5] INFO  Info 
+========================================================================
+Start at: 2014/11/24 11:58:19
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/order/OderDetail
+
+RequestBody£º["",1]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/24 11:58:19***Successful***
+
+
+
+2014-11-24 11:58:44,792 [5] INFO  Info 
+========================================================================
+Start at: 2014/11/24 11:58:44
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/API/ANDROID/order/OderDetail?pg=2
+
+RequestBody£º["",2]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/11/24 11:58:44***Successful***
+
+
+

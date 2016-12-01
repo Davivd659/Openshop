@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "品牌街";
+    Layout = null;
+}
+@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopBrand
+@{var Attributes = ViewBag.Attributes as List<ShopAttributeValues>;
+  }
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/findcompany.css">
+    <link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <title>@Model.Name - 开店ing</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+</head>
+
+<body onselectstart="return false">
+    <div class="topbannerFrame">
+        <figure>
+            <div class="find-company-topbanner">
+                @if (Model.ShopBrandPhoto.ToList().Count()>0)
+                {
+                    <img src="@string.Format("http://www.kaidianing.com{0}",Model.ShopBrandPhoto.ToList()[0].Photo)" onerror="javascript:this.src='/img/icon/pinpaiLOGO.gif'">                    
+                }
+                else
+                {
+                    <img src="/img/icon/pinpaiimg.jpg">
+                }
+                
+                <div class="find-company-logo">
+                    <figure>
+                        <img src="@string.Format("http://www.kaidianing.com{0}",Model.Logo)" alt="@Model.Name" onerror="javascript:this.src='/img/icon/pinpaiLOGO.gif'"> <!-- img/headphoto_2638718.jpg-->
+                    </figure>
+                </div>
+                <!--<h1>远洋光华国际</h1>-->
+                <p>@Model.Name<br> 关注度：@(Model.ViewClick != null ? Model.ViewClick : 1)
+
+                </p>
+            </div>
+        </figure>
+    </div>
+
+    <nav>
+        <ul class="find-company-nav clearfix">
+            <li>
+                <a class="active">品牌介绍</a>
+            </li>
+            <li>
+                <a class="click-point" data-point="2_5_2_1" href="/ShopBrand/supplier?id=@Model.Id">门店信息</a>
+            </li>
+            <li>
+                <a class="click-point" data-point="2_5_3_1" href="/ShopBrand/img?id=@Model.Id">品牌图册</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="clearfix">
+        <ul class="zxgl-index-modules">
+            <li><i class="icon-zxgl-index-riji"><img src="/img/icon/canyin.png"></i><span>@Attributes[0].ValueStr
+            </span>
+				</li>
+				<li><i class="icon-zxgl-index-xzx"><img src="/img/icon/jiameng.png"></i><span>可加盟</span>
+				</li>
+				<li><i class="icon-zxgl-index-ask"><img src="/img/icon/fendian.png"></i><span>2家分店</span>
+				</li>
+
+        </ul>
+    </section>
+
+    <section>
+        <div class="apply-design-price">
+            <div>
+                <a class="click-point" data-point="2_5_1_1"  href="tel:010-53381050">
+                    <input value="联系品牌" type="button" style="width:47.9%">
+                </a>
+                <a class="click-point" data-point="2_5_1_2" href="/shopbrand/applybrand?id=@Model.Id">
+                    <input value="申请加盟" type="button" style="background: #F36F21;">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+
+        <article>
+            <a class="click-point" data-point="2_5_1_3">
+                <div class="companyintro">
+                    <h1>品牌介绍</h1>
+                    <p>@Model.Rmark </p>
+                </div>
+            </a>
+        </article>
+
+
+    </section>
+
+    <div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+        <div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+            <div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+                <div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+                <div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+                    <div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+﻿@using YG.SC.DataAccess
+@model List<YG.SC.DataAccess.ShopAttributeValues>
+@{
+    ViewBag.Title = "增加品牌";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 120px;
+        }
+
+        #create-warning {
+            display: none;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加品牌</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ShopBrand/Add" id="addform" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">品牌名称</label>
+
+                <input type="text" id="Name" name="Name" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">品牌介绍</label>
+
+                <input type="text" id="Rmark" name="Rmark" class="form-control" required="required">
+            </div>
+              <div class="form-group">
+                <label class="col-sm-1 control-label">业态</label>
+                <select id="selAttribute" name="selAttribute" class="form-control" multiple="multiple" >
+                    @foreach (var item in Model)
+                    {
+                      <option value="@item.AttributeId-@item.Id">@item.ValueStr</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">Logo</label>
+                <input accept="image/png,image/jpeg" type="file" name="Logo" class="form-control"  />
+                <p style="padding-top:7px;padding-left:20px;display:inline-block; color:red;">建议图片尺寸640*358</p>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">二维码</label>
+                <input accept="image/png,image/jpeg" type="file" name="QRCode" class="form-control"  />
+                <p style="padding-top:7px;padding-left:20px;display:inline-block; color:red;">建议图片尺寸640*358</p>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">网址</label>
+
+                <input type="text" id="Url" name="Url" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">视频网址</label>
+                <input type="text" id="VidoUrl" name="VidoUrl" class="form-control" required="required">
+            </div>
+             <div class="form-group">
+                <label class="col-sm-1 control-label" for="Recsts">是否可加盟</label>
+                <select id="JoinIn" name="JoinIn" class="form-control">
+                    <option value="true" >可以加盟</option>
+                    <option value="false" >不可以加盟</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">增 加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function() {
+        //$("#addform").validate({
+        //    rules: {
+        //        Logo: {
+        //            accpt:"png,jpg,jpeg"
+        //        },
+        //        QRCode: {
+        //            accpt: "png,jpg,jpeg"
+        //        }
+        //    }
+        //});
+    })
+</script>
+
+
+

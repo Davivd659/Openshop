@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+
+/*index*/
+.index-bg{background: url(../img/index-bg.jpg) 0 0 no-repeat;background-size: cover; overflow: auto;}
+.logo{width: 50%; margin: 3em 23% 1em;}
+
+.index-nav{margin-top: 6em;}
+.index-nav a{float: left;*display: inline;width: 33.333%;color: #fff;font-size: 1.2em;text-align: center; margin-bottom: 2em;}
+.index-nav .js_user4{margin-left: 15%;}
+
+.index-nav a img{width: 60%;}
+.index-footer{color: #fff;font-size: 1.2em;text-align: center;line-height: 1.2em;padding: 3em 0 1em 0;}
+
+
+
+
+
+
+
+
+
+
+

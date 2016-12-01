@@ -1,0 +1,72 @@
+﻿<meta name="viewport" content="width=device-width" />
+<title>需求列表</title>
+<link href="~/Content/DemandList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "需求列表--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<meta name="keywords" content="开店ing,需求发布，开店网，润嘉众合，开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,主要包括开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall，商场招租，写字楼出租，写字楼出售，商铺装修，商铺家具，餐饮装修等各种需求的列表" />
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<div class="bg1">
+    <div class="filter">
+        <ul>
+            @Html.Raw(ViewBag.Filter)
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="left">
+        <ul>
+            @{
+                var PList = (Tuple<YG.SC.DataAccess.ShopPostings[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+            }
+            <li class="first">
+                <p>以搜索到<a>@PList.Item2.Total</a>条需求</p>
+            </li>
+            @foreach (var item in PList.Item1)
+            {
+                <li class="second">
+                    <div class="category">
+                        <span><img src="~/Images/icon/demandlist4.png" />@(item.PIntent == "False" ? "求租" : "求购")</span>
+                    </div>
+                    <div class="info">
+                        <p class="title"><a href="/Demand/Item?id=@item.Id">@item.PName</a></p>
+                        <p class="time"><img src="~/Images/icon/demandlist5.png" />2015-07-06 16:25</p>
+                        <p class="filter1">需求面积：@item.square</p>
+                        <p class="filter1">意向价格：@item.price<img src="~/Images/icon/demandlist6.png" /></p>
+                        <p class="filter1">截止日期：@Convert.ToDateTime(item.Addtiem).ToString("yyyy-MM-dd HH:mm")</p>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="paging">
+            @Html.Raw(ViewBag.pager)
+        </div>
+    </div>
+
+    <div class="right">
+        <a href="/Demand/Issue"><div class="fabu"><img src="~/Images/icon/fabuicon.png" />&nbsp;发布需求</div></a>
+        @{
+            var array = (List<YG.SC.Model.Project.ProjectDetailsViewModel>)ViewBag.array;
+        }
+        @if (array != null && array.Count() > 0)
+        {
+
+            foreach (var proj in array)
+            {
+                <a href="/Project/index?id=@proj.Id">
+                    <div class="relate">
+                        <div class="imgs">
+                            <img class="fa" width="335" height="246" src="@proj.PhotoUrlSmall" />
+                            <img class="shang" src="~/Images/icon/demandlist9.png" />
+                        </div>
+                        <p class="title2">@proj.Name</p>
+                        <p class="nr">@Html.Raw(proj.ProjectFeature.Length > 21 ? proj.ProjectFeature.Substring(0, 21) : proj.ProjectFeature)</p>
+                    </div>
+                </a>
+            }
+        }
+    </div>
+</div>

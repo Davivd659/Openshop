@@ -1,0 +1,65 @@
+﻿@model YG.SC.DataAccess.SctSkuCategorySecond
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 128px;
+        }
+
+        #img_logoimage {
+            clear: left;
+            display: block;
+            margin-top: 40px;
+            margin-left: 128px;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">修改商品分类</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "SkuCategorySecond", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form" }))
+        {
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="CategoryName">分类名称</label>
+                <input type="text" id="CategoryName" name="CategoryName" class="form-control" required="required" value="@Model.CategoryName">
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="OrdSeq">分类排序</label>
+                <input type="text" id="OrdSeq" name="OrdSeq" class="form-control" required="required" value="@Model.OrdSeq">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="Recsts">是否有效</label>
+                <select id="Recsts" name="Recsts" class="form-control">
+                    <option value="0" @(Model.Recsts == "0" ? "selected=\"selected\"" : "")>有效</option>
+                    <option value="1" @(Model.Recsts == "1" ? "selected=\"selected\"" : "")>无效</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">修 改</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

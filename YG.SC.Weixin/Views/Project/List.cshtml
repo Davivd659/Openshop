@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta name="location" content="province=北京;city=北京;coord=116.39564503788,39.92998577808">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/companyIndex.css">
+    <link rel="stylesheet" type="text/css" href="/css/zxgl-index.css">
+    <title>找项目-开店ing</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+
+
+<body onselectstart="return false">
+
+    <div class="widget-search-wrap">
+        <form action="javascript:void();">
+            <div class="input-append">
+                <input id="askSearchKey" placeholder="输入您想寻找的项目" type="search">
+                <i class="icon-clear"></i>
+                <span id="askSearchBtn" class="add-on" data-url="">搜索项目</span>
+            </div>
+        </form>
+    </div>
+    <ul id="menu">
+        @Html.Raw(ViewBag.Filter)
+    </ul>
+    @{
+        var updata = (Tuple<YG.SC.DataAccess.ShopProject[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+        var array = (YG.SC.Model.Project.ProjectDetailsViewModel[])ViewBag.array;
+    }
+    <!--项目列表-->
+    <ul class="nl-note-list">
+        @foreach (var item in array)
+        { 
+        <li>
+            <a href="/Project/index?id=@item.Id">
+                <img style="display: block;" class="nl-note-img lazy" data-original="@string.Format("http://www.kaidianing.com{0}", item.CoverPhoto)" src="@string.Format("http://www.kaidianing.com{0}", item.CoverPhoto)"  onerror="javascript:this.src='/img/icon/xiangmuimg.jpg'">
+                <div class="nl-note-cover">
+                    <h3><span>@item.Name</span></h3>
+                     @{
+                         var hotarea = "";
+                                    <p class="nl-note-summary">@item.Region  @hotarea</p>
+                                     if (item.TradingArea != "" && item.TradingArea != null)
+                                    {
+                                        hotarea = "/" + item.TradingArea;
+                                    }
+                                    }
+                                            
+                    <div>
+<!-- 项目经理头像 start -->
+@{
+            if (item.ProjectServiceViewModels != null && item.ProjectServiceViewModels.Any(p => p.IsVip))
+            {
+                var serviceLeader = item.ProjectServiceViewModels.FirstOrDefault(p => p.IsVip);
+                <img style="display: block;" class="nl-note-img lazy" data-original='@string.Format("http://admin.kaidianing.com{0}",serviceLeader.PicUrl)' src="@string.Format("http://admin.kaidianing.com{0}",serviceLeader.PicUrl)"
+                     alt="@serviceLeader.Name" height="340" width="600" onerror="javascript:this.src='/img/icon/jingli.gif'">
+            }
+            else
+            {  <img style="display: block;" class="lazy" src="/img/icon/jingli.gif"
+                    data-original="/img/icon/jingli.gif" alt="项目经理的头像" height="30" width="30">
+            }
+}
+<!-- 项目经理头像 End -->
+                    </div>
+                    <p class="nl-note-info">
+                        @item.ProjectFeature
+                    </p>
+                </div>
+            </a>
+        </li>
+        }
+    </ul>
+    <!-- 翻页-->
+    @Html.Raw(ViewBag.pager);
+
+    <!--区域类型切换效果开始-->
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/companyNew.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!--区域类型切换效果结束-->
+    <script type="text/javascript">
+    $("#askSearchBtn").click(function () {
+        var key = $("#askSearchKey").val();
+        window.location.href = "/Project/List?Keys=" + key;
+    });
+
+    </script>
+
+</body>
+
+</html>

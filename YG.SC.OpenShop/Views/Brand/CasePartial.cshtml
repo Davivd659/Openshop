@@ -1,0 +1,23 @@
+﻿@using YG.SC.Model
+@using YG.SC.DataAccess
+@{
+    Layout = "";
+    var tuple = Model as Tuple<ShopBrandPhoto[], PagerEntity>;
+}
+@if (tuple != null && tuple.Item1.Count() > 0)
+{
+    foreach (var item in tuple.Item1)
+    {
+        <div class="addimginfobox" style="margin-left:6%;">
+            <div class="addimgcontentbox"><img src="@item.Photo" width="300" height="210" alt=""></div>
+            <div class="addimgmiaoshubox">
+                <input type="hidden" class="BrandPhotoid" value="@item.Id" />
+                <input type="hidden" value="@item.BrandId" />
+                标题：<input type="text" value="@item.title" /><br>
+                描述：<textarea>@item.Rmark</textarea>
+            </div>
+            <div class="clear"></div>
+            <input class="addimgimg_button uploadimg" type="button" style="margin-top: 5px;" value="修改" />
+        </div>
+    }
+}

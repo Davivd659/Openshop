@@ -1,0 +1,203 @@
+﻿.room_main {
+    width: 100%;
+}
+
+.room-team {
+    min-width: 1080px;
+    max-width: 1200px;
+    margin: 0 auto;
+    clear: both;
+}
+
+.pro-header {
+    width: 100%;
+    float: left;
+    margin-left: 20px;
+}
+
+    .pro-header h1 {
+        margin: 10px 0 15px 0;
+        font-size: 18px;
+        line-height: 34px;
+    }
+
+.Brokers {
+    height: 240px;
+    width: 97%;
+}
+
+.Brokers_l {
+    float: left;
+    margin: 44px 0 0 36px;
+}
+
+    .Brokers_l .left img {
+    }
+
+.certleft {
+    float: left;
+    width: 120px;
+}
+
+    .certleft p {
+        margin: 9px 0 0 0px;
+        font-size: 14px;
+    }
+
+.cert {
+    float: left;
+    margin-left: 20px;
+}
+
+    .cert h1 {
+        margin-top: 5px;
+        font-size: 18px;
+    }
+
+    .cert p {
+        font-size: 14px;
+        padding: 3px 0 0 13px;
+    }
+
+.certxinxi {
+    padding: 12px 0 0 11px;
+    height: 24px;
+    line-height: 24px;
+}
+
+    .certxinxi img {
+        padding-left: 3px;
+    }
+
+    .certxinxi em {
+        font-size: 18px;
+        font-style: normal;
+        padding-left: 5px;
+    }
+
+.Brokers_r {
+    float: right;
+    font-size: 32px;
+    color: #ec341d;
+    margin: 5px 8px 0 0;
+    letter-spacing: 2px;
+}
+
+    .Brokers_r p {
+        padding: 12px 0 0 0;
+        font-size: 12px;
+        color: black;
+    }
+
+.room_center {
+    float: left;
+    padding: 20px 0 0 0;
+    width: 100%;
+}
+
+.room_w {
+    float: left;
+    width: 850px;
+}
+
+.room_info {
+    float: left;
+    width: 100%;
+    padding: 50px 0 44px 29px;
+    letter-spacing: 1px;
+}
+
+    .room_info ul li {
+        float: left;
+        font-size: 18px;
+        line-height: 34px;
+        height: 34px;
+        width: 820px;
+    }
+
+    .room_info ul em {
+        font-style: normal;
+        font-weight: bold;
+        float: left;
+    }
+
+    .room_info ul p {
+        float: left;
+        padding: 0 0 0 10px;
+    }
+
+    .room_info ul img {
+        padding-right: 5px;
+    }
+
+    .room_info ul span {
+        color: red;
+    }
+
+.Customer {
+    text-align: center;
+    font-size: 14px;
+    float: left;
+    margin: 30px 0 0 0;
+    height: 35px;
+    line-height: 35px;
+    width: 207px;
+    background-color: red;
+    color: white;
+}
+
+.room_ms {
+    float: left;
+    font-size: 16px;
+}
+
+    .room_ms h3 {
+        padding: 0 0 10px 30px;
+        color: #ec341d;
+        width: 830px;
+        border-bottom: #ec341d 1px solid;
+    }
+
+.room_xj {
+    float: left;
+    padding: 20px 0 0 76px;
+}
+
+    .room_xj div {
+        float: left;
+        width: 89%;
+    }
+
+    .room_xj span {
+        float: left;
+        font-weight: bolder;
+        padding-right: 5px;
+    }
+
+    .room_xj p {
+        padding-left: 98px;
+    }
+
+.room_l {
+    float: left;
+    width: 340px;
+    margin: 20px auto;
+    letter-spacing: 3px;
+    border: #e4e4e4 1px solid;
+}
+
+    .room_l h2 {
+        margin-top: 0px;
+        text-align: center;
+        font-size: 28px;
+        width: 100%;
+        line-height: 70px;
+        background-color: #e4e4e4;
+    }
+
+    .room_l ul {
+        list-style-type: disc;
+        padding: 30px 20px 20px 30px;
+        font-size: 14px;
+        line-height: 30px;
+    }

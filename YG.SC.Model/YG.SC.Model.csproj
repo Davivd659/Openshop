@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF0583E9-EE62-4D7D-8AA9-BD021DED19ED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YG.SC.Model</RootNamespace>
+    <AssemblyName>YG.SC.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdPosition\AdPositionViewModel.cs" />
+    <Compile Include="AdPosition\PositionCode.cs" />
+    <Compile Include="AdPosition\PositonIndexViewModel.cs" />
+    <Compile Include="ApplyBrandSearchCriteria.cs" />
+    <Compile Include="ApplyActivitySearchCriteria.cs" />
+    <Compile Include="Brand\BrandApplyFilter.cs" />
+    <Compile Include="Link\LinkType.cs" />
+    <Compile Include="Mall\CartSearchCriteria.cs" />
+    <Compile Include="Mall\CategorySearchCriteria.cs" />
+    <Compile Include="Mall\ProductViewModel.cs" />
+    <Compile Include="Message\MessageSearchCriteria.cs" />
+    <Compile Include="Mission\MissionIndex.cs" />
+    <Compile Include="Mission\MissionSearchCriteria.cs" />
+    <Compile Include="OpenShop\OpenShopViewModel.cs" />
+    <Compile Include="OpenShop\OpenShopSearchCriteria.cs" />
+    <Compile Include="OrderSearchCriteria.cs" />
+    <Compile Include="OrderStatisticsEntity.cs" />
+    <Compile Include="Order\OrderSearchFilter.cs" />
+    <Compile Include="Order\OrderSearchResult.cs" />
+    <Compile Include="PagerEntity.cs" />
+    <Compile Include="Project\CustomerModel.cs" />
+    <Compile Include="Project\GrouppurchaseSearchCriteria.cs" />
+    <Compile Include="Project\JoinSearchCriteria.cs" />
+    <Compile Include="Project\ProjectDetailsViewModel.cs" />
+    <Compile Include="Project\ProjectServiceViewModel.cs" />
+    <Compile Include="Project\ProjectViewModel.cs" />
+    <Compile Include="Project\SearchCriteria.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleSecurityEntity.cs" />
+    <Compile Include="PagerSearchCriteria.cs" />
+    <Compile Include="ShopPostings\ShopPostingsCriteria.cs" />
+    <Compile Include="ShopRoom\ShopRoomDetailsViewModel.cs" />
+    <Compile Include="ShopRoom\ShopRoomCriteria.cs" />
+    <Compile Include="UserAddressEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YG.SC.Common\YG.SC.Common.csproj">
+      <Project>{2da9c33c-6fb4-4c3d-81ba-5bd570fb4003}</Project>
+      <Name>YG.SC.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

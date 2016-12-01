@@ -1,0 +1,232 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.OpenShop.Enum
+@{
+    ViewBag.Title = "品牌街--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tuple = Model as Tuple<ShopBrand[], PagerEntity>;
+    var Attributes = ViewBag.Attributes as List<ShopAttributeValues>;
+    var attributeValuesId = ViewBag.AttributeValuesId is int ? (int)ViewBag.AttributeValuesId : 0;
+    var join = ViewBag.JoinIn is int ? (int)ViewBag.JoinIn : -1;
+}
+<meta name="keywords" content="开店ing，一站式开店服务平台，润嘉众合，品牌升级，加盟，推广，品牌展示，投融资，创业，餐饮，银行，专卖店" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,主要包括开店帮，装修帮，推广帮，家具帮，融资帮等部分，品牌升级，品牌展示，品牌推广，加盟服务，品牌管理等内容" />
+<style>
+    .brd_logo a {
+        position: relative;
+        text-align: center;
+    }
+
+        .brd_logo a img {
+            height: 130px;
+        }
+</style>
+<div class="brand-warp" style="margin-top:30px;">
+    <div class="brand_st">
+        <div class="brand_st_sl">
+            <div class="brand_st_sl_hye">加盟：</div>
+            <div class="brand_st_sl_ul">
+                <div class="brand_st_sl_li">
+                    @if (join == -1)
+                    {
+                        <a class="on joinin" key="-1" href="#">不限</a>
+                    }
+                    else
+                    {
+                        <a class="joinin" key="-1" href="#">不限</a>
+                    }
+                    @if (join == 0)
+                    {
+                        <a key="0" class="on joinin" href="#">@ShopBrandJoinIn.不加盟</a>
+                    }
+                    else
+                    {
+                        <a key="0" class="joinin" href="#">@ShopBrandJoinIn.不加盟</a>
+                    }
+                    @if (join == 1)
+                    {
+                        <a key="1" class="on joinin" href="#">@ShopBrandJoinIn.加盟</a>
+                    }
+                    else
+                    {
+                        <a key="1" class="joinin" href="#">@ShopBrandJoinIn.加盟</a>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <div class="brand_st_sl">
+            <div class="brand_st_sl_title">行业：</div>
+            <div class="brand_st_sl_ul">
+                <div class="brand_st_sl_li">
+                    <input type="hidden" id="hiddAttribute" value="@ViewBag.AttributeValuesId " />
+                    @if (attributeValuesId == 0)
+                    {
+                        <a class="on attribute" key="0">不限</a>
+                    }
+                    else
+                    {
+                        <a class="attribute" key="0">不限</a>
+                    }
+                    @if (Attributes != null && Attributes.Count > 0)
+                    {
+                        foreach (var item in Attributes)
+                        {
+                            if (attributeValuesId == item.Id)
+                            {
+
+                                <a key="@item.Id" class="on attribute">@item.ValueStr</a>
+                            }
+                            else
+                            {
+                                <a key="@item.Id" class="attribute">@item.ValueStr</a>
+                            }
+                        }
+                    }
+                </div>
+                @*<div class="brand_st_sl_li">
+                        <input type="hidden" id="hiddAttribute" value="@ViewBag.AttributeValuesId " />
+                        @if (attributeValuesId == 0)
+                        {
+                            <a class="on" key="0" href="/ShopBrand/Index">不限</a>
+                        }
+                        else
+                        {
+                            <a class="" key="0" href="/ShopBrand/Index">不限</a>
+                        }
+                        @if (Attributes != null && Attributes.Count > 0)
+                        {
+                            foreach (var item in Attributes)
+                            {
+                                if (attributeValuesId == item.Id)
+                                {
+
+                                    <a key="@item.Id" class="on" href="/ShopBrand/Index?AttributeValuesId=@item.Id">@item.ValueStr</a>
+                                }
+                                else
+                                {
+                                    <a key="@item.Id" class="" href="/ShopBrand/Index?AttributeValuesId=@item.Id">@item.ValueStr</a>
+                                }
+                            }
+                        }
+                    </div>*@
+            </div>
+        </div>
+        @* <div class="brand_st_sl">
+                <div class="brand_st_sl_hye">行业：</div>
+                <div class="brand_st_sl_ul">
+                    <div class="brand_st_sl_li">
+                        <a key="0" href="/s2">不限</a>
+                        <a class="on" key="0" href="/s2">餐饮</a>
+                        <a key="0" href="/s2">银行</a>
+                        <a key="0" href="/s2">服装</a>
+                        <a key="0" href="/s2">便利店</a>
+                        <a key="0" href="/s2">服装店</a>
+                        <a key="0" href="/s2">银行</a>
+                        <a key="0" href="/s2">服装</a>
+                        <a key="0" href="/s2">便利店</a>
+                        <a key="0" href="/s2">其它</a>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+<div class="brand-warp">
+    @foreach (var item in tuple.Item1)
+    {
+        <div class="index_brd">
+            <div class="index_brd_logo">
+                <div class="brd_logo">
+                    <a href="/ShopBrand/Brand?shopBrandId=@item.Id">
+                        <img src="@item.Logo" />
+                    </a>
+                </div>
+                <p>@item.BrandAD</p>
+                <div class="brand-featuer">
+                    <img class="featurei" src="/images/zxb.jpg" />
+                    <img class="featurei" src="/images/jjb.jpg" />
+                    <img class="featurei" src="/images/tgb.jpg" />
+                    <img class="featurei" src="/images/rzb.jpg" />
+                </div>
+            </div>
+            @{
+        var brandphoto = new List<ShopBrandPhoto>();
+        if (item.ShopBrandPhoto != null && item.ShopBrandPhoto.Count > 0)
+        {
+            brandphoto = item.ShopBrandPhoto.ToList();
+        }
+            }
+            <a class="index_brd_one" target="_blank" href="/ShopBrand/brand?shopBrandId=@item.Id">
+                <img class="lazy" alt="" src="@(brandphoto.Count > 0 ? brandphoto[0].Photo : "/images/brand01.gif")" style="display: inline; width: 230px; height: 230px;" />
+            </a>
+            <a class="index_brd_two" target="_blank" href="/ShopBrand/brand?shopBrandId=@item.Id">
+                <img class="lazy" alt="" src="@(brandphoto.Count > 1 ? brandphoto[1].Photo : "/images/brand01.gif")" style="display: inline; width: 630px; height: 450px;" />
+            </a>
+            <a class="index_brd_three" target="_blank" href="/ShopBrand/brand?shopBrandId=@item.Id">
+                <img class="lazy" alt="" src="@(brandphoto.Count > 2 ? brandphoto[2].Photo : "/images/brand03.gif")" style="display: inline; width: 365px; height: 220px;" />
+            </a>
+            <a class="index_brd_four" target="_blank" href="/ShopBrand/brand?shopBrandId=@item.Id">
+                <img class="lazy" alt="" src="@(brandphoto.Count > 3 ? brandphoto[3].Photo : "/images/brand01.gif")" style="display: inline; width: 230px; height: 230px;" />
+            </a>
+        </div>
+    }
+
+
+    @*   <div class="index_brd">
+            <div class="index_brd_logo">
+                <div class="brd_logo">
+                    <img src="/images/brand_logo.gif" /></div>
+                <p>创造一个无甲醛、尘螨及无障碍的成长环境</p>
+                <div class="brand-featuer">
+                    <img class="featurei" src="/images/zxb.jpg" />
+                    <img class="featurei" src="/images/jjb.jpg" />
+                    <img class="featurei" src="/images/tgb.jpg" />
+                    <img class="featurei" src="/images/rzb.jpg" />
+                </div>
+            </div>
+            <a class="index_brd_one" target="_blank" href="http://xiaoguotu.to8to.com/c10029088.html">
+                <img class="lazy" alt="" src="/images/brand01.gif" style="display: inline; width: 230px; height: 230px;" />
+            </a>
+            <a class="index_brd_two" target="_blank" href="http://xiaoguotu.to8to.com/c10029088.html">
+                <img class="lazy" alt="" src="/images/brand01.gif" style="display: inline; width: 630px; height: 450px;" />
+            </a>
+            <a class="index_brd_three" target="_blank" href="http://xiaoguotu.to8to.com/c10029088.html">
+                <img class="lazy" alt="" src="/images/brand03.gif" style="display: inline; width: 365px; height: 220px;" />
+            </a>
+            <a class="index_brd_four" target="_blank" href="http://xiaoguotu.to8to.com/c10029088.html">
+                <img class="lazy" alt="" src="/images/scol01.jpg" style="display: inline; width: 230px; height: 230px;" />
+            </a>
+        </div>*@
+</div>
+<tfoot>
+    <tr>
+        <td colspan="6">
+            @Html.Partial("_LayoutPager", tuple.Item2)
+        </td>
+    </tr>
+</tfoot>
+<script>
+    $(function () {
+        $(".attribute").click(function () {
+            var att = $(this).attr("key");
+            var join;
+            $(".joinin").each(function () {
+                if ($(this).attr("class") == "on joinin") {
+                    join = $(this).attr("key");
+                }
+            });
+            window.location.href = "/ShopBrand/Index?AttributeValuesId=" + att + "&JoinIn=" + join;
+        });
+        $(".joinin").click(function () {
+            var join = $(this).attr("key");
+            var att;
+            $(".attribute").each(function () {
+                if ($(this).attr("class") == "on attribute") {
+                    att = $(this).attr("key");
+                }
+            });
+            window.location.href = "/ShopBrand/Index?AttributeValuesId=" + att + "&JoinIn=" + join;
+        });
+    });
+</script>

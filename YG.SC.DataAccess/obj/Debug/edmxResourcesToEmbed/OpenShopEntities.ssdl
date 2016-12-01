@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OpenShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplyActivity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GrouppurchaseId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplyBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="ApplyUser" Type="int" Nullable="false" />
+    <Property Name="Contract" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ApplyTime" Type="datetime" Nullable="false" />
+    <Property Name="AuditTime" Type="datetime" />
+    <Property Name="RejectReason" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="C_File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileType" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FileName1" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName2" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName3" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName4" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName5" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="C_Object">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="ParentId" Type="int" Nullable="false" />
+    <Property Name="ParentChain" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChildrenSet" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Creater" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUser" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Online" Type="bit" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Property" Type="bit" Nullable="false" />
+    <Property Name="GroupId" Type="int" />
+    <Property Name="Companyid" Type="int" Nullable="false" />
+    <Property Name="registertime" Type="datetime" />
+    <Property Name="portrait" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="CustomerDiscipline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customerid" Type="int" />
+    <Property Name="Property" Type="bit" Nullable="false" />
+    <Property Name="Begintime" Type="datetime" />
+    <Property Name="Endtime" Type="datetime" />
+    <Property Name="Disciplinetype" Type="int" />
+    <Property Name="Disciplinetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerGroupOn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GroupMode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" />
+    <Property Name="Targetsubject" Type="int" />
+    <Property Name="Modulid" Type="nvarchar" MaxLength="100" />
+    <Property Name="Equipment" Type="nvarchar" MaxLength="100" />
+    <Property Name="ismanage" Type="bit" />
+    <Property Name="url" Type="nvarchar" MaxLength="500" />
+    <Property Name="ip" Type="nvarchar" MaxLength="50" />
+    <Property Name="logmsg" Type="nvarchar" MaxLength="500" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="G_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IsFixed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Goods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Image" Type="int" Nullable="false" />
+    <Property Name="Shopid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Name">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_NameCategoryMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="NameId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="G_Pricing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoodsId" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Creater" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grouppurchase">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" />
+    <Property Name="Llimit" Type="int" />
+    <Property Name="Begintime" Type="datetime" />
+    <Property Name="Endtime" Type="datetime" />
+    <Property Name="progress" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Addtime" Type="datetime" />
+    <Property Name="Lastupdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="hotarea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="JobMinute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobTime" Type="datetime" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="200" />
+    <Property Name="JobKey" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="JoinProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Source" Type="nvarchar" MaxLength="300" />
+    <Property Name="Addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LinkType" Type="int" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_Contract">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MissionId" Type="int" Nullable="false" />
+    <Property Name="FileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_Mission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MissionType" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="LimitDate" Type="datetime" Nullable="false" />
+    <Property Name="Publisher" Type="int" Nullable="false" />
+    <Property Name="PublisherContact" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PublisherMobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PublisheTime" Type="datetime" Nullable="false" />
+    <Property Name="Receiver" Type="int" Nullable="false" />
+    <Property Name="ReceiverContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiveTime" Type="datetime" />
+    <Property Name="Bd" Type="int" Nullable="false" />
+    <Property Name="ConnectingTime" Type="datetime" />
+    <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="IsOffLinePayment" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="AppealReason" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DecideResult" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DecideRefund" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DecidePay" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="CloseReason" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ConfirmContractTime" Type="datetime" />
+    <Property Name="ContactTime" Type="datetime" />
+    <Property Name="ConfirmPaymentTime" Type="datetime" />
+    <Property Name="CompleteTime" Type="datetime" />
+    <Property Name="DecideTime" Type="datetime" />
+    <Property Name="AppealTime" Type="datetime" />
+    <Property Name="LastTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_Period">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MissionId" Type="int" Nullable="false" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Standard" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="FailedReasion" Type="nvarchar" MaxLength="4000" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="FirstApplyCheckTime" Type="datetime" />
+    <Property Name="PassTime" Type="datetime" />
+    <Property Name="PayStartTime" Type="datetime" />
+    <Property Name="FinishTime" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Creater" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Flag" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_CartGoods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartId" Type="int" Nullable="false" />
+    <Property Name="GoodsId" Type="int" Nullable="false" />
+    <Property Name="GoodsCount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartId" Type="int" Nullable="false" />
+    <Property Name="OrderType" Type="int" Nullable="false" />
+    <Property Name="BusinessDataType" Type="int" Nullable="false" />
+    <Property Name="BusinessDataId" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Saler" Type="int" Nullable="false" />
+    <Property Name="Buyer" Type="int" Nullable="false" />
+    <Property Name="OrderTime" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DetailUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Method" Type="int" />
+    <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyerMobile" Type="nvarchar" MaxLength="13" />
+    <Property Name="BuyerAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="ExpressCompany" Type="int" />
+    <Property Name="ExpressNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalerMobile" Type="nvarchar" MaxLength="13" />
+    <Property Name="SalerAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="PaymentTime" Type="datetime" />
+    <Property Name="ColseTime" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_SalerBuyerMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Buyer" Type="int" Nullable="false" />
+    <Property Name="Saler" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OpenShop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Accountbalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="200" />
+    <Property Name="Rmark" Type="nvarchar(max)" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+    <Property Name="Introduction" Type="nvarchar(max)" />
+    <Property Name="Url" Type="nvarchar" MaxLength="200" />
+    <Property Name="VidoUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="photo" Type="nvarchar" MaxLength="400" />
+    <Property Name="QRcode" Type="nvarchar" MaxLength="400" />
+    <Property Name="Industry" Type="nvarchar" MaxLength="400" />
+    <Property Name="Distribution" Type="nvarchar" MaxLength="100" />
+    <Property Name="Contactname" Type="nvarchar" MaxLength="400" />
+    <Property Name="Contactphone" Type="nvarchar" MaxLength="50" />
+    <Property Name="BLS" Type="nvarchar" MaxLength="400" />
+    <Property Name="OCC" Type="nvarchar" MaxLength="400" />
+    <Property Name="OPC" Type="nvarchar" MaxLength="400" />
+    <Property Name="CIC" Type="nvarchar" MaxLength="400" />
+    <Property Name="AC" Type="nvarchar" MaxLength="400" />
+    <Property Name="TRC" Type="nchar" MaxLength="10" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="viewclick" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="lat" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Long" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Isguarantee" Type="bit" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeId" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegionId" Type="int" />
+    <Property Name="isaudit" Type="int" />
+    <Property Name="Districtid" Type="int" Nullable="false" />
+    <Property Name="Rangeid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“OpenShop.dbo.OpenShopAttributeValues”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="OpenShopAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="OpenShopId" />
+      <PropertyRef Name="AttributesId" />
+      <PropertyRef Name="Recsts" />
+      <PropertyRef Name="AttributeValuesId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenShopId" Type="int" Nullable="false" />
+    <Property Name="AttributesId" Type="int" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="AttributeValuesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OpenShopPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenShopId" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoSmall" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoSquare" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoRectangle" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="Rmark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="title" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="OpenShopShopProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpenShopId" Type="int" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="P_Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObjId" Type="int" Nullable="false" />
+    <Property Name="ObjType" Type="int" Nullable="false" />
+    <Property Name="RealName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Balance" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Creater" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="P_Trade">
+    <Key>
+      <PropertyRef Name="TraceId" />
+    </Key>
+    <Property Name="TraceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Expenditure" Type="int" Nullable="false" />
+    <Property Name="Income" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TradeTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Kind" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="4000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" Nullable="false" />
+    <Property Name="PhotoName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="int" />
+    <Property Name="PhotoUrl" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoUrlSmall" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="CreatTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PicUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsMvp" Type="bit" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Job" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="S_Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sender" Type="int" Nullable="false" />
+    <Property Name="SenderNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Receiver" Type="int" Nullable="false" />
+    <Property Name="ReceiverNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="HasShortMessage" Type="bit" Nullable="false" />
+    <Property Name="SendTime" Type="datetime" Nullable="false" />
+    <Property Name="DetailsUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReceiveTime" Type="datetime" />
+    <Property Name="MessageType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopAdPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypesId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="AdWords" Type="nvarchar" MaxLength="200" />
+    <Property Name="Url" Type="nvarchar" MaxLength="300" />
+    <Property Name="AdPicSmall" Type="nvarchar" MaxLength="200" />
+    <Property Name="AdPic" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="KeyId" Type="int" />
+  </EntityType>
+  <EntityType Name="ShopAdPositionDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Details" Type="varchar" MaxLength="200" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ShopAttributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttributeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisplaySequence" Type="int" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="UsageMode" Type="int" Nullable="false" />
+    <Property Name="UseAttributeImage" Type="bit" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ShopAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttributeId" Type="int" Nullable="false" />
+    <Property Name="DisplaySequence" Type="int" Nullable="false" />
+    <Property Name="ValueStr" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ShopBasAcrRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AcrName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="AcrFrom" Type="float" Nullable="false" />
+    <Property Name="AcrEnd" Type="float" Nullable="false" />
+    <Property Name="AcrCustomOrder" Type="int" Nullable="false" />
+    <Property Name="AcrCreatedtime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopBasOpeningTime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpeningName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OpeningTimeDay" Type="int" />
+    <Property Name="CustomOrder" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ShopBasPriceRentRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RPName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="RPFrom" Type="float" Nullable="false" />
+    <Property Name="RPEnd" Type="float" Nullable="false" />
+    <Property Name="RPCustomerOrder" Type="int" Nullable="false" />
+    <Property Name="RPCreatedtime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopBasPriceSaleRange">
+    <Key>
+      <PropertyRef Name="PRID" />
+    </Key>
+    <Property Name="PRID" Type="int" Nullable="false" />
+    <Property Name="PRName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="PRFrom" Type="float" Nullable="false" />
+    <Property Name="PREnd" Type="float" Nullable="false" />
+    <Property Name="PRCustomOrder" Type="int" Nullable="false" />
+    <Property Name="PRCreatedtime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="200" />
+    <Property Name="Rmark" Type="nvarchar(max)" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+    <Property Name="Url" Type="nvarchar" MaxLength="200" />
+    <Property Name="VidoUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="photo" Type="nvarchar" MaxLength="400" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="QRCode" Type="nvarchar" MaxLength="200" />
+    <Property Name="Contactname" Type="nvarchar" MaxLength="400" />
+    <Property Name="Contactphone" Type="nvarchar" MaxLength="50" />
+    <Property Name="BLS" Type="nvarchar" MaxLength="400" />
+    <Property Name="OCC" Type="nvarchar" MaxLength="400" />
+    <Property Name="OPC" Type="nvarchar" MaxLength="400" />
+    <Property Name="CIC" Type="nvarchar" MaxLength="400" />
+    <Property Name="AC" Type="nvarchar" MaxLength="400" />
+    <Property Name="TRC" Type="nvarchar" MaxLength="400" />
+    <Property Name="CreatTime" Type="datetime" />
+    <Property Name="BrandAD" Type="nvarchar" MaxLength="300" />
+    <Property Name="JoinIn" Type="bit" />
+    <Property Name="ViewClick" Type="int" />
+    <Property Name="IsAudited" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="ShopBrandAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="AttributesId" Type="int" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="AttributeValuesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopBrandBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+    <Property Name="BranchAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="BranchPhone" Type="nvarchar" MaxLength="45" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopBrandPhoto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoSmall" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoSquare" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhotoRectangle" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Recsts" Type="int" Nullable="false" />
+    <Property Name="Rmark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="title" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ShopDemo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ShopPostings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="200" />
+    <Property Name="district" Type="nvarchar" MaxLength="50" />
+    <Property Name="hotarea" Type="nvarchar" MaxLength="50" />
+    <Property Name="PIntent" Type="nvarchar" MaxLength="10" />
+    <Property Name="Format" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="nvarchar" MaxLength="200" />
+    <Property Name="square" Type="nvarchar" MaxLength="200" />
+    <Property Name="Ptype" Type="nvarchar" MaxLength="200" />
+    <Property Name="Contacts" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pinfo" Type="nvarchar(max)" />
+    <Property Name="Addtiem" Type="datetime" />
+    <Property Name="Endtiem" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ShopProject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressLine" Type="nvarchar" MaxLength="200" />
+    <Property Name="TeShe" Type="nvarchar(max)" />
+    <Property Name="TuanDuiInfo" Type="nvarchar(max)" />
+    <Property Name="YouShi" Type="nvarchar(max)" />
+    <Property Name="BQuanShu" Type="nvarchar" MaxLength="100" />
+    <Property Name="BWaiLiMian" Type="nvarchar" MaxLength="100" />
+    <Property Name="BJieGou" Type="nvarchar" MaxLength="100" />
+    <Property Name="JZongJianZhuMianJi" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="JZongChengShu" Type="int" />
+    <Property Name="JChengGao" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PChengMianJi" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PZhuLiHuxing" Type="nvarchar" MaxLength="200" />
+    <Property Name="PWindowOpen" Type="nvarchar" MaxLength="20" />
+    <Property Name="PChengZhongZhu" Type="nvarchar" MaxLength="20" />
+    <Property Name="PHeXinTong" Type="nvarchar" MaxLength="20" />
+    <Property Name="PHeiFangJian" Type="nvarchar" MaxLength="20" />
+    <Property Name="YLiftBrand" Type="nvarchar" MaxLength="200" />
+    <Property Name="YLiftIntro" Type="nvarchar" MaxLength="200" />
+    <Property Name="YLiftFenQu" Type="nvarchar" MaxLength="200" />
+    <Property Name="YLiftSpeed" Type="nvarchar" MaxLength="200" />
+    <Property Name="YAirConditoningBrand" Type="nvarchar" MaxLength="200" />
+    <Property Name="YAirConditoningControl" Type="nvarchar" MaxLength="200" />
+    <Property Name="YPrkingSpace" Type="nvarchar" MaxLength="200" />
+    <Property Name="TeaIntroduction" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Lat" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Long" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="CoverPhoto" Type="nvarchar" MaxLength="300" />
+    <Property Name="ViewClick" Type="int" />
+    <Property Name="ShangQuan" Type="nvarchar" MaxLength="20" />
+    <Property Name="ContactPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectIntro" Type="nvarchar(max)" />
+    <Property Name="Projecthot" Type="int" />
+    <Property Name="Listings" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ShopProjectAttributesValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttrId" Type="int" />
+    <Property Name="AttrValueId" Type="int" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" />
+  </EntityType>
+  <EntityType Name="ShopProjectMain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopProjectId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="TradeId" Type="varchar" MaxLength="200" />
+    <Property Name="RegionId" Type="int" />
+    <Property Name="TradingAreaId" Type="int" />
+    <Property Name="CircleLineId" Type="int" />
+    <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RentalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MetroId" Type="nvarchar" MaxLength="200" />
+    <Property Name="StateId" Type="nvarchar" MaxLength="200" />
+    <Property Name="OpenDate" Type="datetime" />
+    <Property Name="Recsts" Type="int" />
+    <Property Name="CreatTime" Type="datetime" />
+    <Property Name="TypeOfOperationId" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ShopRoom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopId" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="RName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="200" />
+    <Property Name="district" Type="nvarchar" MaxLength="50" />
+    <Property Name="hotarea" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="200" />
+    <Property Name="sale" Type="nvarchar" MaxLength="10" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="square" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Face" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contacts" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rinfo" Type="nvarchar(max)" />
+    <Property Name="Rimg" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="source" Type="nvarchar" MaxLength="500" />
+    <Property Name="from" Type="int" />
+    <Property Name="fetchDate" Type="bigint" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="isCert" Type="int" />
+  </EntityType>
+  <EntityType Name="SmsLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="SendStatus" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK__OpenShopA__Attri__4D5F7D71">
+    <End Role="ShopAttributes" Type="Self.ShopAttributes" Multiplicity="1" />
+    <End Role="OpenShopAttributeValues" Type="Self.OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="AttributesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopA__Attri__4E53A1AA">
+    <End Role="ShopAttributeValues" Type="Self.ShopAttributeValues" Multiplicity="1" />
+    <End Role="OpenShopAttributeValues" Type="Self.OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="AttributeValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopA__OpenS__4C6B5938">
+    <End Role="OpenShop" Type="Self.OpenShop" Multiplicity="1" />
+    <End Role="OpenShopAttributeValues" Type="Self.OpenShopAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopAttributeValues">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopP__OpenS__1BC821DD">
+    <End Role="OpenShop" Type="Self.OpenShop" Multiplicity="1" />
+    <End Role="OpenShopPhoto" Type="Self.OpenShopPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopPhoto">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopS__OpenS__22751F6C">
+    <End Role="OpenShop" Type="Self.OpenShop" Multiplicity="1" />
+    <End Role="OpenShopShopProject" Type="Self.OpenShopShopProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OpenShop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopShopProject">
+        <PropertyRef Name="OpenShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpenShopS__ShopP__236943A5">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="OpenShopShopProject" Type="Self.OpenShopShopProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OpenShopShopProject">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Attri__2A4B4B5E">
+    <End Role="ShopAttributes" Type="Self.ShopAttributes" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="AttributesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Attri__2B3F6F97">
+    <End Role="ShopAttributeValues" Type="Self.ShopAttributeValues" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="AttributeValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__29572725">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandAttributeValues" Type="Self.ShopBrandAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandAttributeValues">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__300424B4">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandBranch" Type="Self.ShopBrandBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandBranch">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopBrand__Brand__35BCFE0A">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ShopBrandPhoto" Type="Self.ShopBrandPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopBrandPhoto">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProje__AttrI__08B54D69">
+    <End Role="ShopAttributes" Type="Self.ShopAttributes" Multiplicity="0..1" />
+    <End Role="ShopProjectAttributesValues" Type="Self.ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="AttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProje__AttrV__09A971A2">
+    <End Role="ShopAttributeValues" Type="Self.ShopAttributeValues" Multiplicity="0..1" />
+    <End Role="ShopProjectAttributesValues" Type="Self.ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="AttrValueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProje__ShopP__0A9D95DB">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="0..1" />
+    <End Role="ShopProjectAttributesValues" Type="Self.ShopProjectAttributesValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectAttributesValues">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplyBrand_ShopBrand">
+    <End Role="ShopBrand" Type="Self.ShopBrand" Multiplicity="1" />
+    <End Role="ApplyBrand" Type="Self.ApplyBrand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplyBrand">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectPhoto_ShopProject_ID">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="ProjectPhoto" Type="Self.ProjectPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectPhoto">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectService_ShopProject">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="0..1" />
+    <End Role="ProjectService" Type="Self.ProjectService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectService">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopProjectMain_ShopProject">
+    <End Role="ShopProject" Type="Self.ShopProject" Multiplicity="1" />
+    <End Role="ShopProjectMain" Type="Self.ShopProjectMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopProjectMain">
+        <PropertyRef Name="ShopProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OpenShopModelStoreContainer">
+    <EntitySet Name="ApplyActivity" EntityType="Self.ApplyActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplyBrand" EntityType="Self.ApplyBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="C_File" EntityType="Self.C_File" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="C_Object" EntityType="Self.C_Object" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerDiscipline" EntityType="Self.CustomerDiscipline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerGroupOn" EntityType="Self.CustomerGroupOn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerLog" EntityType="Self.CustomerLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="G_Category" EntityType="Self.G_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="G_Goods" EntityType="Self.G_Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="G_Name" EntityType="Self.G_Name" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="G_NameCategoryMapping" EntityType="Self.G_NameCategoryMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="G_Pricing" EntityType="Self.G_Pricing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grouppurchase" EntityType="Self.Grouppurchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hotarea" EntityType="Self.hotarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobMinute" EntityType="Self.JobMinute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JoinProject" EntityType="Self.JoinProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Link" EntityType="Self.Link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_Contract" EntityType="Self.M_Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_Mission" EntityType="Self.M_Mission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_Period" EntityType="Self.M_Period" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_Cart" EntityType="Self.O_Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_CartGoods" EntityType="Self.O_CartGoods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_Order" EntityType="Self.O_Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SalerBuyerMapping" EntityType="Self.O_SalerBuyerMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpenShop" EntityType="Self.OpenShop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpenShopPhoto" EntityType="Self.OpenShopPhoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpenShopShopProject" EntityType="Self.OpenShopShopProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Account" EntityType="Self.P_Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Trade" EntityType="Self.P_Trade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectPhoto" EntityType="Self.ProjectPhoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectService" EntityType="Self.ProjectService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_Message" EntityType="Self.S_Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopAdPosition" EntityType="Self.ShopAdPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopAdPositionDetails" EntityType="Self.ShopAdPositionDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopAttributes" EntityType="Self.ShopAttributes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopAttributeValues" EntityType="Self.ShopAttributeValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBasAcrRange" EntityType="Self.ShopBasAcrRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBasOpeningTime" EntityType="Self.ShopBasOpeningTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBasPriceRentRange" EntityType="Self.ShopBasPriceRentRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBasPriceSaleRange" EntityType="Self.ShopBasPriceSaleRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBrand" EntityType="Self.ShopBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBrandAttributeValues" EntityType="Self.ShopBrandAttributeValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBrandBranch" EntityType="Self.ShopBrandBranch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopBrandPhoto" EntityType="Self.ShopBrandPhoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopDemo" EntityType="Self.ShopDemo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopPostings" EntityType="Self.ShopPostings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopProject" EntityType="Self.ShopProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopProjectAttributesValues" EntityType="Self.ShopProjectAttributesValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopProjectMain" EntityType="Self.ShopProjectMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopRoom" EntityType="Self.ShopRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SmsLog" EntityType="Self.SmsLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpenShopAttributeValues" EntityType="Self.OpenShopAttributeValues" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OpenShopAttributeValues].[Id] AS [Id], 
+    [OpenShopAttributeValues].[OpenShopId] AS [OpenShopId], 
+    [OpenShopAttributeValues].[AttributesId] AS [AttributesId], 
+    [OpenShopAttributeValues].[Recsts] AS [Recsts], 
+    [OpenShopAttributeValues].[AttributeValuesId] AS [AttributeValuesId]
+    FROM [dbo].[OpenShopAttributeValues] AS [OpenShopAttributeValues]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__OpenShopA__Attri__4D5F7D71" Association="Self.FK__OpenShopA__Attri__4D5F7D71">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopA__Attri__4E53A1AA" Association="Self.FK__OpenShopA__Attri__4E53A1AA">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopA__OpenS__4C6B5938" Association="Self.FK__OpenShopA__OpenS__4C6B5938">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopAttributeValues" EntitySet="OpenShopAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopP__OpenS__1BC821DD" Association="Self.FK__OpenShopP__OpenS__1BC821DD">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopPhoto" EntitySet="OpenShopPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopS__OpenS__22751F6C" Association="Self.FK__OpenShopS__OpenS__22751F6C">
+      <End Role="OpenShop" EntitySet="OpenShop" />
+      <End Role="OpenShopShopProject" EntitySet="OpenShopShopProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpenShopS__ShopP__236943A5" Association="Self.FK__OpenShopS__ShopP__236943A5">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="OpenShopShopProject" EntitySet="OpenShopShopProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Attri__2A4B4B5E" Association="Self.FK__ShopBrand__Attri__2A4B4B5E">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Attri__2B3F6F97" Association="Self.FK__ShopBrand__Attri__2B3F6F97">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__29572725" Association="Self.FK__ShopBrand__Brand__29572725">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandAttributeValues" EntitySet="ShopBrandAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__300424B4" Association="Self.FK__ShopBrand__Brand__300424B4">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandBranch" EntitySet="ShopBrandBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopBrand__Brand__35BCFE0A" Association="Self.FK__ShopBrand__Brand__35BCFE0A">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ShopBrandPhoto" EntitySet="ShopBrandPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProje__AttrI__08B54D69" Association="Self.FK__ShopProje__AttrI__08B54D69">
+      <End Role="ShopAttributes" EntitySet="ShopAttributes" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProje__AttrV__09A971A2" Association="Self.FK__ShopProje__AttrV__09A971A2">
+      <End Role="ShopAttributeValues" EntitySet="ShopAttributeValues" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProje__ShopP__0A9D95DB" Association="Self.FK__ShopProje__ShopP__0A9D95DB">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ShopProjectAttributesValues" EntitySet="ShopProjectAttributesValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplyBrand_ShopBrand" Association="Self.FK_ApplyBrand_ShopBrand">
+      <End Role="ShopBrand" EntitySet="ShopBrand" />
+      <End Role="ApplyBrand" EntitySet="ApplyBrand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectPhoto_ShopProject_ID" Association="Self.FK_ProjectPhoto_ShopProject_ID">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ProjectPhoto" EntitySet="ProjectPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectService_ShopProject" Association="Self.FK_ProjectService_ShopProject">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ProjectService" EntitySet="ProjectService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopProjectMain_ShopProject" Association="Self.FK_ShopProjectMain_ShopProject">
+      <End Role="ShopProject" EntitySet="ShopProject" />
+      <End Role="ShopProjectMain" EntitySet="ShopProjectMain" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

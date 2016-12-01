@@ -1,0 +1,193 @@
+﻿@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopBrand
+@{
+    ViewBag.Title = "品牌详情--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
+}
+<meta name="keywords" content="开店ing，一站式开店服务平台，润嘉众合，品牌升级，加盟，品牌展示，投融资，创业，餐饮，银行，专卖店" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,主要包括开店帮，装修帮，推广帮，家具帮，融资帮等部分，品牌展示，加盟服务" />
+<style type="text/css">
+    #slider img {
+        height: 148px;
+    }
+
+    #image img {
+        height: 600px;
+    }
+</style>
+
+<div class="brand-warp">
+    <div class="brand-info">
+        <div class="brand-title">
+            <div>
+                <img src="@Model.Logo" width="295" height="242" />
+            </div>
+        </div>
+        <div class="brand-intr">
+            <div class="brand-desc">
+                <p>
+                    <span class="brand-name">@Model.Name</span>
+                    @*<span title="@Model.Rmark"> @(Model.Rmark.Length<550?Model.Rmark:(Model.Rmark.Substring(0,500)+"........"))</span>*@
+                    @Model.Rmark
+                </p>
+            </div>
+            <div class="brand-link">网址：<a href="@Model.Url" target="_blank">@Model.Url</a></div>
+            <div class="brand-link">视频地址：<a href="@Model.VidoUrl" target="_blank">@Model.VidoUrl</a></div>
+        </div>
+
+    </div>
+    <div class="brand-featuer">
+        @*    <img class="featurei" src="/images/zxb.jpg" />
+            <img class="featurei" src="/images/jjb.jpg" />
+            <img class="featurei" src="/images/tgb.jpg" />
+            <img class="featurei" src="/images/rzb.jpg" />*@
+        @if (Model.ShopBrandAttributeValues != null && Model.ShopBrandAttributeValues.Count > 0)
+        {
+            foreach (var item in Model.ShopBrandAttributeValues)
+            {
+                <img class="featurei" src="/images/tgb.jpg" />@*@item.ShopAttributeValues.ValueStr*@
+            }
+        }
+    </div>
+
+    <div class="brand-photobox">
+        <div class="warp-photo">
+            <ul id="slideshow">
+                @if (Model.ShopBrandPhoto != null)
+                {
+                    foreach (var item in Model.ShopBrandPhoto)
+                    {
+                        <li>
+                            <h3></h3>
+                            <p></p>
+                            <span>@item.Photo</span>
+                            <img src="@item.PhotoSmall" alt="Sea Turtle" />
+                        </li>
+                    }
+                }
+                @*<li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/orange-fish.jpg</span>
+                        <img src="/thumbnails/scol02.jpg" alt="Sea Turtle" />
+                    </li>
+                    <li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/small-fish.jpg</span>
+                        <a href="#">
+                            <img src="/thumbnails/scol01.jpg" alt="Orange Fish" /></a>
+                    </li>
+                    <li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/orange-fish.jpg</span>
+                        <img src="/thumbnails/scol02.jpg" alt="Sea Turtle" />
+                    </li>
+                    <li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/small-fish.jpg</span>
+                        <a href="#">
+                            <img src="/thumbnails/scol01.jpg" alt="Orange Fish" /></a>
+                    </li>
+                    <li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/orange-fish.jpg</span>
+                        <img src="/thumbnails/scol02.jpg" alt="Sea Turtle" />
+                    </li>
+                    <li>
+                        <h3></h3>
+                        <p></p>
+                        <span>/photos/small-fish.jpg</span>
+                        <a href="#">
+                            <img src="/thumbnails/scol01.jpg" alt="Orange Fish" /></a>
+                    </li>*@
+            </ul>
+            <div id="wrapper">
+                <div id="fullsize">
+                    <div id="imgprev" class="imgnav" title="Previous Image"></div>
+                    <div id="imglink"></div>
+                    <div id="imgnext" class="imgnav" title="Next Image"></div>
+                    <div id="image"></div>
+                    <div id="information">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div id="thumbnails">
+                    <div id="slideleft" title="Slide Left"></div>
+                    <div id="slidearea">
+                        <div id="slider"></div>
+                    </div>
+                    <div id="slideright" title="Slide Right"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="clear"></div>
+    <div class="brand-shop">
+        <div class="brand-shop-title">更多分店</div>
+        <div class="brand-cnt">
+            <div class="brand-datatable">
+                <table class="brand-table" style="width: 100%;" border="0">
+                    <tr class="tbhead">
+                        <td>店铺名称</td>
+                        <td>店铺地址</td>
+                        <td>店铺电话</td>
+                    </tr>
+                    @if (Model.ShopBrandBranch != null && Model.ShopBrandBranch.Count > 0)
+                    {
+                        foreach (var item in Model.ShopBrandBranch)
+                        {
+                            <tr>
+                                <td>@item.BranchName</td>
+                                <td>@item.BranchAddress</td>
+                                <td>@item.BranchPhone</td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+            </div>
+            <div class="brand-m">
+                <div class="brand-box">
+                    <div class="brand-smg">
+                        <img src="@Model.QRCode" />
+                    </div>
+                    <p>品牌二维码</p>
+                </div>
+                <div class="brand-mi">
+                    <p class="brand-red">扫描二维码</p>
+                    <p class="brand-gd">获取更多店铺信息</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/Scripts/compressed.js"></script>
+<script type="text/javascript">
+    _gid('slideshow').style.display = 'none';
+    _gid('wrapper').style.display = 'block';
+    var slideshow = new TINY.slideshow("slideshow");
+    window.onload = function () {
+        slideshow.auto = true;
+        slideshow.speed = 5;
+        slideshow.link = "linkhover";
+        slideshow.info = "information";
+        slideshow.thumbs = "slider";
+        slideshow.left = "slideleft";
+        slideshow.right = "slideright";
+        slideshow.scrollSpeed = 4;
+        slideshow.spacing = 20;
+        slideshow.active = "#666";
+        slideshow.init("slideshow", "image", "imgprev", "imgnext", "imglink");
+    }
+</script>

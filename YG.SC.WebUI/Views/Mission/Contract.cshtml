@@ -1,0 +1,81 @@
+﻿@model YG.SC.DataAccess.C_File
+@using YG.SC.DataAccess
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string fileSrc = ViewBag.ContractSrc == null ? string.Empty : ViewBag.ContractSrc as string;
+	Dictionary<int,string> _openShopList = ViewBag.OpenShopList;
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+            border: 0;
+        }
+
+        .form-horizontal .form-input {
+            width: 200px;
+            float: left;
+        }
+    </style>
+}
+<script>
+	function ChangeOpenShopMessage() {
+		$.post(
+			"/OpenShop/GetInfo",
+			{id:$("#openshop").val()},
+			function (result) {
+				$("#contact").val(result.Contact);
+				$("#mobile").val(result.Mobile);
+			}
+		);
+	}
+	$(function () {
+		ChangeOpenShopMessage();
+	});
+</script>
+<div class="panel panel-default">
+    <div class="panel-heading">录入合同和周期</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Contract", "Mission", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label class="col-sm-1 control-label">商家</label>
+				<select id="openshop" name="openshop" class="form-control" onchange="ChangeOpenShopMessage('a');">
+					@if (_openShopList != null)
+					{
+						foreach (KeyValuePair<int, string> item in _openShopList)
+						{
+							<option value="@item.Key">@item.Value</option>
+						}
+					}
+				</select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">联系人</label>
+				<input id="contact" name="contact" class="form-control" required="required" />
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">联系方式</label>
+				<input id="mobile" name="mobile" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">合同文件</label>
+                <input type="file" name="FileName" class="form-control"  />
+            </div>
+            if (!string.IsNullOrEmpty(fileSrc))
+            {
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <a href="@fileSrc">合同文件</a>
+                </div>
+            }
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    @Html.Hidden("MissionId", ViewBag.MissionId as string)
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">保存</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

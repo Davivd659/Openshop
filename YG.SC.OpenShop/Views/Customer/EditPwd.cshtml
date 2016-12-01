@@ -1,0 +1,146 @@
+﻿@model YG.SC.DataAccess.Customer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "修改密码-会员中心";
+}
+
+<link href="~/Content/siteweb.css" rel="stylesheet" />
+<style type="text/css">
+    .utc_right_uc_info h3 {
+        color: red;
+    }
+
+    .add_sjcontentbox div {
+        width: 150px;
+        float: left;
+    }
+
+    .add_sjcontentbox h3 {
+        font-size: 14px;
+        color: red;
+        float: left;
+        margin: 5px 0px;
+    }
+
+    .add_sjcontentbox input {
+        float: left;
+    }
+</style>
+<div class="brand-warp">
+    <div class="utc">
+        <div class="uct_left">
+            @Html.Partial("_LayoutLeft")
+        </div>
+        <div class="utc_right">
+            @*<div class="utc_right_title"></div>
+
+                <div class="utc_right_uc">
+                    @using (Html.BeginForm("EditPwd", "Customer", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="utc_right_uc_mono">
+                            <img src="/images/cus_mono.jpg" width="120" height="120" style="border-radius:5px;" />
+
+                        </div>
+                        <div class="utc_right_uc_info">
+                            <table border="0" class="uct_table">
+                                <tr><td>用户名：</td><td id="username" name="Name">@Model.Name</td></tr>
+                                <tr><td>输入旧密码：</td><td><div id="pwd_div"></div><h3></h3> </td></tr>
+                                <tr><td>输入新密码：</td><td><div id="Newpwd_div"><input type="password" id="Newpwd" name="Password" class="form-control" placeholder="请输入新密码" value="" /></div><h3></h3> </td></tr>
+                                <tr><td>确认密码：</td><td><div id="ctnNewpwd_div"></div><h3></h3> </td></tr>
+                                <tr><td><button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">修 改</button></td></tr>
+                            </table>
+                        </div>
+                        <div class="clear"></div>
+                    }
+                </div>*@
+
+            <div class="utc_right_title Gray18B">修改密码</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <div class="utc_right_uc" style="padding:40px 0px">
+                @*@using (Html.BeginForm("EditPwd", "Customer", new { }, FormMethod.Post, new { @id = "form-create", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+                    {*@
+                <form action="/Customer/EditPwd" role="form" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+                    <div class="add_sjmenubox Gray16">用户名：</div>
+                    <div class="add_sjcontentbox Gray16" id="username">
+                        @Model.LoginName
+                    </div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>原密码：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="password" id="pwd" name="pwd" class="form-control" placeholder="请输入密码" value="" />
+                        <div id="pwd_div"></div><h3></h3>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>新密码：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="password" id="Newpwd" name="Password" class="form-control" placeholder="请输入新密码" value="" />
+                        <div id="Newpwd_div"></div><h3></h3>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="add_sjmenubox Gray16"><span class="red">*</span>确认新密码：</div>
+                    <div class="add_sjcontentbox">
+                        <input type="password" id="ctnNewpwd" name="ctnNewpwd" class="form-control" placeholder="请输入确认密码" value="" />
+                        <div id="ctnNewpwd_div"></div><h3></h3>
+                    </div>
+
+
+
+                    <div class="clear"></div>
+
+
+
+
+
+                    <div class="add_jindubox" style="text-align: center;margin:20px auto;">
+                        <button class="add_sjbutton" id="btnSubmit" style="margin-right:150px;">确认</button>
+                    </div>
+                </form>
+                @*}*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".form-control").blur(function () {
+            $(this).parents('div').children('span').remove();
+            $(this).parents('div').next("h3").text('');
+        });
+    })
+    $("#btnSubmit").click(function () {
+        var flag = 1;
+
+        if (!$.trim($("#Newpwd").val())) {
+            $("#Newpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入新密码");
+            flag = 0;
+        } else if ($.trim($("#ctnNewpwd").val()).length < 6) {
+            $("#Newpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("密码必须大于6个字符");
+            flag = 0;
+        }
+        if (!$.trim($("#ctnNewpwd").val())) {
+            $("#ctnNewpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("请输入确认密码");
+            flag = 0;
+        } else if ($("#ctnNewpwd").val() != $("#Newpwd").val()) {
+            $("#Newpwd_div").append('<span class="pptm-icon"></span>').next('h3').text("两次密码不一致");
+            flag = 0;
+        }
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/Customer/ValidatePWD",
+            data: { LoginName: "@Model.LoginName", password: $("#pwd").val() },
+            success: function (data) {
+                if (data == '密码错误') {
+                    $("#pwd_div").append('<span class="pptm-icon"></span>').next('h3').text("密码错误");
+                    flag = 0;
+                }
+            }
+        });
+        if (!flag) {
+            return false;
+        }
+    });
+</script>

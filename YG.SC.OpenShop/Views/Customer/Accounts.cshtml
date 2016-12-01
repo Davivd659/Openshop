@@ -1,0 +1,170 @@
+﻿@model YG.SC.DataAccess.Customer
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.Common
+@{
+	List<OrderSearchResult> _orderList = ViewBag.OrderList as List<OrderSearchResult>;
+}
+<div class="brand-warp">
+	<div class="utc">
+		<div class="uct_left">
+			@Html.Partial("_LayoutLeft")
+		</div>
+		<div class="utc_right">
+			<div class="utc_right_title Gray18B">我的账户</div>
+			<div class="utc_right_title_right"></div>
+			<div class="clear"></div>
+			<div class="utc_right_uc">
+				<div class="utc_right_topbox">
+					<div class="utc_right_topbox_userbox">
+                        <div class="logobox">
+                            <img src="@Html.Raw(File.Exists(Server.MapPath("~" + Model.portrait)) ? Model.portrait: "/Images/icon/1_06.jpg")" alt="@Model.Name">
+                            </div>
+                            <span class="Black16">@Model.Name</span><br>
+                            @if ((CommonEnum.GroupOfCustomer)Model.GroupId == CommonEnum.GroupOfCustomer.OpenShop)
+                            {
+                                if (Model.FkOpenShop != null)
+                                {
+
+                                    <img class="litimg" src="/Images/icon/@Html.Raw(Model.FkOpenShop.isaudit == 0 ? "new_red_k.png" : "new_green_o.gif")"><span class="@Html.Raw(Model.FkOpenShop.isaudit == 0 ? "Black14" : "Gray14")">&nbsp;审核中</span>
+                                    @*<img class="litimg" src="Images/icon/new_green_o.gif"><span class="Gray14">&nbsp;已审核</span>*@
+                                }
+                            }
+                        </div>
+
+					<div class="utc_right_topbox_userbox">
+						<div class="utc_right_topbox_money Red14b">0</div>
+						<span class="Black14">账户余额（元）</span><br>
+					</div>
+
+					<div class="utc_right_topbox_menubox Gray16" style="padding-top: 60px;">
+						<a href="">充值</a>&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;<a href="">提现</a>
+					</div>
+				</div>
+				@if (_orderList!=null&&_orderList.Count>0)
+				{
+					<div class="utc_right_bottombox">
+					<div class="utc_right_bottombox_order Black14">我的订单</div>
+					<table id="table_info">
+						<tbody>
+							<tr class="alt">
+								<td style="width: 140px;"></td>
+								<td></td>
+								<td style="width: 100px;"></td>
+								<td style="width: 140px;"></td>
+								<td style="width: 100px;"></td>
+							</tr>
+							@for (int i = 0; i < _orderList.Count; i++)
+	   {
+		   OrderSearchResult o = _orderList[i];
+							<tr>
+								<td>
+									@Define.ORDER_NUMBER_PERFIX @o.Id<br>
+									<span class="Gray12">@o.OrderTime.ToString(Define.DATE_FORMAT_DAY)</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="~/Images/icon/9_06.png">@CommonEnum.GetDescription((CommonEnum.OrderType)o.OrderType)-@o.Title<br>
+									<span class="Gray12" style="margin-left: 25px;">@o.Contact   @o.Mobile</span>
+								</td>
+								<td class="Red14b">@Html.Raw(o.Price > 0 ? "+" : string.Empty)@o.Price 元</td>
+
+								<td>@CommonEnum.GetDescription(o.Status)</td>
+								<td><a href="@o.DetailUrl">查看详情</a></td>
+							</tr>
+							<tr class="alt">
+								<td colspan="5"></td>
+							</tr>
+	   }
+							<tr>
+								<td>
+									RW242301<br>
+									<span class="Gray12">2015-7-12 12:01</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="Images/icon/9_06.png">任务接单-北京电影文创园咖啡厅200平米装修<br>
+									<span class="Gray12" style="margin-left: 25px;">张先生   182171721112</span>
+								</td>
+								<td class="Red14b">+248880.1元</td>
+
+								<td>待确认协议付款</td>
+								<td><a href="">查看详情</a></td>
+							</tr>
+							<tr class="alt">
+								<td colspan="5"></td>
+							</tr>
+							<tr>
+								<td>
+									RW242301<br>
+									<span class="Gray12">2015-7-12 12:01</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="Images/icon/9_06.png">任务接单-北京电影文创园咖啡厅200平米装修<br>
+									<span class="Gray12" style="margin-left: 25px;">张先生   182171721112</span>
+								</td>
+								<td class="Red14b">+248880.1元</td>
+
+								<td>待确认协议付款</td>
+								<td><a href="">查看详情</a></td>
+							</tr>
+							<tr class="alt">
+								<td colspan="5"></td>
+							</tr>
+							<tr>
+								<td>
+									RW242301<br>
+									<span class="Gray12">2015-7-12 12:01</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="Images/icon/8_03.png">商品销售-新鲜大蒜500斤以上半价<br>
+									<span class="Gray12" style="margin-left: 25px;">张先生   182171721112</span>
+								</td>
+								<td class="Red14b">+248880.1元</td>
+
+								<td>待确认协议付款</td>
+								<td><a href="">查看详情</a></td>
+							</tr>
+							<tr class="alt">
+								<td colspan="5"></td>
+							</tr>
+							<tr>
+								<td>
+									RW242301<br>
+									<span class="Gray12">2015-7-12 12:01</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="Images/icon/9_06.png">任务接单-北京电影文创园咖啡厅200平米装修<br>
+									<span class="Gray12" style="margin-left: 25px;">张先生   182171721112</span>
+								</td>
+								<td class="Red14b">+248880.1元</td>
+
+								<td>待确认协议付款</td>
+								<td><a href="">查看详情</a></td>
+							</tr>
+							<tr class="alt">
+								<td colspan="5"></td>
+							</tr>
+							<tr>
+								<td>
+									RW242301<br>
+									<span class="Gray12">2015-7-12 12:01</span>
+								</td>
+								<td style="text-align: left;">
+									<img style="width: 20px;" src="Images/icon/9_06.png">任务接单-北京电影文创园咖啡厅200平米装修<br>
+									<span class="Gray12" style="margin-left: 25px;">张先生   182171721112</span>
+								</td>
+								<td class="Red14b">+248880.1元</td>
+
+								<td>待确认协议付款</td>
+								<td><a href="">查看详情</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				}
+				<div class="clear"></div>
+			</div>
+
+		</div>
+	</div>
+</div>

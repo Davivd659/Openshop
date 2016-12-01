@@ -1,0 +1,316 @@
+﻿@using System.Collections
+@using YG.SC.DataAccess
+@using YG.SC.Model
+@model YG.SC.OpenShop.Models.HomeIndexModel
+@{
+    ViewBag.Title = "首页--开店ing，一站式开店服务平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var LinkTypes = ViewBag.LinkTypes as List<Link>;
+}
+<!--正文开始-->
+<script src="~/Scripts/lrtk.js"></script>
+
+<div class="warp">
+    <!--	幻灯片开始-->
+    @*<div id="playBox">
+        <div class="pre"></div>
+        <div class="next"></div>
+        <div class="smalltitle">
+            <ul>
+                <li class="thistitle"></li>
+                <li></li>
+            </ul>
+        </div>
+        <ul class="oUlplay">
+            <li><a href="/Mission/index" target="_blank"><img src="~/Images/index_03.jpg" style="width:100%"></a></li>
+            <li><a href="/Mission/index" target="_blank"><img src="~/Images/index-12_02.jpg" style="width:100%"></a></li>
+
+        </ul>
+    </div>*@
+    @*<link rel="stylesheet" href="~/Content/slide.css">
+    <div class="ck-slide">
+        <ul class="ck-slide-wrapper">
+            <li>
+                <a href="/Mission/index" target="_blank"><img src="~/Images/1.jpg" alt=""></a>
+            </li>
+            <li style="display:none">
+                <a href="http://sc.chinaz.com/"><img src="~/Images/2.jpg" alt=""></a>
+            </li>
+
+        </ul>
+        <a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+        <div class="ck-slidebox">
+            <div class="slideWrap">
+                <ul class="dot-wrap">
+                    <li class="current"><em>1</em></li>
+                    <li><em>2</em></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/slide.js"></script>
+    <script>
+        $('.ck-slide').ckSlide({
+            autoPlay: true
+        });
+    </script>*@
+    <link href="~/Content/huandeng.css" rel="stylesheet" />
+
+    <!--幻灯片开始-->
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.banner.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/banner.js"></script>
+    <!--幻灯片结束-->
+
+    <div class="fullwidthbanner-container">
+        <div class="fullwidthbanner">
+            <ul>
+
+                <li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-link="/home/index">
+                    <img src="~/Images/index-banner2_02.jpg" alt="" />
+                </li>
+                <li data-transition="turnoff" data-slotamount="15" data-masterspeed="300" data-link="/Mission/index">
+                    <img src="~/Images/index-banner1_02.jpg" alt="" />
+                </li>
+                <li data-transition="turnoff" data-slotamount="15" data-masterspeed="300" data-link="/Project/Special?id=44">
+                    <img src="~/Images/wenchangyuan.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+    </div>
+   
+    <!--	幻灯片结束-->
+</div>
+
+<div class="warp">
+    <div class="indextagbox">
+        <div class="indextaginfo body-warp">
+            <ul class="ul_indextag">
+                <li style="border-left:1px dotted #fff;">
+                    <a href="/project/search?keys=" target="_blank">
+                        <div class="tagimgbox">
+                            <img src="~/Images/icon/sc1-1_05.png" alt="">
+                        </div>
+                        <div class="taginfobox">
+                            <span class="Write22">寻址</span>
+                            <p><span class="Write14">精品项目<br>海量商铺可供选择</span></p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Mission/index" target="_blank">
+                        <div class="tagimgbox">
+                            <img src="~/Images/icon/sc1-2_07.png" alt="">
+                        </div>
+                        <div class="taginfobox">
+                            <span class="Write22">开店助手</span>
+                            <p><span class="Write14">开店遇难处？<br>发布任务试一试</span></p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/OpenShop/index" target="_blank">
+                        <div class="tagimgbox">
+                            <img src="~/Images/icon/sc1-3_05.png" alt="">
+                        </div>
+                        <div class="taginfobox">
+                            <span class="Write22">开店帮</span>
+                            <p><span class="Write14">百家专业服务提供商<br>助您开店</span></p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ShopBrand/index" target="_blank">
+                        <div class="tagimgbox">
+                            <img src="~/Images/icon/sc1-4_05.png" alt="">
+                        </div>
+                        <div class="taginfobox">
+                            <span class="Write22">品牌街</span>
+                            <p><span class="Write14">加盟大牌云集</span></p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</div>
+<div class="clear"></div>
+
+<div class="warp bgray">
+    <div class="body-warp">
+        <div class="index_yindaobox">
+            <div class="index_yindaoboxtitle"><img src="~/Images/index_201_21.jpg"></div>
+            <div class="index_yindaoboxline"></div>
+            <div class="index_yindaoboxtxt Gray16">一站式开店服务平台</div>
+            <ul class="ul_indexyindao">
+                <li><img src="~/Images/icon/sc-2_07.png"><br>帮寻址</li>
+                <li><img src="~/Images/icon/sc-2_11.png"><br>帮注册</li>
+                <li><img src="~/Images/icon/sc-2_13.png"><br>帮融资</li>
+                <li><img src="~/Images/icon/sc-2_15.png"><br>帮装修</li>
+                <li><img src="~/Images/icon/sc-2_03.png"><br>帮招聘</li>
+                <li><img src="~/Images/icon/sc-2_05.png"><br>帮采买</li>
+                <li><img src="~/Images/icon/sc-2_09.png"><br>帮推广</li>
+            </ul>
+            <div class="clear"></div>
+            <div class="index_yindaoboxtitle" style="padding: 40px 0px;"><img src="~/Images/index_201_25.jpg"></div>
+            <a href="/Mission/index" target="_blank"><div class="index_yindaobutton">立刻体验任务</div></a>
+            <div class="index_yindaoboxtxt"><a href="" target="_blank" style="color: #d72315;">三分钟了解开店ing</a> </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="warp">
+    <div class="body-warp" style="padding-bottom:40px;">
+        
+        <a href="/project/search?keys=" target="_blank"><div class="index_xunzhititle Write28b">寻址</div></a>
+            <div class="index_yindaoboxtxt Gray16">海量项目及商铺资源，总有满足您的一款</div>
+            <ul class="ul_indexad">
+                @if (Model.AdXuanZhi != null)
+                {
+                    foreach (var ad in Model.AdXuanZhi)
+                    {
+                        <li><a href="/Project/index?id=@ad.KeyId" target="_blank"><img src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" alt=""><br></a> @ad.AdWords </li>
+                    }
+                }
+            </ul>
+            <div class="clear"></div>
+</div>
+</div>
+
+<div class="warp bred">
+    <div class="body-warp" style="padding-bottom:40px;">
+
+        <a href="/OpenShop/index" target="_blank">
+            <div class="index_yindaoboxtitle"><img src="~/Images/index_201_33.jpg"></div>
+        </a>
+            <div class="index_yindaoboxline" style="border-bottom: 2px solid #FFF;"></div>
+            <div class="index_yindaoboxtxt Write16">百家服务商来帮您，开店更简单</div>
+            <ul class="ul_indexosad">
+                @if (Model.ad_kaidian != null)
+                {
+                    foreach (var ad in Model.ad_kaidian)
+                    {
+                        <li><a href="/OpenShop/OpenShop?openShopId==@ad.KeyId" target="_blank"><img src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" alt=""><br></a> @ad.AdWords </li>
+                    }
+                }
+            </ul>
+            <div class="clear"></div>
+
+</div>
+</div>
+
+<div class="warp">
+    <div class="body-warp" style="padding-bottom:40px;">
+        <a href="/ShopBrand/index" target="_blank">
+            <div class="index_xunzhititle Write28b">品牌街</div>
+        </a>
+            <div class="index_yindaoboxtxt Gray16">品牌加盟绿色通道</div>
+            <ul class="ul_indexad">
+                @*@if (Model.AdBrand != null)
+                {
+                    foreach (var ad in Model.AdBrand)
+                    {
+                        <li><a href="/ShopBrand/brand?shopBrandId=@ad.KeyId" target="_blank"><img src="@string.Format("http://www.kaidianing.com{0}", ad.AdPic)" alt=""><br></a> @ad.AdWords </li>
+                    }
+                }*@
+                <li><img src="~/Images/index_201_37.jpg" alt=""><br>银河SOHO </li>
+                <li><img src="~/Images/index-tupian_03.jpg" alt=""><br>蓝色港湾 </li>
+                <li><img src="~/Images/index-tupian_05.jpg" alt=""><br>北京电影学院文创园 </li>
+                <li><img src="~/Images/index-tupian_07.jpg" alt=""><br>尖沙咀 </li>
+            </ul>
+            <div class="clear"></div>
+</div>
+</div>
+<!--正文结束-->
+<!-- 合作 -->
+<div class="warp index_hezuo">
+    <div class="warp-line">
+        <div class="hezuo_title">合作单位</div>
+        <div class="hezuobox">
+            <div class="hezuo_head">
+                <span class="on spnlinktype" linktypekey="@((int)LinkType.政府合作)"> @LinkType.政府合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.媒体合作)"> @LinkType.媒体合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.开发商合作)"><span> @LinkType.开发商合作</span></span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.代理商合作)"> @LinkType.代理商合作</span>
+                <span class="spnlinktype" linktypekey="@((int)LinkType.网站合作)"> @LinkType.网站合作</span>
+            </div>
+            <div class="hezuo_list">
+                @if (LinkTypes != null && LinkTypes.Count > 0)
+                {
+                    foreach (var item in LinkTypes)
+                    {
+                        if (item.LinkType == 1)
+                        {
+                            <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:block">@item.NAME</a>
+                        }
+                        else
+                        {
+                            <a href="@item.URL" class="linktypereuslt" typekey="@item.LinkType" style="display:none">@item.NAME</a>
+                        }
+                    }
+                }
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".spnlinktype").click(function () {
+            $(this).attr("class", "on spnlinktype").siblings().attr("class", "spnlinktype");
+            var linktype = $(this).attr("linkTypeKey");
+            $(".linktypereuslt").each(function () {
+                if ($(this).attr("typekey") == linktype) {
+                    $(this).css("display", "inline");
+                } else {
+                    $(this).css("display", "none");
+                }
+
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+
+    /*
+     * 照片墙
+     */
+    (function () {
+        $('.wall-pace').delegate('li', 'mouseenter', function () {
+            var className = $(this)[0].className;
+            if (className == "rect-x" || className == "rect-k" || className.indexOf("sq-lg") > -1) {
+                var dlMove = className == "sq-lg" ? "156px" : "150px";
+
+                $(this).find('dl').stop().animate({
+                    top: dlMove
+                }, 200)
+                $(this).find('img').stop().animate({
+                    top: "-5%"
+                }, 200)
+            }
+
+        })
+        .delegate('li', 'mouseleave', function () {
+            var className = $(this)[0].className;
+            if (className == "rect-x" || className == "rect-k" || className.indexOf("sq-lg") > -1) {
+                $(this).find('dl').stop().animate({
+                    top: '100%'
+                }, 200)
+                $(this).find('img').stop().animate({
+                    top: '0'
+                }, 200)
+            }
+        });
+    })();
+
+</script>
+<script src="~/Scripts/Views/home/home.js"></script>

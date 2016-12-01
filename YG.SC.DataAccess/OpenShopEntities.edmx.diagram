@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8528ad9bdcac46018af82c99c4ba8f5b" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="OpenShopModel.CustomerGroupOn" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.Link" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.OpenShopPhoto" Width="1.5" PointX="6" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.OpenShopShopProject" Width="2.25" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ProjectPhoto" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ProjectService" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopAttributes" Width="1.5" PointX="3.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopAttributeValues" Width="2.875" PointX="3.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBasAcrRange" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBasOpeningTime" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBasPriceRentRange" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBasPriceSaleRange" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBrand" Width="1.5" PointX="8.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBrandAttributeValues" Width="1.5" PointX="11" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBrandBranch" Width="1.5" PointX="11" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopBrandPhoto" Width="1.5" PointX="11" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopProject" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopProjectMain" Width="1.5" PointX="2.75" PointY="19" IsExpanded="true" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopS__ShopP__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK_ProjectPhoto_ShopProject_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK_ProjectService_ShopProject" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopBrand__Attri__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopBrand__Attri__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopBrand__Brand__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopBrand__Brand__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopBrand__Brand__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="OpenShopModel.FK_ShopProjectMain_ShopProject" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OpenShopModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OpenShopModel.ApplyActivity" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopAdPosition" Width="1.5" PointX="13.75" PointY="9.75" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopAdPositionDetails" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopDemo" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="OpenShopModel.JobMinute" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopPostings" Width="1.5" PointX="16.375" PointY="3.75" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopRoom" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="OpenShopModel.OpenShop" Width="2.25" PointX="0.5" PointY="22.75" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopP__OpenS__1BC821DD" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopS__OpenS__22751F6C" />
+        <EntityTypeShape EntityType="OpenShopModel.ShopProjectAttributesValues" Width="1.5" PointX="8" PointY="14.5" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopProje__AttrI__08B54D69" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopProje__AttrV__09A971A2" />
+        <AssociationConnector Association="OpenShopModel.FK__ShopProje__ShopP__0A9D95DB" />
+        <EntityTypeShape EntityType="OpenShopModel.OpenShopAttributeValues" Width="1.5" PointX="6" PointY="18.625" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopA__OpenS__4C6B5938" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopA__Attri__4D5F7D71" />
+        <AssociationConnector Association="OpenShopModel.FK__OpenShopA__Attri__4E53A1AA" />
+        <EntityTypeShape EntityType="OpenShopModel.ApplyBrand" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="OpenShopModel.FK_ApplyBrand_ShopBrand" />
+        <EntityTypeShape EntityType="OpenShopModel.SmsLog" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OpenShopModel.CustomerLog" Width="1.5" PointX="16.375" PointY="8.75" />
+        <EntityTypeShape EntityType="OpenShopModel.C_File" Width="1.5" PointX="8.25" PointY="28.375" />
+        <EntityTypeShape EntityType="OpenShopModel.C_Object" Width="1.5" PointX="16.375" PointY="28.875" />
+        <EntityTypeShape EntityType="OpenShopModel.CustomerDiscipline" Width="1.5" PointX="12.375" PointY="17.75" />
+        <EntityTypeShape EntityType="OpenShopModel.G_Category" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OpenShopModel.G_Goods" Width="1.5" PointX="12.75" PointY="31.625" />
+        <EntityTypeShape EntityType="OpenShopModel.G_Name" Width="1.5" PointX="11.375" PointY="29.125" />
+        <EntityTypeShape EntityType="OpenShopModel.G_NameCategoryMapping" Width="1.5" PointX="18.375" PointY="6.75" />
+        <EntityTypeShape EntityType="OpenShopModel.G_Pricing" Width="1.5" PointX="18.375" PointY="9.75" />
+        <EntityTypeShape EntityType="OpenShopModel.O_Cart" Width="1.5" PointX="10.625" PointY="36.25" />
+        <EntityTypeShape EntityType="OpenShopModel.O_CartGoods" Width="1.5" PointX="13.75" PointY="36.25" />
+        <EntityTypeShape EntityType="OpenShopModel.O_Order" Width="1.5" PointX="8.625" PointY="34.75" />
+        <EntityTypeShape EntityType="OpenShopModel.O_SalerBuyerMapping" Width="1.5" PointX="12.625" PointY="38.875" />
+        <EntityTypeShape EntityType="OpenShopModel.P_Account" Width="1.5" PointX="20.375" PointY="6.75" />
+        <EntityTypeShape EntityType="OpenShopModel.P_Trade" Width="1.5" PointX="16.375" PointY="20.75" />
+        <EntityTypeShape EntityType="OpenShopModel.M_Contract" Width="1.5" PointX="10.375" PointY="21.75" />
+        <EntityTypeShape EntityType="OpenShopModel.M_Period" Width="1.5" PointX="18.375" PointY="21.75" />
+        <EntityTypeShape EntityType="OpenShopModel.M_Mission" Width="1.875" PointX="25.5" PointY="10.75" />
+        <AssociationConnector Association="OpenShopModel.CustomerM_Mission" />
+        <AssociationConnector Association="OpenShopModel.CustomerM_Mission1" />
+        <AssociationConnector Association="OpenShopModel.CustomerM_Mission2" />
+        <EntityTypeShape EntityType="OpenShopModel.S_Message" Width="1.75" PointX="21.375" PointY="18.75" />
+        <AssociationConnector Association="OpenShopModel.CustomerS_Message" />
+        <AssociationConnector Association="OpenShopModel.CustomerS_Message1" />
+        <AssociationConnector Association="OpenShopModel.M_MissionM_Period" />
+        <AssociationConnector Association="OpenShopModel.OpenShopShopAttributeValues" />
+        <AssociationConnector Association="OpenShopModel.CustomerO_Order" />
+        <AssociationConnector Association="OpenShopModel.CustomerO_Order1" />
+        <AssociationConnector Association="OpenShopModel.ShopAttributeValuesM_Mission" />
+        <AssociationConnector Association="OpenShopModel.OpenShopCustomer" />
+        <EntityTypeShape EntityType="OpenShopModel.Grouppurchase" Width="1.5" PointX="0.625" PointY="17.625" />
+        <AssociationConnector Association="OpenShopModel.GrouppurchaseApplyActivity" />
+        <AssociationConnector Association="OpenShopModel.C_ObjectC_Object" />
+        <AssociationConnector Association="OpenShopModel.C_ObjectG_Name" />
+        <AssociationConnector Association="OpenShopModel.C_FileG_Name" />
+        <EntityTypeShape EntityType="OpenShopModel.JoinProject" Width="1.5" PointX="19.5" PointY="0.75" />
+        <AssociationConnector Association="OpenShopModel.ShopProjectGrouppurchase" />
+        <EntityTypeShape EntityType="OpenShopModel.hotarea" Width="1.5" PointX="0.5" PointY="33.875" />
+        <AssociationConnector Association="OpenShopModel.hotareaOpenShop" />
+        <AssociationConnector Association="OpenShopModel.C_ObjectOpenShop" />
+        <AssociationConnector Association="OpenShopModel.C_ObjectG_Goods" />
+        <AssociationConnector Association="OpenShopModel.C_FileG_Goods" />
+        <AssociationConnector Association="OpenShopModel.hotareahotarea" />
+        <AssociationConnector Association="OpenShopModel.O_CartO_CartGoods" />
+        <AssociationConnector Association="OpenShopModel.C_ObjectO_CartGoods" />
+        <AssociationConnector Association="OpenShopModel.O_CartO_Order" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

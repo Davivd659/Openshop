@@ -1,0 +1,106 @@
+﻿@using YG.SC.DataAccess
+@model YG.SC.DataAccess.ShopRoom
+@{
+    ViewBag.Title = "商铺-" + Model.RName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta name="keywords" content="开店ing,需求发布，开店网，润嘉众合，开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall" />
+<meta name="description" content="开店ing定位为服务于线下创业者的一站式服务整合平台,在这里你可以搜索开餐饮，开超市，开零售，开商铺，写字楼出租，shopping mall，商场招租，写字楼出租，写字楼出售，商铺装修，商铺家具，餐饮装修各种相关需求" />
+<link href="~/Content/room.css" rel="stylesheet" />
+<div style=" background-color: #e4e4e4; width:100%">
+    <div class="room-team">
+        <div class="pro-header">
+            <h1><a href="/room/search">商铺</a>>@Model.RName</h1>
+            <div class="Brokers">
+                <div class="Brokers_l">
+                    <div class="certleft">
+                        <img style="padding-left:5px;" src="~/Images/user.png" width="94" height="94" /><br />
+                        <p><img src="~/Images/jsr.png" />   <span>经纪人： 张扬</span></p>
+                    </div>
+                    <div class="cert">
+                        <h1>@Model.RName</h1>
+                        <p>
+                            <span>@Model.AddTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</span><br />
+                            <div class="certxinxi">
+                                <img src="~/Images/yanzheng.png" /><em>已认证 <!--@Html.Raw(Model.isCert == 1 ? "已认证" : "未认证")--></em>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="Brokers_r">
+                    <span>近百客服人员为您认证商铺房源</span><br />
+                    </span><br />
+                    <div style="margin:17px auto; width:100%;">
+                        <div style="text-align:center;">
+                            <img width="119" height="116" src="~/Images/erweima.jpg" />
+                            <p>手机扫一扫<br />微信轻松找商铺</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="room_main">
+    <div class="room-team">
+        <div class="pro-header">
+            <div class="room_center">
+                <div class="room_w">
+                    <div class="room_info">
+                        <ul class="pro-feature">
+                            <li>
+                                <em> 出租：</em><p><img src="~/Images/icon/chuzu.png" /><span>@Model.price</span> 元/月</p>
+                            </li>
+                            <li>
+                                <em>面积：</em><p><span>@Model.square M<sup>2</sup></span></p>
+                            </li>
+                            <li>
+                                <em> 区域：</em><p>@Model.district  @Model.district-@Model.hotarea</p>
+                            </li>
+                            <li>
+                                <em>地址：</em><p><img src="~/Images/icon/dizhi.png" /> @Model.address</p>
+                            </li>
+                            <li>
+                                <em>来源：</em><p><img src="~/Images/icon/laiyuan.png" />@Html.Raw(Model.source.Length > 50 ? Model.source.Substring(0, 50) + "..." : Model.source)</p>
+                            </li>
+                        </ul>
+                        <div class="Customer"><img src="~/Images/icon/dianhua.png" height="17" width="17" /> @Model.Contacts : @Model.Mobile</div>
+                    </div>
+                    <div class="room_ms">
+                        <h3>
+                            房源描述
+                        </h3>
+                        <div class="room_xj">
+                            <p>@Model.Rinfo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_l">
+                    <h2>附近同类商铺</h2>
+                    <ul>
+                        @{
+                            var updata = (Tuple<YG.SC.DataAccess.ShopRoom[], YG.SC.Model.PagerEntity>)ViewBag.searchResult;
+                            if (updata != null && updata.Item1.Count() > 0)
+                            {
+                                for (int i = 0; i < updata.Item1.Count(); i++)
+                                {
+                                    var proj = updata.Item1[i];
+                                    <li>
+                                        <a href="/room/room?id=@proj.Id">@Html.Raw(proj.RName.Length > 14 ? proj.RName.Substring(0, 14) : proj.RName)</a>
+                                    </li>
+                                }
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+</div>

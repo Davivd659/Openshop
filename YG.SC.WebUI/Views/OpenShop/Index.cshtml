@@ -1,0 +1,180 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@using YG.SC.WebUI.Enum
+@{
+    ViewBag.Title = "开店帮列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tuple = Model as Tuple<OpenShop[], PagerEntity>;
+    var idx = tuple.Item2.Idx;
+    var selRecsts = ViewBag.SelRecsts as string;
+}
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        $("#selRecsts").val(@selRecsts);
+        //删除
+        function Delete(id, state) {
+            var con = true;
+            if (state == "delete") {
+                con = confirm("确定删除？");
+            }
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/OpenShop/Delete",
+                    data: {
+                        Id: id,
+                        state: state
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+        //有效
+        function Update(id) {
+
+            //var   con = confirm("确定删除？");
+            var con = true;
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/OpenShop/Update",
+                    data: {
+                        Id: id
+                    },
+                    success: function (data) {
+                        window.location.reload();
+
+                    }
+                });
+
+            }
+        }
+    </script>
+}
+
+<div class="search-criteria">
+    <form class="form-inline" role="form" action="/ShopBrand/Index">
+        <div class="form-group">
+            <label class="control-label">开店帮名称</label>
+            <input type="text" name="txtName" class="form-control input-sm" />
+        </div>
+        @*<div class="form-group">
+            <label class="control-label">项目名称</label>
+            <select class="form-control" name="ShopProjectId" id="ShopProjectId">
+                <option value="">全部</option>
+                @foreach (var item in listShopProject)
+                {
+                    <option value="@item.Id">@item.NAME</option>
+                }
+            </select>
+        </div>*@
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="search-action">
+
+    <a href="/OpenShop/Add" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>添加</a>
+
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>开店帮名称</th>
+@*                    <th>品牌介绍</th>*@
+                    <th>开店帮类型</th>
+                    <th>开店帮Logo</th>
+                    <th>网址</th>
+                    <th>视频网址</th>
+                    <th>是否通过审核</th>
+                   
+                    <th>图片</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in tuple.Item1)
+                {
+                    <tr>
+                        <td class="text-center w50">@idx</td>
+                        <td class="text-center">
+                            @item.Name
+                        </td>
+                      @*  <td class="text-center" style="width: 200px">
+                             <a href="/OpenShop/EditRmark?id=@item.Id">@(item.Rmark.Length>100?(item.Rmark.Substring(0,100)+"...."):item.Rmark)</a><span title="@item.Rmark">@(item.Rmark.Length>100?(item.Rmark.Substring(0,100)+"...."):item.Rmark)</span>
+                        </td> *@
+                        <td class="text-center">
+                        @item.FkType.ValueStr
+                        </td>
+                        <td class="text-center">
+                       <img height="100px" width="100px" src="@item.Logo" />
+                        </td>
+                        <td class="text-center">
+                            @item.Url
+                        </td>
+                        <td class="text-center">
+                            @item.VidoUrl
+                        </td>
+              
+                        <td class="text-center">
+                            @(item.isaudit == 1 ? "已审核" : "审核中")
+                        </td>
+                 
+                        <td class="text-center">
+                            <a href="/OpenShop/OpenShopPhoto?Id=@item.Id">图片管理</a>
+                        </td>
+                        <td class="text-center">
+                         
+                            <a href="/OpenShop/Edit/@item.Id">编辑</a>
+                                <a href="#" id="delete" onclick="Delete(@item.Id,'delete')">删除</a>
+                            <a href="/OpenShop/Item/@item.Id">查看</a>
+                                @if (item.Recsts ==0)
+                                {
+                                <a href="#" id="delete" onclick="Update(@item.Id)">有效</a>
+                                }
+                                else
+                                {
+                                <a href="#" id="delete" onclick="Delete(@item.Id,'invalid')">无效</a>
+                                }
+                         
+                        </td>
+                    </tr>
+                            idx++;
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        @Html.Partial("_LayoutPager", tuple.Item2)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+</div>
+

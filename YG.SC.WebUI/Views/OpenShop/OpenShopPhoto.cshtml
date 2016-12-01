@@ -1,0 +1,160 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.Model
+@{
+    ViewBag.Title = "品牌图片列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tuple = Model as Tuple<OpenShopPhoto[], PagerEntity>;
+    var idx = tuple.Item2.Idx;
+   // var selRecsts = ViewBag.SelRecsts as string;
+}
+@section styles{
+    <style>
+        .search-action {
+            padding-top: 10px;
+        }
+
+        .glyphicon {
+            margin-right: .5em;
+        }
+
+        form label.control-label {
+            padding-left: 5px;
+        }
+    </style>
+}
+@section Scripts {
+    <script>
+        //$("#selRecsts").val(selRecsts);
+
+        function Delete(id, state) {
+            var con = true;
+            if (state == "delete") {
+                con = confirm("确定删除此店铺？");
+            }
+
+            if (con) {
+                $.ajax({
+                    type: "post",
+                    url: "/OpenShop/PhotoDelete",
+                    data: {
+                        Id: id,
+                        state: state
+                    },
+                    success: function (data) {
+                            window.location.reload();
+         
+                    }
+                });
+
+            }
+        }
+        //修改为有效
+        function Update(id) {
+
+            $.ajax({
+                type: "post",
+                url: "/OpenShop/PhotoUpdate",
+                data: {
+                    Id: id
+                },
+                success: function (data) {
+                        window.location.reload();
+         
+                }
+            });
+
+        }
+
+    </script>
+}
+
+<div class="search-criteria">
+    <form class="form-inline" role="form" action="/OpenShop/ShopPhoto">
+        <div class="form-group">
+            <label class="control-label">开店帮名称</label>
+            <input type="text" name="txtName" class="form-control input-sm" value="@ViewBag.txtSearchCategoryName" />
+        </div>
+  @*      <div class="form-group">
+            <label class="control-label">是否有效</label>
+            <select class="form-control" name="selRecsts" id="selRecsts">
+                <option value="">全部</option>
+                <option value="0">有效</option>
+                <option value="1">无效</option>
+            </select>
+        </div>*@
+        <div class="form-group">
+            <button type="submit" role="search" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </form>
+</div>
+<div class="search-action">
+
+    <a href="/OpenShop/PhotoAdd" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>添加</a>
+
+</div>
+<div class="table-responsive" style="margin-top: 10px;">
+    <div class="search-result-table">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>开店帮名称</th>
+                    <th>开店帮图片</th>
+                    <th>开店帮缩略图</th>
+                    <th>开店帮正方图</th>
+                    <th>开店帮长方图</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in tuple.Item1)
+                {
+                    <tr>
+                        <td class="text-center w50">@idx</td>
+                        <td class="text-center">
+                            @item.OpenShop.Name
+                        </td>
+                        <td class="text-center">
+                           
+                            <img  height="100px" width="100px" src="@item.Photo"/>
+                        </td>
+                        <td class="text-center">
+                             <img  height="50px" width="50px" src="@item.PhotoSmall"/>
+                        </td>
+                        <td class="text-center">
+                             <img  height="80px" width="80px" src="@item.PhotoSquare"/>
+                        </td>
+                        <td class="text-center">
+                             <img  height="60px" width="80px" src="@item.PhotoRectangle"/>
+                        </td>
+                        <td class="text-center">
+
+                            <a href="/OpenShop/PhotoEdit/@item.Id">编辑</a>
+                            <a href="#" id="delete" onclick="Delete(@item.Id,'delete')">删除</a>
+                            @if (item.Recsts != 1)
+                            {
+                                <a href="#" id="delete" onclick="Update(@item.Id)">有效</a>
+                            }
+                            else
+                            {
+                                <a href="#" id="delete" onclick="Delete(@item.Id,'invalid')">无效</a>
+                            }
+
+
+                        </td>
+                    </tr>
+                            idx++;
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        @Html.Partial("_LayoutPager", tuple.Item2)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+</div>

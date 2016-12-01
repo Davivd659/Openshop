@@ -1,0 +1,193 @@
+﻿@using YG.SC.DataAccess
+@using YG.SC.OpenShop;
+@using System.Collections.Generic
+@using YG.SC.Common.AttributeExtention
+@model YG.SC.OpenShop.Models.Brand
+
+@{
+    ViewBag.Title = ViewBag.FunctionName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var AttriButes = ViewBag.AttriButes as List<YG.SC.DataAccess.ShopAttributeValues>;
+}
+<link href="http://www.kaidianing.com:8090/Content/KindEditor/themes/default/default.css" rel="stylesheet" />
+<link href="http://www.kaidianing.com:8090/Content/KindEditor/plugins/code/prettify.css" rel="stylesheet" />
+<script src="http://www.kaidianing.com:8090/Content/KindEditor/kindeditor.js"></script>
+<script src="http://www.kaidianing.com:8090/Content/KindEditor/lang/zh_CN.js"></script>
+<script src="http://www.kaidianing.com:8090/Content/KindEditor/plugins/code/prettify.js"></script>
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 128px;
+        }
+
+        #img_logoimage {
+            clear: left;
+            display: block;
+            margin-top: 40px;
+            margin-left: 128px;
+        }
+
+        form div span span {
+            color: red;
+        }
+
+        .cbl tbody tr td input {
+            margin-left: 20px;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/Scripts/select2.min.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selAttribute").select2();
+
+    </script>
+}
+@*富文本*@
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('#Introduce', {
+            cssPath: '../Content/KindEditor/plugins/code/prettify.css',
+            uploadJson: '/ShopBrand/ProcessFile',
+            fileManagerJson: '/ShopBrand/ProcessFileManger',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+        <div class="utc_right">
+            <div>@ViewBag.FunctionName</div>
+            <div class="utc_right_uc">
+                @using (Html.BeginForm("BrandEdit", "Customer", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    <div class="utc_right_uc_info">
+                        <table border="0" class="uct_table">
+                        @if (!((string)@ViewBag.FunctionName).Contains("申请"))
+                        {
+                        <tr>
+                        <td colspan="2">
+                            <a href="/Customer/OpenShopPhoto/@Model.Id">图片管理</a>
+
+                        </td>
+                        </tr>
+                        }
+                            <tr><td>@Html.LabelFor(m => m.Name)</td><td>@Html.TextBoxFor(m => m.Name, new {@class="form-control" })@Html.ValidationMessageFor(m => m.Name)</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.Format)</td>
+                                <td>
+                                    @foreach (var item in AttriButes)
+                                    {
+                                        var b = true;
+                                        foreach (var i in Model.ShopBrandAttributeValues)
+                                        {
+                                            if (item.Id == i.AttributeValuesId)
+                                            {
+                                                b = false;
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="selAttribute" id="@item.AttributeId-@item.Id" value="@item.AttributeId-@item.Id" checked="checked" />&nbsp;&nbsp;<label for="@item.AttributeId-@item.Id">@item.ValueStr</label></span>
+                                            }
+                                        }
+                                        if (b)
+                                        {
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="selAttribute" id="@item.AttributeId-@item.Id" value="@item.AttributeId-@item.Id" />&nbsp;&nbsp;<label for="@item.AttributeId-@item.Id">@item.ValueStr</label></span>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.Logo)</td>
+                                <td>
+                                    @if (@Model != null && !string.IsNullOrEmpty(@Model.Logo))
+                                    {
+                                        <input accept="image/png,image/jpeg" type="file" name="Logo" value="@Model.Logo" />
+                                        <img id="img_logoimage" width="150" height="150" class="img-thumbnail" alt="@Model.Name" src="@Model.Logo" />
+                                    }
+                                    else
+                                    {
+                                        <input accept="image/png,image/jpeg" type="file" name="Logo" />
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.QRCode)</td>
+                                <td>
+                                    @if (@Model != null && !string.IsNullOrEmpty(Model.QRCode))
+                                    {
+                                        <input accept="image/png,image/jpeg" type="file" name="QRCode" value="@Model.QRCode" />
+                                        <img id="img_logoimage" width="150" height="150" class="img-thumbnail" alt="@Model.Name" src="@Model.QRCode">
+                                    }
+                                    else
+                                    {
+                                        <input accept="image/png,image/jpeg" type="file" name="QRCode" />
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.WebUrl)</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.WebUrl, new {@class="form-control"})
+                                    @Html.ValidationMessageFor(m => m.WebUrl)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.VideoUrl)</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.VideoUrl, new {@class="form-control"})
+                                    @Html.ValidationMessageFor(m => m.VideoUrl)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.IsAllowJoin)</td>
+                                <td>
+                                    @Html.CheckBoxFor(m => m.IsAllowJoin)
+                                    @Html.ValidationMessageFor(m => m.IsAllowJoin)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.IsValid)</td>
+                                <td>
+                                    @Html.CheckBoxFor(m => m.IsValid)
+                                    @Html.ValidationMessageFor(m => m.IsValid)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.Introduce)</td>
+                                <td>
+                                    <textarea id="Introduce" name="Introduce" cols="100" rows="8" style="width: 700px; height: 200px; visibility: hidden;" name="data">
+                                        @Model.Introduce
+                                    </textarea>
+                                </td>
+                            </tr>
+                            <tr><td><button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">@ViewBag.FunctionName</button></td></tr>
+                        </table>
+                    </div>
+                    <div class="clear"></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

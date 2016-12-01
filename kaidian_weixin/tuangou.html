@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="location" content="province=北京;city=北京;coord=116.39564503788,39.92998577808">
+		<link rel="stylesheet" type="text/css" href="css/zxd.css">
+		<link rel="stylesheet" type="text/css" href="css/xzx.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+
+		<title>寻址团购 - 开店ing</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		</head>
+
+	<body onselectstart="return false">
+		
+		<a style="display: none;" href="#zxd-bottom" class="zxd-apply point_float" data-point="2_4_1_2">
+			<i class="zxd-apply-icon"></i> 报名看房团
+		</a>
+
+		<section id="zxsj-wrap">
+
+			<figure class="zxsj-banner">
+				<img src="img/tuangou_01.jpg">
+			</figure>
+
+			<div id="zxd-bottom" class="zxd-bottom">
+				<div class="zxd-info" style="padding: 25px 0 25px 0;">
+					<p>该项目已有 <span id="apply_num">2557</span> 人报名</p>
+				</div>
+				<form class="zxd-form sjbj-form" id="form_zx" action="/zb/post">
+					<input id="zxd-name" name="chenghu" placeholder="您的称呼" type="text">
+					<input id="zxd-tel" name="phone" placeholder="联系方式" pattern="1[3|4|5|7|8|][0-9]{9}" type="tel">
+					<p class="zxd-form-tip">* 您输入的手机号有误</p>
+					
+					<input id="zxd-form-submit" value="报名看房团" type="submit">
+					<div class="mfsj-info"><i class="icon-info"></i>
+						<div>我们承诺：开店ing提供该项服务，<em>绝不产生任何隐藏消费</em>，为了您的利益以及我们的口碑，您的隐私将被严格保密。</div>
+					</div>
+				</form>
+
+			</div>
+
+			<section class="zxsj-introduces" id="zxsjIntroducesNew" style="padding:0;border:0;">
+				<figure class="zxsj-introduce zxsj-p1">
+					<img style="display: block;" src="img/tuangou_03.jpg"
+					class="lazy" data-original="img/tuangou_03.jpg">
+				</figure>
+				<figure class="zxsj-introduce zxsj-p2">
+					<img style="display: block;" src="img/tuangou_04.jpg"
+					class="lazy" data-original="img/tuangou_04.jpg">
+				</figure>
+				<figure class="zxsj-introduce zxsj-p3">
+					<img style="display: block;" src="img/tuangou_05.jpg"
+					class="lazy" data-original="img/tuangou_05.jpg">
+				</figure>
+				<figure class="zxsj-introduce zxsj-p4">
+					<img style="display: block;" src="img/tuangou_06.jpg"
+					class="lazy" data-original="img/tuangou_06.jpg">
+				</figure>
+				<figure class="zxsj-introduce zxsj-p6">
+					<img style="display: block;" src="img/tuangou_07.jpg"
+					class="lazy" data-original="img/tuangou_07.jpg">
+				</figure>
+				<figure class="zxsj-introduce zxsj-p5">
+					<img style="display: block;" src="img/tuangou_08.jpg"
+					class="lazy" data-original="img/tuangou_08.jpg">
+				</figure>
+			</section>
+
+		</section>
+		<div class="zxd-dialog">
+			<p class="zxd-dialog-title">恭喜您，报名成功！</p>
+			<p class="zxd-dialog-info">开店ing客服将在48小时内与您电话联系，审核信息真实性，以便安排服务。</p>
+			
+			<a href="#" id="zxd-dialog-ok" class="zxd-dialog-btn">好的</a>
+		</div>
+		
+		<!--输入框验证js-->
+		<script type="text/javascript" src="js/zxd.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+
+		<div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+			<div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+				<div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+					<div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+					<div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+						<div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<div class="uct_left">
+    <div class="utc_nav">
+        <div class="utc_title"></div>
+        <ul class="utc_nav_ul utc_nav_ul_one ">
+            <li class="utc_nav_ul_on"><a href="/Customer/Index?CustomerId=@YG.SC.WeiXin.UserContext.Current.Id">个人中心 </a></li>
+            <li><a href="/Customer/Focus?CustomerId=@TempData["LayoutUserId"]">我的关注 </a></li>
+            <li><a href="/Customer/Tuan?CustomerId=@TempData["LayoutUserId"]">我的团购 </a></li>
+        </ul>
+    </div>
+
+    <div class="utc_nav">
+        <ul class="utc_nav_ul">
+            <li><a href="#">我的资料 </a></li>
+            <li class="utc_nav_ul_on"><a href="#" class="utc_nav_ul_on">修改密码 </a></li>
+        </ul>
+    </div>
+
+</div>

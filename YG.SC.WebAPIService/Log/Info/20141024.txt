@@ -1,0 +1,361 @@
+2014-10-24 14:32:35,222 [8] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:32:35
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/List?userToken=123
+
+RequestBody£º["123"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:32:35***Successful***
+
+
+
+2014-10-24 14:35:29,596 [18] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:35:29
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:35:29***Successful***
+
+
+
+2014-10-24 14:40:09,308 [11] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:40:09
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:40:09***Successful***
+
+
+
+2014-10-24 14:53:03,181 [13] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:03
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:03***Successful***
+
+
+
+2014-10-24 14:53:14,940 [19] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:14
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:14***Successful***
+
+
+
+2014-10-24 14:53:15,503 [20] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,527 [21] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,547 [19] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,605 [11] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,617 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,664 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,689 [21] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,738 [13] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,756 [20] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:15,802 [6] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:15
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:15***Successful***
+
+
+
+2014-10-24 14:53:24,785 [11] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:24
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:24***Successful***
+
+
+
+2014-10-24 14:53:55,267 [19] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:53:55
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:53:55***Successful***
+
+
+
+2014-10-24 14:54:43,162 [9] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:54:43
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:54:43***Successful***
+
+
+
+2014-10-24 14:55:46,988 [11] INFO  Info 
+========================================================================
+Start at: 2014/10/24 14:55:46
+
+--------Traget & Properties--------
+CalledObject: BaseController
+
+--------Method & Parameters--------
+CalledMethod: Initialize
+RequestUrl£ºhttp://localhost:5886/api/ANDROID/Order/Detail/?usertoken=0eb39923841b47e68639d24f49cb6c31&ordernumber=1410170020
+
+RequestBody£º["0eb39923841b47e68639d24f49cb6c31","1410170020"]
+--------Results & Parameters--------
+Return: NULL
+
+End at: 2014/10/24 14:55:46***Successful***
+
+
+

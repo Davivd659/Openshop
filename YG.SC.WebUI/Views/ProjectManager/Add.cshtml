@@ -1,0 +1,260 @@
+﻿@using System.Collections.Concurrent
+@using System.Web.UI.WebControls
+@using YG.SC.Common.AttributeExtention
+@model YG.SC.Model.Project.ProjectViewModel
+@{
+    ViewBag.Title = "添加项目";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <style>
+        .form-horizontal .form-control {
+            width: 200px;
+            float: left;
+        }
+
+        .col-sm-1 {
+            min-width: 120px;
+        }
+
+        #create-warning {
+            display: none;
+        }
+    </style>
+}
+@section Scripts {
+    <link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script>
+        function initShowError() {
+            var warnEle = $("#create-warning");
+            if (warnEle.html().length > 0) warnEle.show();
+            else warnEle.hide();
+        }
+        initShowError();
+        $("#selSkuGoods").select2({ maximumSelectionSize: 1 });
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">添加项目</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/ProjectManager/AddProject" id="addform" method="POST" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="create-warning">@TempData["ERROR"]</div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProjectFeature, new {@class = "col-sm-1 control-label"})
+                @Html.TextAreaFor(m => m.ProjectFeature, new {@class = "form-control", @style = "width:600px", @required = "required"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProjectAdvantage, new {@class = "col-sm-1 control-label"})
+                @Html.TextAreaFor(m => m.ProjectAdvantage, new {@class = "form-control", @style = "width:600px", @required = "required"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Listings, new { @class = "col-sm-1 control-label" })
+                @Html.TextAreaFor(m => m.Listings, new { @class = "form-control", @style = "width:600px", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressLine, new {@class = "col-sm-1 control-label"})
+                @Html.TextAreaFor(m => m.AddressLine, new {@class = "form-control", @style = "width:600px", @required = "required"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TuanDuiInfo, new { @class = "col-sm-1 control-label" })
+                @Html.TextAreaFor(m => m.TuanDuiInfo, new { @class = "form-control", @style = "width:600px", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProjectIntro, new { @class = "col-sm-1 control-label" })
+                @Html.TextAreaFor(m => m.ProjectIntro, new { @class = "form-control", @style = "width:600px", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Trade, new { @class = "col-sm-1 control-label" })
+                @Html.CheckBoxListFor(m => m.Trade, "行业")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Region, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.Region, "区域")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TradingArea, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.TradingArea, "商圈", null, RepeatDirection.Vertical)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Metro, new { @class = "col-sm-1 control-label" })
+                @Html.CheckBoxListFor(m => m.Metro, "地铁")
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.CircleLine, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.CircleLine, "环线", null, RepeatDirection.Horizontal)
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(m => m.TypeOfOperation, new { @class = "col-sm-1 control-label" })
+                @Html.CheckBoxListFor(m => m.TypeOfOperation, "物业类型")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.SalePrice, new {@class = "col-sm-1 control-label"})
+                @*@Html.RadioButtonListFor(m => m.SalePrice, "售价（元/㎡）", null, RepeatDirection.Horizontal)*@
+                @Html.TextBoxFor(m => m.SalePrice, new { @class = "form-control", @type="number" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RentalPrice, new { @class = "col-sm-1 control-label" })
+                @*@Html.RadioButtonListFor(m => m.RentalPrice, "租价（元/㎡.天）", null, RepeatDirection.Horizontal)*@
+                @Html.TextBoxFor(m => m.RentalPrice, new { @class = "form-control",  @type = "number" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.State, new { @class = "col-sm-1 control-label" })
+                @Html.CheckBoxListFor(m => m.State, "状态")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactPhone, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.ContactPhone)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OpenDate, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m=> m.OpenDate)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OwnerShip, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.OwnerShip, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Facade, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.Facade,"外立面形式")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Architecture, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.Architecture, "建筑结构")
+            </div>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.TotalFloorArea, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.TotalFloorArea, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TotalLayerNum, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.TotalLayerNum, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.SignalLayerHeight, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.SignalLayerHeight, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.SignalLayerArea, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.SignalLayerArea, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MainUnit, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.MainUnit, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.WinIsOpen, new { @class = "col-sm-1 control-label" })
+                @{
+                    if (Model != null)
+                    {
+                        var tmp = Model.WinIsOpen;
+                        @Html.CheckBox("IsWinOpen", tmp, new {id = "ckIsWinOpen"})
+                    }
+                    else
+                    {
+                        @Html.CheckBox("IsWinOpen", true, new {id = "ckIsWinOpen"})
+                    }
+                }
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.KingTowerPosition, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.KingTowerPosition, "承重柱位置")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CoreTubeLayout, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.CoreTubeLayout,"核心筒布局")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BlackArea, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.BlackArea,"黑房间及面积")
+            </div>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.ElevatorBrand, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.ElevatorBrand, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PassengerElevatorNum, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.PassengerElevatorNum, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.IsPartitionControl, new { @class = "col-sm-1 control-label" })
+                @{
+                    if (Model != null)
+                    {
+                        var tmp1 = Model.IsPartitionControl;
+                        @Html.CheckBox("IsPartitionControl", tmp1, new {id = "ckIsPartitionControl"})
+                    }
+                    else
+                    {
+                        @Html.CheckBox("IsPartitionControl", true, new {id = "ckIsPartitionControl"})
+                    }
+                }
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AirConditionBrand, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.AirConditionBrand, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CenterAirCoolWay, new { @class = "col-sm-1 control-label" })
+                @Html.RadioButtonListFor(m => m.CenterAirCoolWay, "中央空调制式")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ElevatorSpeed, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.ElevatorSpeed, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ParkingPlace, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.ParkingPlace, new { type = "number", @class = "form-control"})
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.Long, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.Long, new { type = "number", @class = "form-control", @required = "required" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Lat, new { @class = "col-sm-1 control-label" })
+                @Html.TextBoxFor(m => m.Lat, new { type = "number", @class = "form-control", @required = "required"  })
+            </div>*@
+          <div class="form-group">
+                <label class="col-sm-1 control-label">封面图</label>
+                <input accept="png|jpeg|jpg" type="file" name="CoverPhoto" class="form-control" required="required" />
+                <p style="padding-top:7px;padding-left:20px;display:inline-block; color:red;">建议图片尺寸640*358</p>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary " style="float: left">添 加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#addform").validate({
+            rules: {
+                CoverPhoto: {
+                    required: true,
+                    accpt: "png,jpg,jpeg"
+                }
+            }
+        });
+
+        $('#OpenDate').datetimepicker({
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+            format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
+            language: 'zh-CN', //汉化 
+            autoclose: true //选择日期后自动关闭
+        });
+    })
+</script>
+
+
+

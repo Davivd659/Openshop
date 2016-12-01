@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "需求发布-开店ing";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/css.css">
+    @*<script src="/js/hm.js"></script>*@
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <title>需求发布-开店ing</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+</head>
+
+<body onselectstart="return false">
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        input {
+            border: medium none;
+            height: 20px;
+            line-height: 20px;
+            margin-top: 13px;
+            outline: medium none;
+            width: 100%;
+        }
+    </style>
+    <header id="dt-hd" class="navstyle3" style="text-align: left;">
+        <div style="width:98%;padding-left:1%;line-height:40px;font-size: 16px;font-weight: bold;float:left;">
+            发布需求
+        </div>
+
+    </header>
+    <form class="zxd-form sjbj-form" id="form_zx" action="/pOSTINGS/ADD" method="post">
+        <section class="bj-frame">
+            <dl>
+                <dt>意向类型</dt>
+                <dd>
+                    <p style="display: none;" class="zx-yixiang">忘记选择意向类型了哦~</p>
+                    <label>
+                        <select class="needsclick" name="yixiang" id="yixiang" data-msg="请选择您的意向类型">
+                            <option selected="selected" value="-1">请选择意向类型</option>
+                            <option value="False">求租</option>
+                            <option value="True">求购</option>
+                        </select>
+                    </label>
+                </dd>
+                <dt>标题</dt>
+                <dd>
+                    <p style="display: none;" class="zx-pname">忘记输入标题了哦~</p>
+                    <input id="PName" name="PName" class="areaSel" placeholder="请输入您的需求标题">
+                </dd>
+                <dt>自身业态</dt>
+                <dd>
+                    <p style="display: none;" class="zx-zsyt">忘记输入业态了哦~</p>
+                    <input id="Format" name="Format" class="areaSel" placeholder="请输入业态类型">
+                </dd>
+                <dt>意向区域</dt>
+                <dd>
+                    <p style="display: none;" class="zx-quyu">忘记选择意向区域了哦~</p>
+                    <label>
+                        <select class="needsclick" name="district" id="district" data-msg="请选择您的意向区域">
+                            <option selected="selected" value="-1">请选择意向区域</option>                           
+                            @{
+                                var areas = (List<SelectListItem>)ViewBag.areaList;
+                                }
+                            @foreach (var areaItem in areas)
+                            {
+                                <option value="@areaItem.Value">@areaItem.Text</option>
+                            }
+                        </select>
+                    </label>
+                </dd>
+                <dt>需求面积</dt>
+                <dd>
+                    <p style="display: none;" class="zx-square">忘记添加需求面积了哦~</p>
+                    <input id="square" name="square" class="areaSel" placeholder="请输入您的需求面积">
+                </dd>
+                <dt>意向价格</dt>
+                <dd>
+                    <p style="display: none;" class="zx-price">忘记输入价格了哦~</p>
+                    <input id="price" name="price" class="areaSel" placeholder="请输入您的意向价格">
+                </dd>
+                <dt>意向物业</dt>
+                <dd>
+                    <p style="display: none;" class="zx-Ptype">忘记选择意向物业类型了哦~</p>
+                    <label>
+                        <select class="needsclick" name="Ptype" id="Ptype" data-msg="请选择您的意向物业类型">
+                            <option selected="selected" value="-1">请选择意向物业类型</option>
+                            @*<option value="1">写字楼</option>*@
+                            @{
+                                var typelist = (List<SelectListItem>)ViewBag.TypeList;
+                            }
+                            @foreach (var typeItem in typelist)
+                            {
+                                <option value="@typeItem.Value">@typeItem.Text</option>
+                            }
+                        </select>
+                    </label>
+                </dd>
+                <dt style="height:146px;">需求详情</dt>
+                <dd style="height:146px;">
+                    <p style="display: none;" class="zx-Pinfo">忘记输入需求详情了哦~</p>
+                    <textarea rows="5" id="Pinfo" name="Pinfo" class="areaSel" placeholder="请输入需求详情" type="number"></textarea>
+
+                </dd>
+                <dt>截止日期</dt>
+                <dd>
+                    <p style="display: none;" class="zx-jzrq">忘记输入日期了哦~</p>
+                    <input id="Endtiem" name="Endtiem" class="areaSel" placeholder="请输入截止日期" value="@DateTime.Now.AddMonths(2).ToString("yyyy-MM-dd")" />
+                </dd>
+                <dt>联系人</dt>
+                <dd>
+                    <p style="display: none;" class="zx-contacts">忘记输入联系了哦~</p>
+                    <input id="Contacts" name="Contacts" class="areaSel" placeholder="请输入联系人" />
+                </dd>
+                <dt>手机号码</dt>
+                <dd>
+                    <p style="display: none;" class="zx-mobile">请正确输入手机号码</p>
+                    <input id="Mobile" name="Mobile" class="phoneNumber" placeholder="只能填写手机号" type="tel">
+                </dd>
+                @*<dt class="val-code"> 验 证 码 </dt>
+                    <dd class="val-code">
+                        <p class="val-msg-code">请输入验证码哦~</p>
+                        <input class="val-code-show img-captcha" name="captcha" id="captcha" placeholder="输入右边验证码" type="text">
+                        <a class="refresh-captcha" href="#">
+                            <img src="js/vfcode.png" height="23" width="70">
+                        </a>
+                    </dd>*@
+
+            </dl>
+        </section>
+        <div class="finish-btn-next">
+            <input id="zxd-form-submit" value="确定发布" type="button">
+        </div>
+
+    </form>
+
+    
+ 
+    <script type="text/javascript" src="~/js/postingsAdd.js"></script>
+    <div id="alertOveryLayer" style="position: fixed; left: 0px; top: 0px; z-index: 99999; text-align: center; bottom: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.298); display: none;">
+        <div style="  position: absolute;display: -moz-box;  display: -webkit-box;  display: -webkit-flex;  display: -moz-flex;  display: -ms-flexbox;  display: -ms-flex;  display: flex;top: 30%;width: 100%;">
+            <div class="alert-lay" style="/* display: table-cell; */vertical-align: middle;padding: 0 10%;-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;  display: block;  -webkit-box-flex: 1;  -moz-box-flex: 1;  -webkit-flex: 1 1 0;  -moz-flex: 1 1 0;  -ms-flex: 1 1 0;  flex: 1 1 0;  text-align: center;">
+                <div class="overlay-bd" style="background-color: #fff;font-size: 14px;color: #333333;line-height: 24px;padding: 20px 15px;text-align: center;border-radius: 7px 7px 0 0;">asdf</div>
+                <div class="overlay-foot" style="border-top: 1px solid #e3e3e3;">
+                    <div class="overlay-btn overlay-btn-ok" style="background-color: #fff;cursor: pointer;font-size: 16px;color: #00a1ff;height: 42px;line-height: 42px;border-radius: 0 0 7px 7px;">好的</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/mobiscroll/plugs/mobiscroll/../../js/zepto.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.zepto.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.core.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.scroller.js" type="text/javascript"></script>
+
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.datetime.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.select.js" type="text/javascript"></script>
+
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.scroller.ios.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.scroller.android.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.scroller.android-ics.js" type="text/javascript"></script>
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.scroller.wp.js" type="text/javascript"></script>
+
+    <script src="/mobiscroll/plugs/mobiscroll/js/mobiscroll.i18n.zh.js" type="text/javascript"></script>
+
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.android.css" rel="stylesheet" type="text/css" />
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.android-ics.css" rel="stylesheet" type="text/css" />
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.sense-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.scroller.wp.css" rel="stylesheet" type="text/css" />
+
+    <link href="/mobiscroll/plugs/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+    $(function () {
+        $("#form_zx input").on('keyup blur', function () {
+            $(this).prev('p').hide();
+        });
+        $("#form_zx select").change(function () {
+            $(this).parent().prev('p').hide();
+            $(this).parent().prev().prev('p').hide();
+        });
+
+        $("#phone").focus(function () {
+            $(".val-phone").show();
+        });
+        @{ DateTime timenow = DateTime.Now.AddMonths(2);}
+        var curr = new Date().getFullYear();
+        var fun = function () {
+            $('#Endtiem').scroller('destroy').scroller({
+                preset: 'date',
+                // minDate: new Date(@timenow.ToString("yyyy,MM, dd, HH, mm, 0, 0")),
+                // maxDate: new Date(@timenow.ToString("yyyy,MM, dd, HH, mm, 0, 0")),
+                theme: 'ios',
+                mode: 'scroller',
+                lang: 'zh',
+                display:'modal',
+                animate: ''
+            });
+        }
+
+        fun();
+    });
+
+    </script>
+
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,123 @@
+﻿@using YG.SC.DataAccess
+@using System.IO
+@{
+    ViewBag.Title = "个人中心-我的团购";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var array = (Tuple<ApplyActivity[], YG.SC.Model.PagerEntity>)ViewBag.array;
+}
+
+<link href="~/Content/back.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<script type=text/javascript src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<div class="brand-warp">
+    <div class="utc">
+        @Html.Partial("_LayoutLeft")
+        <div class="utc_right">
+            <div class="utc_right_title Gray18B">我的团购</div>
+            <div class="utc_right_title_right"></div>
+            <div class="clear"></div>
+            <form method="get">
+                <div class="utc_right_uc">
+                    <div class="utc_right_order_top">
+                        <table id="table_search">
+                            <tr>
+                                <td style="width:60px;">团购时间:</td>
+                                <td>
+                                    <input type="datetime" name="Begintime" id="Begintime" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})" />
+                                    - <input type="datetime" name="Endtime" id="Endtime" value="" style="width:140px;" class="Wdate" onfocus="WdatePicker({lang:'zh-cn'})" />
+                                </td>
+                                <td style="width:60px;">团购状态:</td>
+                                <td style="width:140px;">
+                                    <select name="Status" style="width:120px;">
+                                        <option value="">全部</option>
+                                        <option value="0">进行中</option>
+                                        <option value="1">已结束</option>
+                                    </select>
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="text" name="ProjectName" id="ProjectName" value="" placeholder="项目名称" style="width:195px;" />
+                                </td>
+                                <td><button type="submit">搜索</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="utc_right_order_center">
+                        <ul class="ul_tuangou">
+                            @foreach (var item in array.Item1)
+                            {
+                                <li>
+                                    <div class="tuangouimg">
+                                        @if (item.Grouppurchase.ShopProject.ProjectPhoto.Count == 0)
+                                        {        <img src="~/Images/searchlistimg.jpg" style="width: 300px;height:200px;">
+                                        }
+                                        else
+                                        {
+                                            string img = item.Grouppurchase.ShopProject.ProjectPhoto.FirstOrDefault(m => m.ShopProjectId == item.Grouppurchase.ShopProjectId).PhotoUrlSmall;
+                                            <img src="@Html.Raw(File.Exists(Server.MapPath("~" + img)) ? img : "/Images/searchlistimg.jpg")" style="width: 300px;height:200px;">
+                                        }
+
+                                        <div class="tuangounum">
+                                            <span class="Write28b">@item.Grouppurchase.ApplyActivities.Count</span>
+                                            <span class="Write14">人参团</span>
+                                        </div>
+
+                                    </div>
+                                    <p>
+                                        <span class="blod">@item.Grouppurchase.Name</span><br>
+                                        报名截止时间：@item.Grouppurchase.Endtime<br>
+                                        当前进度：<span class="red">
+                                            @if (item.Grouppurchase.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.one)
+                                            {
+                                                <span>第一步</span>
+                                            }
+                                            else if (item.Grouppurchase.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.two)
+                                            {
+                                                <span>第二步</span>
+                                            }
+                                            else if (item.Grouppurchase.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Three)
+                                            {
+                                                <span>第三步</span>
+                                            }
+                                            else if (item.Grouppurchase.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Four)
+                                            {
+                                                <span>第四步</span>
+                                            }
+                                            else if (item.Grouppurchase.progress == (int)YG.SC.Common.CommonEnum.ProjectProgress.Five)
+                                            {
+                                                <span>第五步</span>
+                                            }
+                                        </span>
+                                    </p>
+                                    <p style="text-align:right;">
+                                        <span class="green">
+                                            @if (item.Grouppurchase.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.Conduct)
+                                            {
+                                                <span>进行中</span>
+                                            }
+                                            else if (item.Grouppurchase.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.Cancelled)
+                                            {
+                                                <span>已取消</span>
+                                            }
+                                            else if (item.Grouppurchase.Status == (int)YG.SC.Common.CommonEnum.ProjectStatus.End)
+                                            {
+                                                <span>以结束</span>
+                                            }
+                                        </span>
+
+                                    </p>
+                                </li>
+                            }
+
+                        </ul>
+
+
+                    </div>
+                    @Html.Partial("_LayoutPager", array.Item2)
+                    <div class="clear"></div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

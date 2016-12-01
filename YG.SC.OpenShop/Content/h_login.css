@@ -1,0 +1,71 @@
+
+.register_sendcode, .register_sendcode:hover, .register_sendcode:focus{
+    background-color: #EC331E;
+    background-image: none;
+    color: #fff;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    height: 35px;
+    font-size: 13px;
+    border-radius: 2px;}
+
+
+
+
+.input-group-lg {
+    width: 275px;
+    margin-left: 35px;
+    height: 35px;
+    position: relative;
+    border: none;
+}
+
+
+
+
+
+
+.input-group-lg > .form-control {
+    width: 233px;
+    height: 35px;
+    padding-left: 10px;
+    margin-left: 30px;
+    border: 1px solid #ccc;
+}
+.glyphicon{
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: 5px;}
+
+
+.input-group-lg > .input-group-addon {
+    width: 30px;
+    height: 35px;
+    background: #fff ;
+
+    display: block;
+    position: absolute;
+    border: 1px solid #ccc;}
+
+
+
+
+
+
+
+
+
+
+.login_s3_wx {
+    background: url("../images/login_wx.jpg") no-repeat;
+}
+
+.login_s3_qq {
+    background: url("/images/login_qq.jpg") no-repeat;
+}
